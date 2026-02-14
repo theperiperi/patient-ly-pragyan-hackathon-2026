@@ -1,2 +1,2 @@
-# pragyan-26
+# patient-ly
 patient triage
