@@ -1,0 +1,320 @@
+{
+  "resourceType": "Bundle",
+  "id": "d376996d-ece1-4576-a765-57dcbcb9559d",
+  "type": "document",
+  "timestamp": "2026-02-09T00:32:50.738932",
+  "identifier": {
+    "system": "https://ndhm.in/bundle",
+    "value": "d376996d-ece1-4576-a765-57dcbcb9559d"
+  },
+  "meta": {
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ],
+    "lastUpdated": "2026-02-14T13:55:13.300662"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:Composition-1aa2144c",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "Composition-1aa2144c",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "373942005",
+              "display": "Discharge Summary"
+            }
+          ],
+          "text": "Discharge Summary"
+        },
+        "subject": {
+          "reference": "Patient/97533164917895",
+          "display": "Sourav Sharma"
+        },
+        "encounter": {
+          "reference": "Encounter/Encounter-a2e5efcf"
+        },
+        "date": "2026-02-09T00:32:50.738932",
+        "author": [
+          {
+            "reference": "Practitioner/practitioner-002",
+            "display": "Dr. Karthik Verma"
+          }
+        ],
+        "title": "Discharge Summary",
+        "custodian": {
+          "reference": "Organization/org-002",
+          "display": "Fortis Healthcare"
+        },
+        "section": [
+          {
+            "title": "Chief Complaints",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "422843007",
+                  "display": "Chief complaint section"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>Patient presented with complaints of fever and cough for 5 days</div>"
+            }
+          },
+          {
+            "title": "Medical History",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "371529009",
+                  "display": "History and physical report"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>No known medical conditions</div>"
+            }
+          },
+          {
+            "title": "Hospital Course",
+            "text": {
+              "status": "generated",
+              "div": "<div>Patient admitted and treated with antibiotics. Condition improved over 5 days.</div>"
+            }
+          },
+          {
+            "title": "Discharge Medications",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "10183-2",
+                  "display": "Discharge medication"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>1. Azithromycin 500mg OD for 5 days<br/>2. Paracetamol 650mg TDS PRN</div>"
+            }
+          },
+          {
+            "title": "Follow-up",
+            "text": {
+              "status": "generated",
+              "div": "<div>Follow-up after 1 week</div>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "Patient/97533164917895",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "97533164917895",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NNIND",
+                  "display": "National Person Identifier - India"
+                }
+              ],
+              "text": "ABHA Number"
+            },
+            "system": "https://healthid.ndhm.gov.in",
+            "value": "97-5331-6491-7895"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "text": "Sourav Sharma",
+            "given": [
+              "Sourav"
+            ],
+            "family": "Sharma"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-8281711517",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "sourav.sharma@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2005-09-04",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "text": "281, MG Road, Pune, Maharashtra 415879",
+            "line": [
+              "281",
+              "MG Road"
+            ],
+            "city": "Pune",
+            "state": "Maharashtra",
+            "postalCode": "415879",
+            "country": "IN"
+          }
+        ],
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-age",
+            "valueAge": {
+              "value": 20,
+              "unit": "years",
+              "system": "http://unitsofmeasure.org",
+              "code": "a"
+            }
+          }
+        ],
+        "bloodGroup": "A+",
+        "conditions": [],
+        "createdAt": "2026-02-14T13:53:54.487310",
+        "abha_number": "97-5331-6491-7895"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/practitioner-002",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-002",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.nmc.org.in",
+            "value": "MCI-67956"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "text": "Dr. Karthik Verma",
+            "given": [
+              "Karthik"
+            ],
+            "family": "Verma"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-6175376284",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "dr.karthik.verma@hospital.in",
+            "use": "work"
+          }
+        ],
+        "gender": "female",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "MD"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "394584008",
+                  "display": "Gastroenterology"
+                }
+              ],
+              "text": "Gastroenterology"
+            }
+          }
+        ],
+        "specialty": {
+          "code": "394584008",
+          "display": "Gastroenterology"
+        }
+      }
+    },
+    {
+      "fullUrl": "Organization/org-002",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-002",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://facility.ndhm.gov.in",
+            "value": "IN-ORG-002"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Private"
+          }
+        ],
+        "name": "Fortis Healthcare",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9578547749",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "contact@fortishealthcare.in",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "physical",
+            "city": "Delhi",
+            "state": "Delhi",
+            "country": "IN"
+          }
+        ]
+      }
+    }
+  ]
+}

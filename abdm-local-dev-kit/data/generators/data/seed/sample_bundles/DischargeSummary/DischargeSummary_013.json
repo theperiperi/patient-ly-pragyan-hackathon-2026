@@ -1,0 +1,335 @@
+{
+  "resourceType": "Bundle",
+  "id": "b55224c3-e0d9-41c9-a776-d56755ea8e38",
+  "type": "document",
+  "timestamp": "2026-01-31T18:56:00.624094",
+  "identifier": {
+    "system": "https://ndhm.in/bundle",
+    "value": "b55224c3-e0d9-41c9-a776-d56755ea8e38"
+  },
+  "meta": {
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ],
+    "lastUpdated": "2026-02-14T13:55:13.299296"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:Composition-8b64ac96",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "Composition-8b64ac96",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "373942005",
+              "display": "Discharge Summary"
+            }
+          ],
+          "text": "Discharge Summary"
+        },
+        "subject": {
+          "reference": "Patient/83242035087622",
+          "display": "Mala Agarwal"
+        },
+        "encounter": {
+          "reference": "Encounter/Encounter-67afab8c"
+        },
+        "date": "2026-01-31T18:56:00.624094",
+        "author": [
+          {
+            "reference": "Practitioner/practitioner-008",
+            "display": "Dr. Jyoti Kumar"
+          }
+        ],
+        "title": "Discharge Summary",
+        "custodian": {
+          "reference": "Organization/org-002",
+          "display": "Fortis Healthcare"
+        },
+        "section": [
+          {
+            "title": "Chief Complaints",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "422843007",
+                  "display": "Chief complaint section"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>Patient presented with complaints of fever and cough for 5 days</div>"
+            }
+          },
+          {
+            "title": "Medical History",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "371529009",
+                  "display": "History and physical report"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>Known conditions: Type 2 diabetes mellitus</div>"
+            }
+          },
+          {
+            "title": "Hospital Course",
+            "text": {
+              "status": "generated",
+              "div": "<div>Patient admitted and treated with antibiotics. Condition improved over 5 days.</div>"
+            }
+          },
+          {
+            "title": "Discharge Medications",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "10183-2",
+                  "display": "Discharge medication"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>1. Azithromycin 500mg OD for 5 days<br/>2. Paracetamol 650mg TDS PRN</div>"
+            }
+          },
+          {
+            "title": "Follow-up",
+            "text": {
+              "status": "generated",
+              "div": "<div>Follow-up after 1 week</div>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "Patient/83242035087622",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "83242035087622",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NNIND",
+                  "display": "National Person Identifier - India"
+                }
+              ],
+              "text": "ABHA Number"
+            },
+            "system": "https://healthid.ndhm.gov.in",
+            "value": "83-2420-3508-7622"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "text": "Mala Agarwal",
+            "given": [
+              "Mala"
+            ],
+            "family": "Agarwal"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-8498670843",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "mala.agarwal@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1942-07-18",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "text": "681, Commercial Street, Chennai, Tamil Nadu 601277",
+            "line": [
+              "681",
+              "Commercial Street"
+            ],
+            "city": "Chennai",
+            "state": "Tamil Nadu",
+            "postalCode": "601277",
+            "country": "IN"
+          }
+        ],
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-age",
+            "valueAge": {
+              "value": 83,
+              "unit": "years",
+              "system": "http://unitsofmeasure.org",
+              "code": "a"
+            }
+          }
+        ],
+        "bloodGroup": "A-",
+        "conditions": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "44054006",
+                  "display": "Type 2 diabetes mellitus",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Type 2 diabetes mellitus"
+            },
+            "onsetDateTime": "2020-10-26",
+            "recordedDate": "2025-05-31"
+          }
+        ],
+        "createdAt": "2026-02-14T13:53:54.488066",
+        "abha_number": "83-2420-3508-7622"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/practitioner-008",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-008",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.nmc.org.in",
+            "value": "MCI-52636"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "text": "Dr. Jyoti Kumar",
+            "given": [
+              "Jyoti"
+            ],
+            "family": "Kumar"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-7644433887",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "dr.jyoti.kumar@hospital.in",
+            "use": "work"
+          }
+        ],
+        "gender": "male",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "MD"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "394582007",
+                  "display": "Dermatology"
+                }
+              ],
+              "text": "Dermatology"
+            }
+          }
+        ],
+        "specialty": {
+          "code": "394582007",
+          "display": "Dermatology"
+        }
+      }
+    },
+    {
+      "fullUrl": "Organization/org-002",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-002",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://facility.ndhm.gov.in",
+            "value": "IN-ORG-002"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Private"
+          }
+        ],
+        "name": "Fortis Healthcare",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9578547749",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "contact@fortishealthcare.in",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "physical",
+            "city": "Delhi",
+            "state": "Delhi",
+            "country": "IN"
+          }
+        ]
+      }
+    }
+  ]
+}

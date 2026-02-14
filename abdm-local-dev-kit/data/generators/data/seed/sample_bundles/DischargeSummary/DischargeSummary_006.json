@@ -1,0 +1,349 @@
+{
+  "resourceType": "Bundle",
+  "id": "28573309-3c47-4d6f-b5e7-3f775dd92d42",
+  "type": "document",
+  "timestamp": "2026-01-28T00:56:09.351044",
+  "identifier": {
+    "system": "https://ndhm.in/bundle",
+    "value": "28573309-3c47-4d6f-b5e7-3f775dd92d42"
+  },
+  "meta": {
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ],
+    "lastUpdated": "2026-02-14T13:55:13.296730"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:Composition-f639d672",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "Composition-f639d672",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "373942005",
+              "display": "Discharge Summary"
+            }
+          ],
+          "text": "Discharge Summary"
+        },
+        "subject": {
+          "reference": "Patient/26990778641798",
+          "display": "Debasis Shah"
+        },
+        "encounter": {
+          "reference": "Encounter/Encounter-a839804b"
+        },
+        "date": "2026-01-28T00:56:09.351044",
+        "author": [
+          {
+            "reference": "Practitioner/practitioner-007",
+            "display": "Dr. Ravi Malhotra"
+          }
+        ],
+        "title": "Discharge Summary",
+        "custodian": {
+          "reference": "Organization/org-001",
+          "display": "Apollo Hospitals"
+        },
+        "section": [
+          {
+            "title": "Chief Complaints",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "422843007",
+                  "display": "Chief complaint section"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>Patient presented with complaints of fever and cough for 5 days</div>"
+            }
+          },
+          {
+            "title": "Medical History",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "371529009",
+                  "display": "History and physical report"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>Known conditions: Hypertension, Chronic kidney disease</div>"
+            }
+          },
+          {
+            "title": "Hospital Course",
+            "text": {
+              "status": "generated",
+              "div": "<div>Patient admitted and treated with antibiotics. Condition improved over 5 days.</div>"
+            }
+          },
+          {
+            "title": "Discharge Medications",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "10183-2",
+                  "display": "Discharge medication"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>1. Azithromycin 500mg OD for 5 days<br/>2. Paracetamol 650mg TDS PRN</div>"
+            }
+          },
+          {
+            "title": "Follow-up",
+            "text": {
+              "status": "generated",
+              "div": "<div>Follow-up after 1 week</div>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "Patient/26990778641798",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "26990778641798",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NNIND",
+                  "display": "National Person Identifier - India"
+                }
+              ],
+              "text": "ABHA Number"
+            },
+            "system": "https://healthid.ndhm.gov.in",
+            "value": "26-9907-7864-1798"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "text": "Debasis Shah",
+            "given": [
+              "Debasis"
+            ],
+            "family": "Shah"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-8229999261",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "debasis.shah@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1992-10-09",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "text": "971, Park Street, Ahmedabad, Gujarat 387369",
+            "line": [
+              "971",
+              "Park Street"
+            ],
+            "city": "Ahmedabad",
+            "state": "Gujarat",
+            "postalCode": "387369",
+            "country": "IN"
+          }
+        ],
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-age",
+            "valueAge": {
+              "value": 33,
+              "unit": "years",
+              "system": "http://unitsofmeasure.org",
+              "code": "a"
+            }
+          }
+        ],
+        "bloodGroup": "A-",
+        "conditions": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "38341003",
+                  "display": "Hypertension",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Hypertension"
+            },
+            "onsetDateTime": "2024-08-18",
+            "recordedDate": "2025-08-04"
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "399211009",
+                  "display": "Chronic kidney disease",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Chronic kidney disease"
+            },
+            "onsetDateTime": "2018-07-31",
+            "recordedDate": "2020-04-11"
+          }
+        ],
+        "createdAt": "2026-02-14T13:53:54.487650",
+        "abha_number": "26-9907-7864-1798"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/practitioner-007",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-007",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.nmc.org.in",
+            "value": "MCI-81561"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "text": "Dr. Ravi Malhotra",
+            "given": [
+              "Ravi"
+            ],
+            "family": "Malhotra"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9405525315",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "dr.ravi.malhotra@hospital.in",
+            "use": "work"
+          }
+        ],
+        "gender": "male",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "MD"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "394582007",
+                  "display": "Dermatology"
+                }
+              ],
+              "text": "Dermatology"
+            }
+          }
+        ],
+        "specialty": {
+          "code": "394582007",
+          "display": "Dermatology"
+        }
+      }
+    },
+    {
+      "fullUrl": "Organization/org-001",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-001",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://facility.ndhm.gov.in",
+            "value": "IN-ORG-001"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Private"
+          }
+        ],
+        "name": "Apollo Hospitals",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-8785016751",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "contact@apollohospitals.in",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "physical",
+            "city": "Bangalore",
+            "state": "Karnataka",
+            "country": "IN"
+          }
+        ]
+      }
+    }
+  ]
+}

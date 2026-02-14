@@ -1,0 +1,314 @@
+{
+  "resourceType": "Bundle",
+  "id": "f633fbc1-e8c6-42a0-9c7d-e604d7099a22",
+  "type": "document",
+  "timestamp": "2026-02-02T10:58:54.177947",
+  "identifier": {
+    "system": "https://ndhm.in/bundle",
+    "value": "f633fbc1-e8c6-42a0-9c7d-e604d7099a22"
+  },
+  "meta": {
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ],
+    "lastUpdated": "2026-02-14T13:55:13.309660"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:Composition-095c52f0",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "Composition-095c52f0",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "721981007",
+              "display": "Diagnostic Report"
+            }
+          ],
+          "text": "Diagnostic Report"
+        },
+        "subject": {
+          "reference": "Patient/98766566561895",
+          "display": "Vikram Shah"
+        },
+        "date": "2026-02-02T10:58:54.177947",
+        "author": [
+          {
+            "reference": "Practitioner/practitioner-006",
+            "display": "Dr. Bina Kapoor"
+          }
+        ],
+        "title": "Laboratory Diagnostic Report",
+        "custodian": {
+          "reference": "Organization/org-003",
+          "display": "AIIMS"
+        },
+        "section": [
+          {
+            "title": "Laboratory Results",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "30954-2",
+                  "display": "Laboratory studies"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div><table><tr><th>Test</th><th>Result</th><th>Unit</th><th>Reference Range</th></tr><tr><td>Hemoglobin</td><td>13.8</td><td>g/dL</td><td>12-16</td></tr><tr><td>Total WBC Count</td><td>10170</td><td>cells/cumm</td><td>4000-11000</td></tr><tr><td>Blood Sugar (Fasting)</td><td>72</td><td>mg/dL</td><td>70-110</td></tr><tr><td>Serum Creatinine</td><td>1.17</td><td>mg/dL</td><td>0.6-1.2</td></tr><tr><td>Total Cholesterol</td><td>172</td><td>mg/dL</td><td><200</td></tr></table></div>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "Patient/98766566561895",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "98766566561895",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NNIND",
+                  "display": "National Person Identifier - India"
+                }
+              ],
+              "text": "ABHA Number"
+            },
+            "system": "https://healthid.ndhm.gov.in",
+            "value": "98-7665-6656-1895"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "text": "Vikram Shah",
+            "given": [
+              "Vikram"
+            ],
+            "family": "Shah"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9273035924",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "vikram.shah@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1944-05-24",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "text": "75, MG Road, Delhi, Delhi 114384",
+            "line": [
+              "75",
+              "MG Road"
+            ],
+            "city": "Delhi",
+            "state": "Delhi",
+            "postalCode": "114384",
+            "country": "IN"
+          }
+        ],
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-age",
+            "valueAge": {
+              "value": 81,
+              "unit": "years",
+              "system": "http://unitsofmeasure.org",
+              "code": "a"
+            }
+          }
+        ],
+        "bloodGroup": "AB-",
+        "conditions": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "38341003",
+                  "display": "Hypertension",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Hypertension"
+            },
+            "onsetDateTime": "2017-12-23",
+            "recordedDate": "2023-01-14"
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "399211009",
+                  "display": "Chronic kidney disease",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Chronic kidney disease"
+            },
+            "onsetDateTime": "2021-03-09",
+            "recordedDate": "2024-05-18"
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "75544007",
+                  "display": "Typhoid fever",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Typhoid fever"
+            },
+            "onsetDateTime": "2023-06-03",
+            "recordedDate": "2024-03-09"
+          }
+        ],
+        "createdAt": "2026-02-14T13:53:54.489130",
+        "abha_number": "98-7665-6656-1895"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/practitioner-006",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-006",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.nmc.org.in",
+            "value": "MCI-57246"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "text": "Dr. Bina Kapoor",
+            "given": [
+              "Bina"
+            ],
+            "family": "Kapoor"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-7360152478",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "dr.bina.kapoor@hospital.in",
+            "use": "work"
+          }
+        ],
+        "gender": "female",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "MD"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "394588006",
+                  "display": "Pediatric surgery"
+                }
+              ],
+              "text": "Pediatric surgery"
+            }
+          }
+        ],
+        "specialty": {
+          "code": "394588006",
+          "display": "Pediatric surgery"
+        }
+      }
+    },
+    {
+      "fullUrl": "Organization/org-003",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-003",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://facility.ndhm.gov.in",
+            "value": "IN-ORG-003"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Government"
+          }
+        ],
+        "name": "AIIMS",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-7109019058",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "contact@aiims.in",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "physical",
+            "city": "Delhi",
+            "state": "Delhi",
+            "country": "IN"
+          }
+        ]
+      }
+    }
+  ]
+}

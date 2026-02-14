@@ -1,0 +1,300 @@
+{
+  "resourceType": "Bundle",
+  "id": "5dc9b2b7-1a05-42b3-b46b-7fda67cd2536",
+  "type": "document",
+  "timestamp": "2026-02-01T20:31:20.864907",
+  "identifier": {
+    "system": "https://ndhm.in/bundle",
+    "value": "5dc9b2b7-1a05-42b3-b46b-7fda67cd2536"
+  },
+  "meta": {
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ],
+    "lastUpdated": "2026-02-14T13:55:13.308455"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:Composition-bf7699cd",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "Composition-bf7699cd",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "721981007",
+              "display": "Diagnostic Report"
+            }
+          ],
+          "text": "Diagnostic Report"
+        },
+        "subject": {
+          "reference": "Patient/40827994628509",
+          "display": "Bina Shah"
+        },
+        "date": "2026-02-01T20:31:20.864907",
+        "author": [
+          {
+            "reference": "Practitioner/practitioner-005",
+            "display": "Dr. Sourav Reddy"
+          }
+        ],
+        "title": "Laboratory Diagnostic Report",
+        "custodian": {
+          "reference": "Organization/org-002",
+          "display": "Fortis Healthcare"
+        },
+        "section": [
+          {
+            "title": "Laboratory Results",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "30954-2",
+                  "display": "Laboratory studies"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div><table><tr><th>Test</th><th>Result</th><th>Unit</th><th>Reference Range</th></tr><tr><td>Hemoglobin</td><td>14.2</td><td>g/dL</td><td>12-16</td></tr><tr><td>Total WBC Count</td><td>5964</td><td>cells/cumm</td><td>4000-11000</td></tr><tr><td>Blood Sugar (Fasting)</td><td>111</td><td>mg/dL</td><td>70-110</td></tr><tr><td>Serum Creatinine</td><td>0.79</td><td>mg/dL</td><td>0.6-1.2</td></tr><tr><td>Total Cholesterol</td><td>150</td><td>mg/dL</td><td><200</td></tr></table></div>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "Patient/40827994628509",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "40827994628509",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NNIND",
+                  "display": "National Person Identifier - India"
+                }
+              ],
+              "text": "ABHA Number"
+            },
+            "system": "https://healthid.ndhm.gov.in",
+            "value": "40-8279-9462-8509"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "text": "Bina Shah",
+            "given": [
+              "Bina"
+            ],
+            "family": "Shah"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-7075831330",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "bina.shah@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "other",
+        "birthDate": "1984-03-13",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "text": "614, MG Road, Bangalore, Karnataka 568430",
+            "line": [
+              "614",
+              "MG Road"
+            ],
+            "city": "Bangalore",
+            "state": "Karnataka",
+            "postalCode": "568430",
+            "country": "IN"
+          }
+        ],
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-age",
+            "valueAge": {
+              "value": 41,
+              "unit": "years",
+              "system": "http://unitsofmeasure.org",
+              "code": "a"
+            }
+          }
+        ],
+        "bloodGroup": "O+",
+        "conditions": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "75544007",
+                  "display": "Typhoid fever",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Typhoid fever"
+            },
+            "onsetDateTime": "2023-04-03",
+            "recordedDate": "2023-05-24"
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "84229001",
+                  "display": "Malaria",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Malaria"
+            },
+            "onsetDateTime": "2020-04-19",
+            "recordedDate": "2021-02-11"
+          }
+        ],
+        "createdAt": "2026-02-14T13:53:54.492242",
+        "abha_number": "40-8279-9462-8509"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/practitioner-005",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-005",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.nmc.org.in",
+            "value": "MCI-31554"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "text": "Dr. Sourav Reddy",
+            "given": [
+              "Sourav"
+            ],
+            "family": "Reddy"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-7897905067",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "dr.sourav.reddy@hospital.in",
+            "use": "work"
+          }
+        ],
+        "gender": "female",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "MD"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "394585009",
+                  "display": "Obstetrics and gynecology"
+                }
+              ],
+              "text": "Obstetrics and gynecology"
+            }
+          }
+        ],
+        "specialty": {
+          "code": "394585009",
+          "display": "Obstetrics and gynecology"
+        }
+      }
+    },
+    {
+      "fullUrl": "Organization/org-002",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-002",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://facility.ndhm.gov.in",
+            "value": "IN-ORG-002"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Private"
+          }
+        ],
+        "name": "Fortis Healthcare",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9578547749",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "contact@fortishealthcare.in",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "physical",
+            "city": "Delhi",
+            "state": "Delhi",
+            "country": "IN"
+          }
+        ]
+      }
+    }
+  ]
+}

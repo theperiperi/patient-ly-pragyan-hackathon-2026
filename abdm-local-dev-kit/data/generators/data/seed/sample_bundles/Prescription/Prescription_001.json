@@ -1,0 +1,286 @@
+{
+  "resourceType": "Bundle",
+  "id": "d8b32508-0035-46ee-8b82-e0600b3ad74f",
+  "type": "document",
+  "timestamp": "2026-02-10T15:21:39.282679",
+  "identifier": {
+    "system": "https://ndhm.in/bundle",
+    "value": "d8b32508-0035-46ee-8b82-e0600b3ad74f"
+  },
+  "meta": {
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ],
+    "lastUpdated": "2026-02-14T13:55:13.302061"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:Composition-cdc7f637",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "Composition-cdc7f637",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "440545006",
+              "display": "Prescription record"
+            }
+          ],
+          "text": "Prescription"
+        },
+        "subject": {
+          "reference": "Patient/93737450973283",
+          "display": "Tapas Verma"
+        },
+        "date": "2026-02-10T15:21:39.282679",
+        "author": [
+          {
+            "reference": "Practitioner/practitioner-004",
+            "display": "Dr. Deepa Sharma"
+          }
+        ],
+        "title": "Prescription",
+        "custodian": {
+          "reference": "Organization/org-004",
+          "display": "Manipal Hospitals"
+        },
+        "section": [
+          {
+            "title": "Medication List",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "10160-0",
+                  "display": "Medication list"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div><table><tr><th>Medicine</th><th>Dose</th><th>Frequency</th><th>Duration</th></tr><tr><td>Pantoprazole</td><td>40mg</td><td>OD (Once daily)</td><td>30 days</td></tr><tr><td>Aspirin</td><td>75mg</td><td>OD (Once daily)</td><td>30 days</td></tr><tr><td>Amlodipine</td><td>5mg</td><td>OD (Once daily)</td><td>30 days</td></tr></table></div>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "Patient/93737450973283",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "93737450973283",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NNIND",
+                  "display": "National Person Identifier - India"
+                }
+              ],
+              "text": "ABHA Number"
+            },
+            "system": "https://healthid.ndhm.gov.in",
+            "value": "93-7374-5097-3283"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "text": "Tapas Verma",
+            "given": [
+              "Tapas"
+            ],
+            "family": "Verma"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9027426730",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "tapas.verma@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1974-09-27",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "text": "805, Sector, Pune, Maharashtra 412937",
+            "line": [
+              "805",
+              "Sector"
+            ],
+            "city": "Pune",
+            "state": "Maharashtra",
+            "postalCode": "412937",
+            "country": "IN"
+          }
+        ],
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-age",
+            "valueAge": {
+              "value": 51,
+              "unit": "years",
+              "system": "http://unitsofmeasure.org",
+              "code": "a"
+            }
+          }
+        ],
+        "bloodGroup": "A-",
+        "conditions": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "75544007",
+                  "display": "Typhoid fever",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Typhoid fever"
+            },
+            "onsetDateTime": "2024-10-11",
+            "recordedDate": "2025-10-02"
+          }
+        ],
+        "createdAt": "2026-02-14T13:53:54.491744",
+        "abha_number": "93-7374-5097-3283"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/practitioner-004",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-004",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.nmc.org.in",
+            "value": "MCI-86399"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "text": "Dr. Deepa Sharma",
+            "given": [
+              "Deepa"
+            ],
+            "family": "Sharma"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-7644189678",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "dr.deepa.sharma@hospital.in",
+            "use": "work"
+          }
+        ],
+        "gender": "female",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "MD"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "394584008",
+                  "display": "Gastroenterology"
+                }
+              ],
+              "text": "Gastroenterology"
+            }
+          }
+        ],
+        "specialty": {
+          "code": "394584008",
+          "display": "Gastroenterology"
+        }
+      }
+    },
+    {
+      "fullUrl": "Organization/org-004",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-004",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://facility.ndhm.gov.in",
+            "value": "IN-ORG-004"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Private"
+          }
+        ],
+        "name": "Manipal Hospitals",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9156159879",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "contact@manipalhospitals.in",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "physical",
+            "city": "Bangalore",
+            "state": "Karnataka",
+            "country": "IN"
+          }
+        ]
+      }
+    }
+  ]
+}
