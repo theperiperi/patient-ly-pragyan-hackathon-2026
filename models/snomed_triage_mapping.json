@@ -1,0 +1,288 @@
+ { 
+  
+ "metadata": {
+    "description": "SNOMED-CT code to ESI triage level mapping derived from Synthea FHIR R4 data analysis",
+    "version": "1.0",
+    "date": "2026-02-14",
+    "source": "synthea_sample_data_fhir_latest/",
+    "encounter_count": 5745,
+    "emergency_encounters": 197,
+    "ambulatory_encounters": 5365,
+    "inpatient_encounters": 133
+  },
+  
+  "esi_levels": {
+    "1": "Resuscitation - Immediate life-saving intervention required",
+    "2": "Emergent - High risk, should not wait >10 minutes",
+    "3": "Urgent - Multiple resources needed, stable vital signs",
+    "4": "Less Urgent - One resource needed, stable",
+    "5": "Non-Urgent - No resources needed immediately"
+  },
+  
+  "snomed_mappings": {
+    "life_threatening_esi_1_2": [
+      {
+        "code": "22298006",
+        "display": "Myocardial infarction (disorder)",
+        "esi_level": 1,
+        "encounter_class": "EMER",
+        "clinical_significance": "Immediate cardiac intervention required"
+      },
+      {
+        "code": "230690007",
+        "display": "Cerebrovascular accident (disorder)",
+        "esi_level": 1,
+        "encounter_class": "EMER",
+        "clinical_significance": "Stroke - time-sensitive intervention"
+      },
+      {
+        "code": "91302008",
+        "display": "Sepsis (disorder)",
+        "esi_level": 1,
+        "encounter_class": "EMER",
+        "clinical_significance": "Life-threatening systemic infection"
+      },
+      {
+        "code": "1149222004",
+        "display": "Overdose (disorder)",
+        "esi_level": 2,
+        "encounter_class": "EMER",
+        "clinical_significance": "Critical - potential airway/respiratory compromise"
+      }
+    ],
+    
+    "emergent_esi_2_3": [
+      {
+        "code": "125605004",
+        "display": "Fracture of bone (disorder)",
+        "esi_level": 3,
+        "encounter_class": "EMER",
+        "clinical_significance": "Trauma - requires imaging and stabilization"
+      },
+      {
+        "code": "110030002",
+        "display": "Concussion injury of brain (disorder)",
+        "esi_level": 2,
+        "encounter_class": "EMER",
+        "clinical_significance": "Head trauma - monitor for complications"
+      },
+      {
+        "code": "312608009",
+        "display": "Laceration - injury (disorder)",
+        "esi_level": 3,
+        "encounter_class": "EMER",
+        "clinical_significance": "Requires suturing/wound care"
+      },
+      {
+        "code": "90460009",
+        "display": "Injury of neck (disorder)",
+        "esi_level": 2,
+        "encounter_class": "EMER",
+        "clinical_significance": "Potential spinal injury"
+      },
+      {
+        "code": "128613002",
+        "display": "Seizure disorder (disorder)",
+        "esi_level": 2,
+        "encounter_class": "EMER",
+        "clinical_significance": "Neurological emergency"
+      },
+      {
+        "code": "125601008",
+        "display": "Injury of knee (disorder)",
+        "esi_level": 3,
+        "encounter_class": "EMER",
+        "clinical_significance": "Joint injury - imaging required"
+      },
+      {
+        "code": "48333001",
+        "display": "Burn injury (morphologic abnormality)",
+        "esi_level": 3,
+        "encounter_class": "EMER",
+        "clinical_significance": "Burn - assess severity and area"
+      }
+    ],
+    
+    "urgent_esi_3": [
+      {
+        "code": "195967001",
+        "display": "Asthma (disorder)",
+        "esi_level": 3,
+        "encounter_class": "EMER",
+        "clinical_significance": "Respiratory distress - nebulizer treatment"
+      },
+      {
+        "code": "124171000119105",
+        "display": "Chronic intractable migraine without aura (disorder)",
+        "esi_level": 3,
+        "encounter_class": "EMER",
+        "clinical_significance": "Severe pain - medication required"
+      },
+      {
+        "code": "384709000",
+        "display": "Sprain (morphologic abnormality)",
+        "esi_level": 3,
+        "encounter_class": "EMER",
+        "clinical_significance": "Musculoskeletal injury - imaging/splinting"
+      },
+      {
+        "code": "95417003",
+        "display": "Primary fibromyalgia syndrome (disorder)",
+        "esi_level": 3,
+        "encounter_class": "EMER",
+        "clinical_significance": "Chronic pain exacerbation"
+      },
+      {
+        "code": "233678006",
+        "display": "Childhood asthma (disorder)",
+        "esi_level": 3,
+        "encounter_class": "EMER",
+        "clinical_significance": "Pediatric respiratory emergency"
+      },
+      {
+        "code": "307426000",
+        "display": "Acute infective cystitis (disorder)",
+        "esi_level": 3,
+        "encounter_class": "EMER",
+        "clinical_significance": "UTI - antibiotics required"
+      }
+    ],
+    
+    "less_urgent_esi_4": [
+      {
+        "code": "444814009",
+        "display": "Viral sinusitis (disorder)",
+        "esi_level": 4,
+        "encounter_class": "AMB",
+        "clinical_significance": "Upper respiratory - symptomatic treatment"
+      },
+      {
+        "code": "195662009",
+        "display": "Acute viral pharyngitis (disorder)",
+        "esi_level": 4,
+        "encounter_class": "AMB",
+        "clinical_significance": "Sore throat - minimal intervention"
+      },
+      {
+        "code": "10509002",
+        "display": "Acute bronchitis (disorder)",
+        "esi_level": 4,
+        "encounter_class": "AMB",
+        "clinical_significance": "Cough/congestion - outpatient management"
+      },
+      {
+        "code": "55822004",
+        "display": "Hyperlipidemia (disorder)",
+        "esi_level": 5,
+        "encounter_class": "AMB",
+        "clinical_significance": "Chronic condition - routine follow-up"
+      }
+    ],
+    
+    "non_urgent_esi_5": [
+      {
+        "code": "66383009",
+        "display": "Gingivitis (disorder)",
+        "esi_level": 5,
+        "encounter_class": "AMB",
+        "clinical_significance": "Dental - routine care"
+      },
+      {
+        "code": "103697008",
+        "display": "Patient referral for dental care (procedure)",
+        "esi_level": 5,
+        "encounter_class": "AMB",
+        "clinical_significance": "Referral - no immediate treatment"
+      },
+      {
+        "code": "389095005",
+        "display": "Contraception care (regime/therapy)",
+        "esi_level": 5,
+        "encounter_class": "AMB",
+        "clinical_significance": "Preventive care"
+      },
+      {
+        "code": "72892002",
+        "display": "Normal pregnancy (finding)",
+        "esi_level": 5,
+        "encounter_class": "AMB",
+        "clinical_significance": "Routine prenatal visit"
+      }
+    ],
+    
+    "variable_context_dependent": [
+      {
+        "code": "72892002",
+        "display": "Normal pregnancy (finding)",
+        "esi_level_amb": 5,
+        "esi_level_emer": 2,
+        "encounter_class": "EMER or AMB",
+        "clinical_significance": "In ER context: potential complication (labor, bleeding)"
+      },
+      {
+        "code": "82423001",
+        "display": "Chronic pain (finding)",
+        "esi_level_amb": 4,
+        "esi_level_emer": 3,
+        "encounter_class": "EMER or AMB",
+        "clinical_significance": "In ER: acute exacerbation requiring intervention"
+      }
+    ]
+  },
+  
+  "encounter_class_mapping": {
+    "EMER": {
+      "code": "EMER",
+      "display": "Emergency",
+      "default_esi": 3,
+      "description": "Emergency department encounter",
+      "count": 197,
+      "avg_duration_hours": 10.31
+    },
+    "IMP": {
+      "code": "IMP",
+      "display": "Inpatient",
+      "default_esi": 2,
+      "description": "Requires hospital admission",
+      "count": 133,
+      "avg_duration_hours": 170.83
+    },
+    "AMB": {
+      "code": "AMB",
+      "display": "Ambulatory",
+      "default_esi": 4,
+      "description": "Outpatient/clinic visit",
+      "count": 5365,
+      "avg_duration_hours": 1.36
+    },
+    "VR": {
+      "code": "VR",
+      "display": "Virtual",
+      "default_esi": 5,
+      "description": "Telemedicine encounter",
+      "count": 11,
+      "avg_duration_hours": 0.79
+    },
+    "HH": {
+      "code": "HH",
+      "display": "Home Health",
+      "default_esi": 4,
+      "description": "Home health visit",
+      "count": 39,
+      "avg_duration_hours": 132.74
+    }
+  },
+  
+  "labeling_algorithm": {
+    "name": "Hybrid Encounter Class + SNOMED Code",
+    "steps": [
+      "1. Extract encounter.class.code",
+      "2. Extract encounter.reasonCode[0].coding[0].code (SNOMED)",
+      "3. Lookup SNOMED code in mappings above",
+      "4. If SNOMED code found, use mapped ESI level",
+      "5. Else, use default ESI for encounter class",
+      "6. Apply context rules (e.g., pregnancy in ER = ESI 2)"
+    ],
+    "example_code": "See SYNTHEA_DATA_ANALYSIS.md Section 14"
+  }
+}
