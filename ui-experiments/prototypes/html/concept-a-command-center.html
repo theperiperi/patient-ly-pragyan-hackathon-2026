@@ -1,0 +1,1941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient.ly - Emergency Triage Command Center</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-critical: #DC2626;
+            --color-urgent: #F59E0B;
+            --color-minor: #10B981;
+            --color-treatment: #3B82F6;
+            --color-bg: #F9FAFB;
+            --color-surface: #FFFFFF;
+            --color-text: #111827;
+            --color-text-secondary: #6B7280;
+            --color-border: #E5E7EB;
+            --color-hover: #F3F4F6;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.5;
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .header-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .search-box {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--color-border);
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            width: 300px;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--color-treatment);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .alerts-badge {
+            padding: 0.5rem 1rem;
+            background-color: var(--color-critical);
+            color: white;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .alerts-badge:hover {
+            background-color: #B91C1C;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: var(--color-hover);
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .clock {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+            font-weight: 500;
+        }
+
+        /* Department Status */
+        .department-status {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .status-card {
+            background-color: var(--color-surface);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+            border: 2px solid var(--color-border);
+        }
+
+        .status-card.critical { border-color: var(--color-critical); }
+        .status-card.urgent { border-color: var(--color-urgent); }
+        .status-card.minor { border-color: var(--color-minor); }
+        .status-card.treatment { border-color: var(--color-treatment); }
+
+        .status-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .status-card.critical .status-value { color: var(--color-critical); }
+        .status-card.urgent .status-value { color: var(--color-urgent); }
+        .status-card.minor .status-value { color: var(--color-minor); }
+        .status-card.treatment .status-value { color: var(--color-treatment); }
+
+        .status-label {
+            font-size: 0.75rem;
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 2rem;
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        .section-title .badge {
+            display: inline-block;
+            background-color: var(--color-text-secondary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            margin-left: 0.5rem;
+        }
+
+        .section-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--color-border);
+            background-color: var(--color-surface);
+            color: var(--color-text);
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .btn:hover {
+            background-color: var(--color-hover);
+            border-color: var(--color-text-secondary);
+        }
+
+        .btn-primary {
+            background-color: var(--color-treatment);
+            color: white;
+            border-color: var(--color-treatment);
+        }
+
+        .btn-primary:hover {
+            background-color: #2563EB;
+        }
+
+        /* Patient Cards */
+        .patient-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .patient-card {
+            background-color: var(--color-surface);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            border-left: 4px solid;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .patient-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .patient-card.critical { border-left-color: var(--color-critical); }
+        .patient-card.urgent { border-left-color: var(--color-urgent); }
+        .patient-card.minor { border-left-color: var(--color-minor); }
+        .patient-card.treatment { border-left-color: var(--color-treatment); }
+
+        .patient-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .patient-info {
+            flex: 1;
+        }
+
+        .patient-name {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .patient-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .patient-indicators {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .indicator {
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .indicator.wait-time {
+            background-color: #FEF3C7;
+            color: #92400E;
+        }
+
+        .indicator.arrival-mode {
+            background-color: #DBEAFE;
+            color: #1E40AF;
+        }
+
+        .complaint {
+            font-size: 0.875rem;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .vitals {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .vital {
+            display: flex;
+            flex-direction: column;
+            font-size: 0.75rem;
+        }
+
+        .vital-label {
+            color: var(--color-text-secondary);
+            margin-bottom: 0.125rem;
+        }
+
+        .vital-value {
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+
+        .vital-value.critical { color: var(--color-critical); }
+        .vital-value.warning { color: var(--color-urgent); }
+        .vital-value.normal { color: var(--color-minor); }
+
+        .patient-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .tag.allergy {
+            background-color: #FEE2E2;
+            color: var(--color-critical);
+        }
+
+        .tag.history {
+            background-color: #E0E7FF;
+            color: #3730A3;
+        }
+
+        .tag.medications {
+            background-color: #D1FAE5;
+            color: #065F46;
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .quick-actions .btn {
+            font-size: 0.75rem;
+            padding: 0.375rem 0.75rem;
+        }
+
+        /* Collapsed Patient List */
+        .patient-list-collapsed {
+            background-color: var(--color-surface);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .collapsed-patient {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--color-border);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .collapsed-patient:last-child {
+            border-bottom: none;
+        }
+
+        .collapsed-patient:hover {
+            background-color: var(--color-hover);
+        }
+
+        .collapsed-patient-info {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex: 1;
+        }
+
+        .acuity-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .acuity-dot.critical { background-color: var(--color-critical); }
+        .acuity-dot.urgent { background-color: var(--color-urgent); }
+        .acuity-dot.minor { background-color: var(--color-minor); }
+        .acuity-dot.treatment { background-color: var(--color-treatment); }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            animation: fadeIn 0.2s;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .modal {
+            background-color: var(--color-surface);
+            width: 60%;
+            max-width: 1200px;
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-xl);
+            animation: slideIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .modal-header {
+            position: sticky;
+            top: 0;
+            background-color: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: var(--color-text-secondary);
+            transition: color 0.2s;
+        }
+
+        .close-btn:hover {
+            color: var(--color-text);
+        }
+
+        .modal-content {
+            padding: 2rem;
+        }
+
+        .patient-detail-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .patient-detail-header h2 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .patient-detail-header .meta {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .detail-section {
+            background-color: #F9FAFB;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+        }
+
+        .detail-section h3 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .vitals-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .vital-box {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border-left: 3px solid;
+        }
+
+        .vital-box.critical { border-left-color: var(--color-critical); }
+        .vital-box.warning { border-left-color: var(--color-urgent); }
+        .vital-box.normal { border-left-color: var(--color-minor); }
+
+        .vital-box-label {
+            font-size: 0.75rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .vital-box-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .vital-box-status {
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+            font-weight: 600;
+        }
+
+        .alert-box {
+            background-color: white;
+            border-left: 3px solid;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .alert-box.critical { border-left-color: var(--color-critical); }
+        .alert-box.warning { border-left-color: var(--color-urgent); }
+
+        .alert-box h4 {
+            font-size: 0.875rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .alert-box p {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--color-border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.5rem;
+            background-color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 1rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--color-treatment);
+            border: 2px solid white;
+        }
+
+        .timeline-time {
+            font-size: 0.75rem;
+            color: var(--color-text-secondary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content {
+            font-size: 0.875rem;
+        }
+
+        .medications-list {
+            list-style: none;
+        }
+
+        .medications-list li {
+            background-color: white;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 0.5rem;
+            border-left: 3px solid var(--color-minor);
+        }
+
+        .medication-name {
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .medication-purpose {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
+
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .action-btn {
+            padding: 1rem;
+            background-color: var(--color-surface);
+            border: 2px solid var(--color-border);
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .action-btn:hover {
+            border-color: var(--color-treatment);
+            background-color: var(--color-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .action-btn-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .action-btn-label {
+            font-size: 0.75rem;
+            color: var(--color-text);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--color-surface);
+            border-top: 1px solid var(--color-border);
+            padding: 1rem 2rem;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.875rem;
+            z-index: 50;
+        }
+
+        .status-indicators {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .status-dot.live { background-color: var(--color-critical); animation: pulse 2s infinite; }
+        .status-dot.online { background-color: var(--color-minor); }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .modal {
+                width: 80%;
+            }
+
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .department-status {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .modal {
+                width: 100%;
+            }
+
+            .action-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .expand-toggle {
+            font-size: 0.875rem;
+            color: var(--color-treatment);
+            cursor: pointer;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--color-treatment);
+            border-radius: 0.375rem;
+            background-color: white;
+            transition: all 0.2s;
+        }
+
+        .expand-toggle:hover {
+            background-color: var(--color-treatment);
+            color: white;
+        }
+
+        .collapsed-list {
+            display: none;
+        }
+
+        .collapsed-list.expanded {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <h1 class="header-title">Patient.ly - Emergency Triage Command Center</h1>
+            <div class="header-actions">
+                <input type="text" id="searchBox" class="search-box" placeholder="Search ABHA / Name / Phone...">
+                <div class="alerts-badge" id="alertsBadge">🔔 Alerts: <span id="alertCount">3</span></div>
+                <div class="user-info">
+                    <span>👤 Dr. Sharma</span>
+                    <span>|</span>
+                    <span>AIIMS Delhi</span>
+                </div>
+                <div class="clock" id="clock"></div>
+            </div>
+        </div>
+
+        <!-- Department Status -->
+        <div class="department-status">
+            <div class="status-card critical">
+                <div class="status-value" id="criticalCount">0</div>
+                <div class="status-label">Critical</div>
+            </div>
+            <div class="status-card urgent">
+                <div class="status-value" id="urgentCount">0</div>
+                <div class="status-label">Urgent</div>
+            </div>
+            <div class="status-card minor">
+                <div class="status-value" id="minorCount">0</div>
+                <div class="status-label">Minor</div>
+            </div>
+            <div class="status-card treatment">
+                <div class="status-value" id="treatmentCount">0</div>
+                <div class="status-label">In Treatment</div>
+            </div>
+            <div class="status-card">
+                <div class="status-value"><span id="totalCount">0</span>/45</div>
+                <div class="status-label">Capacity</div>
+            </div>
+            <div class="status-card">
+                <div class="status-value" id="avgWait">0</div>
+                <div class="status-label">Avg Wait (min)</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Critical Patients -->
+        <section class="section" id="criticalSection">
+            <div class="section-header">
+                <h2 class="section-title">CRITICAL ATTENTION REQUIRED (RED) <span class="badge" id="criticalBadge">0</span></h2>
+            </div>
+            <div class="patient-grid" id="criticalPatients"></div>
+        </section>
+
+        <!-- Urgent Patients -->
+        <section class="section" id="urgentSection">
+            <div class="section-header">
+                <h2 class="section-title">URGENT (YELLOW) <span class="badge" id="urgentBadge">0</span></h2>
+                <button class="expand-toggle" onclick="toggleSection('urgentList')">Expand All</button>
+            </div>
+            <div class="patient-list-collapsed" id="urgentList"></div>
+        </section>
+
+        <!-- Minor Patients -->
+        <section class="section" id="minorSection">
+            <div class="section-header">
+                <h2 class="section-title">MINOR (GREEN) <span class="badge" id="minorBadge">0</span></h2>
+                <button class="expand-toggle" onclick="toggleSection('minorList')">Expand All</button>
+            </div>
+            <div class="patient-list-collapsed" id="minorList"></div>
+        </section>
+
+        <!-- In Treatment -->
+        <section class="section" id="treatmentSection">
+            <div class="section-header">
+                <h2 class="section-title">IN TREATMENT (BLUE) <span class="badge" id="treatmentBadge">0</span></h2>
+                <button class="expand-toggle" onclick="toggleSection('treatmentList')">Expand All</button>
+            </div>
+            <div class="patient-list-collapsed" id="treatmentList"></div>
+        </section>
+    </main>
+
+    <!-- Patient Detail Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Patient Detail</h3>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-content" id="modalContent"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="status-indicators">
+            <div class="status-indicator">
+                <div class="status-dot live"></div>
+                <span>Live</span>
+            </div>
+            <div class="status-indicator">
+                <div class="status-dot online"></div>
+                <span>Network: Connected</span>
+            </div>
+            <div class="status-indicator">
+                <div class="status-dot online"></div>
+                <span>ABDM: Online</span>
+            </div>
+        </div>
+        <div>Last Sync: <span id="lastSync"></span></div>
+    </footer>
+
+    <script>
+        // Mock patient data
+        const patients = [
+            {
+                id: 1,
+                name: "Rajesh Kumar",
+                age: 45,
+                gender: "M",
+                abha: "22-7225-4829-5255",
+                acuity: "critical",
+                complaint: "Severe chest pain, shortness of breath",
+                arrivalTime: new Date(Date.now() - 3 * 60000),
+                arrivalMode: "Ambulance",
+                vitals: {
+                    bp: "180/110",
+                    hr: 125,
+                    spo2: 94,
+                    temp: 98.6,
+                    rr: 22
+                },
+                alerts: ["Cardiac History", "Diabetic"],
+                medications: ["Metformin 500mg BD", "Aspirin 75mg OD", "Atorvastatin 20mg OD"],
+                history: "Previous MI 2 years ago, Stent placement LAD artery",
+                allergies: ["Penicillin"]
+            },
+            {
+                id: 2,
+                name: "Priya Sharma",
+                age: 28,
+                gender: "F",
+                abha: "22-8834-7891-3421",
+                acuity: "critical",
+                complaint: "Severe abdominal pain, vomiting",
+                arrivalTime: new Date(Date.now() - 7 * 60000),
+                arrivalMode: "Walk-in",
+                vitals: {
+                    bp: "90/60",
+                    hr: 110,
+                    spo2: 98,
+                    temp: 102.4,
+                    rr: 20
+                },
+                alerts: ["Pregnant (12 weeks)"],
+                medications: [],
+                history: "No significant medical history",
+                allergies: []
+            },
+            {
+                id: 3,
+                name: "Anil Patel",
+                age: 62,
+                gender: "M",
+                abha: "22-9945-3421-8765",
+                acuity: "critical",
+                complaint: "Altered mental status, weakness",
+                arrivalTime: new Date(Date.now() - 12 * 60000),
+                arrivalMode: "Ambulance",
+                vitals: {
+                    bp: "85/50",
+                    hr: 95,
+                    spo2: 88,
+                    temp: 97.8,
+                    rr: 24
+                },
+                alerts: ["Diabetes", "CVD"],
+                medications: ["Insulin Glargine 20 units OD", "Metformin 1000mg BD", "Ramipril 5mg OD", "Aspirin 75mg OD"],
+                history: "Type 2 Diabetes for 15 years, Coronary artery disease",
+                allergies: []
+            },
+            {
+                id: 4,
+                name: "Meena Singh",
+                age: 35,
+                gender: "F",
+                abha: "22-7634-2189-5543",
+                acuity: "urgent",
+                complaint: "High fever for 3 days, rash on chest",
+                arrivalTime: new Date(Date.now() - 18 * 60000),
+                arrivalMode: "Walk-in",
+                vitals: {
+                    bp: "120/80",
+                    hr: 95,
+                    spo2: 98,
+                    temp: 103.2,
+                    rr: 18
+                },
+                alerts: [],
+                medications: [],
+                history: "No significant medical history",
+                allergies: []
+            },
+            {
+                id: 5,
+                name: "Arjun Das",
+                age: 52,
+                gender: "M",
+                abha: "22-8821-9034-7721",
+                acuity: "urgent",
+                complaint: "Right knee pain and swelling",
+                arrivalTime: new Date(Date.now() - 22 * 60000),
+                arrivalMode: "Walk-in",
+                vitals: {
+                    bp: "135/85",
+                    hr: 78,
+                    spo2: 99,
+                    temp: 98.4,
+                    rr: 16
+                },
+                alerts: ["Hypertension"],
+                medications: ["Amlodipine 5mg OD"],
+                history: "Hypertension for 5 years",
+                allergies: []
+            },
+            {
+                id: 6,
+                name: "Lakshmi Reddy",
+                age: 41,
+                gender: "F",
+                abha: "22-9012-5567-8843",
+                acuity: "urgent",
+                complaint: "Severe migraine, vomiting",
+                arrivalTime: new Date(Date.now() - 25 * 60000),
+                arrivalMode: "Walk-in",
+                vitals: {
+                    bp: "140/90",
+                    hr: 88,
+                    spo2: 98,
+                    temp: 98.6,
+                    rr: 16
+                },
+                alerts: ["Migraine History"],
+                medications: ["Sumatriptan 50mg PRN"],
+                history: "Chronic migraine disorder",
+                allergies: []
+            },
+            {
+                id: 7,
+                name: "Suresh Nair",
+                age: 58,
+                gender: "M",
+                abha: "22-7823-4490-2211",
+                acuity: "urgent",
+                complaint: "Difficulty breathing, wheezing",
+                arrivalTime: new Date(Date.now() - 28 * 60000),
+                arrivalMode: "Walk-in",
+                vitals: {
+                    bp: "130/85",
+                    hr: 92,
+                    spo2: 93,
+                    temp: 98.2,
+                    rr: 22
+                },
+                alerts: ["Asthma"],
+                medications: ["Salbutamol inhaler PRN", "Budesonide inhaler BD"],
+                history: "Bronchial asthma for 10 years",
+                allergies: []
+            },
+            {
+                id: 8,
+                name: "Kavita Joshi",
+                age: 33,
+                gender: "F",
+                abha: "22-8934-6712-9908",
+                acuity: "urgent",
+                complaint: "Lower back pain radiating to leg",
+                arrivalTime: new Date(Date.now() - 32 * 60000),
+                arrivalMode: "Walk-in",
+                vitals: {
+                    bp: "118/76",
+                    hr: 74,
+                    spo2: 99,
+                    temp: 98.6,
+                    rr: 15
+                },
+                alerts: [],
+                medications: [],
+                history: "No significant medical history",
+                allergies: []
+            },
+            {
+                id: 9,
+                name: "Deepak Gupta",
+                age: 67,
+                gender: "M",
+                abha: "22-9123-8834-5521",
+                acuity: "urgent",
+                complaint: "Dizziness, nausea",
+                arrivalTime: new Date(Date.now() - 35 * 60000),
+                arrivalMode: "Walk-in",
+                vitals: {
+                    bp: "160/95",
+                    hr: 85,
+                    spo2: 97,
+                    temp: 98.4,
+                    rr: 16
+                },
+                alerts: ["Hypertension", "Diabetic"],
+                medications: ["Metformin 500mg BD", "Losartan 50mg OD"],
+                history: "Type 2 Diabetes, Hypertension",
+                allergies: []
+            },
+            {
+                id: 10,
+                name: "Asha Menon",
+                age: 29,
+                gender: "F",
+                abha: "22-8745-2390-6654",
+                acuity: "urgent",
+                complaint: "Suspected food poisoning, diarrhea",
+                arrivalTime: new Date(Date.now() - 38 * 60000),
+                arrivalMode: "Walk-in",
+                vitals: {
+                    bp: "110/70",
+                    hr: 98,
+                    spo2: 99,
+                    temp: 99.8,
+                    rr: 18
+                },
+                alerts: [],
+                medications: [],
+                history: "No significant medical history",
+                allergies: []
+            },
+            {
+                id: 11,
+                name: "Ramesh Iyer",
+                age: 44,
+                gender: "M",
+                abha: "22-7612-9045-3321",
+                acuity: "urgent",
+                complaint: "Right shoulder pain after fall",
+                arrivalTime: new Date(Date.now() - 42 * 60000),
+                arrivalMode: "Walk-in",
+                vitals: {
+                    bp: "125/82",
+                    hr: 76,
+                    spo2: 99,
+                    temp: 98.6,
+                    rr: 15
+                },
+                alerts: [],
+                medications: [],
+                history: "No significant medical history",
+                allergies: []
+            },
+            {
+                id: 12,
+                name: "Sunita Verma",
+                age: 56,
+                gender: "F",
+                abha: "22-8923-5567-8821",
+                acuity: "urgent",
+                complaint: "Chest discomfort, palpitations",
+                arrivalTime: new Date(Date.now() - 45 * 60000),
+                arrivalMode: "Walk-in",
+                vitals: {
+                    bp: "145/92",
+                    hr: 105,
+                    spo2: 97,
+                    temp: 98.6,
+                    rr: 18
+                },
+                alerts: ["Hypertension"],
+                medications: ["Telmisartan 40mg OD"],
+                history: "Hypertension for 8 years",
+                allergies: []
+            },
+            {
+                id: 13,
+                name: "Vikram Rao",
+                age: 38,
+                gender: "M",
+                abha: "22-9034-7821-4456",
+                acuity: "urgent",
+                complaint: "Ankle sprain, unable to walk",
+                arrivalTime: new Date(Date.now() - 48 * 60000),
+                arrivalMode: "Walk-in",
+                vitals: {
+                    bp: "122/78",
+                    hr: 72,
+                    spo2: 99,
+                    temp: 98.4,
+                    rr: 15
+                },
+                alerts: [],
+                medications: [],
+                history: "No significant medical history",
+                allergies: []
+            },
+            {
+                id: 14,
+                name: "Anita Banerjee",
+                age: 49,
+                gender: "F",
+                abha: "22-8712-4509-6723",
+                acuity: "urgent",
+                complaint: "UTI symptoms, burning urination",
+                arrivalTime: new Date(Date.now() - 52 * 60000),
+                arrivalMode: "Walk-in",
+                vitals: {
+                    bp: "115/75",
+                    hr: 80,
+                    spo2: 99,
+                    temp: 99.2,
+                    rr: 16
+                },
+                alerts: [],
+                medications: [],
+                history: "Recurrent UTIs",
+                allergies: []
+            },
+            {
+                id: 15,
+                name: "Karthik Murthy",
+                age: 31,
+                gender: "M",
+                abha: "22-9145-8823-7621",
+                acuity: "urgent",
+                complaint: "Eye pain, redness, discharge",
+                arrivalTime: new Date(Date.now() - 55 * 60000),
+                arrivalMode: "Walk-in",
+                vitals: {
+                    bp: "118/76",
+                    hr: 74,
+                    spo2: 99,
+                    temp: 98.6,
+                    rr: 15
+                },
+                alerts: [],
+                medications: [],
+                history: "Contact lens wearer",
+                allergies: []
+            },
+            {
+                id: 16,
+                name: "Ravi Kumar",
+                age: 22,
+                gender: "M",
+                abha: "22-7834-2190-5543",
+                acuity: "minor",
+                complaint: "Minor laceration on left hand",
+                arrivalTime: new Date(Date.now() - 35 * 60000),
+                arrivalMode: "Walk-in",
+                vitals: {
+                    bp: "115/75",
+                    hr: 72,
+                    spo2: 99,
+                    temp: 98.6,
+                    rr: 15
+                },
+                alerts: [],
+                medications: [],
+                history: "No significant medical history",
+                allergies: []
+            },
+            {
+                id: 17,
+                name: "Sunita Joshi",
+                age: 30,
+                gender: "F",
+                abha: "22-8945-6712-8832",
+                acuity: "minor",
+                complaint: "Cold symptoms, mild cough",
+                arrivalTime: new Date(Date.now() - 40 * 60000),
+                arrivalMode: "Walk-in",
+                vitals: {
+                    bp: "110/70",
+                    hr: 75,
+                    spo2: 98,
+                    temp: 99.1,
+                    rr: 16
+                },
+                alerts: [],
+                medications: [],
+                history: "No significant medical history",
+                allergies: []
+            },
+            {
+                id: 18,
+                name: "Amit Desai",
+                age: 26,
+                gender: "M",
+                abha: "22-9056-7823-4421",
+                acuity: "minor",
+                complaint: "Minor headache, stress-related",
+                arrivalTime: new Date(Date.now() - 45 * 60000),
+                arrivalMode: "Walk-in",
+                vitals: {
+                    bp: "118/76",
+                    hr: 70,
+                    spo2: 99,
+                    temp: 98.4,
+                    rr: 15
+                },
+                alerts: [],
+                medications: [],
+                history: "No significant medical history",
+                allergies: []
+            },
+            {
+                id: 19,
+                name: "Pooja Kaur",
+                age: 24,
+                gender: "F",
+                abha: "22-8723-9045-6654",
+                acuity: "minor",
+                complaint: "Minor allergic rash",
+                arrivalTime: new Date(Date.now() - 50 * 60000),
+                arrivalMode: "Walk-in",
+                vitals: {
+                    bp: "112/72",
+                    hr: 68,
+                    spo2: 99,
+                    temp: 98.6,
+                    rr: 15
+                },
+                alerts: [],
+                medications: [],
+                history: "Seasonal allergies",
+                allergies: ["Pollen"]
+            },
+            {
+                id: 20,
+                name: "Manoj Pillai",
+                age: 34,
+                gender: "M",
+                abha: "22-9167-8834-5521",
+                acuity: "minor",
+                complaint: "Mild stomach upset",
+                arrivalTime: new Date(Date.now() - 55 * 60000),
+                arrivalMode: "Walk-in",
+                vitals: {
+                    bp: "120/78",
+                    hr: 74,
+                    spo2: 99,
+                    temp: 98.6,
+                    rr: 16
+                },
+                alerts: [],
+                medications: [],
+                history: "No significant medical history",
+                allergies: []
+            },
+            {
+                id: 21,
+                name: "Neha Saxena",
+                age: 27,
+                gender: "F",
+                abha: "22-8834-5612-7721",
+                acuity: "minor",
+                complaint: "Minor sprained wrist",
+                arrivalTime: new Date(Date.now() - 60 * 60000),
+                arrivalMode: "Walk-in",
+                vitals: {
+                    bp: "115/74",
+                    hr: 72,
+                    spo2: 99,
+                    temp: 98.4,
+                    rr: 15
+                },
+                alerts: [],
+                medications: [],
+                history: "No significant medical history",
+                allergies: []
+            },
+            {
+                id: 22,
+                name: "Sanjay Chopra",
+                age: 39,
+                gender: "M",
+                abha: "22-7945-2390-8843",
+                acuity: "minor",
+                complaint: "Minor insect bite, itching",
+                arrivalTime: new Date(Date.now() - 65 * 60000),
+                arrivalMode: "Walk-in",
+                vitals: {
+                    bp: "122/80",
+                    hr: 76,
+                    spo2: 99,
+                    temp: 98.6,
+                    rr: 15
+                },
+                alerts: [],
+                medications: [],
+                history: "No significant medical history",
+                allergies: []
+            },
+            {
+                id: 23,
+                name: "Divya Nambiar",
+                age: 32,
+                gender: "F",
+                abha: "22-8856-7823-4456",
+                acuity: "minor",
+                complaint: "Mild ear pain",
+                arrivalTime: new Date(Date.now() - 70 * 60000),
+                arrivalMode: "Walk-in",
+                vitals: {
+                    bp: "116/74",
+                    hr: 70,
+                    spo2: 99,
+                    temp: 99.0,
+                    rr: 15
+                },
+                alerts: [],
+                medications: [],
+                history: "No significant medical history",
+                allergies: []
+            },
+            {
+                id: 24,
+                name: "Rohit Mathur",
+                age: 47,
+                gender: "M",
+                abha: "22-9278-9045-6723",
+                acuity: "treatment",
+                complaint: "Chest pain (ruled out cardiac)",
+                arrivalTime: new Date(Date.now() - 90 * 60000),
+                arrivalMode: "Ambulance",
+                vitals: {
+                    bp: "130/85",
+                    hr: 82,
+                    spo2: 98,
+                    temp: 98.6,
+                    rr: 16
+                },
+                alerts: [],
+                medications: [],
+                history: "GERD, Anxiety",
+                allergies: []
+            },
+            {
+                id: 25,
+                name: "Sneha Raghavan",
+                age: 36,
+                gender: "F",
+                abha: "22-8767-8823-7621",
+                acuity: "treatment",
+                complaint: "Fractured ankle (X-ray done)",
+                arrivalTime: new Date(Date.now() - 105 * 60000),
+                arrivalMode: "Walk-in",
+                vitals: {
+                    bp: "118/76",
+                    hr: 78,
+                    spo2: 99,
+                    temp: 98.4,
+                    rr: 15
+                },
+                alerts: [],
+                medications: [],
+                history: "No significant medical history",
+                allergies: []
+            },
+            {
+                id: 26,
+                name: "Kunal Shah",
+                age: 53,
+                gender: "M",
+                abha: "22-9389-4509-5543",
+                acuity: "treatment",
+                complaint: "Kidney stone, pain managed",
+                arrivalTime: new Date(Date.now() - 120 * 60000),
+                arrivalMode: "Walk-in",
+                vitals: {
+                    bp: "135/88",
+                    hr: 80,
+                    spo2: 98,
+                    temp: 98.6,
+                    rr: 16
+                },
+                alerts: [],
+                medications: [],
+                history: "Previous kidney stones",
+                allergies: []
+            },
+            {
+                id: 27,
+                name: "Preeti Dutta",
+                age: 42,
+                gender: "F",
+                abha: "22-8890-6712-8832",
+                acuity: "treatment",
+                complaint: "Asthma exacerbation (nebulizer)",
+                arrivalTime: new Date(Date.now() - 135 * 60000),
+                arrivalMode: "Walk-in",
+                vitals: {
+                    bp: "125/82",
+                    hr: 88,
+                    spo2: 96,
+                    temp: 98.4,
+                    rr: 18
+                },
+                alerts: ["Asthma"],
+                medications: ["Salbutamol inhaler", "Budesonide inhaler"],
+                history: "Bronchial asthma",
+                allergies: []
+            },
+            {
+                id: 28,
+                name: "Abhishek Tiwari",
+                age: 29,
+                gender: "M",
+                abha: "22-7901-7823-4421",
+                acuity: "treatment",
+                complaint: "Laceration suturing in progress",
+                arrivalTime: new Date(Date.now() - 150 * 60000),
+                arrivalMode: "Walk-in",
+                vitals: {
+                    bp: "120/78",
+                    hr: 74,
+                    spo2: 99,
+                    temp: 98.6,
+                    rr: 15
+                },
+                alerts: [],
+                medications: [],
+                history: "No significant medical history",
+                allergies: []
+            }
+        ];
+
+        // Utility functions
+        function getWaitTime(arrivalTime) {
+            const minutes = Math.floor((Date.now() - arrivalTime) / 60000);
+            return minutes;
+        }
+
+        function formatWaitTime(minutes) {
+            if (minutes < 60) return `${minutes}m`;
+            const hours = Math.floor(minutes / 60);
+            const mins = minutes % 60;
+            return `${hours}h ${mins}m`;
+        }
+
+        function getVitalStatus(vital, value) {
+            switch(vital) {
+                case 'bp':
+                    const [sys, dia] = value.split('/').map(Number);
+                    if (sys >= 180 || sys <= 90 || dia >= 110 || dia <= 60) return 'critical';
+                    if (sys >= 140 || dia >= 90) return 'warning';
+                    return 'normal';
+                case 'hr':
+                    if (value >= 120 || value <= 50) return 'critical';
+                    if (value >= 100 || value <= 60) return 'warning';
+                    return 'normal';
+                case 'spo2':
+                    if (value <= 90) return 'critical';
+                    if (value <= 94) return 'warning';
+                    return 'normal';
+                case 'temp':
+                    if (value >= 103 || value <= 95) return 'critical';
+                    if (value >= 100.4 || value <= 96) return 'warning';
+                    return 'normal';
+                case 'rr':
+                    if (value >= 24 || value <= 10) return 'critical';
+                    if (value >= 20 || value <= 12) return 'warning';
+                    return 'normal';
+            }
+        }
+
+        // Render functions
+        function renderCriticalPatients() {
+            const container = document.getElementById('criticalPatients');
+            const criticalPatients = patients.filter(p => p.acuity === 'critical');
+
+            container.innerHTML = criticalPatients.map(patient => {
+                const waitTime = getWaitTime(patient.arrivalTime);
+                return `
+                    <div class="patient-card critical" onclick="openPatientDetail(${patient.id})">
+                        <div class="patient-card-header">
+                            <div class="patient-info">
+                                <div class="patient-name">${patient.name}, ${patient.age}${patient.gender}</div>
+                                <div class="patient-meta">
+                                    <span>ABHA: **-${patient.abha.slice(-4)}</span>
+                                    <span>+91-98765${String(patient.id).padStart(5, '0')}</span>
+                                </div>
+                            </div>
+                            <div class="patient-indicators">
+                                <div class="indicator wait-time">⏱ ${formatWaitTime(waitTime)}</div>
+                                <div class="indicator arrival-mode">${patient.arrivalMode === 'Ambulance' ? '🚑' : '🚗'} ${patient.arrivalMode}</div>
+                            </div>
+                        </div>
+
+                        <div class="complaint">${patient.complaint}</div>
+
+                        <div class="vitals">
+                            <div class="vital">
+                                <span class="vital-label">BP</span>
+                                <span class="vital-value ${getVitalStatus('bp', patient.vitals.bp)}">${patient.vitals.bp}</span>
+                            </div>
+                            <div class="vital">
+                                <span class="vital-label">HR</span>
+                                <span class="vital-value ${getVitalStatus('hr', patient.vitals.hr)}">${patient.vitals.hr} bpm</span>
+                            </div>
+                            <div class="vital">
+                                <span class="vital-label">SpO2</span>
+                                <span class="vital-value ${getVitalStatus('spo2', patient.vitals.spo2)}">${patient.vitals.spo2}%</span>
+                            </div>
+                            <div class="vital">
+                                <span class="vital-label">Temp</span>
+                                <span class="vital-value ${getVitalStatus('temp', patient.vitals.temp)}">${patient.vitals.temp}°F</span>
+                            </div>
+                            <div class="vital">
+                                <span class="vital-label">RR</span>
+                                <span class="vital-value ${getVitalStatus('rr', patient.vitals.rr)}">${patient.vitals.rr}/min</span>
+                            </div>
+                        </div>
+
+                        ${patient.alerts.length > 0 || patient.allergies.length > 0 || patient.medications.length > 0 ? `
+                        <div class="patient-tags">
+                            ${patient.allergies.length > 0 ? `<span class="tag allergy">⚠ Allergy: ${patient.allergies.join(', ')}</span>` : ''}
+                            ${patient.alerts.length > 0 ? `<span class="tag history">🩺 ${patient.alerts.join(', ')}</span>` : ''}
+                            ${patient.medications.length > 0 ? `<span class="tag medications">💊 ${patient.medications.length} Current Meds</span>` : ''}
+                        </div>
+                        ` : ''}
+
+                        <div class="quick-actions">
+                            <button class="btn btn-primary" onclick="event.stopPropagation(); assignBay(${patient.id})">🛏️ Assign Bay</button>
+                            <button class="btn" onclick="event.stopPropagation(); callSpecialist(${patient.id})">📞 Call Specialist</button>
+                            <button class="btn" onclick="event.stopPropagation(); orderTests(${patient.id})">🧪 Order Tests</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderCollapsedList(acuity, containerId) {
+            const container = document.getElementById(containerId);
+            const filteredPatients = patients.filter(p => p.acuity === acuity);
+
+            container.innerHTML = filteredPatients.map(patient => {
+                const waitTime = getWaitTime(patient.arrivalTime);
+                return `
+                    <div class="collapsed-patient" onclick="openPatientDetail(${patient.id})">
+                        <div class="collapsed-patient-info">
+                            <div class="acuity-dot ${acuity}"></div>
+                            <strong>${patient.name}, ${patient.age}${patient.gender}</strong>
+                            <span>⏱ ${formatWaitTime(waitTime)}</span>
+                            <span>${patient.complaint}</span>
+                        </div>
+                        <button class="btn" onclick="event.stopPropagation(); openPatientDetail(${patient.id})">View</button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Update counts
+        function updateCounts() {
+            const counts = {
+                critical: patients.filter(p => p.acuity === 'critical').length,
+                urgent: patients.filter(p => p.acuity === 'urgent').length,
+                minor: patients.filter(p => p.acuity === 'minor').length,
+                treatment: patients.filter(p => p.acuity === 'treatment').length
+            };
+
+            document.getElementById('criticalCount').textContent = counts.critical;
+            document.getElementById('urgentCount').textContent = counts.urgent;
+            document.getElementById('minorCount').textContent = counts.minor;
+            document.getElementById('treatmentCount').textContent = counts.treatment;
+            document.getElementById('totalCount').textContent = patients.length;
+
+            document.getElementById('criticalBadge').textContent = counts.critical;
+            document.getElementById('urgentBadge').textContent = counts.urgent;
+            document.getElementById('minorBadge').textContent = counts.minor;
+            document.getElementById('treatmentBadge').textContent = counts.treatment;
+
+            // Calculate average wait time
+            const totalWaitMinutes = patients.reduce((sum, p) => sum + getWaitTime(p.arrivalTime), 0);
+            const avgWait = Math.floor(totalWaitMinutes / patients.length);
+            document.getElementById('avgWait').textContent = avgWait;
+        }
+
+        // Patient detail modal
+        function openPatientDetail(patientId) {
+            const patient = patients.find(p => p.id === patientId);
+            if (!patient) return;
+
+            const waitTime = getWaitTime(patient.arrivalTime);
+            const arrivalTimeStr = patient.arrivalTime.toLocaleTimeString();
+
+            const modalContent = `
+                <div class="patient-detail-header">
+                    <h2>${patient.name} | ${patient.age}${patient.gender}</h2>
+                    <div class="meta">
+                        ABHA: ${patient.abha} | ${patient.complaint} |
+                        Arrived: ${formatWaitTime(waitTime)} ago via ${patient.arrivalMode}
+                    </div>
+                    <div class="meta">
+                        Mobile: +91-98765${String(patient.id).padStart(5, '0')}
+                    </div>
+                </div>
+
+                <div class="detail-grid">
+                    <div>
+                        <div class="detail-section">
+                            <h3>Vital Signs</h3>
+                            <div class="vitals-grid">
+                                <div class="vital-box ${getVitalStatus('bp', patient.vitals.bp)}">
+                                    <div class="vital-box-label">Blood Pressure</div>
+                                    <div class="vital-box-value">${patient.vitals.bp}</div>
+                                    <div class="vital-box-status ${getVitalStatus('bp', patient.vitals.bp)}">
+                                        ${getVitalStatus('bp', patient.vitals.bp) === 'critical' ? '⚠ CRITICAL' :
+                                          getVitalStatus('bp', patient.vitals.bp) === 'warning' ? '⚠ HIGH' : '✓ Normal'}
+                                    </div>
+                                </div>
+
+                                <div class="vital-box ${getVitalStatus('hr', patient.vitals.hr)}">
+                                    <div class="vital-box-label">Heart Rate</div>
+                                    <div class="vital-box-value">${patient.vitals.hr}</div>
+                                    <div class="vital-box-status ${getVitalStatus('hr', patient.vitals.hr)}">
+                                        ${getVitalStatus('hr', patient.vitals.hr) === 'critical' ? '⚠ CRITICAL' :
+                                          getVitalStatus('hr', patient.vitals.hr) === 'warning' ? '⚠ ELEVATED' : '✓ Normal'}
+                                    </div>
+                                </div>
+
+                                <div class="vital-box ${getVitalStatus('spo2', patient.vitals.spo2)}">
+                                    <div class="vital-box-label">SpO2</div>
+                                    <div class="vital-box-value">${patient.vitals.spo2}%</div>
+                                    <div class="vital-box-status ${getVitalStatus('spo2', patient.vitals.spo2)}">
+                                        ${getVitalStatus('spo2', patient.vitals.spo2) === 'critical' ? '⚠ CRITICAL' :
+                                          getVitalStatus('spo2', patient.vitals.spo2) === 'warning' ? '⚠ LOW' : '✓ Normal'}
+                                    </div>
+                                </div>
+
+                                <div class="vital-box ${getVitalStatus('temp', patient.vitals.temp)}">
+                                    <div class="vital-box-label">Temperature</div>
+                                    <div class="vital-box-value">${patient.vitals.temp}°F</div>
+                                    <div class="vital-box-status ${getVitalStatus('temp', patient.vitals.temp)}">
+                                        ${getVitalStatus('temp', patient.vitals.temp) === 'critical' ? '⚠ CRITICAL' :
+                                          getVitalStatus('temp', patient.vitals.temp) === 'warning' ? '⚠ ELEVATED' : '✓ Normal'}
+                                    </div>
+                                </div>
+
+                                <div class="vital-box ${getVitalStatus('rr', patient.vitals.rr)}">
+                                    <div class="vital-box-label">Respiratory Rate</div>
+                                    <div class="vital-box-value">${patient.vitals.rr}</div>
+                                    <div class="vital-box-status ${getVitalStatus('rr', patient.vitals.rr)}">
+                                        ${getVitalStatus('rr', patient.vitals.rr) === 'critical' ? '⚠ CRITICAL' :
+                                          getVitalStatus('rr', patient.vitals.rr) === 'warning' ? '⚠ ELEVATED' : '✓ Normal'}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        ${patient.alerts.length > 0 || patient.allergies.length > 0 ? `
+                        <div class="detail-section" style="margin-top: 1rem;">
+                            <h3>Critical Alerts</h3>
+                            ${patient.allergies.length > 0 ? `
+                                <div class="alert-box critical">
+                                    <h4>⚠ ALLERGY ALERT</h4>
+                                    <p>${patient.allergies.join(', ')} - Anaphylaxis risk</p>
+                                </div>
+                            ` : ''}
+                            ${patient.alerts.map(alert => `
+                                <div class="alert-box warning">
+                                    <h4>⚠ ${alert.toUpperCase()}</h4>
+                                    <p>${patient.history || 'See medical history for details'}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                        ` : ''}
+
+                        ${patient.medications.length > 0 ? `
+                        <div class="detail-section" style="margin-top: 1rem;">
+                            <h3>Current Medications</h3>
+                            <ul class="medications-list">
+                                ${patient.medications.map(med => `
+                                    <li>
+                                        <div class="medication-name">${med}</div>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                        ` : ''}
+                    </div>
+
+                    <div>
+                        <div class="detail-section">
+                            <h3>Medical History Timeline</h3>
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-time">TODAY ${arrivalTimeStr} - Ambulance Arrival</div>
+                                    <div class="timeline-content">
+                                        <strong>Chief Complaint:</strong> ${patient.complaint}<br>
+                                        <strong>Vitals:</strong> BP ${patient.vitals.bp}, HR ${patient.vitals.hr}, SpO2 ${patient.vitals.spo2}%<br>
+                                        ${patient.arrivalMode === 'Ambulance' ? '<strong>Pre-hospital:</strong> O2 started, vitals monitored' : ''}
+                                    </div>
+                                </div>
+
+                                ${patient.history ? `
+                                <div class="timeline-item">
+                                    <div class="timeline-time">MEDICAL HISTORY</div>
+                                    <div class="timeline-content">${patient.history}</div>
+                                </div>
+                                ` : ''}
+
+                                <div class="timeline-item">
+                                    <div class="timeline-time">DATA SOURCES</div>
+                                    <div class="timeline-content">
+                                        🚑 Pre-hospital data available<br>
+                                        🏥 ABDM connected - historical records loaded<br>
+                                        💊 Medication history synced
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-grid">
+                    <div class="action-btn" onclick="assignTriageLevel(${patient.id})">
+                        <div class="action-btn-icon">🩺</div>
+                        <div class="action-btn-label">Assign ESI Level</div>
+                    </div>
+                    <div class="action-btn" onclick="assignBay(${patient.id})">
+                        <div class="action-btn-icon">🛏️</div>
+                        <div class="action-btn-label">Assign to Bay</div>
+                    </div>
+                    <div class="action-btn" onclick="callSpecialist(${patient.id})">
+                        <div class="action-btn-icon">📞</div>
+                        <div class="action-btn-label">Call Specialist</div>
+                    </div>
+                    <div class="action-btn" onclick="orderTests(${patient.id})">
+                        <div class="action-btn-icon">🧪</div>
+                        <div class="action-btn-label">Order Tests</div>
+                    </div>
+                    <div class="action-btn" onclick="prescribeMeds(${patient.id})">
+                        <div class="action-btn-icon">💊</div>
+                        <div class="action-btn-label">Prescribe</div>
+                    </div>
+                    <div class="action-btn" onclick="alertTeam(${patient.id})">
+                        <div class="action-btn-icon">🔔</div>
+                        <div class="action-btn-label">Alert Team</div>
+                    </div>
+                    <div class="action-btn" onclick="requestConsent(${patient.id})">
+                        <div class="action-btn-icon">📄</div>
+                        <div class="action-btn-label">Request Consent</div>
+                    </div>
+                    <div class="action-btn" onclick="refreshData(${patient.id})">
+                        <div class="action-btn-icon">🔄</div>
+                        <div class="action-btn-label">Refresh Data</div>
+                    </div>
+                    <div class="action-btn" onclick="handoffPhysician(${patient.id})">
+                        <div class="action-btn-icon">📤</div>
+                        <div class="action-btn-label">Handoff</div>
+                    </div>
+                    <div class="action-btn" onclick="addNotes(${patient.id})">
+                        <div class="action-btn-icon">📋</div>
+                        <div class="action-btn-label">Add Notes</div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('modalContent').innerHTML = modalContent;
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+
+        // Action handlers (mock)
+        function assignBay(patientId) {
+            alert(`Assigning bay for patient ${patientId}...`);
+        }
+
+        function callSpecialist(patientId) {
+            alert(`Calling specialist for patient ${patientId}...`);
+        }
+
+        function orderTests(patientId) {
+            alert(`Ordering tests for patient ${patientId}...`);
+        }
+
+        function assignTriageLevel(patientId) {
+            alert(`Assigning triage level for patient ${patientId}...`);
+        }
+
+        function prescribeMeds(patientId) {
+            alert(`Opening prescription form for patient ${patientId}...`);
+        }
+
+        function alertTeam(patientId) {
+            alert(`Alerting team about patient ${patientId}...`);
+        }
+
+        function requestConsent(patientId) {
+            alert(`Requesting ABDM consent for patient ${patientId}...`);
+        }
+
+        function refreshData(patientId) {
+            alert(`Refreshing data for patient ${patientId}...`);
+        }
+
+        function handoffPhysician(patientId) {
+            alert(`Handing off patient ${patientId} to physician...`);
+        }
+
+        function addNotes(patientId) {
+            alert(`Adding notes for patient ${patientId}...`);
+        }
+
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.classList.toggle('expanded');
+        }
+
+        // Clock
+        function updateClock() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString();
+            document.getElementById('clock').textContent = timeStr;
+            document.getElementById('lastSync').textContent = timeStr;
+        }
+
+        // Search
+        document.getElementById('searchBox').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            // In a real app, this would filter the patient list
+            console.log('Searching for:', query);
+        });
+
+        // Close modal on overlay click
+        document.getElementById('modalOverlay').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('modalOverlay')) {
+                closeModal();
+            }
+        });
+
+        // Initialize
+        function init() {
+            renderCriticalPatients();
+            renderCollapsedList('urgent', 'urgentList');
+            renderCollapsedList('minor', 'minorList');
+            renderCollapsedList('treatment', 'treatmentList');
+            updateCounts();
+            updateClock();
+            setInterval(updateClock, 1000);
+
+            // Simulate real-time updates every 10 seconds
+            setInterval(() => {
+                // In a real app, this would fetch new data from the server
+                renderCriticalPatients();
+                renderCollapsedList('urgent', 'urgentList');
+                renderCollapsedList('minor', 'minorList');
+                renderCollapsedList('treatment', 'treatmentList');
+                updateCounts();
+            }, 10000);
+        }
+
+        init();
+    </script>
+</body>
+</html>
