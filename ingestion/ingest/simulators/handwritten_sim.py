@@ -1,7 +1,8 @@
-"""Handwritten clinical note simulator - generates a PNG image."""
+"""Handwritten clinical note simulator - generates a PNG image + metadata sidecar."""
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 from ingest.simulators.base_simulator import BaseSimulator, PatientProfile, ClinicalScenario
@@ -64,4 +65,29 @@ class HandwrittenSimulator(BaseSimulator):
 
         filepath = hw_dir / "sim_clinical_note.png"
         img.save(str(filepath))
+
+        # Write sidecar metadata so MockVLMClient can return correct patient info
+        sidecar = {
+            "patient_name": profile.name,
+            "age": f"{2026 - int(profile.dob[:4])}y" if profile.dob else None,
+            "gender": profile.gender,
+            "mrn": profile.mrn,
+            "chief_complaint": scenario.chief_complaint,
+            "vitals": {
+                "heart_rate": scenario.baseline_hr,
+                "blood_pressure_systolic": scenario.baseline_bp_sys,
+                "blood_pressure_diastolic": scenario.baseline_bp_dia,
+                "spo2": scenario.baseline_spo2,
+                "temperature": scenario.baseline_temp,
+                "respiratory_rate": scenario.baseline_rr,
+            },
+            "diagnoses": [
+                {"code": dx["code"], "description": dx["display"]}
+                for dx in scenario.diagnoses
+            ],
+            "medications": scenario.medications,
+            "notes": f"Clinical note for {profile.name}",
+        }
+        (hw_dir / "sim_clinical_note.meta.json").write_text(json.dumps(sidecar, indent=2))
+
         return filepath

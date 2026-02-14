@@ -1,9 +1,0 @@
-MSH|^~\&|HIS|AIIMS_DELHI|PATIENTLY|FHIR|20260214150000||ADT^A01|MSG003|P|2.5
-EVN|A01|20260214150000
-PID|||MRN-2024-005678||Sharma^Priya||20070322|F|||45 Saket^Block C^New Delhi^Delhi^110017||+919812345678
-PV1||O|OPD^^^AIIMS||||DR456^Patel^Vikram|||||||||||VN002|||||||||||||||||||||||||20260214140000
-DG1|1||J45.9^Asthma, unspecified^I10|||A
-OBX|1|NM|8867-4^Heart rate^LN||75|/min|60-100||||F
-OBX|2|NM|2708-6^Oxygen saturation^LN||98|%|95-100||||F
-OBX|3|NM|8310-5^Body temperature^LN||36.6|Cel|36.5-37.5||||F
-OBX|4|NM|9279-1^Respiratory rate^LN||16|/min|12-20||||F

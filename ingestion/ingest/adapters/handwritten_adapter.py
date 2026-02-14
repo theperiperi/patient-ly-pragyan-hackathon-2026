@@ -37,6 +37,10 @@ class HandwrittenAdapter(BaseAdapter):
         with open(input_data, "rb") as f:
             image_bytes = f.read()
 
+        # If using MockVLMClient, give it the image path so it can find sidecar metadata
+        if isinstance(self._vlm, MockVLMClient):
+            self._vlm._image_path = input_data
+
         extracted = self._vlm.extract_from_image(image_bytes)
 
         identity = self._build_identity(extracted)

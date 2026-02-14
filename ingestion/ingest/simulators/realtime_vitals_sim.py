@@ -55,7 +55,7 @@ class RealtimeVitalsSimulator(BaseSimulator):
 
         with open(filepath, "w", newline="") as f:
             writer = csv.writer(f)
-            writer.writerow(["timestamp", "patient_id", "ecg_lead_ii"])
+            writer.writerow(["timestamp", "patient_id", "patient_name", "ecg_lead_ii"])
             for i in range(num_samples):
                 t = i / sample_rate
                 ts = base_time + timedelta(seconds=t)
@@ -64,6 +64,7 @@ class RealtimeVitalsSimulator(BaseSimulator):
                 writer.writerow([
                     ts.strftime("%Y-%m-%dT%H:%M:%S.") + f"{int(t*1000)%1000:03d}Z",
                     profile.mrn,
+                    profile.name,
                     f"{ecg:.3f}",
                 ])
 

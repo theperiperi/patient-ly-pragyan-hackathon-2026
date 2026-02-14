@@ -3,8 +3,8 @@ __pycache__/
 .venv/
 .pytest_cache/
 *.egg-info/
-output/
 .env
 *.jar
 ingestion/tools/
-ingestion/sample_data/synthea/
+ingestion/sample_data/
+ingestion/output/
