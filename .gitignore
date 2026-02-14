@@ -5,3 +5,6 @@ __pycache__/
 *.egg-info/
 output/
 .env
+*.jar
+ingestion/tools/
+ingestion/sample_data/synthea/
