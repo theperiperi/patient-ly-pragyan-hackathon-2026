@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient.ly Triage UI Concepts - Interactive Prototypes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        .concepts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .concept-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .concept-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .concept-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .concept-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .concept-a .concept-icon {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .concept-b .concept-icon {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+        }
+
+        .concept-c .concept-icon {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+        }
+
+        .concept-d .concept-icon {
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+        }
+
+        .concept-title {
+            flex: 1;
+        }
+
+        .concept-title h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .concept-title .subtitle {
+            font-size: 0.875rem;
+            color: #6B7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .concept-description {
+            color: #374151;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .concept-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .concept-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #E5E7EB;
+            font-size: 0.875rem;
+            color: #6B7280;
+        }
+
+        .concept-features li:last-child {
+            border-bottom: none;
+        }
+
+        .concept-features li::before {
+            content: '✓';
+            display: inline-block;
+            width: 20px;
+            color: #10B981;
+            font-weight: bold;
+        }
+
+        .launch-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .concept-card:hover .launch-button {
+            background: linear-gradient(135deg, #764ba2, #667eea);
+            transform: scale(1.05);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1F2937;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: #6B7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 3rem;
+            opacity: 0.9;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .concepts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏥 Patient.ly Triage UI Concepts</h1>
+            <p>Interactive HTML/CSS/JS Prototypes for ABDM-Powered Triage System</p>
+        </div>
+
+        <div class="concepts-grid">
+            <!-- Concept A: Command Center -->
+            <a href="concept-a-command-center.html" class="concept-card concept-a">
+                <div class="concept-header">
+                    <div class="concept-icon">📊</div>
+                    <div class="concept-title">
+                        <h2>Command Center</h2>
+                        <div class="subtitle">Concept A</div>
+                    </div>
+                </div>
+                <p class="concept-description">
+                    Desktop dashboard for managing multiple patients simultaneously with real-time queue monitoring.
+                </p>
+                <ul class="concept-features">
+                    <li>Grid-based patient queue</li>
+                    <li>Color-coded priority (RED/YELLOW/GREEN)</li>
+                    <li>Modal detail view</li>
+                    <li>Real-time vital signs</li>
+                </ul>
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-value">1940</div>
+                        <div class="stat-label">Lines</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">Desktop</div>
+                        <div class="stat-label">Platform</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">60-90s</div>
+                        <div class="stat-label">Triage</div>
+                    </div>
+                </div>
+                <div class="launch-button">Launch Command Center →</div>
+            </a>
+
+            <!-- Concept B: Patient-First Mobile -->
+            <a href="concept-b-mobile.html" class="concept-card concept-b">
+                <div class="concept-header">
+                    <div class="concept-icon">📱</div>
+                    <div class="concept-title">
+                        <h2>Patient-First Mobile</h2>
+                        <div class="subtitle">Concept B</div>
+                    </div>
+                </div>
+                <p class="concept-description">
+                    Mobile-optimized, offline-capable interface for bedside triage with touch gestures.
+                </p>
+                <ul class="concept-features">
+                    <li>Touch-optimized (44px targets)</li>
+                    <li>Swipe gestures</li>
+                    <li>Offline mode simulation</li>
+                    <li>Dark mode support</li>
+                </ul>
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-value">2101</div>
+                        <div class="stat-label">Lines</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">Mobile</div>
+                        <div class="stat-label">Platform</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">45-75s</div>
+                        <div class="stat-label">Triage</div>
+                    </div>
+                </div>
+                <div class="launch-button">Launch Mobile View →</div>
+            </a>
+
+            <!-- Concept C: Timeline-Centric -->
+            <a href="concept-c-timeline.html" class="concept-card concept-c">
+                <div class="concept-header">
+                    <div class="concept-icon">📈</div>
+                    <div class="concept-title">
+                        <h2>Timeline-Centric</h2>
+                        <div class="subtitle">Concept C</div>
+                    </div>
+                </div>
+                <p class="concept-description">
+                    Visual timeline showing complete patient health journey with trend analysis and AI insights.
+                </p>
+                <ul class="concept-features">
+                    <li>90-day patient timeline</li>
+                    <li>Interactive trend charts</li>
+                    <li>Multi-source data visualization</li>
+                    <li>AI risk assessment</li>
+                </ul>
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-value">1337</div>
+                        <div class="stat-label">Lines</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">Desktop</div>
+                        <div class="stat-label">Platform</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">90s</div>
+                        <div class="stat-label">Review</div>
+                    </div>
+                </div>
+                <div class="launch-button">Launch Timeline →</div>
+            </a>
+
+            <!-- Concept D: Hybrid Split-View -->
+            <a href="concept-d-hybrid.html" class="concept-card concept-d">
+                <div class="concept-header">
+                    <div class="concept-icon">🔀</div>
+                    <div class="concept-title">
+                        <h2>Hybrid Split-View</h2>
+                        <div class="subtitle">Concept D</div>
+                    </div>
+                </div>
+                <p class="concept-description">
+                    Persistent split-screen combining queue management with deep patient detail views.
+                </p>
+                <ul class="concept-features">
+                    <li>40/60 split layout (resizable)</li>
+                    <li>Comparison mode (2 patients)</li>
+                    <li>Smart prefetch simulation</li>
+                    <li>Multi-user awareness</li>
+                </ul>
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-value">1780</div>
+                        <div class="stat-label">Lines</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">Desktop</div>
+                        <div class="stat-label">Platform</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">60-90s</div>
+                        <div class="stat-label">Triage</div>
+                    </div>
+                </div>
+                <div class="launch-button">Launch Hybrid View →</div>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>
+                <strong>Patient.ly</strong> - ABDM-Powered Triage Augmentation System<br>
+                Built for <a href="https://github.com/theperiperi/patient-ly-pragyan-hackathon-2026" target="_blank">Pragyan Hackathon 2026</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
