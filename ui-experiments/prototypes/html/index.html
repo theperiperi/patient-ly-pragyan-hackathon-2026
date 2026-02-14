@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patient.ly Triage UI Concepts - Interactive Prototypes</title>
+    <title>Patient.ly Triage UI Concepts - All Prototypes</title>
     <style>
         * {
             margin: 0;
@@ -15,15 +15,12 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             padding: 2rem;
         }
 
         .container {
-            max-width: 1200px;
-            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .header {
@@ -42,20 +39,49 @@
         .header p {
             font-size: 1.25rem;
             opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .header-note {
+            font-size: 1rem;
+            opacity: 0.85;
+            background: rgba(255,255,255,0.1);
+            padding: 0.75rem 1.5rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .section-title {
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 3rem 0 1.5rem 0;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .section-subtitle {
+            color: white;
+            text-align: center;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            font-size: 1.125rem;
         }
 
         .concepts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
             margin-bottom: 2rem;
         }
 
         .concept-card {
             background: white;
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 2rem;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
             cursor: pointer;
             text-decoration: none;
@@ -65,7 +91,7 @@
 
         .concept-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
         }
 
         .concept-header {
@@ -86,21 +112,13 @@
             flex-shrink: 0;
         }
 
-        .concept-a .concept-icon {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-        }
-
-        .concept-b .concept-icon {
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-        }
-
-        .concept-c .concept-icon {
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
-        }
-
-        .concept-d .concept-icon {
-            background: linear-gradient(135deg, #43e97b, #38f9d7);
-        }
+        .concept-a .concept-icon { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .concept-b .concept-icon { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .concept-c .concept-icon { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+        .concept-d .concept-icon { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+        .concept-e .concept-icon { background: linear-gradient(135deg, #8B5CF6, #6D28D9); }
+        .concept-f .concept-icon { background: linear-gradient(135deg, #EC4899, #9333EA); }
+        .concept-g .concept-icon { background: linear-gradient(135deg, #10B981, #059669); }
 
         .concept-title {
             flex: 1;
@@ -117,6 +135,19 @@
             color: #6B7280;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+        }
+
+        .ai-badge {
+            background: linear-gradient(135deg, #8B5CF6, #6D28D9);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: inline-block;
+            margin-bottom: 1rem;
         }
 
         .concept-description {
@@ -193,8 +224,9 @@
         .footer {
             text-align: center;
             color: white;
-            margin-top: 3rem;
+            margin-top: 4rem;
             opacity: 0.9;
+            padding: 2rem;
         }
 
         .footer a {
@@ -206,11 +238,9 @@
             .header h1 {
                 font-size: 2rem;
             }
-
             .concepts-grid {
                 grid-template-columns: 1fr;
             }
-
             .stats {
                 grid-template-columns: 1fr;
             }
@@ -222,7 +252,127 @@
         <div class="header">
             <h1>🏥 Patient.ly Triage UI Concepts</h1>
             <p>Interactive HTML/CSS/JS Prototypes for ABDM-Powered Triage System</p>
+            <div class="header-note">7 Concepts | Self-Contained | No Dependencies | Open & Run</div>
         </div>
+
+        <div class="section-title">🤖 AI-Native Concepts</div>
+        <div class="section-subtitle">AI makes decisions, humans approve/override</div>
+
+        <div class="concepts-grid">
+            <!-- Concept E: AI-First Approval -->
+            <a href="concept-e-ai-first-approval.html" class="concept-card concept-e">
+                <div class="concept-header">
+                    <div class="concept-icon">🤖</div>
+                    <div class="concept-title">
+                        <h2>AI-First Approval</h2>
+                        <div class="subtitle">Concept E (NEW)</div>
+                    </div>
+                </div>
+                <div class="ai-badge">⚡ AI-Native</div>
+                <p class="concept-description">
+                    AI has already triaged all patients. Review AI decisions and approve/modify/override with confidence scores.
+                </p>
+                <ul class="concept-features">
+                    <li>AI pre-triages all patients</li>
+                    <li>Confidence-based filtering</li>
+                    <li>One-click approve/modify/override</li>
+                    <li>Bulk approve high confidence</li>
+                    <li>AI reasoning transparency</li>
+                </ul>
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-value">Desktop</div>
+                        <div class="stat-label">Platform</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">30s</div>
+                        <div class="stat-label">Review Time</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">96%</div>
+                        <div class="stat-label">AI Confidence</div>
+                    </div>
+                </div>
+                <div class="launch-button">Launch AI-First →</div>
+            </a>
+
+            <!-- Concept F: Swipe to Approve -->
+            <a href="concept-f-swipe-approve.html" class="concept-card concept-f">
+                <div class="concept-header">
+                    <div class="concept-icon">👆</div>
+                    <div class="concept-title">
+                        <h2>Swipe to Approve</h2>
+                        <div class="subtitle">Concept F (NEW)</div>
+                    </div>
+                </div>
+                <div class="ai-badge">⚡ AI-Native</div>
+                <p class="concept-description">
+                    Mobile Tinder-style interface: Swipe right to approve AI decisions, left to override. Fast & intuitive.
+                </p>
+                <ul class="concept-features">
+                    <li>Swipe right = approve</li>
+                    <li>Swipe left = override</li>
+                    <li>Tap center = modify</li>
+                    <li>Undo last action</li>
+                    <li>Tutorial overlay</li>
+                </ul>
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-value">Mobile</div>
+                        <div class="stat-label">Platform</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">15s</div>
+                        <div class="stat-label">Per Decision</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">Gesture</div>
+                        <div class="stat-label">Input</div>
+                    </div>
+                </div>
+                <div class="launch-button">Launch Swipe UI →</div>
+            </a>
+
+            <!-- Concept G: Batch Approval -->
+            <a href="concept-g-batch-approval.html" class="concept-card concept-g">
+                <div class="concept-header">
+                    <div class="concept-icon">⚡</div>
+                    <div class="concept-title">
+                        <h2>Batch Approval</h2>
+                        <div class="subtitle">Concept G (NEW)</div>
+                    </div>
+                </div>
+                <div class="ai-badge">⚡ AI-Native</div>
+                <p class="concept-description">
+                    Approve multiple AI decisions at once. Confidence bands (high/medium/low) with bulk actions for efficiency.
+                </p>
+                <ul class="concept-features">
+                    <li>Confidence bands (85%+ / 70-84% / <70%)</li>
+                    <li>Approve all high confidence</li>
+                    <li>Review low confidence only</li>
+                    <li>Table view with filters</li>
+                    <li>AI accuracy metrics</li>
+                </ul>
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-value">Desktop</div>
+                        <div class="stat-label">Platform</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">Bulk</div>
+                        <div class="stat-label">Actions</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">94%</div>
+                        <div class="stat-label">AI Accuracy</div>
+                    </div>
+                </div>
+                <div class="launch-button">Launch Batch Dashboard →</div>
+            </a>
+        </div>
+
+        <div class="section-title">🏥 Human-Augmented Concepts</div>
+        <div class="section-subtitle">AI assists humans in making triage decisions</div>
 
         <div class="concepts-grid">
             <!-- Concept A: Command Center -->
@@ -368,8 +518,11 @@
 
         <div class="footer">
             <p>
-                <strong>Patient.ly</strong> - ABDM-Powered Triage Augmentation System<br>
+                <strong>Patient.ly</strong> - ABDM-Powered AI-Native Triage System<br>
                 Built for <a href="https://github.com/theperiperi/patient-ly-pragyan-hackathon-2026" target="_blank">Pragyan Hackathon 2026</a>
+            </p>
+            <p style="margin-top: 1rem; font-size: 0.875rem;">
+                💡 Tip: Start with <strong>Concept F (Swipe)</strong> on mobile or <strong>Concept E (AI-First)</strong> on desktop
             </p>
         </div>
     </div>
