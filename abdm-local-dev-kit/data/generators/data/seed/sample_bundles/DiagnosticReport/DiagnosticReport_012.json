@@ -1,0 +1,271 @@
+{
+  "resourceType": "Bundle",
+  "id": "698c5d18-20e1-4adb-bd50-a2feb999e6af",
+  "type": "document",
+  "timestamp": "2026-02-01T03:35:14.920948",
+  "identifier": {
+    "system": "https://ndhm.in/bundle",
+    "value": "698c5d18-20e1-4adb-bd50-a2feb999e6af"
+  },
+  "meta": {
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ],
+    "lastUpdated": "2026-02-14T13:55:13.311525"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:Composition-2a792990",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "Composition-2a792990",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "721981007",
+              "display": "Diagnostic Report"
+            }
+          ],
+          "text": "Diagnostic Report"
+        },
+        "subject": {
+          "reference": "Patient/44623664517291",
+          "display": "Pooja Kapoor"
+        },
+        "date": "2026-02-01T03:35:14.920948",
+        "author": [
+          {
+            "reference": "Practitioner/practitioner-007",
+            "display": "Dr. Ravi Malhotra"
+          }
+        ],
+        "title": "Laboratory Diagnostic Report",
+        "custodian": {
+          "reference": "Organization/org-003",
+          "display": "AIIMS"
+        },
+        "section": [
+          {
+            "title": "Laboratory Results",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "30954-2",
+                  "display": "Laboratory studies"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div><table><tr><th>Test</th><th>Result</th><th>Unit</th><th>Reference Range</th></tr><tr><td>Hemoglobin</td><td>15.6</td><td>g/dL</td><td>12-16</td></tr><tr><td>Total WBC Count</td><td>4659</td><td>cells/cumm</td><td>4000-11000</td></tr><tr><td>Blood Sugar (Fasting)</td><td>114</td><td>mg/dL</td><td>70-110</td></tr><tr><td>Serum Creatinine</td><td>0.85</td><td>mg/dL</td><td>0.6-1.2</td></tr><tr><td>Total Cholesterol</td><td>165</td><td>mg/dL</td><td><200</td></tr></table></div>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "Patient/44623664517291",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "44623664517291",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NNIND",
+                  "display": "National Person Identifier - India"
+                }
+              ],
+              "text": "ABHA Number"
+            },
+            "system": "https://healthid.ndhm.gov.in",
+            "value": "44-6236-6451-7291"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "text": "Pooja Kapoor",
+            "given": [
+              "Pooja"
+            ],
+            "family": "Kapoor"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-6866825986",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "pooja.kapoor@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1994-12-11",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "text": "474, Station Road, Chennai, Tamil Nadu 605765",
+            "line": [
+              "474",
+              "Station Road"
+            ],
+            "city": "Chennai",
+            "state": "Tamil Nadu",
+            "postalCode": "605765",
+            "country": "IN"
+          }
+        ],
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-age",
+            "valueAge": {
+              "value": 31,
+              "unit": "years",
+              "system": "http://unitsofmeasure.org",
+              "code": "a"
+            }
+          }
+        ],
+        "bloodGroup": "O+",
+        "conditions": [],
+        "createdAt": "2026-02-14T13:53:54.488873",
+        "abha_number": "44-6236-6451-7291"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/practitioner-007",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-007",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.nmc.org.in",
+            "value": "MCI-81561"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "text": "Dr. Ravi Malhotra",
+            "given": [
+              "Ravi"
+            ],
+            "family": "Malhotra"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9405525315",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "dr.ravi.malhotra@hospital.in",
+            "use": "work"
+          }
+        ],
+        "gender": "male",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "MD"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "394582007",
+                  "display": "Dermatology"
+                }
+              ],
+              "text": "Dermatology"
+            }
+          }
+        ],
+        "specialty": {
+          "code": "394582007",
+          "display": "Dermatology"
+        }
+      }
+    },
+    {
+      "fullUrl": "Organization/org-003",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-003",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://facility.ndhm.gov.in",
+            "value": "IN-ORG-003"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Government"
+          }
+        ],
+        "name": "AIIMS",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-7109019058",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "contact@aiims.in",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "physical",
+            "city": "Delhi",
+            "state": "Delhi",
+            "country": "IN"
+          }
+        ]
+      }
+    }
+  ]
+}

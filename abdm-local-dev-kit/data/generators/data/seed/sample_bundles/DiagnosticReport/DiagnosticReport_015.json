@@ -1,0 +1,286 @@
+{
+  "resourceType": "Bundle",
+  "id": "95fecd39-f3c1-4bec-8311-dc117ef9ae7c",
+  "type": "document",
+  "timestamp": "2026-01-16T17:13:08.425076",
+  "identifier": {
+    "system": "https://ndhm.in/bundle",
+    "value": "95fecd39-f3c1-4bec-8311-dc117ef9ae7c"
+  },
+  "meta": {
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ],
+    "lastUpdated": "2026-02-14T13:55:13.312555"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:Composition-cecf16d4",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "Composition-cecf16d4",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "721981007",
+              "display": "Diagnostic Report"
+            }
+          ],
+          "text": "Diagnostic Report"
+        },
+        "subject": {
+          "reference": "Patient/35630532053534",
+          "display": "Sumana Desai"
+        },
+        "date": "2026-01-16T17:13:08.425076",
+        "author": [
+          {
+            "reference": "Practitioner/practitioner-006",
+            "display": "Dr. Bina Kapoor"
+          }
+        ],
+        "title": "Laboratory Diagnostic Report",
+        "custodian": {
+          "reference": "Organization/org-003",
+          "display": "AIIMS"
+        },
+        "section": [
+          {
+            "title": "Laboratory Results",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "30954-2",
+                  "display": "Laboratory studies"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div><table><tr><th>Test</th><th>Result</th><th>Unit</th><th>Reference Range</th></tr><tr><td>Hemoglobin</td><td>12.3</td><td>g/dL</td><td>12-16</td></tr><tr><td>Total WBC Count</td><td>8844</td><td>cells/cumm</td><td>4000-11000</td></tr><tr><td>Blood Sugar (Fasting)</td><td>112</td><td>mg/dL</td><td>70-110</td></tr><tr><td>Serum Creatinine</td><td>1.03</td><td>mg/dL</td><td>0.6-1.2</td></tr><tr><td>Total Cholesterol</td><td>200</td><td>mg/dL</td><td><200</td></tr></table></div>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "Patient/35630532053534",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "35630532053534",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NNIND",
+                  "display": "National Person Identifier - India"
+                }
+              ],
+              "text": "ABHA Number"
+            },
+            "system": "https://healthid.ndhm.gov.in",
+            "value": "35-6305-3205-3534"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "text": "Sumana Desai",
+            "given": [
+              "Sumana"
+            ],
+            "family": "Desai"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-8733651759",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "sumana.desai@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1957-01-25",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "text": "503, Station Road, Ahmedabad, Gujarat 382820",
+            "line": [
+              "503",
+              "Station Road"
+            ],
+            "city": "Ahmedabad",
+            "state": "Gujarat",
+            "postalCode": "382820",
+            "country": "IN"
+          }
+        ],
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-age",
+            "valueAge": {
+              "value": 69,
+              "unit": "years",
+              "system": "http://unitsofmeasure.org",
+              "code": "a"
+            }
+          }
+        ],
+        "bloodGroup": "O-",
+        "conditions": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "399211009",
+                  "display": "Chronic kidney disease",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Chronic kidney disease"
+            },
+            "onsetDateTime": "2023-12-20",
+            "recordedDate": "2024-02-20"
+          }
+        ],
+        "createdAt": "2026-02-14T13:53:54.491278",
+        "abha_number": "35-6305-3205-3534"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/practitioner-006",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-006",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.nmc.org.in",
+            "value": "MCI-57246"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "text": "Dr. Bina Kapoor",
+            "given": [
+              "Bina"
+            ],
+            "family": "Kapoor"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-7360152478",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "dr.bina.kapoor@hospital.in",
+            "use": "work"
+          }
+        ],
+        "gender": "female",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "MD"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "394588006",
+                  "display": "Pediatric surgery"
+                }
+              ],
+              "text": "Pediatric surgery"
+            }
+          }
+        ],
+        "specialty": {
+          "code": "394588006",
+          "display": "Pediatric surgery"
+        }
+      }
+    },
+    {
+      "fullUrl": "Organization/org-003",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-003",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://facility.ndhm.gov.in",
+            "value": "IN-ORG-003"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Government"
+          }
+        ],
+        "name": "AIIMS",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-7109019058",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "contact@aiims.in",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "physical",
+            "city": "Delhi",
+            "state": "Delhi",
+            "country": "IN"
+          }
+        ]
+      }
+    }
+  ]
+}

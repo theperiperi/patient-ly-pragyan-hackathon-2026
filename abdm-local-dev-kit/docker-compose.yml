@@ -1,0 +1,192 @@
+version: '3.8'
+
+services:
+  # MongoDB - Shared database for all services
+  mongodb:
+    image: mongo:7.0
+    container_name: abdm-mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME:-admin}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD:-abdm123}
+      MONGO_INITDB_DATABASE: abdm
+    volumes:
+      - mongodb_data:/data/db
+      - ./scripts/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    networks:
+      - abdm-network
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Gateway Service - Routes requests between HIPs, HIUs, and Consent Manager
+  gateway:
+    build:
+      context: ./services/gateway
+      dockerfile: Dockerfile
+    container_name: abdm-gateway
+    ports:
+      - "8090:8090"
+    environment:
+      - SERVICE_NAME=gateway
+      - PORT=8090
+      - MONGO_URI=mongodb://${MONGO_USERNAME:-admin}:${MONGO_PASSWORD:-abdm123}@mongodb:27017/abdm?authSource=admin
+      - JWT_SECRET=${JWT_SECRET:-abdm-local-dev-secret-key-change-in-production}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - CONSENT_MANAGER_URL=http://consent-manager:8091
+      - HIP_REGISTRY_URL=http://hip:8092
+      - HIU_REGISTRY_URL=http://hiu:8093
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - abdm-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8090/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Consent Manager - Manages patient consent lifecycle
+  consent-manager:
+    build:
+      context: ./services/consent_manager
+      dockerfile: Dockerfile
+    container_name: abdm-consent-manager
+    ports:
+      - "8091:8091"
+    environment:
+      - SERVICE_NAME=consent-manager
+      - PORT=8091
+      - MONGO_URI=mongodb://${MONGO_USERNAME:-admin}:${MONGO_PASSWORD:-abdm123}@mongodb:27017/abdm?authSource=admin
+      - JWT_SECRET=${JWT_SECRET:-abdm-local-dev-secret-key-change-in-production}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - GATEWAY_URL=http://gateway:8090
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - abdm-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8091/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # HIP Service - Health Information Provider
+  hip:
+    build:
+      context: ./services/hip
+      dockerfile: Dockerfile
+    container_name: abdm-hip
+    ports:
+      - "8092:8092"
+    environment:
+      - SERVICE_NAME=hip
+      - PORT=8092
+      - MONGO_URI=mongodb://${MONGO_USERNAME:-admin}:${MONGO_PASSWORD:-abdm123}@mongodb:27017/abdm?authSource=admin
+      - JWT_SECRET=${JWT_SECRET:-abdm-local-dev-secret-key-change-in-production}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - GATEWAY_URL=http://gateway:8090
+      - FACILITY_ID=${HIP_FACILITY_ID:-Apollo-Hospitals-Bangalore}
+      - FACILITY_NAME=${HIP_FACILITY_NAME:-Apollo Hospitals Bangalore}
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - abdm-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8092/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # HIU Service - Health Information User
+  hiu:
+    build:
+      context: ./services/hiu
+      dockerfile: Dockerfile
+    container_name: abdm-hiu
+    ports:
+      - "8093:8093"
+    environment:
+      - SERVICE_NAME=hiu
+      - PORT=8093
+      - MONGO_URI=mongodb://${MONGO_USERNAME:-admin}:${MONGO_PASSWORD:-abdm123}@mongodb:27017/abdm?authSource=admin
+      - JWT_SECRET=${JWT_SECRET:-abdm-local-dev-secret-key-change-in-production}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - GATEWAY_URL=http://gateway:8090
+      - HIU_ID=${HIU_ID:-Triage-AI-System}
+      - HIU_NAME=${HIU_NAME:-AI-Powered Triage System}
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - abdm-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8093/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # FHIR Validator - Validates FHIR resources against ABDM profiles
+  fhir-validator:
+    build:
+      context: ./services/fhir_validator
+      dockerfile: Dockerfile
+    container_name: abdm-fhir-validator
+    ports:
+      - "8094:8094"
+    environment:
+      - SERVICE_NAME=fhir-validator
+      - PORT=8094
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - PROFILES_DIR=/app/profiles/definitions
+    volumes:
+      - ./fhir-profiles:/app/profiles:ro
+    networks:
+      - abdm-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8094/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Swagger UI - Interactive API documentation
+  swagger-ui:
+    image: swaggerapi/swagger-ui:latest
+    container_name: abdm-swagger-ui
+    ports:
+      - "8080:8080"
+    environment:
+      - URLS=[
+          {"url":"http://localhost:8090/openapi.json","name":"Gateway"},
+          {"url":"http://localhost:8091/openapi.json","name":"Consent Manager"},
+          {"url":"http://localhost:8092/openapi.json","name":"HIP"},
+          {"url":"http://localhost:8093/openapi.json","name":"HIU"},
+          {"url":"http://localhost:8094/openapi.json","name":"FHIR Validator"}
+        ]
+    networks:
+      - abdm-network
+    depends_on:
+      - gateway
+      - consent-manager
+      - hip
+      - hiu
+      - fhir-validator
+
+networks:
+  abdm-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
+    driver: local

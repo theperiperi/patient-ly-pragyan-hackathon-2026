@@ -1,0 +1,314 @@
+{
+  "resourceType": "Bundle",
+  "id": "3ae2d916-8a38-478c-85ed-2392d79eb02a",
+  "type": "document",
+  "timestamp": "2026-02-06T01:11:53.373133",
+  "identifier": {
+    "system": "https://ndhm.in/bundle",
+    "value": "3ae2d916-8a38-478c-85ed-2392d79eb02a"
+  },
+  "meta": {
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ],
+    "lastUpdated": "2026-02-14T13:55:13.302346"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:Composition-de9f7d97",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "Composition-de9f7d97",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "440545006",
+              "display": "Prescription record"
+            }
+          ],
+          "text": "Prescription"
+        },
+        "subject": {
+          "reference": "Patient/18646218831526",
+          "display": "Debasis Nair"
+        },
+        "date": "2026-02-06T01:11:53.373133",
+        "author": [
+          {
+            "reference": "Practitioner/practitioner-006",
+            "display": "Dr. Bina Kapoor"
+          }
+        ],
+        "title": "Prescription",
+        "custodian": {
+          "reference": "Organization/org-001",
+          "display": "Apollo Hospitals"
+        },
+        "section": [
+          {
+            "title": "Medication List",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "10160-0",
+                  "display": "Medication list"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div><table><tr><th>Medicine</th><th>Dose</th><th>Frequency</th><th>Duration</th></tr><tr><td>Metformin</td><td>500mg</td><td>BD (Twice daily)</td><td>30 days</td></tr><tr><td>Pantoprazole</td><td>40mg</td><td>OD (Once daily)</td><td>30 days</td></tr><tr><td>Aspirin</td><td>75mg</td><td>OD (Once daily)</td><td>30 days</td></tr></table></div>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "Patient/18646218831526",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "18646218831526",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NNIND",
+                  "display": "National Person Identifier - India"
+                }
+              ],
+              "text": "ABHA Number"
+            },
+            "system": "https://healthid.ndhm.gov.in",
+            "value": "18-6462-1883-1526"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "text": "Debasis Nair",
+            "given": [
+              "Debasis"
+            ],
+            "family": "Nair"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-6347646238",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "debasis.nair@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1960-02-08",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "text": "526, Park Street, Chennai, Tamil Nadu 605883",
+            "line": [
+              "526",
+              "Park Street"
+            ],
+            "city": "Chennai",
+            "state": "Tamil Nadu",
+            "postalCode": "605883",
+            "country": "IN"
+          }
+        ],
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-age",
+            "valueAge": {
+              "value": 66,
+              "unit": "years",
+              "system": "http://unitsofmeasure.org",
+              "code": "a"
+            }
+          }
+        ],
+        "bloodGroup": "AB-",
+        "conditions": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "38341003",
+                  "display": "Hypertension",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Hypertension"
+            },
+            "onsetDateTime": "2020-02-25",
+            "recordedDate": "2021-01-07"
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "38822007",
+                  "display": "Dengue fever",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Dengue fever"
+            },
+            "onsetDateTime": "2019-05-13",
+            "recordedDate": "2024-01-01"
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "56265001",
+                  "display": "Heart disease",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Heart disease"
+            },
+            "onsetDateTime": "2020-03-25",
+            "recordedDate": "2022-03-21"
+          }
+        ],
+        "createdAt": "2026-02-14T13:53:54.488717",
+        "abha_number": "18-6462-1883-1526"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/practitioner-006",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-006",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.nmc.org.in",
+            "value": "MCI-57246"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "text": "Dr. Bina Kapoor",
+            "given": [
+              "Bina"
+            ],
+            "family": "Kapoor"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-7360152478",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "dr.bina.kapoor@hospital.in",
+            "use": "work"
+          }
+        ],
+        "gender": "female",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "MD"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "394588006",
+                  "display": "Pediatric surgery"
+                }
+              ],
+              "text": "Pediatric surgery"
+            }
+          }
+        ],
+        "specialty": {
+          "code": "394588006",
+          "display": "Pediatric surgery"
+        }
+      }
+    },
+    {
+      "fullUrl": "Organization/org-001",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-001",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://facility.ndhm.gov.in",
+            "value": "IN-ORG-001"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Private"
+          }
+        ],
+        "name": "Apollo Hospitals",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-8785016751",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "contact@apollohospitals.in",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "physical",
+            "city": "Bangalore",
+            "state": "Karnataka",
+            "country": "IN"
+          }
+        ]
+      }
+    }
+  ]
+}

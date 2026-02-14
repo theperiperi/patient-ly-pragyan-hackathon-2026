@@ -1,0 +1,314 @@
+{
+  "resourceType": "Bundle",
+  "id": "3e95b66a-84f7-49d8-81f9-2ef1a0b8e8ba",
+  "type": "document",
+  "timestamp": "2026-02-14T01:57:24.452833",
+  "identifier": {
+    "system": "https://ndhm.in/bundle",
+    "value": "3e95b66a-84f7-49d8-81f9-2ef1a0b8e8ba"
+  },
+  "meta": {
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ],
+    "lastUpdated": "2026-02-14T13:55:13.311198"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:Composition-c68742fc",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "Composition-c68742fc",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "721981007",
+              "display": "Diagnostic Report"
+            }
+          ],
+          "text": "Diagnostic Report"
+        },
+        "subject": {
+          "reference": "Patient/52550179828243",
+          "display": "Meena Das"
+        },
+        "date": "2026-02-14T01:57:24.452833",
+        "author": [
+          {
+            "reference": "Practitioner/practitioner-001",
+            "display": "Dr. Tapas Choudhury"
+          }
+        ],
+        "title": "Laboratory Diagnostic Report",
+        "custodian": {
+          "reference": "Organization/org-003",
+          "display": "AIIMS"
+        },
+        "section": [
+          {
+            "title": "Laboratory Results",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "30954-2",
+                  "display": "Laboratory studies"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div><table><tr><th>Test</th><th>Result</th><th>Unit</th><th>Reference Range</th></tr><tr><td>Hemoglobin</td><td>13.2</td><td>g/dL</td><td>12-16</td></tr><tr><td>Total WBC Count</td><td>7350</td><td>cells/cumm</td><td>4000-11000</td></tr><tr><td>Blood Sugar (Fasting)</td><td>86</td><td>mg/dL</td><td>70-110</td></tr><tr><td>Serum Creatinine</td><td>0.99</td><td>mg/dL</td><td>0.6-1.2</td></tr><tr><td>Total Cholesterol</td><td>154</td><td>mg/dL</td><td><200</td></tr></table></div>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "Patient/52550179828243",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "52550179828243",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NNIND",
+                  "display": "National Person Identifier - India"
+                }
+              ],
+              "text": "ABHA Number"
+            },
+            "system": "https://healthid.ndhm.gov.in",
+            "value": "52-5501-7982-8243"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "text": "Meena Das",
+            "given": [
+              "Meena"
+            ],
+            "family": "Das"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-7610906616",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "meena.das@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1971-06-30",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "text": "176, Gandhi Nagar, Chandigarh, Chandigarh 168643",
+            "line": [
+              "176",
+              "Gandhi Nagar"
+            ],
+            "city": "Chandigarh",
+            "state": "Chandigarh",
+            "postalCode": "168643",
+            "country": "IN"
+          }
+        ],
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-age",
+            "valueAge": {
+              "value": 54,
+              "unit": "years",
+              "system": "http://unitsofmeasure.org",
+              "code": "a"
+            }
+          }
+        ],
+        "bloodGroup": "B+",
+        "conditions": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "38341003",
+                  "display": "Hypertension",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Hypertension"
+            },
+            "onsetDateTime": "2021-01-07",
+            "recordedDate": "2024-04-08"
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "56717001",
+                  "display": "Tuberculosis",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Tuberculosis"
+            },
+            "onsetDateTime": "2019-03-19",
+            "recordedDate": "2023-09-14"
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "56265001",
+                  "display": "Heart disease",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Heart disease"
+            },
+            "onsetDateTime": "2025-10-19",
+            "recordedDate": "2025-10-29"
+          }
+        ],
+        "createdAt": "2026-02-14T13:53:54.493559",
+        "abha_number": "52-5501-7982-8243"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/practitioner-001",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-001",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.nmc.org.in",
+            "value": "MCI-35281"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "text": "Dr. Tapas Choudhury",
+            "given": [
+              "Tapas"
+            ],
+            "family": "Choudhury"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-8050808970",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "dr.tapas.choudhury@hospital.in",
+            "use": "work"
+          }
+        ],
+        "gender": "female",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "MD"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "394579002",
+                  "display": "Cardiology"
+                }
+              ],
+              "text": "Cardiology"
+            }
+          }
+        ],
+        "specialty": {
+          "code": "394579002",
+          "display": "Cardiology"
+        }
+      }
+    },
+    {
+      "fullUrl": "Organization/org-003",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-003",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://facility.ndhm.gov.in",
+            "value": "IN-ORG-003"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Government"
+          }
+        ],
+        "name": "AIIMS",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-7109019058",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "contact@aiims.in",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "physical",
+            "city": "Delhi",
+            "state": "Delhi",
+            "country": "IN"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,300 @@
+{
+  "resourceType": "Bundle",
+  "id": "15f42812-584b-48b3-8a89-90011a33936f",
+  "type": "document",
+  "timestamp": "2026-01-19T00:57:08.720706",
+  "identifier": {
+    "system": "https://ndhm.in/bundle",
+    "value": "15f42812-584b-48b3-8a89-90011a33936f"
+  },
+  "meta": {
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ],
+    "lastUpdated": "2026-02-14T13:55:13.311806"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:Composition-18b051fb",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "Composition-18b051fb",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "721981007",
+              "display": "Diagnostic Report"
+            }
+          ],
+          "text": "Diagnostic Report"
+        },
+        "subject": {
+          "reference": "Patient/48506022107969",
+          "display": "Prakash Naidu"
+        },
+        "date": "2026-01-19T00:57:08.720706",
+        "author": [
+          {
+            "reference": "Practitioner/practitioner-006",
+            "display": "Dr. Bina Kapoor"
+          }
+        ],
+        "title": "Laboratory Diagnostic Report",
+        "custodian": {
+          "reference": "Organization/org-001",
+          "display": "Apollo Hospitals"
+        },
+        "section": [
+          {
+            "title": "Laboratory Results",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "30954-2",
+                  "display": "Laboratory studies"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div><table><tr><th>Test</th><th>Result</th><th>Unit</th><th>Reference Range</th></tr><tr><td>Hemoglobin</td><td>12.6</td><td>g/dL</td><td>12-16</td></tr><tr><td>Total WBC Count</td><td>9272</td><td>cells/cumm</td><td>4000-11000</td></tr><tr><td>Blood Sugar (Fasting)</td><td>77</td><td>mg/dL</td><td>70-110</td></tr><tr><td>Serum Creatinine</td><td>0.98</td><td>mg/dL</td><td>0.6-1.2</td></tr><tr><td>Total Cholesterol</td><td>157</td><td>mg/dL</td><td><200</td></tr></table></div>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "Patient/48506022107969",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "48506022107969",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NNIND",
+                  "display": "National Person Identifier - India"
+                }
+              ],
+              "text": "ABHA Number"
+            },
+            "system": "https://healthid.ndhm.gov.in",
+            "value": "48-5060-2210-7969"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "text": "Prakash Naidu",
+            "given": [
+              "Prakash"
+            ],
+            "family": "Naidu"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9628190857",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "prakash.naidu@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1991-03-11",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "text": "25, MG Road, Mumbai, Maharashtra 406479",
+            "line": [
+              "25",
+              "MG Road"
+            ],
+            "city": "Mumbai",
+            "state": "Maharashtra",
+            "postalCode": "406479",
+            "country": "IN"
+          }
+        ],
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-age",
+            "valueAge": {
+              "value": 34,
+              "unit": "years",
+              "system": "http://unitsofmeasure.org",
+              "code": "a"
+            }
+          }
+        ],
+        "bloodGroup": "AB-",
+        "conditions": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "44054006",
+                  "display": "Type 2 diabetes mellitus",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Type 2 diabetes mellitus"
+            },
+            "onsetDateTime": "2016-10-09",
+            "recordedDate": "2024-02-17"
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "56265001",
+                  "display": "Heart disease",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Heart disease"
+            },
+            "onsetDateTime": "2018-03-05",
+            "recordedDate": "2025-11-22"
+          }
+        ],
+        "createdAt": "2026-02-14T13:53:54.487407",
+        "abha_number": "48-5060-2210-7969"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/practitioner-006",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-006",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.nmc.org.in",
+            "value": "MCI-57246"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "text": "Dr. Bina Kapoor",
+            "given": [
+              "Bina"
+            ],
+            "family": "Kapoor"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-7360152478",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "dr.bina.kapoor@hospital.in",
+            "use": "work"
+          }
+        ],
+        "gender": "female",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "MD"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "394588006",
+                  "display": "Pediatric surgery"
+                }
+              ],
+              "text": "Pediatric surgery"
+            }
+          }
+        ],
+        "specialty": {
+          "code": "394588006",
+          "display": "Pediatric surgery"
+        }
+      }
+    },
+    {
+      "fullUrl": "Organization/org-001",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-001",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://facility.ndhm.gov.in",
+            "value": "IN-ORG-001"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Private"
+          }
+        ],
+        "name": "Apollo Hospitals",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-8785016751",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "contact@apollohospitals.in",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "physical",
+            "city": "Bangalore",
+            "state": "Karnataka",
+            "country": "IN"
+          }
+        ]
+      }
+    }
+  ]
+}

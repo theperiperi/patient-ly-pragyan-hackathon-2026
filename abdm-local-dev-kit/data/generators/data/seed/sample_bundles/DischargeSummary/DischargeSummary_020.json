@@ -1,0 +1,335 @@
+{
+  "resourceType": "Bundle",
+  "id": "12b00163-036f-4c7c-9a3d-77fe0efb1a39",
+  "type": "document",
+  "timestamp": "2026-02-05T17:42:05.764582",
+  "identifier": {
+    "system": "https://ndhm.in/bundle",
+    "value": "12b00163-036f-4c7c-9a3d-77fe0efb1a39"
+  },
+  "meta": {
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ],
+    "lastUpdated": "2026-02-14T13:55:13.301676"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:Composition-0a7f7e23",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "Composition-0a7f7e23",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "373942005",
+              "display": "Discharge Summary"
+            }
+          ],
+          "text": "Discharge Summary"
+        },
+        "subject": {
+          "reference": "Patient/51767427731815",
+          "display": "Mohan Kapoor"
+        },
+        "encounter": {
+          "reference": "Encounter/Encounter-3ebd3ad5"
+        },
+        "date": "2026-02-05T17:42:05.764582",
+        "author": [
+          {
+            "reference": "Practitioner/practitioner-007",
+            "display": "Dr. Ravi Malhotra"
+          }
+        ],
+        "title": "Discharge Summary",
+        "custodian": {
+          "reference": "Organization/org-004",
+          "display": "Manipal Hospitals"
+        },
+        "section": [
+          {
+            "title": "Chief Complaints",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "422843007",
+                  "display": "Chief complaint section"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>Patient presented with complaints of fever and cough for 5 days</div>"
+            }
+          },
+          {
+            "title": "Medical History",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "371529009",
+                  "display": "History and physical report"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>Known conditions: Typhoid fever</div>"
+            }
+          },
+          {
+            "title": "Hospital Course",
+            "text": {
+              "status": "generated",
+              "div": "<div>Patient admitted and treated with antibiotics. Condition improved over 5 days.</div>"
+            }
+          },
+          {
+            "title": "Discharge Medications",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "10183-2",
+                  "display": "Discharge medication"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>1. Azithromycin 500mg OD for 5 days<br/>2. Paracetamol 650mg TDS PRN</div>"
+            }
+          },
+          {
+            "title": "Follow-up",
+            "text": {
+              "status": "generated",
+              "div": "<div>Follow-up after 1 week</div>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "Patient/51767427731815",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "51767427731815",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NNIND",
+                  "display": "National Person Identifier - India"
+                }
+              ],
+              "text": "ABHA Number"
+            },
+            "system": "https://healthid.ndhm.gov.in",
+            "value": "51-7674-2773-1815"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "text": "Mohan Kapoor",
+            "given": [
+              "Mohan"
+            ],
+            "family": "Kapoor"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-8445094487",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "mohan.kapoor@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1996-01-04",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "text": "847, Park Street, Indore, Madhya Pradesh 459416",
+            "line": [
+              "847",
+              "Park Street"
+            ],
+            "city": "Indore",
+            "state": "Madhya Pradesh",
+            "postalCode": "459416",
+            "country": "IN"
+          }
+        ],
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-age",
+            "valueAge": {
+              "value": 30,
+              "unit": "years",
+              "system": "http://unitsofmeasure.org",
+              "code": "a"
+            }
+          }
+        ],
+        "bloodGroup": "AB+",
+        "conditions": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "75544007",
+                  "display": "Typhoid fever",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Typhoid fever"
+            },
+            "onsetDateTime": "2020-04-09",
+            "recordedDate": "2021-03-14"
+          }
+        ],
+        "createdAt": "2026-02-14T13:53:54.489598",
+        "abha_number": "51-7674-2773-1815"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/practitioner-007",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-007",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.nmc.org.in",
+            "value": "MCI-81561"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "text": "Dr. Ravi Malhotra",
+            "given": [
+              "Ravi"
+            ],
+            "family": "Malhotra"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9405525315",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "dr.ravi.malhotra@hospital.in",
+            "use": "work"
+          }
+        ],
+        "gender": "male",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "MD"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "394582007",
+                  "display": "Dermatology"
+                }
+              ],
+              "text": "Dermatology"
+            }
+          }
+        ],
+        "specialty": {
+          "code": "394582007",
+          "display": "Dermatology"
+        }
+      }
+    },
+    {
+      "fullUrl": "Organization/org-004",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-004",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://facility.ndhm.gov.in",
+            "value": "IN-ORG-004"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Private"
+          }
+        ],
+        "name": "Manipal Hospitals",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9156159879",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "contact@manipalhospitals.in",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "physical",
+            "city": "Bangalore",
+            "state": "Karnataka",
+            "country": "IN"
+          }
+        ]
+      }
+    }
+  ]
+}

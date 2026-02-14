@@ -1,0 +1,286 @@
+{
+  "resourceType": "Bundle",
+  "id": "2f15c938-17c9-40fc-9ce3-ae1a52b612ff",
+  "type": "document",
+  "timestamp": "2026-02-05T01:49:40.800714",
+  "identifier": {
+    "system": "https://ndhm.in/bundle",
+    "value": "2f15c938-17c9-40fc-9ce3-ae1a52b612ff"
+  },
+  "meta": {
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ],
+    "lastUpdated": "2026-02-14T13:55:13.312853"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:Composition-680f6ac3",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "Composition-680f6ac3",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "721981007",
+              "display": "Diagnostic Report"
+            }
+          ],
+          "text": "Diagnostic Report"
+        },
+        "subject": {
+          "reference": "Patient/97195857489821",
+          "display": "Mahesh Kumar"
+        },
+        "date": "2026-02-05T01:49:40.800714",
+        "author": [
+          {
+            "reference": "Practitioner/practitioner-007",
+            "display": "Dr. Ravi Malhotra"
+          }
+        ],
+        "title": "Laboratory Diagnostic Report",
+        "custodian": {
+          "reference": "Organization/org-001",
+          "display": "Apollo Hospitals"
+        },
+        "section": [
+          {
+            "title": "Laboratory Results",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "30954-2",
+                  "display": "Laboratory studies"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div><table><tr><th>Test</th><th>Result</th><th>Unit</th><th>Reference Range</th></tr><tr><td>Hemoglobin</td><td>13.9</td><td>g/dL</td><td>12-16</td></tr><tr><td>Total WBC Count</td><td>10425</td><td>cells/cumm</td><td>4000-11000</td></tr><tr><td>Blood Sugar (Fasting)</td><td>104</td><td>mg/dL</td><td>70-110</td></tr><tr><td>Serum Creatinine</td><td>1.03</td><td>mg/dL</td><td>0.6-1.2</td></tr><tr><td>Total Cholesterol</td><td>217</td><td>mg/dL</td><td><200</td></tr></table></div>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "Patient/97195857489821",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "97195857489821",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NNIND",
+                  "display": "National Person Identifier - India"
+                }
+              ],
+              "text": "ABHA Number"
+            },
+            "system": "https://healthid.ndhm.gov.in",
+            "value": "97-1958-5748-9821"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "text": "Mahesh Kumar",
+            "given": [
+              "Mahesh"
+            ],
+            "family": "Kumar"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9103994842",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "mahesh.kumar@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1964-08-21",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "text": "656, Nehru Street, Bhopal, Madhya Pradesh 466539",
+            "line": [
+              "656",
+              "Nehru Street"
+            ],
+            "city": "Bhopal",
+            "state": "Madhya Pradesh",
+            "postalCode": "466539",
+            "country": "IN"
+          }
+        ],
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-age",
+            "valueAge": {
+              "value": 61,
+              "unit": "years",
+              "system": "http://unitsofmeasure.org",
+              "code": "a"
+            }
+          }
+        ],
+        "bloodGroup": "A-",
+        "conditions": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "13645005",
+                  "display": "Chronic obstructive pulmonary disease",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Chronic obstructive pulmonary disease"
+            },
+            "onsetDateTime": "2016-11-17",
+            "recordedDate": "2018-11-06"
+          }
+        ],
+        "createdAt": "2026-02-14T13:53:54.488419",
+        "abha_number": "97-1958-5748-9821"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/practitioner-007",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-007",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.nmc.org.in",
+            "value": "MCI-81561"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "text": "Dr. Ravi Malhotra",
+            "given": [
+              "Ravi"
+            ],
+            "family": "Malhotra"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9405525315",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "dr.ravi.malhotra@hospital.in",
+            "use": "work"
+          }
+        ],
+        "gender": "male",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "MD"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "394582007",
+                  "display": "Dermatology"
+                }
+              ],
+              "text": "Dermatology"
+            }
+          }
+        ],
+        "specialty": {
+          "code": "394582007",
+          "display": "Dermatology"
+        }
+      }
+    },
+    {
+      "fullUrl": "Organization/org-001",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-001",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://facility.ndhm.gov.in",
+            "value": "IN-ORG-001"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Private"
+          }
+        ],
+        "name": "Apollo Hospitals",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-8785016751",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "contact@apollohospitals.in",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "physical",
+            "city": "Bangalore",
+            "state": "Karnataka",
+            "country": "IN"
+          }
+        ]
+      }
+    }
+  ]
+}

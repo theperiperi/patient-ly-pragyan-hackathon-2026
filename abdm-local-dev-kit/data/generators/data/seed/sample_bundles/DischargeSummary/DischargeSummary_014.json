@@ -1,0 +1,335 @@
+{
+  "resourceType": "Bundle",
+  "id": "6a71b2b8-4a40-4ae7-8bff-673713a7b4d6",
+  "type": "document",
+  "timestamp": "2026-02-05T14:59:49.243942",
+  "identifier": {
+    "system": "https://ndhm.in/bundle",
+    "value": "6a71b2b8-4a40-4ae7-8bff-673713a7b4d6"
+  },
+  "meta": {
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ],
+    "lastUpdated": "2026-02-14T13:55:13.299638"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:Composition-9ddf6b46",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "Composition-9ddf6b46",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "373942005",
+              "display": "Discharge Summary"
+            }
+          ],
+          "text": "Discharge Summary"
+        },
+        "subject": {
+          "reference": "Patient/57783162091369",
+          "display": "Ramesh Rao"
+        },
+        "encounter": {
+          "reference": "Encounter/Encounter-05b7ed58"
+        },
+        "date": "2026-02-05T14:59:49.243942",
+        "author": [
+          {
+            "reference": "Practitioner/practitioner-003",
+            "display": "Dr. Mahesh Das"
+          }
+        ],
+        "title": "Discharge Summary",
+        "custodian": {
+          "reference": "Organization/org-001",
+          "display": "Apollo Hospitals"
+        },
+        "section": [
+          {
+            "title": "Chief Complaints",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "422843007",
+                  "display": "Chief complaint section"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>Patient presented with complaints of fever and cough for 5 days</div>"
+            }
+          },
+          {
+            "title": "Medical History",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "371529009",
+                  "display": "History and physical report"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>Known conditions: Heart disease</div>"
+            }
+          },
+          {
+            "title": "Hospital Course",
+            "text": {
+              "status": "generated",
+              "div": "<div>Patient admitted and treated with antibiotics. Condition improved over 5 days.</div>"
+            }
+          },
+          {
+            "title": "Discharge Medications",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "10183-2",
+                  "display": "Discharge medication"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>1. Azithromycin 500mg OD for 5 days<br/>2. Paracetamol 650mg TDS PRN</div>"
+            }
+          },
+          {
+            "title": "Follow-up",
+            "text": {
+              "status": "generated",
+              "div": "<div>Follow-up after 1 week</div>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "Patient/57783162091369",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "57783162091369",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NNIND",
+                  "display": "National Person Identifier - India"
+                }
+              ],
+              "text": "ABHA Number"
+            },
+            "system": "https://healthid.ndhm.gov.in",
+            "value": "57-7831-6209-1369"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "text": "Ramesh Rao",
+            "given": [
+              "Ramesh"
+            ],
+            "family": "Rao"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9336568048",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "ramesh.rao@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "other",
+        "birthDate": "1940-07-01",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "text": "607, Station Road, Hyderabad, Telangana 506321",
+            "line": [
+              "607",
+              "Station Road"
+            ],
+            "city": "Hyderabad",
+            "state": "Telangana",
+            "postalCode": "506321",
+            "country": "IN"
+          }
+        ],
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-age",
+            "valueAge": {
+              "value": 85,
+              "unit": "years",
+              "system": "http://unitsofmeasure.org",
+              "code": "a"
+            }
+          }
+        ],
+        "bloodGroup": "A+",
+        "conditions": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "56265001",
+                  "display": "Heart disease",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Heart disease"
+            },
+            "onsetDateTime": "2023-12-19",
+            "recordedDate": "2025-04-30"
+          }
+        ],
+        "createdAt": "2026-02-14T13:53:54.488773",
+        "abha_number": "57-7831-6209-1369"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/practitioner-003",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-003",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.nmc.org.in",
+            "value": "MCI-41842"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "text": "Dr. Mahesh Das",
+            "given": [
+              "Mahesh"
+            ],
+            "family": "Das"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9662881716",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "dr.mahesh.das@hospital.in",
+            "use": "work"
+          }
+        ],
+        "gender": "male",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "MD"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "394591006",
+                  "display": "Neurology"
+                }
+              ],
+              "text": "Neurology"
+            }
+          }
+        ],
+        "specialty": {
+          "code": "394591006",
+          "display": "Neurology"
+        }
+      }
+    },
+    {
+      "fullUrl": "Organization/org-001",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-001",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://facility.ndhm.gov.in",
+            "value": "IN-ORG-001"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Private"
+          }
+        ],
+        "name": "Apollo Hospitals",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-8785016751",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "contact@apollohospitals.in",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "physical",
+            "city": "Bangalore",
+            "state": "Karnataka",
+            "country": "IN"
+          }
+        ]
+      }
+    }
+  ]
+}

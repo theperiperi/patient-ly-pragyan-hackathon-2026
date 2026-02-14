@@ -1,0 +1,349 @@
+{
+  "resourceType": "Bundle",
+  "id": "e50626ca-860b-4783-bef6-0a514fba7dfb",
+  "type": "document",
+  "timestamp": "2026-01-17T14:30:09.015132",
+  "identifier": {
+    "system": "https://ndhm.in/bundle",
+    "value": "e50626ca-860b-4783-bef6-0a514fba7dfb"
+  },
+  "meta": {
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ],
+    "lastUpdated": "2026-02-14T13:55:13.297415"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:Composition-38c20aff",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "Composition-38c20aff",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "373942005",
+              "display": "Discharge Summary"
+            }
+          ],
+          "text": "Discharge Summary"
+        },
+        "subject": {
+          "reference": "Patient/19369666838991",
+          "display": "Ashok Mukherjee"
+        },
+        "encounter": {
+          "reference": "Encounter/Encounter-d4d5d3ef"
+        },
+        "date": "2026-01-17T14:30:09.015132",
+        "author": [
+          {
+            "reference": "Practitioner/practitioner-009",
+            "display": "Dr. Jyoti Pillai"
+          }
+        ],
+        "title": "Discharge Summary",
+        "custodian": {
+          "reference": "Organization/org-004",
+          "display": "Manipal Hospitals"
+        },
+        "section": [
+          {
+            "title": "Chief Complaints",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "422843007",
+                  "display": "Chief complaint section"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>Patient presented with complaints of fever and cough for 5 days</div>"
+            }
+          },
+          {
+            "title": "Medical History",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "371529009",
+                  "display": "History and physical report"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>Known conditions: Chronic kidney disease, Liver disease</div>"
+            }
+          },
+          {
+            "title": "Hospital Course",
+            "text": {
+              "status": "generated",
+              "div": "<div>Patient admitted and treated with antibiotics. Condition improved over 5 days.</div>"
+            }
+          },
+          {
+            "title": "Discharge Medications",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "10183-2",
+                  "display": "Discharge medication"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>1. Azithromycin 500mg OD for 5 days<br/>2. Paracetamol 650mg TDS PRN</div>"
+            }
+          },
+          {
+            "title": "Follow-up",
+            "text": {
+              "status": "generated",
+              "div": "<div>Follow-up after 1 week</div>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "Patient/19369666838991",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "19369666838991",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NNIND",
+                  "display": "National Person Identifier - India"
+                }
+              ],
+              "text": "ABHA Number"
+            },
+            "system": "https://healthid.ndhm.gov.in",
+            "value": "19-3696-6683-8991"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "text": "Ashok Mukherjee",
+            "given": [
+              "Ashok"
+            ],
+            "family": "Mukherjee"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-7854695556",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "ashok.mukherjee@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1988-12-14",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "text": "951, Church Road, Hyderabad, Telangana 503096",
+            "line": [
+              "951",
+              "Church Road"
+            ],
+            "city": "Hyderabad",
+            "state": "Telangana",
+            "postalCode": "503096",
+            "country": "IN"
+          }
+        ],
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-age",
+            "valueAge": {
+              "value": 37,
+              "unit": "years",
+              "system": "http://unitsofmeasure.org",
+              "code": "a"
+            }
+          }
+        ],
+        "bloodGroup": "B-",
+        "conditions": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "399211009",
+                  "display": "Chronic kidney disease",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Chronic kidney disease"
+            },
+            "onsetDateTime": "2020-06-10",
+            "recordedDate": "2025-06-14"
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "235856003",
+                  "display": "Liver disease",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Liver disease"
+            },
+            "onsetDateTime": "2024-10-18",
+            "recordedDate": "2025-05-18"
+          }
+        ],
+        "createdAt": "2026-02-14T13:53:54.493702",
+        "abha_number": "19-3696-6683-8991"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/practitioner-009",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-009",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.nmc.org.in",
+            "value": "MCI-56273"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "text": "Dr. Jyoti Pillai",
+            "given": [
+              "Jyoti"
+            ],
+            "family": "Pillai"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-8748605695",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "dr.jyoti.pillai@hospital.in",
+            "use": "work"
+          }
+        ],
+        "gender": "male",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "MD"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "394589003",
+                  "display": "Nephrology"
+                }
+              ],
+              "text": "Nephrology"
+            }
+          }
+        ],
+        "specialty": {
+          "code": "394589003",
+          "display": "Nephrology"
+        }
+      }
+    },
+    {
+      "fullUrl": "Organization/org-004",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-004",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://facility.ndhm.gov.in",
+            "value": "IN-ORG-004"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Private"
+          }
+        ],
+        "name": "Manipal Hospitals",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9156159879",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "contact@manipalhospitals.in",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "physical",
+            "city": "Bangalore",
+            "state": "Karnataka",
+            "country": "IN"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,300 @@
+{
+  "resourceType": "Bundle",
+  "id": "dccc8b2b-5d51-4777-a90c-d1d11b415db3",
+  "type": "document",
+  "timestamp": "2026-02-03T16:10:02.635034",
+  "identifier": {
+    "system": "https://ndhm.in/bundle",
+    "value": "dccc8b2b-5d51-4777-a90c-d1d11b415db3"
+  },
+  "meta": {
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ],
+    "lastUpdated": "2026-02-14T13:55:13.306060"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:Composition-3612aea1",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "Composition-3612aea1",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "440545006",
+              "display": "Prescription record"
+            }
+          ],
+          "text": "Prescription"
+        },
+        "subject": {
+          "reference": "Patient/88762710444884",
+          "display": "Ashok Pandey"
+        },
+        "date": "2026-02-03T16:10:02.635034",
+        "author": [
+          {
+            "reference": "Practitioner/practitioner-003",
+            "display": "Dr. Mahesh Das"
+          }
+        ],
+        "title": "Prescription",
+        "custodian": {
+          "reference": "Organization/org-005",
+          "display": "Max Healthcare"
+        },
+        "section": [
+          {
+            "title": "Medication List",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "10160-0",
+                  "display": "Medication list"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div><table><tr><th>Medicine</th><th>Dose</th><th>Frequency</th><th>Duration</th></tr><tr><td>Metformin</td><td>500mg</td><td>BD (Twice daily)</td><td>30 days</td></tr><tr><td>Atorvastatin</td><td>10mg</td><td>HS (At bedtime)</td><td>30 days</td></tr><tr><td>Pantoprazole</td><td>40mg</td><td>OD (Once daily)</td><td>30 days</td></tr></table></div>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "Patient/88762710444884",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "88762710444884",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NNIND",
+                  "display": "National Person Identifier - India"
+                }
+              ],
+              "text": "ABHA Number"
+            },
+            "system": "https://healthid.ndhm.gov.in",
+            "value": "88-7627-1044-4884"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "text": "Ashok Pandey",
+            "given": [
+              "Ashok"
+            ],
+            "family": "Pandey"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9234873880",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "ashok.pandey@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "other",
+        "birthDate": "1957-04-20",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "text": "191, Station Road, Chennai, Tamil Nadu 609456",
+            "line": [
+              "191",
+              "Station Road"
+            ],
+            "city": "Chennai",
+            "state": "Tamil Nadu",
+            "postalCode": "609456",
+            "country": "IN"
+          }
+        ],
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-age",
+            "valueAge": {
+              "value": 68,
+              "unit": "years",
+              "system": "http://unitsofmeasure.org",
+              "code": "a"
+            }
+          }
+        ],
+        "bloodGroup": "AB+",
+        "conditions": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "84229001",
+                  "display": "Malaria",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Malaria"
+            },
+            "onsetDateTime": "2024-04-17",
+            "recordedDate": "2024-11-06"
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "235856003",
+                  "display": "Liver disease",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Liver disease"
+            },
+            "onsetDateTime": "2025-08-03",
+            "recordedDate": "2026-02-09"
+          }
+        ],
+        "createdAt": "2026-02-14T13:53:54.490225",
+        "abha_number": "88-7627-1044-4884"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/practitioner-003",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-003",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.nmc.org.in",
+            "value": "MCI-41842"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "text": "Dr. Mahesh Das",
+            "given": [
+              "Mahesh"
+            ],
+            "family": "Das"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9662881716",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "dr.mahesh.das@hospital.in",
+            "use": "work"
+          }
+        ],
+        "gender": "male",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "MD"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "394591006",
+                  "display": "Neurology"
+                }
+              ],
+              "text": "Neurology"
+            }
+          }
+        ],
+        "specialty": {
+          "code": "394591006",
+          "display": "Neurology"
+        }
+      }
+    },
+    {
+      "fullUrl": "Organization/org-005",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-005",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://facility.ndhm.gov.in",
+            "value": "IN-ORG-005"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Private"
+          }
+        ],
+        "name": "Max Healthcare",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9907774271",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "contact@maxhealthcare.in",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "physical",
+            "city": "Delhi",
+            "state": "Delhi",
+            "country": "IN"
+          }
+        ]
+      }
+    }
+  ]
+}
