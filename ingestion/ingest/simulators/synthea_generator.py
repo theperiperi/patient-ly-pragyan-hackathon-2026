@@ -201,7 +201,7 @@ class SyntheaGenerator:
     def generate_with_synthea(
         self,
         population: int = 5,
-        state: str = "Massachusetts",
+        state: str | None = None,
         city: str | None = None,
         seed: int | None = None,
         output_dir: str | None = None,
@@ -231,12 +231,13 @@ class SyntheaGenerator:
             "--exporter.hospital.fhir.export=false",
             "--exporter.practitioner.fhir.export=false",
             "--exporter.baseDirectory=" + str(out_dir),
-            state,
         ]
+        if state:
+            cmd.append(state)
         if city:
             cmd.append(city)
 
-        print(f"  Running: {' '.join(cmd[:4])} ... -p {population} {state}")
+        print(f"  Running: {' '.join(cmd[:4])} ... -p {population}" + (f" {state}" if state else ""))
         result = subprocess.run(cmd, capture_output=True, text=True)
         if result.returncode != 0:
             # Synthea prints progress to stderr, actual errors are rare
