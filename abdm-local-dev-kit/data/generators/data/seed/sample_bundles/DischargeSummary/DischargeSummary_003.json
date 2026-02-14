@@ -1,0 +1,320 @@
+{
+  "resourceType": "Bundle",
+  "id": "9f2495b4-86e4-4b7c-8733-9b7ecbf7c3ac",
+  "type": "document",
+  "timestamp": "2026-02-13T23:06:09.304877",
+  "identifier": {
+    "system": "https://ndhm.in/bundle",
+    "value": "9f2495b4-86e4-4b7c-8733-9b7ecbf7c3ac"
+  },
+  "meta": {
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ],
+    "lastUpdated": "2026-02-14T13:55:13.295722"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:Composition-693357ad",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "Composition-693357ad",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "373942005",
+              "display": "Discharge Summary"
+            }
+          ],
+          "text": "Discharge Summary"
+        },
+        "subject": {
+          "reference": "Patient/43942874727650",
+          "display": "Subhas Kapoor"
+        },
+        "encounter": {
+          "reference": "Encounter/Encounter-555cb834"
+        },
+        "date": "2026-02-13T23:06:09.304877",
+        "author": [
+          {
+            "reference": "Practitioner/practitioner-004",
+            "display": "Dr. Deepa Sharma"
+          }
+        ],
+        "title": "Discharge Summary",
+        "custodian": {
+          "reference": "Organization/org-002",
+          "display": "Fortis Healthcare"
+        },
+        "section": [
+          {
+            "title": "Chief Complaints",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "422843007",
+                  "display": "Chief complaint section"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>Patient presented with complaints of fever and cough for 5 days</div>"
+            }
+          },
+          {
+            "title": "Medical History",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "371529009",
+                  "display": "History and physical report"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>No known medical conditions</div>"
+            }
+          },
+          {
+            "title": "Hospital Course",
+            "text": {
+              "status": "generated",
+              "div": "<div>Patient admitted and treated with antibiotics. Condition improved over 5 days.</div>"
+            }
+          },
+          {
+            "title": "Discharge Medications",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "10183-2",
+                  "display": "Discharge medication"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>1. Azithromycin 500mg OD for 5 days<br/>2. Paracetamol 650mg TDS PRN</div>"
+            }
+          },
+          {
+            "title": "Follow-up",
+            "text": {
+              "status": "generated",
+              "div": "<div>Follow-up after 1 week</div>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "Patient/43942874727650",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "43942874727650",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NNIND",
+                  "display": "National Person Identifier - India"
+                }
+              ],
+              "text": "ABHA Number"
+            },
+            "system": "https://healthid.ndhm.gov.in",
+            "value": "43-9428-7472-7650"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "text": "Subhas Kapoor",
+            "given": [
+              "Subhas"
+            ],
+            "family": "Kapoor"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-7460298915",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "subhas.kapoor@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1999-11-15",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "text": "343, MG Road, Mumbai, Maharashtra 402767",
+            "line": [
+              "343",
+              "MG Road"
+            ],
+            "city": "Mumbai",
+            "state": "Maharashtra",
+            "postalCode": "402767",
+            "country": "IN"
+          }
+        ],
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-age",
+            "valueAge": {
+              "value": 26,
+              "unit": "years",
+              "system": "http://unitsofmeasure.org",
+              "code": "a"
+            }
+          }
+        ],
+        "bloodGroup": "O-",
+        "conditions": [],
+        "createdAt": "2026-02-14T13:53:54.490790",
+        "abha_number": "43-9428-7472-7650"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/practitioner-004",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-004",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.nmc.org.in",
+            "value": "MCI-86399"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "text": "Dr. Deepa Sharma",
+            "given": [
+              "Deepa"
+            ],
+            "family": "Sharma"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-7644189678",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "dr.deepa.sharma@hospital.in",
+            "use": "work"
+          }
+        ],
+        "gender": "female",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "MD"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "394584008",
+                  "display": "Gastroenterology"
+                }
+              ],
+              "text": "Gastroenterology"
+            }
+          }
+        ],
+        "specialty": {
+          "code": "394584008",
+          "display": "Gastroenterology"
+        }
+      }
+    },
+    {
+      "fullUrl": "Organization/org-002",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-002",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://facility.ndhm.gov.in",
+            "value": "IN-ORG-002"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Private"
+          }
+        ],
+        "name": "Fortis Healthcare",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9578547749",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "contact@fortishealthcare.in",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "physical",
+            "city": "Delhi",
+            "state": "Delhi",
+            "country": "IN"
+          }
+        ]
+      }
+    }
+  ]
+}

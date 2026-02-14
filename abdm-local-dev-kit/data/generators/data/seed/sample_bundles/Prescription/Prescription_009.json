@@ -1,0 +1,300 @@
+{
+  "resourceType": "Bundle",
+  "id": "8eda8dd1-ea7e-4937-b7b5-6c0933522190",
+  "type": "document",
+  "timestamp": "2026-02-01T16:20:04.891630",
+  "identifier": {
+    "system": "https://ndhm.in/bundle",
+    "value": "8eda8dd1-ea7e-4937-b7b5-6c0933522190"
+  },
+  "meta": {
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ],
+    "lastUpdated": "2026-02-14T13:55:13.304489"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:Composition-d1b93e8a",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "Composition-d1b93e8a",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "440545006",
+              "display": "Prescription record"
+            }
+          ],
+          "text": "Prescription"
+        },
+        "subject": {
+          "reference": "Patient/15690085868933",
+          "display": "Lakshmi Kulkarni"
+        },
+        "date": "2026-02-01T16:20:04.891630",
+        "author": [
+          {
+            "reference": "Practitioner/practitioner-008",
+            "display": "Dr. Jyoti Kumar"
+          }
+        ],
+        "title": "Prescription",
+        "custodian": {
+          "reference": "Organization/org-004",
+          "display": "Manipal Hospitals"
+        },
+        "section": [
+          {
+            "title": "Medication List",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "10160-0",
+                  "display": "Medication list"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div><table><tr><th>Medicine</th><th>Dose</th><th>Frequency</th><th>Duration</th></tr><tr><td>Pantoprazole</td><td>40mg</td><td>OD (Once daily)</td><td>30 days</td></tr><tr><td>Metformin</td><td>500mg</td><td>BD (Twice daily)</td><td>30 days</td></tr></table></div>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "Patient/15690085868933",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "15690085868933",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NNIND",
+                  "display": "National Person Identifier - India"
+                }
+              ],
+              "text": "ABHA Number"
+            },
+            "system": "https://healthid.ndhm.gov.in",
+            "value": "15-6900-8586-8933"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "text": "Lakshmi Kulkarni",
+            "given": [
+              "Lakshmi"
+            ],
+            "family": "Kulkarni"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-8781819473",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "lakshmi.kulkarni@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1980-12-09",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "text": "664, Nehru Street, Bangalore, Karnataka 569555",
+            "line": [
+              "664",
+              "Nehru Street"
+            ],
+            "city": "Bangalore",
+            "state": "Karnataka",
+            "postalCode": "569555",
+            "country": "IN"
+          }
+        ],
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-age",
+            "valueAge": {
+              "value": 45,
+              "unit": "years",
+              "system": "http://unitsofmeasure.org",
+              "code": "a"
+            }
+          }
+        ],
+        "bloodGroup": "O+",
+        "conditions": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "73211009",
+                  "display": "Diabetes mellitus",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Diabetes mellitus"
+            },
+            "onsetDateTime": "2024-05-29",
+            "recordedDate": "2024-09-25"
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "56265001",
+                  "display": "Heart disease",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Heart disease"
+            },
+            "onsetDateTime": "2017-04-08",
+            "recordedDate": "2021-12-28"
+          }
+        ],
+        "createdAt": "2026-02-14T13:53:54.492965",
+        "abha_number": "15-6900-8586-8933"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/practitioner-008",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-008",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.nmc.org.in",
+            "value": "MCI-52636"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "text": "Dr. Jyoti Kumar",
+            "given": [
+              "Jyoti"
+            ],
+            "family": "Kumar"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-7644433887",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "dr.jyoti.kumar@hospital.in",
+            "use": "work"
+          }
+        ],
+        "gender": "male",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "MD"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "394582007",
+                  "display": "Dermatology"
+                }
+              ],
+              "text": "Dermatology"
+            }
+          }
+        ],
+        "specialty": {
+          "code": "394582007",
+          "display": "Dermatology"
+        }
+      }
+    },
+    {
+      "fullUrl": "Organization/org-004",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-004",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://facility.ndhm.gov.in",
+            "value": "IN-ORG-004"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Private"
+          }
+        ],
+        "name": "Manipal Hospitals",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9156159879",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "contact@manipalhospitals.in",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "physical",
+            "city": "Bangalore",
+            "state": "Karnataka",
+            "country": "IN"
+          }
+        ]
+      }
+    }
+  ]
+}

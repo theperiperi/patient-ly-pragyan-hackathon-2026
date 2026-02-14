@@ -1,0 +1,320 @@
+{
+  "resourceType": "Bundle",
+  "id": "e801627e-1685-4485-834a-9061b1106963",
+  "type": "document",
+  "timestamp": "2026-02-15T12:36:49.622708",
+  "identifier": {
+    "system": "https://ndhm.in/bundle",
+    "value": "e801627e-1685-4485-834a-9061b1106963"
+  },
+  "meta": {
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ],
+    "lastUpdated": "2026-02-14T13:55:13.298908"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:Composition-163e1ab0",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "Composition-163e1ab0",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "373942005",
+              "display": "Discharge Summary"
+            }
+          ],
+          "text": "Discharge Summary"
+        },
+        "subject": {
+          "reference": "Patient/67681278031793",
+          "display": "Bina Verma"
+        },
+        "encounter": {
+          "reference": "Encounter/Encounter-71f8463d"
+        },
+        "date": "2026-02-15T12:36:49.622708",
+        "author": [
+          {
+            "reference": "Practitioner/practitioner-010",
+            "display": "Dr. Prakash Desai"
+          }
+        ],
+        "title": "Discharge Summary",
+        "custodian": {
+          "reference": "Organization/org-003",
+          "display": "AIIMS"
+        },
+        "section": [
+          {
+            "title": "Chief Complaints",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "422843007",
+                  "display": "Chief complaint section"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>Patient presented with complaints of fever and cough for 5 days</div>"
+            }
+          },
+          {
+            "title": "Medical History",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "371529009",
+                  "display": "History and physical report"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>No known medical conditions</div>"
+            }
+          },
+          {
+            "title": "Hospital Course",
+            "text": {
+              "status": "generated",
+              "div": "<div>Patient admitted and treated with antibiotics. Condition improved over 5 days.</div>"
+            }
+          },
+          {
+            "title": "Discharge Medications",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "10183-2",
+                  "display": "Discharge medication"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>1. Azithromycin 500mg OD for 5 days<br/>2. Paracetamol 650mg TDS PRN</div>"
+            }
+          },
+          {
+            "title": "Follow-up",
+            "text": {
+              "status": "generated",
+              "div": "<div>Follow-up after 1 week</div>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "Patient/67681278031793",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "67681278031793",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NNIND",
+                  "display": "National Person Identifier - India"
+                }
+              ],
+              "text": "ABHA Number"
+            },
+            "system": "https://healthid.ndhm.gov.in",
+            "value": "67-6812-7803-1793"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "text": "Bina Verma",
+            "given": [
+              "Bina"
+            ],
+            "family": "Verma"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-7064892033",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "bina.verma@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2006-09-01",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "text": "748, Ring Road, Bhopal, Madhya Pradesh 466878",
+            "line": [
+              "748",
+              "Ring Road"
+            ],
+            "city": "Bhopal",
+            "state": "Madhya Pradesh",
+            "postalCode": "466878",
+            "country": "IN"
+          }
+        ],
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-age",
+            "valueAge": {
+              "value": 19,
+              "unit": "years",
+              "system": "http://unitsofmeasure.org",
+              "code": "a"
+            }
+          }
+        ],
+        "bloodGroup": "O-",
+        "conditions": [],
+        "createdAt": "2026-02-14T13:53:54.489952",
+        "abha_number": "67-6812-7803-1793"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/practitioner-010",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-010",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.nmc.org.in",
+            "value": "MCI-95935"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "text": "Dr. Prakash Desai",
+            "given": [
+              "Prakash"
+            ],
+            "family": "Desai"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-8275211450",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "dr.prakash.desai@hospital.in",
+            "use": "work"
+          }
+        ],
+        "gender": "female",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "MD"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "394583002",
+                  "display": "Endocrinology"
+                }
+              ],
+              "text": "Endocrinology"
+            }
+          }
+        ],
+        "specialty": {
+          "code": "394583002",
+          "display": "Endocrinology"
+        }
+      }
+    },
+    {
+      "fullUrl": "Organization/org-003",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-003",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://facility.ndhm.gov.in",
+            "value": "IN-ORG-003"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Government"
+          }
+        ],
+        "name": "AIIMS",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-7109019058",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "contact@aiims.in",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "physical",
+            "city": "Delhi",
+            "state": "Delhi",
+            "country": "IN"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,286 @@
+{
+  "resourceType": "Bundle",
+  "id": "6fa8fd9a-8759-4eb0-be02-5e5c7d621d41",
+  "type": "document",
+  "timestamp": "2026-02-14T11:57:44.311771",
+  "identifier": {
+    "system": "https://ndhm.in/bundle",
+    "value": "6fa8fd9a-8759-4eb0-be02-5e5c7d621d41"
+  },
+  "meta": {
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ],
+    "lastUpdated": "2026-02-14T13:55:13.310910"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:Composition-abb3a412",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "Composition-abb3a412",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "721981007",
+              "display": "Diagnostic Report"
+            }
+          ],
+          "text": "Diagnostic Report"
+        },
+        "subject": {
+          "reference": "Patient/72174779319878",
+          "display": "Mohan Desai"
+        },
+        "date": "2026-02-14T11:57:44.311771",
+        "author": [
+          {
+            "reference": "Practitioner/practitioner-008",
+            "display": "Dr. Jyoti Kumar"
+          }
+        ],
+        "title": "Laboratory Diagnostic Report",
+        "custodian": {
+          "reference": "Organization/org-005",
+          "display": "Max Healthcare"
+        },
+        "section": [
+          {
+            "title": "Laboratory Results",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "30954-2",
+                  "display": "Laboratory studies"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div><table><tr><th>Test</th><th>Result</th><th>Unit</th><th>Reference Range</th></tr><tr><td>Hemoglobin</td><td>12.4</td><td>g/dL</td><td>12-16</td></tr><tr><td>Total WBC Count</td><td>7929</td><td>cells/cumm</td><td>4000-11000</td></tr><tr><td>Blood Sugar (Fasting)</td><td>70</td><td>mg/dL</td><td>70-110</td></tr><tr><td>Serum Creatinine</td><td>0.87</td><td>mg/dL</td><td>0.6-1.2</td></tr><tr><td>Total Cholesterol</td><td>152</td><td>mg/dL</td><td><200</td></tr></table></div>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "Patient/72174779319878",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "72174779319878",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NNIND",
+                  "display": "National Person Identifier - India"
+                }
+              ],
+              "text": "ABHA Number"
+            },
+            "system": "https://healthid.ndhm.gov.in",
+            "value": "72-1747-7931-9878"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "text": "Mohan Desai",
+            "given": [
+              "Mohan"
+            ],
+            "family": "Desai"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-7664798814",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "mohan.desai@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "2001-06-20",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "text": "569, Commercial Street, Patna, Bihar 801452",
+            "line": [
+              "569",
+              "Commercial Street"
+            ],
+            "city": "Patna",
+            "state": "Bihar",
+            "postalCode": "801452",
+            "country": "IN"
+          }
+        ],
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-age",
+            "valueAge": {
+              "value": 24,
+              "unit": "years",
+              "system": "http://unitsofmeasure.org",
+              "code": "a"
+            }
+          }
+        ],
+        "bloodGroup": "B+",
+        "conditions": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "56717001",
+                  "display": "Tuberculosis",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Tuberculosis"
+            },
+            "onsetDateTime": "2023-10-25",
+            "recordedDate": "2024-10-27"
+          }
+        ],
+        "createdAt": "2026-02-14T13:53:54.492757",
+        "abha_number": "72-1747-7931-9878"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/practitioner-008",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-008",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.nmc.org.in",
+            "value": "MCI-52636"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "text": "Dr. Jyoti Kumar",
+            "given": [
+              "Jyoti"
+            ],
+            "family": "Kumar"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-7644433887",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "dr.jyoti.kumar@hospital.in",
+            "use": "work"
+          }
+        ],
+        "gender": "male",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "MD"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "394582007",
+                  "display": "Dermatology"
+                }
+              ],
+              "text": "Dermatology"
+            }
+          }
+        ],
+        "specialty": {
+          "code": "394582007",
+          "display": "Dermatology"
+        }
+      }
+    },
+    {
+      "fullUrl": "Organization/org-005",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-005",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://facility.ndhm.gov.in",
+            "value": "IN-ORG-005"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Private"
+          }
+        ],
+        "name": "Max Healthcare",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9907774271",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "contact@maxhealthcare.in",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "physical",
+            "city": "Delhi",
+            "state": "Delhi",
+            "country": "IN"
+          }
+        ]
+      }
+    }
+  ]
+}

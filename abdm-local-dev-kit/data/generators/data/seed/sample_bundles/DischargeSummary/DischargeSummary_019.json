@@ -1,0 +1,335 @@
+{
+  "resourceType": "Bundle",
+  "id": "3836315f-304b-4774-ad6b-b4637dd4c7f0",
+  "type": "document",
+  "timestamp": "2026-02-05T18:07:27.510417",
+  "identifier": {
+    "system": "https://ndhm.in/bundle",
+    "value": "3836315f-304b-4774-ad6b-b4637dd4c7f0"
+  },
+  "meta": {
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ],
+    "lastUpdated": "2026-02-14T13:55:13.301344"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:Composition-965ea1ce",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "Composition-965ea1ce",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "373942005",
+              "display": "Discharge Summary"
+            }
+          ],
+          "text": "Discharge Summary"
+        },
+        "subject": {
+          "reference": "Patient/69461584104483",
+          "display": "Nisha Choudhury"
+        },
+        "encounter": {
+          "reference": "Encounter/Encounter-0cb96c11"
+        },
+        "date": "2026-02-05T18:07:27.510417",
+        "author": [
+          {
+            "reference": "Practitioner/practitioner-009",
+            "display": "Dr. Jyoti Pillai"
+          }
+        ],
+        "title": "Discharge Summary",
+        "custodian": {
+          "reference": "Organization/org-003",
+          "display": "AIIMS"
+        },
+        "section": [
+          {
+            "title": "Chief Complaints",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "422843007",
+                  "display": "Chief complaint section"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>Patient presented with complaints of fever and cough for 5 days</div>"
+            }
+          },
+          {
+            "title": "Medical History",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "371529009",
+                  "display": "History and physical report"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>Known conditions: Hypertension</div>"
+            }
+          },
+          {
+            "title": "Hospital Course",
+            "text": {
+              "status": "generated",
+              "div": "<div>Patient admitted and treated with antibiotics. Condition improved over 5 days.</div>"
+            }
+          },
+          {
+            "title": "Discharge Medications",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "10183-2",
+                  "display": "Discharge medication"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>1. Azithromycin 500mg OD for 5 days<br/>2. Paracetamol 650mg TDS PRN</div>"
+            }
+          },
+          {
+            "title": "Follow-up",
+            "text": {
+              "status": "generated",
+              "div": "<div>Follow-up after 1 week</div>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "Patient/69461584104483",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "69461584104483",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NNIND",
+                  "display": "National Person Identifier - India"
+                }
+              ],
+              "text": "ABHA Number"
+            },
+            "system": "https://healthid.ndhm.gov.in",
+            "value": "69-4615-8410-4483"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "text": "Nisha Choudhury",
+            "given": [
+              "Nisha"
+            ],
+            "family": "Choudhury"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9678803137",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "nisha.choudhury@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1947-08-28",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "text": "536, Church Road, Patna, Bihar 802336",
+            "line": [
+              "536",
+              "Church Road"
+            ],
+            "city": "Patna",
+            "state": "Bihar",
+            "postalCode": "802336",
+            "country": "IN"
+          }
+        ],
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-age",
+            "valueAge": {
+              "value": 78,
+              "unit": "years",
+              "system": "http://unitsofmeasure.org",
+              "code": "a"
+            }
+          }
+        ],
+        "bloodGroup": "AB-",
+        "conditions": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "38341003",
+                  "display": "Hypertension",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Hypertension"
+            },
+            "onsetDateTime": "2023-07-27",
+            "recordedDate": "2025-07-25"
+          }
+        ],
+        "createdAt": "2026-02-14T13:53:54.490339",
+        "abha_number": "69-4615-8410-4483"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/practitioner-009",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-009",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.nmc.org.in",
+            "value": "MCI-56273"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "text": "Dr. Jyoti Pillai",
+            "given": [
+              "Jyoti"
+            ],
+            "family": "Pillai"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-8748605695",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "dr.jyoti.pillai@hospital.in",
+            "use": "work"
+          }
+        ],
+        "gender": "male",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "MD"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "394589003",
+                  "display": "Nephrology"
+                }
+              ],
+              "text": "Nephrology"
+            }
+          }
+        ],
+        "specialty": {
+          "code": "394589003",
+          "display": "Nephrology"
+        }
+      }
+    },
+    {
+      "fullUrl": "Organization/org-003",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-003",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://facility.ndhm.gov.in",
+            "value": "IN-ORG-003"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Government"
+          }
+        ],
+        "name": "AIIMS",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-7109019058",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "contact@aiims.in",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "physical",
+            "city": "Delhi",
+            "state": "Delhi",
+            "country": "IN"
+          }
+        ]
+      }
+    }
+  ]
+}

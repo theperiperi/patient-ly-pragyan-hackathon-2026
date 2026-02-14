@@ -1,0 +1,314 @@
+{
+  "resourceType": "Bundle",
+  "id": "0673fc1e-504c-4a6e-bd5d-c0da3d893331",
+  "type": "document",
+  "timestamp": "2026-01-23T01:10:29.263842",
+  "identifier": {
+    "system": "https://ndhm.in/bundle",
+    "value": "0673fc1e-504c-4a6e-bd5d-c0da3d893331"
+  },
+  "meta": {
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ],
+    "lastUpdated": "2026-02-14T13:55:13.305450"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:Composition-1f42ac63",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "Composition-1f42ac63",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "440545006",
+              "display": "Prescription record"
+            }
+          ],
+          "text": "Prescription"
+        },
+        "subject": {
+          "reference": "Patient/21186314595172",
+          "display": "Kiran Singh"
+        },
+        "date": "2026-01-23T01:10:29.263842",
+        "author": [
+          {
+            "reference": "Practitioner/practitioner-009",
+            "display": "Dr. Jyoti Pillai"
+          }
+        ],
+        "title": "Prescription",
+        "custodian": {
+          "reference": "Organization/org-001",
+          "display": "Apollo Hospitals"
+        },
+        "section": [
+          {
+            "title": "Medication List",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "10160-0",
+                  "display": "Medication list"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div><table><tr><th>Medicine</th><th>Dose</th><th>Frequency</th><th>Duration</th></tr><tr><td>Aspirin</td><td>75mg</td><td>OD (Once daily)</td><td>30 days</td></tr><tr><td>Metformin</td><td>500mg</td><td>BD (Twice daily)</td><td>30 days</td></tr><tr><td>Pantoprazole</td><td>40mg</td><td>OD (Once daily)</td><td>30 days</td></tr></table></div>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "Patient/21186314595172",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "21186314595172",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NNIND",
+                  "display": "National Person Identifier - India"
+                }
+              ],
+              "text": "ABHA Number"
+            },
+            "system": "https://healthid.ndhm.gov.in",
+            "value": "21-1863-1459-5172"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "text": "Kiran Singh",
+            "given": [
+              "Kiran"
+            ],
+            "family": "Singh"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-7395832890",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "kiran.singh@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1947-10-29",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "text": "845, Church Road, Kolkata, West Bengal 702251",
+            "line": [
+              "845",
+              "Church Road"
+            ],
+            "city": "Kolkata",
+            "state": "West Bengal",
+            "postalCode": "702251",
+            "country": "IN"
+          }
+        ],
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-age",
+            "valueAge": {
+              "value": 78,
+              "unit": "years",
+              "system": "http://unitsofmeasure.org",
+              "code": "a"
+            }
+          }
+        ],
+        "bloodGroup": "A+",
+        "conditions": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "38341003",
+                  "display": "Hypertension",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Hypertension"
+            },
+            "onsetDateTime": "2022-01-19",
+            "recordedDate": "2023-03-21"
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "44054006",
+                  "display": "Type 2 diabetes mellitus",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Type 2 diabetes mellitus"
+            },
+            "onsetDateTime": "2019-01-13",
+            "recordedDate": "2021-03-25"
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "75544007",
+                  "display": "Typhoid fever",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Typhoid fever"
+            },
+            "onsetDateTime": "2018-02-26",
+            "recordedDate": "2021-09-27"
+          }
+        ],
+        "createdAt": "2026-02-14T13:53:54.488597",
+        "abha_number": "21-1863-1459-5172"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/practitioner-009",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-009",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.nmc.org.in",
+            "value": "MCI-56273"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "text": "Dr. Jyoti Pillai",
+            "given": [
+              "Jyoti"
+            ],
+            "family": "Pillai"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-8748605695",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "dr.jyoti.pillai@hospital.in",
+            "use": "work"
+          }
+        ],
+        "gender": "male",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "MD"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "394589003",
+                  "display": "Nephrology"
+                }
+              ],
+              "text": "Nephrology"
+            }
+          }
+        ],
+        "specialty": {
+          "code": "394589003",
+          "display": "Nephrology"
+        }
+      }
+    },
+    {
+      "fullUrl": "Organization/org-001",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-001",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://facility.ndhm.gov.in",
+            "value": "IN-ORG-001"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Private"
+          }
+        ],
+        "name": "Apollo Hospitals",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-8785016751",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "contact@apollohospitals.in",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "physical",
+            "city": "Bangalore",
+            "state": "Karnataka",
+            "country": "IN"
+          }
+        ]
+      }
+    }
+  ]
+}
