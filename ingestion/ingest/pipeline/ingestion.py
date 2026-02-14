@@ -18,6 +18,7 @@ from ingest.adapters.ehr_adapter import EHRAdapter
 from ingest.adapters.handwritten_adapter import HandwrittenAdapter
 from ingest.adapters.realtime_vitals_adapter import RealtimeVitalsAdapter
 from ingest.adapters.scans_labs_adapter import ScansLabsAdapter
+from ingest.adapters.synthea_adapter import SyntheaAdapter
 from ingest.api.vlm_client import MockVLMClient
 
 
@@ -26,6 +27,7 @@ class IngestionPipeline:
 
     def __init__(self, adapters: list[BaseAdapter] | None = None):
         self.adapters = adapters or [
+            SyntheaAdapter(),  # Check Synthea bundles first (most specific)
             EHRAdapter(),
             WearableAdapter(),
             AmbulanceAdapter(),
