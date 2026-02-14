@@ -1,0 +1,12 @@
+MSH|^~\&|HIS|AIIMS_DELHI|PATIENTLY|FHIR|20260214120000||ADT^A01|MSG001|P|2.5
+EVN|A01|20260214120000
+PID|||MRN-2024-001234||Kumar^Rajesh||19750815|M|||12 MG Road^Apt 4B^New Delhi^Delhi^110001||+919876543210
+PV1||E|ED^^^AIIMS||||DR123^Sharma^Anita|||||||||||VN001|||||||||||||||||||||||||20260214100000
+DG1|1||I21.9^Acute myocardial infarction, unspecified^I10|||A
+DG1|2||I10^Essential hypertension^I10|||A
+OBX|1|NM|8867-4^Heart rate^LN||102|/min|60-100|H|||F
+OBX|2|NM|8480-6^Systolic blood pressure^LN||158|mm[Hg]|90-140|H|||F
+OBX|3|NM|8462-4^Diastolic blood pressure^LN||94|mm[Hg]|60-90|H|||F
+OBX|4|NM|2708-6^Oxygen saturation^LN||95|%|95-100|L|||F
+OBX|5|NM|8310-5^Body temperature^LN||37.2|Cel|36.5-37.5||||F
+OBX|6|NM|9279-1^Respiratory rate^LN||22|/min|12-20|H|||F

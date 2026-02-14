@@ -1,0 +1,62 @@
+{
+  "device": "Philips IntelliVue MX800",
+  "patient_id": "MRN-2024-001234",
+  "patient_name": "Rajesh Kumar",
+  "location": "ED Bed 3",
+  "readings": [
+    {
+      "timestamp": "2026-02-14T10:35:00Z",
+      "heart_rate": 100,
+      "spo2": 95,
+      "bp_sys": 152,
+      "bp_dia": 92,
+      "resp_rate": 22,
+      "temp": 37.2
+    },
+    {
+      "timestamp": "2026-02-14T10:40:00Z",
+      "heart_rate": 98,
+      "spo2": 96,
+      "bp_sys": 148,
+      "bp_dia": 90,
+      "resp_rate": 20,
+      "temp": 37.1
+    },
+    {
+      "timestamp": "2026-02-14T10:45:00Z",
+      "heart_rate": 95,
+      "spo2": 96,
+      "bp_sys": 145,
+      "bp_dia": 88,
+      "resp_rate": 20,
+      "temp": 37.1
+    },
+    {
+      "timestamp": "2026-02-14T10:50:00Z",
+      "heart_rate": 92,
+      "spo2": 97,
+      "bp_sys": 142,
+      "bp_dia": 86,
+      "resp_rate": 18,
+      "temp": 37.0
+    },
+    {
+      "timestamp": "2026-02-14T10:55:00Z",
+      "heart_rate": 90,
+      "spo2": 97,
+      "bp_sys": 140,
+      "bp_dia": 85,
+      "resp_rate": 18,
+      "temp": 37.0
+    },
+    {
+      "timestamp": "2026-02-14T11:00:00Z",
+      "heart_rate": 88,
+      "spo2": 97,
+      "bp_sys": 138,
+      "bp_dia": 84,
+      "resp_rate": 18,
+      "temp": 36.9
+    }
+  ]
+}

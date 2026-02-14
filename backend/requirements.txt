@@ -1,0 +1,35 @@
+# FHIR resource models (Pydantic v2)
+fhir.resources>=8.0.0
+
+# HL7 v2 parsing
+hl7>=0.4.0
+
+# DICOM reading
+pydicom>=3.0.0
+
+# XML parsing
+lxml>=5.0.0
+
+# Image handling
+Pillow>=10.0.0
+
+# PDF text extraction
+pdfplumber>=0.10.0
+
+# VLM clients (Gemini primary, Together AI fallback)
+google-generativeai>=0.8.0
+together>=1.0.0
+
+# FastAPI server
+fastapi>=0.115.0
+uvicorn>=0.30.0
+python-multipart>=0.0.9
+
+# Testing
+pytest>=8.0.0
+
+# PDF generation (simulators)
+reportlab>=4.0.0
+
+# Utilities
+python-dateutil>=2.9.0
