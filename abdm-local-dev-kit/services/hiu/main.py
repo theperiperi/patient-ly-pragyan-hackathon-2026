@@ -10,6 +10,10 @@ import uvicorn
 
 from config import settings
 from middleware.logging import LoggingMiddleware
+import database
+
+# Import API routers
+from api import consent_management, data_collection, records_query
 
 # Configure logging
 logging.basicConfig(
@@ -21,8 +25,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Global database connection
-db: AsyncIOMotorDatabase = None
+# Database is managed by database module
 
 
 @asynccontextmanager
@@ -34,13 +37,39 @@ async def lifespan(app: FastAPI):
     """
     # Startup
     logger.info("Starting HIU service...")
-    global db
     try:
         client = AsyncIOMotorClient(settings.mongo_uri)
         db = client.get_database()
+        database.set_database(db)
         # Verify connection
         await client.admin.command("ping")
         logger.info("Successfully connected to MongoDB")
+
+        # Create indexes for HIU collections
+        await db.consent_requests.create_index("requestId", unique=True)
+        await db.consent_requests.create_index("consentRequestId")
+        await db.consent_requests.create_index("patient")
+        await db.consent_requests.create_index("status")
+
+        await db.consent_artefacts.create_index("artefactId", unique=True)
+        await db.consent_artefacts.create_index("consentRequestId")
+        await db.consent_artefacts.create_index("status")
+
+        await db.hi_requests.create_index("requestId", unique=True)
+        await db.hi_requests.create_index("transactionId")
+        await db.hi_requests.create_index("consentId")
+        await db.hi_requests.create_index("status")
+
+        await db.hi_transactions.create_index("transactionId", unique=True)
+        await db.hi_transactions.create_index("requestId")
+
+        await db.health_bundles.create_index("id")
+        await db.health_bundles.create_index("transactionId")
+        await db.health_bundles.create_index("patient.id")
+        await db.health_bundles.create_index("hiType")
+        await db.health_bundles.create_index("timestamp")
+
+        logger.info("Created MongoDB indexes for HIU collections")
     except Exception as e:
         logger.error(f"Failed to connect to MongoDB: {e}")
         raise
@@ -59,7 +88,7 @@ async def lifespan(app: FastAPI):
 # Create FastAPI app
 app = FastAPI(
     title=settings.service_name,
-    description="Health Information User (HIU) Service for ABDM",
+    description="Health Information User (HIU) Service for ABDM - Requests and collects patient health data via consent flow",
     version=settings.service_version,
     lifespan=lifespan,
 )
@@ -76,6 +105,11 @@ app.add_middleware(
 # Add logging middleware
 app.add_middleware(LoggingMiddleware)
 
+# Mount API routers
+app.include_router(consent_management.router, prefix="", tags=["Consent Management"])
+app.include_router(data_collection.router, prefix="", tags=["Health Information"])
+app.include_router(records_query.router, prefix="", tags=["Records Query"])
+
 
 @app.get("/health", tags=["Health"])
 async def health_check():
@@ -86,6 +120,7 @@ async def health_check():
     """
     try:
         # Check MongoDB connection
+        db = database.get_database()
         await db.command("ping")
         db_status = "healthy"
     except Exception as e:
@@ -108,7 +143,7 @@ async def get_service_info():
     """
     Get HIU service information.
 
-    Returns metadata about the HIU service including ID, name, and version.
+    Returns metadata about the HIU service including ID, name, and available endpoints.
     """
     return {
         "service": settings.service_name,
@@ -120,99 +155,22 @@ async def get_service_info():
             "health": "/health",
             "info": "/",
             "openapi": "/docs",
-            "requests": "/health-info/requests",
-            "consent": "/consent/list",
+
+            # Consent Management
+            "consent_request_init": "POST /v0.5/consent-requests/init",
+            "consent_request_callback": "POST /v0.5/consent-requests/on-init",
+            "consent_notification": "POST /v0.5/consents/hiu/notify",
+
+            # Health Information
+            "hi_request": "POST /v0.5/health-information/cm/request",
+            "hi_request_callback": "POST /v0.5/health-information/cm/on-request",
+
+            # Records Query
+            "patient_records": "GET /v0.5/patients/{abha}/records",
+            "bundle_retrieve": "GET /v0.5/health-bundles/{bundle_id}",
+            "list_hi_requests": "GET /v0.5/hi-requests",
+            "list_consent_requests": "GET /v0.5/consent-requests",
         }
-    }
-
-
-@app.post("/health-info/requests", tags=["Health Information"])
-async def request_health_information(request_data: dict):
-    """
-    Request health information from HIP via gateway.
-
-    This endpoint initiates a request for patient health information
-    following the ABDM HIU API specifications.
-
-    Args:
-        request_data: Request details including patient ID and data range
-
-    Returns:
-        Request acknowledgment with request ID and status
-    """
-    logger.info(f"Received health information request: {request_data}")
-
-    request_id = f"REQ-{datetime.utcnow().timestamp()}"
-
-    return {
-        "request_id": request_id,
-        "status": "initiated",
-        "message": "Health information request has been initiated",
-        "timestamp": datetime.utcnow().isoformat(),
-    }
-
-
-@app.get("/health-info/requests/{request_id}", tags=["Health Information"])
-async def get_request_status(request_id: str):
-    """
-    Get status of a health information request.
-
-    Args:
-        request_id: The ID of the request to check
-
-    Returns:
-        Request status and details
-    """
-    logger.info(f"Checking status of request: {request_id}")
-
-    return {
-        "request_id": request_id,
-        "status": "pending",
-        "created_at": datetime.utcnow().isoformat(),
-    }
-
-
-@app.post("/consent/list", tags=["Consent"])
-async def list_consents(query: dict):
-    """
-    List available consents for the HIU.
-
-    Returns a list of consents that allow this HIU to access patient data.
-
-    Args:
-        query: Query parameters for filtering consents
-
-    Returns:
-        List of consents and their details
-    """
-    logger.info(f"Listing consents with query: {query}")
-
-    return {
-        "consents": [],
-        "total": 0,
-        "timestamp": datetime.utcnow().isoformat(),
-    }
-
-
-@app.post("/consent/{consent_id}/data", tags=["Consent"])
-async def request_data_with_consent(consent_id: str, data_request: dict):
-    """
-    Request specific health data using an existing consent.
-
-    Args:
-        consent_id: The ID of the consent to use
-        data_request: Details of what data is being requested
-
-    Returns:
-        Data request acknowledgment
-    """
-    logger.info(f"Data request with consent {consent_id}: {data_request}")
-
-    return {
-        "status": "accepted",
-        "request_id": f"DATA-{datetime.utcnow().timestamp()}",
-        "consent_id": consent_id,
-        "timestamp": datetime.utcnow().isoformat(),
     }
 
 

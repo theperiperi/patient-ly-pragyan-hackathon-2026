@@ -2,7 +2,7 @@ import logging
 from datetime import datetime, timedelta
 from typing import Optional
 from fastapi import Depends, HTTPException, status
-from fastapi.security import HTTPBearer, HTTPAuthCredentials
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from jose import JWTError, jwt
 from pydantic import BaseModel
 
@@ -45,7 +45,7 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -
     return encoded_jwt
 
 
-def verify_token(credentials: HTTPAuthCredentials = Depends(security)) -> TokenData:
+def verify_token(credentials: HTTPAuthorizationCredentials = Depends(security)) -> TokenData:
     """
     Verify JWT token from Authorization header.
 
@@ -97,7 +97,7 @@ def get_current_user(token: TokenData = Depends(verify_token)) -> str:
 
 
 async def optional_token(
-    credentials: Optional[HTTPAuthCredentials] = Depends(security)
+    credentials: Optional[HTTPAuthorizationCredentials] = Depends(security)
 ) -> Optional[TokenData]:
     """
     Optional token verification - returns None if no token provided.

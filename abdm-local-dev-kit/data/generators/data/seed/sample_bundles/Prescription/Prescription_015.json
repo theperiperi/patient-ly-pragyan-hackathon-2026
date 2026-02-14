@@ -1,0 +1,286 @@
+{
+  "resourceType": "Bundle",
+  "id": "ce00d312-01f5-436b-9d14-bd08674f72a1",
+  "type": "document",
+  "timestamp": "2026-01-30T05:18:42.520873",
+  "identifier": {
+    "system": "https://ndhm.in/bundle",
+    "value": "ce00d312-01f5-436b-9d14-bd08674f72a1"
+  },
+  "meta": {
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ],
+    "lastUpdated": "2026-02-14T13:55:13.306354"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:Composition-aad4d994",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "Composition-aad4d994",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "440545006",
+              "display": "Prescription record"
+            }
+          ],
+          "text": "Prescription"
+        },
+        "subject": {
+          "reference": "Patient/72169239641772",
+          "display": "Mala Kumar"
+        },
+        "date": "2026-01-30T05:18:42.520873",
+        "author": [
+          {
+            "reference": "Practitioner/practitioner-005",
+            "display": "Dr. Sourav Reddy"
+          }
+        ],
+        "title": "Prescription",
+        "custodian": {
+          "reference": "Organization/org-005",
+          "display": "Max Healthcare"
+        },
+        "section": [
+          {
+            "title": "Medication List",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "10160-0",
+                  "display": "Medication list"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div><table><tr><th>Medicine</th><th>Dose</th><th>Frequency</th><th>Duration</th></tr><tr><td>Pantoprazole</td><td>40mg</td><td>OD (Once daily)</td><td>30 days</td></tr><tr><td>Aspirin</td><td>75mg</td><td>OD (Once daily)</td><td>30 days</td></tr><tr><td>Metformin</td><td>500mg</td><td>BD (Twice daily)</td><td>30 days</td></tr></table></div>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "Patient/72169239641772",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "72169239641772",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NNIND",
+                  "display": "National Person Identifier - India"
+                }
+              ],
+              "text": "ABHA Number"
+            },
+            "system": "https://healthid.ndhm.gov.in",
+            "value": "72-1692-3964-1772"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "text": "Mala Kumar",
+            "given": [
+              "Mala"
+            ],
+            "family": "Kumar"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9229743612",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "mala.kumar@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1965-11-10",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "text": "290, Main Road, Mumbai, Maharashtra 404254",
+            "line": [
+              "290",
+              "Main Road"
+            ],
+            "city": "Mumbai",
+            "state": "Maharashtra",
+            "postalCode": "404254",
+            "country": "IN"
+          }
+        ],
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-age",
+            "valueAge": {
+              "value": 60,
+              "unit": "years",
+              "system": "http://unitsofmeasure.org",
+              "code": "a"
+            }
+          }
+        ],
+        "bloodGroup": "B-",
+        "conditions": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "75544007",
+                  "display": "Typhoid fever",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Typhoid fever"
+            },
+            "onsetDateTime": "2016-07-23",
+            "recordedDate": "2021-04-15"
+          }
+        ],
+        "createdAt": "2026-02-14T13:53:54.493184",
+        "abha_number": "72-1692-3964-1772"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/practitioner-005",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-005",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.nmc.org.in",
+            "value": "MCI-31554"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "text": "Dr. Sourav Reddy",
+            "given": [
+              "Sourav"
+            ],
+            "family": "Reddy"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-7897905067",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "dr.sourav.reddy@hospital.in",
+            "use": "work"
+          }
+        ],
+        "gender": "female",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "MD"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "394585009",
+                  "display": "Obstetrics and gynecology"
+                }
+              ],
+              "text": "Obstetrics and gynecology"
+            }
+          }
+        ],
+        "specialty": {
+          "code": "394585009",
+          "display": "Obstetrics and gynecology"
+        }
+      }
+    },
+    {
+      "fullUrl": "Organization/org-005",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-005",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://facility.ndhm.gov.in",
+            "value": "IN-ORG-005"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Private"
+          }
+        ],
+        "name": "Max Healthcare",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9907774271",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "contact@maxhealthcare.in",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "physical",
+            "city": "Delhi",
+            "state": "Delhi",
+            "country": "IN"
+          }
+        ]
+      }
+    }
+  ]
+}

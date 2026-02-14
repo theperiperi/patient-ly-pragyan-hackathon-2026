@@ -1,0 +1,363 @@
+{
+  "resourceType": "Bundle",
+  "id": "513b58b9-a069-4c92-8649-f9475798e922",
+  "type": "document",
+  "timestamp": "2026-02-03T13:05:16.897183",
+  "identifier": {
+    "system": "https://ndhm.in/bundle",
+    "value": "513b58b9-a069-4c92-8649-f9475798e922"
+  },
+  "meta": {
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ],
+    "lastUpdated": "2026-02-14T13:55:13.300308"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:Composition-adbca285",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "Composition-adbca285",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "373942005",
+              "display": "Discharge Summary"
+            }
+          ],
+          "text": "Discharge Summary"
+        },
+        "subject": {
+          "reference": "Patient/21186314595172",
+          "display": "Kiran Singh"
+        },
+        "encounter": {
+          "reference": "Encounter/Encounter-409680ba"
+        },
+        "date": "2026-02-03T13:05:16.897183",
+        "author": [
+          {
+            "reference": "Practitioner/practitioner-001",
+            "display": "Dr. Tapas Choudhury"
+          }
+        ],
+        "title": "Discharge Summary",
+        "custodian": {
+          "reference": "Organization/org-004",
+          "display": "Manipal Hospitals"
+        },
+        "section": [
+          {
+            "title": "Chief Complaints",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "422843007",
+                  "display": "Chief complaint section"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>Patient presented with complaints of fever and cough for 5 days</div>"
+            }
+          },
+          {
+            "title": "Medical History",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "371529009",
+                  "display": "History and physical report"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>Known conditions: Hypertension, Type 2 diabetes mellitus, Typhoid fever</div>"
+            }
+          },
+          {
+            "title": "Hospital Course",
+            "text": {
+              "status": "generated",
+              "div": "<div>Patient admitted and treated with antibiotics. Condition improved over 5 days.</div>"
+            }
+          },
+          {
+            "title": "Discharge Medications",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "10183-2",
+                  "display": "Discharge medication"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>1. Azithromycin 500mg OD for 5 days<br/>2. Paracetamol 650mg TDS PRN</div>"
+            }
+          },
+          {
+            "title": "Follow-up",
+            "text": {
+              "status": "generated",
+              "div": "<div>Follow-up after 1 week</div>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "Patient/21186314595172",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "21186314595172",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NNIND",
+                  "display": "National Person Identifier - India"
+                }
+              ],
+              "text": "ABHA Number"
+            },
+            "system": "https://healthid.ndhm.gov.in",
+            "value": "21-1863-1459-5172"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "text": "Kiran Singh",
+            "given": [
+              "Kiran"
+            ],
+            "family": "Singh"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-7395832890",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "kiran.singh@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1947-10-29",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "text": "845, Church Road, Kolkata, West Bengal 702251",
+            "line": [
+              "845",
+              "Church Road"
+            ],
+            "city": "Kolkata",
+            "state": "West Bengal",
+            "postalCode": "702251",
+            "country": "IN"
+          }
+        ],
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-age",
+            "valueAge": {
+              "value": 78,
+              "unit": "years",
+              "system": "http://unitsofmeasure.org",
+              "code": "a"
+            }
+          }
+        ],
+        "bloodGroup": "A+",
+        "conditions": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "38341003",
+                  "display": "Hypertension",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Hypertension"
+            },
+            "onsetDateTime": "2022-01-19",
+            "recordedDate": "2023-03-21"
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "44054006",
+                  "display": "Type 2 diabetes mellitus",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Type 2 diabetes mellitus"
+            },
+            "onsetDateTime": "2019-01-13",
+            "recordedDate": "2021-03-25"
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "75544007",
+                  "display": "Typhoid fever",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Typhoid fever"
+            },
+            "onsetDateTime": "2018-02-26",
+            "recordedDate": "2021-09-27"
+          }
+        ],
+        "createdAt": "2026-02-14T13:53:54.488597",
+        "abha_number": "21-1863-1459-5172"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/practitioner-001",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-001",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.nmc.org.in",
+            "value": "MCI-35281"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "text": "Dr. Tapas Choudhury",
+            "given": [
+              "Tapas"
+            ],
+            "family": "Choudhury"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-8050808970",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "dr.tapas.choudhury@hospital.in",
+            "use": "work"
+          }
+        ],
+        "gender": "female",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "MD"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "394579002",
+                  "display": "Cardiology"
+                }
+              ],
+              "text": "Cardiology"
+            }
+          }
+        ],
+        "specialty": {
+          "code": "394579002",
+          "display": "Cardiology"
+        }
+      }
+    },
+    {
+      "fullUrl": "Organization/org-004",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-004",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://facility.ndhm.gov.in",
+            "value": "IN-ORG-004"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Private"
+          }
+        ],
+        "name": "Manipal Hospitals",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9156159879",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "contact@manipalhospitals.in",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "physical",
+            "city": "Bangalore",
+            "state": "Karnataka",
+            "country": "IN"
+          }
+        ]
+      }
+    }
+  ]
+}

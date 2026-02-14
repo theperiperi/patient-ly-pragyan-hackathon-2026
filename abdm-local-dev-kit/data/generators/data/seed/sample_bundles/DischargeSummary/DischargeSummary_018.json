@@ -1,0 +1,335 @@
+{
+  "resourceType": "Bundle",
+  "id": "37e5b2cb-f44b-4c65-afed-cf18a44ecd2c",
+  "type": "document",
+  "timestamp": "2026-02-02T16:41:59.271792",
+  "identifier": {
+    "system": "https://ndhm.in/bundle",
+    "value": "37e5b2cb-f44b-4c65-afed-cf18a44ecd2c"
+  },
+  "meta": {
+    "profile": [
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+    ],
+    "lastUpdated": "2026-02-14T13:55:13.301004"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:Composition-4bc0e431",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "Composition-4bc0e431",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "373942005",
+              "display": "Discharge Summary"
+            }
+          ],
+          "text": "Discharge Summary"
+        },
+        "subject": {
+          "reference": "Patient/70859472141794",
+          "display": "Jyoti Sharma"
+        },
+        "encounter": {
+          "reference": "Encounter/Encounter-5025107a"
+        },
+        "date": "2026-02-02T16:41:59.271792",
+        "author": [
+          {
+            "reference": "Practitioner/practitioner-007",
+            "display": "Dr. Ravi Malhotra"
+          }
+        ],
+        "title": "Discharge Summary",
+        "custodian": {
+          "reference": "Organization/org-004",
+          "display": "Manipal Hospitals"
+        },
+        "section": [
+          {
+            "title": "Chief Complaints",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "422843007",
+                  "display": "Chief complaint section"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>Patient presented with complaints of fever and cough for 5 days</div>"
+            }
+          },
+          {
+            "title": "Medical History",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "371529009",
+                  "display": "History and physical report"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>Known conditions: Liver disease</div>"
+            }
+          },
+          {
+            "title": "Hospital Course",
+            "text": {
+              "status": "generated",
+              "div": "<div>Patient admitted and treated with antibiotics. Condition improved over 5 days.</div>"
+            }
+          },
+          {
+            "title": "Discharge Medications",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "10183-2",
+                  "display": "Discharge medication"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div>1. Azithromycin 500mg OD for 5 days<br/>2. Paracetamol 650mg TDS PRN</div>"
+            }
+          },
+          {
+            "title": "Follow-up",
+            "text": {
+              "status": "generated",
+              "div": "<div>Follow-up after 1 week</div>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "Patient/70859472141794",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "70859472141794",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "NNIND",
+                  "display": "National Person Identifier - India"
+                }
+              ],
+              "text": "ABHA Number"
+            },
+            "system": "https://healthid.ndhm.gov.in",
+            "value": "70-8594-7214-1794"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "text": "Jyoti Sharma",
+            "given": [
+              "Jyoti"
+            ],
+            "family": "Sharma"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-8681589959",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "jyoti.sharma@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "other",
+        "birthDate": "1999-10-21",
+        "address": [
+          {
+            "use": "home",
+            "type": "physical",
+            "text": "910, Nehru Street, Kochi, Kerala 684711",
+            "line": [
+              "910",
+              "Nehru Street"
+            ],
+            "city": "Kochi",
+            "state": "Kerala",
+            "postalCode": "684711",
+            "country": "IN"
+          }
+        ],
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Patient"
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-age",
+            "valueAge": {
+              "value": 26,
+              "unit": "years",
+              "system": "http://unitsofmeasure.org",
+              "code": "a"
+            }
+          }
+        ],
+        "bloodGroup": "AB+",
+        "conditions": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "235856003",
+                  "display": "Liver disease",
+                  "system": "http://snomed.info/sct"
+                }
+              ],
+              "text": "Liver disease"
+            },
+            "onsetDateTime": "2023-06-06",
+            "recordedDate": "2025-02-13"
+          }
+        ],
+        "createdAt": "2026-02-14T13:53:54.489715",
+        "abha_number": "70-8594-7214-1794"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/practitioner-007",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "practitioner-007",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.nmc.org.in",
+            "value": "MCI-81561"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "text": "Dr. Ravi Malhotra",
+            "given": [
+              "Ravi"
+            ],
+            "family": "Malhotra"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9405525315",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "dr.ravi.malhotra@hospital.in",
+            "use": "work"
+          }
+        ],
+        "gender": "male",
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ],
+              "text": "MD"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "394582007",
+                  "display": "Dermatology"
+                }
+              ],
+              "text": "Dermatology"
+            }
+          }
+        ],
+        "specialty": {
+          "code": "394582007",
+          "display": "Dermatology"
+        }
+      }
+    },
+    {
+      "fullUrl": "Organization/org-004",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-004",
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://facility.ndhm.gov.in",
+            "value": "IN-ORG-004"
+          }
+        ],
+        "active": true,
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Private"
+          }
+        ],
+        "name": "Manipal Hospitals",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+91-9156159879",
+            "use": "work"
+          },
+          {
+            "system": "email",
+            "value": "contact@manipalhospitals.in",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "physical",
+            "city": "Bangalore",
+            "state": "Karnataka",
+            "country": "IN"
+          }
+        ]
+      }
+    }
+  ]
+}

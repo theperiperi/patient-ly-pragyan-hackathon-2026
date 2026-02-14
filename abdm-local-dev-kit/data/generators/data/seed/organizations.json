@@ -1,0 +1,232 @@
+[
+  {
+    "resourceType": "Organization",
+    "id": "org-001",
+    "identifier": [
+      {
+        "use": "official",
+        "system": "https://facility.ndhm.gov.in",
+        "value": "IN-ORG-001"
+      }
+    ],
+    "active": true,
+    "type": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+            "code": "prov",
+            "display": "Healthcare Provider"
+          }
+        ],
+        "text": "Private"
+      }
+    ],
+    "name": "Apollo Hospitals",
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "+91-8785016751",
+        "use": "work"
+      },
+      {
+        "system": "email",
+        "value": "contact@apollohospitals.in",
+        "use": "work"
+      }
+    ],
+    "address": [
+      {
+        "use": "work",
+        "type": "physical",
+        "city": "Bangalore",
+        "state": "Karnataka",
+        "country": "IN"
+      }
+    ]
+  },
+  {
+    "resourceType": "Organization",
+    "id": "org-002",
+    "identifier": [
+      {
+        "use": "official",
+        "system": "https://facility.ndhm.gov.in",
+        "value": "IN-ORG-002"
+      }
+    ],
+    "active": true,
+    "type": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+            "code": "prov",
+            "display": "Healthcare Provider"
+          }
+        ],
+        "text": "Private"
+      }
+    ],
+    "name": "Fortis Healthcare",
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "+91-9578547749",
+        "use": "work"
+      },
+      {
+        "system": "email",
+        "value": "contact@fortishealthcare.in",
+        "use": "work"
+      }
+    ],
+    "address": [
+      {
+        "use": "work",
+        "type": "physical",
+        "city": "Delhi",
+        "state": "Delhi",
+        "country": "IN"
+      }
+    ]
+  },
+  {
+    "resourceType": "Organization",
+    "id": "org-003",
+    "identifier": [
+      {
+        "use": "official",
+        "system": "https://facility.ndhm.gov.in",
+        "value": "IN-ORG-003"
+      }
+    ],
+    "active": true,
+    "type": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+            "code": "prov",
+            "display": "Healthcare Provider"
+          }
+        ],
+        "text": "Government"
+      }
+    ],
+    "name": "AIIMS",
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "+91-7109019058",
+        "use": "work"
+      },
+      {
+        "system": "email",
+        "value": "contact@aiims.in",
+        "use": "work"
+      }
+    ],
+    "address": [
+      {
+        "use": "work",
+        "type": "physical",
+        "city": "Delhi",
+        "state": "Delhi",
+        "country": "IN"
+      }
+    ]
+  },
+  {
+    "resourceType": "Organization",
+    "id": "org-004",
+    "identifier": [
+      {
+        "use": "official",
+        "system": "https://facility.ndhm.gov.in",
+        "value": "IN-ORG-004"
+      }
+    ],
+    "active": true,
+    "type": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+            "code": "prov",
+            "display": "Healthcare Provider"
+          }
+        ],
+        "text": "Private"
+      }
+    ],
+    "name": "Manipal Hospitals",
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "+91-9156159879",
+        "use": "work"
+      },
+      {
+        "system": "email",
+        "value": "contact@manipalhospitals.in",
+        "use": "work"
+      }
+    ],
+    "address": [
+      {
+        "use": "work",
+        "type": "physical",
+        "city": "Bangalore",
+        "state": "Karnataka",
+        "country": "IN"
+      }
+    ]
+  },
+  {
+    "resourceType": "Organization",
+    "id": "org-005",
+    "identifier": [
+      {
+        "use": "official",
+        "system": "https://facility.ndhm.gov.in",
+        "value": "IN-ORG-005"
+      }
+    ],
+    "active": true,
+    "type": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+            "code": "prov",
+            "display": "Healthcare Provider"
+          }
+        ],
+        "text": "Private"
+      }
+    ],
+    "name": "Max Healthcare",
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "+91-9907774271",
+        "use": "work"
+      },
+      {
+        "system": "email",
+        "value": "contact@maxhealthcare.in",
+        "use": "work"
+      }
+    ],
+    "address": [
+      {
+        "use": "work",
+        "type": "physical",
+        "city": "Delhi",
+        "state": "Delhi",
+        "country": "IN"
+      }
+    ]
+  }
+]
