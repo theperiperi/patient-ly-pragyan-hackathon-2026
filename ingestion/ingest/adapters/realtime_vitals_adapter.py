@@ -93,6 +93,11 @@ class RealtimeVitalsAdapter(BaseAdapter):
             identity.source_id = first["patient_id"]
             if first["patient_id"].startswith("MRN"):
                 identity.mrn = first["patient_id"]
+        if "patient_name" in first and first["patient_name"]:
+            identity.full_name = first["patient_name"]
+            parts = first["patient_name"].split()
+            if len(parts) >= 2:
+                identity.given_name, identity.family_name = parts[0], parts[-1]
 
         patient = make_patient(identity)
         patient_ref = f"Patient/{patient.id}"

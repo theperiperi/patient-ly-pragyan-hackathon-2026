@@ -149,10 +149,10 @@ class TestSyntheaAdapter:
 class TestSyntheaAdapterRealFiles:
     """Test with real Synthea sample files if available."""
 
-    SAMPLE_DIR = Path(__file__).parent.parent / "sample_data" / "synthea"
+    SAMPLE_DIR = Path(__file__).parent.parent / "sample_data" / "_synthea_raw" / "fhir"
 
     @pytest.mark.skipif(
-        not (Path(__file__).parent.parent / "sample_data" / "synthea").exists(),
+        not (Path(__file__).parent.parent / "sample_data" / "_synthea_raw" / "fhir").exists(),
         reason="No Synthea sample files available"
     )
     def test_supports_real_files(self):
@@ -161,7 +161,7 @@ class TestSyntheaAdapterRealFiles:
             assert adapter.supports(str(f)) is True
 
     @pytest.mark.skipif(
-        not (Path(__file__).parent.parent / "sample_data" / "synthea").exists(),
+        not (Path(__file__).parent.parent / "sample_data" / "_synthea_raw" / "fhir").exists(),
         reason="No Synthea sample files available"
     )
     def test_parse_real_files(self):

@@ -267,11 +267,11 @@ class TestSyntheaGenerator:
 class TestLoadRealSyntheaFiles:
     """Tests using actual Synthea sample files if available."""
 
-    SAMPLE_DIR = Path(__file__).parent.parent / "sample_data" / "synthea"
+    SAMPLE_DIR = Path(__file__).parent.parent / "sample_data" / "_synthea_raw" / "fhir"
 
     @pytest.mark.skipif(
-        not (Path(__file__).parent.parent / "sample_data" / "synthea").exists(),
-        reason="No Synthea sample files available"
+        not (Path(__file__).parent.parent / "sample_data" / "_synthea_raw" / "fhir").exists(),
+        reason="No Synthea sample files available — run the generator first"
     )
     def test_load_real_synthea_files(self):
         generator = SyntheaGenerator()

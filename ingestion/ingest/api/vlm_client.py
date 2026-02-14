@@ -43,11 +43,21 @@ class VLMClient(Protocol):
 
 
 class MockVLMClient:
-    """Mock VLM client that returns hardcoded clinical data for testing."""
+    """Mock VLM client that reads sidecar .meta.json if available, else returns defaults."""
+
+    def __init__(self, image_path: str | None = None):
+        self._image_path = image_path
 
     def extract_from_image(self, image_bytes: bytes, prompt: str = VLM_EXTRACTION_PROMPT) -> dict[str, Any]:
+        # Try to load sidecar metadata written by the handwritten simulator
+        if self._image_path:
+            from pathlib import Path
+            sidecar = Path(self._image_path).with_suffix(".meta.json")
+            if sidecar.exists():
+                return json.loads(sidecar.read_text())
+
         return {
-            "patient_name": "Rajesh Kumar",
+            "patient_name": "Unknown",
             "age": "50y",
             "gender": "male",
             "chief_complaint": "Chest pain radiating to left arm, onset 2 hours ago",
