@@ -292,7 +292,7 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* ROW 3: Tables */}
+        {/* ROW 3: Tables - Full Height */}
         <div className="grid grid-cols-12 gap-4">
           {/* Department Table */}
           <div className="col-span-5 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">
@@ -300,7 +300,7 @@ export default function DashboardPage() {
               <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300">Department Overview</h3>
               <span className="text-xs text-slate-400">{departmentList.length} departments</span>
             </div>
-            <div className="overflow-auto max-h-64">
+            <div className="overflow-auto max-h-[420px]">
               <table className="w-full text-sm">
                 <thead className="sticky top-0 bg-slate-50 dark:bg-slate-800/80">
                   <tr className="text-xs text-slate-500">
@@ -349,7 +349,7 @@ export default function DashboardPage() {
                 View All <ChevronRight className="w-3.5 h-3.5" />
               </Link>
             </div>
-            <div className="overflow-auto max-h-64">
+            <div className="overflow-auto max-h-[420px]">
               <table className="w-full text-sm">
                 <thead className="sticky top-0 bg-slate-50 dark:bg-slate-800/80">
                   <tr className="text-xs text-slate-500">
@@ -362,7 +362,7 @@ export default function DashboardPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {mockPatients.slice(0, 8).map((patient, idx) => (
+                  {mockPatients.slice(0, 15).map((patient, idx) => (
                     <tr key={patient.id} className={cn("border-t border-slate-100 dark:border-slate-800/50 hover:bg-slate-50 dark:hover:bg-slate-800/30 cursor-pointer", idx % 2 === 1 && "bg-slate-50/50 dark:bg-slate-800/20")}>
                       <td className="py-2.5 px-4">
                         <div className="flex items-center gap-2">
@@ -391,48 +391,6 @@ export default function DashboardPage() {
                   ))}
                 </tbody>
               </table>
-            </div>
-          </div>
-        </div>
-
-        {/* ROW 4: Risk Summary */}
-        <div className="grid grid-cols-3 gap-4">
-          <div className="bg-gradient-to-br from-red-50 to-red-100 dark:from-red-950/40 dark:to-red-900/20 rounded-lg border border-red-200 dark:border-red-900/50 p-5">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-sm font-medium text-red-700 dark:text-red-400">Critical Cases (ESI 1-2)</div>
-                <div className="text-4xl font-bold text-red-800 dark:text-red-300 mt-1 font-mono">{stats.critical}</div>
-                <div className="text-xs text-red-600/70 mt-2">Immediate attention required</div>
-              </div>
-              <div className="w-16 h-16 rounded-full bg-red-200/50 dark:bg-red-800/30 flex items-center justify-center">
-                <AlertTriangle className="w-8 h-8 text-red-600 dark:text-red-400" />
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-950/40 dark:to-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-900/50 p-5">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-sm font-medium text-amber-700 dark:text-amber-400">Urgent Cases (ESI 3)</div>
-                <div className="text-4xl font-bold text-amber-800 dark:text-amber-300 mt-1 font-mono">{stats.urgent}</div>
-                <div className="text-xs text-amber-600/70 mt-2">Priority monitoring needed</div>
-              </div>
-              <div className="w-16 h-16 rounded-full bg-amber-200/50 dark:bg-amber-800/30 flex items-center justify-center">
-                <Clock className="w-8 h-8 text-amber-600 dark:text-amber-400" />
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-950/40 dark:to-emerald-900/20 rounded-lg border border-emerald-200 dark:border-emerald-900/50 p-5">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-sm font-medium text-emerald-700 dark:text-emerald-400">Minor Cases (ESI 4-5)</div>
-                <div className="text-4xl font-bold text-emerald-800 dark:text-emerald-300 mt-1 font-mono">{stats.minor}</div>
-                <div className="text-xs text-emerald-600/70 mt-2">Standard queue processing</div>
-              </div>
-              <div className="w-16 h-16 rounded-full bg-emerald-200/50 dark:bg-emerald-800/30 flex items-center justify-center">
-                <Activity className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
-              </div>
             </div>
           </div>
         </div>
