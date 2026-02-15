@@ -403,8 +403,8 @@ export default function Home() {
                       {/* Progress fill - animated */}
                       <div className="absolute inset-y-0 left-0 w-1/2 bg-emerald-200 dark:bg-emerald-900/50 animate-pulse"></div>
 
-                      {/* Slider knob */}
-                      <div className="absolute top-1 bottom-1 left-1 w-12 rounded bg-emerald-600 flex items-center justify-center" style={{ transform: "translateX(calc(50% + 10px))" }}>
+                      {/* Slider knob - positioned at 50% mark */}
+                      <div className="absolute top-1 bottom-1 w-12 rounded bg-emerald-600 flex items-center justify-center" style={{ left: "calc(50% - 3rem)" }}>
                         <ArrowRight className="w-5 h-5 text-white" />
                       </div>
 
