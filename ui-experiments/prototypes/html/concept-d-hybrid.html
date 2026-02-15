@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concept D: Hybrid Split-View - Patient-ly Triage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f5f5;
+            min-width: 1920px;
+            overflow-x: auto;
+        }
+
+        /* Header */
+        .header {
+            background: #1a1a2e;
+            color: white;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .header-actions span {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Main Container */
+        .main-container {
+            display: flex;
+            height: calc(100vh - 60px);
+            position: relative;
+        }
+
+        /* Queue Panel */
+        .queue-panel {
+            background: white;
+            width: 40%;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #e0e0e0;
+            transition: width 0.3s ease;
+        }
+
+        .queue-panel.collapsed {
+            width: 80px;
+            min-width: 80px;
+        }
+
+        .queue-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .queue-header h2 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #1a1a2e;
+        }
+
+        .queue-search {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .queue-search input {
+            flex: 1;
+            padding: 0.6rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        .queue-search button {
+            padding: 0.6rem 1rem;
+            background: #4a5568;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .queue-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .acuity-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .acuity-header {
+            padding: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s;
+        }
+
+        .acuity-header:hover {
+            opacity: 0.9;
+        }
+
+        .acuity-critical { background: #fee; color: #c00; border: 2px solid #c00; }
+        .acuity-urgent { background: #fff4e6; color: #d97706; border: 2px solid #d97706; }
+        .acuity-minor { background: #f0fdf4; color: #16a34a; border: 2px solid #16a34a; }
+        .acuity-treatment { background: #eff6ff; color: #2563eb; border: 2px solid #2563eb; }
+
+        .acuity-patients {
+            margin-top: 0.5rem;
+        }
+
+        .patient-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .patient-card:hover {
+            border-color: #4a5568;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .patient-card.active {
+            background: #1a1a2e;
+            color: white;
+            border-color: #1a1a2e;
+        }
+
+        .patient-card.active .patient-vitals {
+            color: #ddd;
+        }
+
+        .patient-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .patient-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ccc;
+        }
+
+        .patient-card.active .patient-indicator {
+            background: #4ade80;
+        }
+
+        .patient-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .patient-info {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .patient-card.active .patient-info {
+            color: #bbb;
+        }
+
+        .patient-vitals {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* Drag Handle */
+        .drag-handle {
+            width: 8px;
+            background: #e0e0e0;
+            cursor: col-resize;
+            position: relative;
+            transition: background 0.2s;
+            flex-shrink: 0;
+        }
+
+        .drag-handle:hover {
+            background: #4a5568;
+        }
+
+        .drag-handle::before {
+            content: '⋮';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #999;
+            font-size: 1.2rem;
+        }
+
+        .drag-handle.dragging {
+            background: #1a1a2e;
+        }
+
+        /* Detail Panel */
+        .detail-panel {
+            flex: 1;
+            background: #fafafa;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-panel.collapsed {
+            display: none;
+        }
+
+        .detail-header {
+            background: white;
+            padding: 1.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .patient-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .patient-title h2 {
+            font-size: 1.5rem;
+            color: #1a1a2e;
+        }
+
+        .compare-button {
+            padding: 0.6rem 1.2rem;
+            background: #4a5568;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .compare-button:hover {
+            background: #2d3748;
+        }
+
+        .compare-button.active {
+            background: #d97706;
+        }
+
+        .patient-status {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .status-critical { background: #fee2e2; color: #991b1b; }
+        .status-urgent { background: #fef3c7; color: #92400e; }
+
+        .detail-content {
+            padding: 1.5rem;
+            flex: 1;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.25rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .info-card h3 {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .vitals-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        .vital-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .vital-label {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .vital-value {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+
+        .vital-warning {
+            color: #dc2626;
+        }
+
+        .vital-normal {
+            color: #16a34a;
+        }
+
+        .alerts-list {
+            list-style: none;
+        }
+
+        .alert-item {
+            padding: 0.75rem;
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            margin-bottom: 0.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .alert-critical {
+            background: #fee2e2;
+            border-left-color: #dc2626;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .tab {
+            padding: 0.75rem 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .tab:hover {
+            color: #1a1a2e;
+        }
+
+        .tab.active {
+            color: #1a1a2e;
+            font-weight: 600;
+            border-bottom-color: #1a1a2e;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .medications-list, .timeline-list {
+            list-style: none;
+        }
+
+        .medication-item, .timeline-item {
+            padding: 0.75rem;
+            background: white;
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+            border: 1px solid #e0e0e0;
+        }
+
+        .medication-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .medication-details {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .timeline-time {
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-event {
+            font-size: 0.9rem;
+        }
+
+        .ai-recommendations {
+            background: white;
+            border-radius: 8px;
+            padding: 1.25rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .ai-recommendations h3 {
+            font-size: 1rem;
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .ai-diagnosis {
+            background: #eff6ff;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #2563eb;
+        }
+
+        .ai-diagnosis strong {
+            font-size: 1.1rem;
+            color: #1e40af;
+        }
+
+        .recommendations-list {
+            list-style: none;
+        }
+
+        .recommendation-item {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .recommendation-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Action Bar */
+        .action-bar {
+            background: white;
+            padding: 1.5rem;
+            border-top: 2px solid #e0e0e0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .action-button {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .action-button:hover {
+            border-color: #4a5568;
+            background: #f9fafb;
+        }
+
+        .action-label {
+            font-size: 0.75rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+
+        .action-value {
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+
+        /* Comparison Mode */
+        .comparison-container {
+            display: none;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            height: 100%;
+        }
+
+        .comparison-container.active {
+            display: grid;
+        }
+
+        .comparison-panel {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-y: auto;
+        }
+
+        .comparison-header {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .comparison-header h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .comparison-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .comparison-section h4 {
+            font-size: 0.85rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Collapse Buttons */
+        .collapse-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.2s;
+        }
+
+        .collapse-button:hover {
+            background: #f9fafb;
+            border-color: #4a5568;
+        }
+
+        .collapse-left {
+            left: 40%;
+            margin-left: -16px;
+        }
+
+        .queue-panel.collapsed ~ .collapse-left {
+            left: 80px;
+        }
+
+        /* Collapsed Queue Sidebar */
+        .queue-panel.collapsed .queue-header,
+        .queue-panel.collapsed .queue-content {
+            display: none;
+        }
+
+        .queue-collapsed-content {
+            display: none;
+            padding: 1rem 0.5rem;
+        }
+
+        .queue-panel.collapsed .queue-collapsed-content {
+            display: block;
+        }
+
+        .collapsed-count {
+            text-align: center;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .expand-button {
+            width: 100%;
+            padding: 0.75rem;
+            background: #4a5568;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+
+        /* Labs Tab */
+        .labs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        .lab-item {
+            padding: 0.75rem;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .lab-name {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 0.25rem;
+        }
+
+        .lab-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .lab-reference {
+            font-size: 0.75rem;
+            color: #999;
+            margin-top: 0.25rem;
+        }
+
+        /* Status Footer */
+        .status-footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+
+        .dept-stats {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .dept-stats span {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Hybrid Triage Workstation - Patient-ly</h1>
+        <div class="header-actions">
+            <span>Apollo Emergency Dept.</span>
+            <span>Dr. Sharma</span>
+            <span>⚙️</span>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <!-- Queue Panel -->
+        <div class="queue-panel" id="queuePanel">
+            <div class="queue-header">
+                <h2>QUEUE (<span id="queueCount">28</span> patients)</h2>
+                <div class="queue-search">
+                    <input type="text" id="searchInput" placeholder="Search patients...">
+                    <button onclick="filterQueue()">🔍</button>
+                </div>
+            </div>
+            <div class="queue-content" id="queueContent">
+                <!-- Queue content will be populated by JavaScript -->
+            </div>
+            <div class="queue-collapsed-content">
+                <div class="collapsed-count acuity-critical">🔴 <span id="criticalCount">3</span></div>
+                <div class="collapsed-count acuity-urgent">🟡 <span id="urgentCount">12</span></div>
+                <div class="collapsed-count acuity-minor">🟢 <span id="minorCount">8</span></div>
+                <div class="collapsed-count acuity-treatment">🔵 <span id="treatmentCount">5</span></div>
+                <button class="expand-button" onclick="toggleQueueCollapse()">◄ Expand</button>
+            </div>
+        </div>
+
+        <!-- Drag Handle -->
+        <div class="drag-handle" id="dragHandle"></div>
+
+        <!-- Collapse Button -->
+        <button class="collapse-button collapse-left" id="collapseBtn" onclick="toggleQueueCollapse()">
+            ◄
+        </button>
+
+        <!-- Detail Panel -->
+        <div class="detail-panel" id="detailPanel">
+            <div class="detail-header">
+                <div class="patient-title">
+                    <div>
+                        <h2 id="detailPatientName">Rajesh Kumar, 45M</h2>
+                        <div class="patient-status">
+                            <span class="status-badge status-critical">🔴 CRITICAL - Chest Pain</span>
+                            <span>⏱ <span id="detailWaitTime">3 min</span></span>
+                            <span>🚑 Ambulance</span>
+                            <span>ABHA: **-5255</span>
+                        </div>
+                    </div>
+                    <button class="compare-button" id="compareBtn" onclick="toggleCompareMode()">Compare</button>
+                </div>
+            </div>
+
+            <div class="detail-content" id="normalView">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>Current Vitals (Live)</h3>
+                        <div class="vitals-grid">
+                            <div class="vital-item">
+                                <span class="vital-label">Blood Pressure</span>
+                                <span class="vital-value vital-warning" id="detailBP">180/110</span>
+                                <span class="vital-label">⚠ HIGH</span>
+                            </div>
+                            <div class="vital-item">
+                                <span class="vital-label">Heart Rate</span>
+                                <span class="vital-value vital-warning" id="detailHR">125 bpm</span>
+                                <span class="vital-label">⚠ ELEVATED</span>
+                            </div>
+                            <div class="vital-item">
+                                <span class="vital-label">SpO2</span>
+                                <span class="vital-value vital-warning" id="detailSPO2">94%</span>
+                                <span class="vital-label">⚠ LOW</span>
+                            </div>
+                            <div class="vital-item">
+                                <span class="vital-label">Temperature</span>
+                                <span class="vital-value vital-normal" id="detailTemp">98.6°F</span>
+                                <span class="vital-label">✓ Normal</span>
+                            </div>
+                            <div class="vital-item">
+                                <span class="vital-label">Resp. Rate</span>
+                                <span class="vital-value vital-warning" id="detailRR">22/min</span>
+                                <span class="vital-label">⚠ ELEVATED</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>Critical Alerts</h3>
+                        <ul class="alerts-list">
+                            <li class="alert-item alert-critical">• Previous MI 2 years ago (Apollo ABDM record)</li>
+                            <li class="alert-item alert-critical">• Diabetic on insulin (Current)</li>
+                            <li class="alert-item alert-critical">• ALLERGY: Penicillin - Anaphylaxis risk</li>
+                        </ul>
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e0e0e0;">
+                            <h4 style="font-size: 0.85rem; color: #666; margin-bottom: 0.5rem;">Data Sources</h4>
+                            <div style="font-size: 0.85rem; color: #16a34a;">
+                                ✓ Ambulance (3m ago)<br>
+                                ✓ Apollo Hospital (2d, ABDM)<br>
+                                ✓ Labs (10d, ABDM)<br>
+                                ✓ Pharmacy (Local)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tabs">
+                    <button class="tab active" onclick="switchTab('overview')">Overview</button>
+                    <button class="tab" onclick="switchTab('timeline')">Timeline</button>
+                    <button class="tab" onclick="switchTab('medications')">Medications</button>
+                    <button class="tab" onclick="switchTab('labs')">Labs</button>
+                </div>
+
+                <div class="tab-content active" id="overview-tab">
+                    <div class="ai-recommendations">
+                        <h3>🤖 AI Triage Assistant</h3>
+                        <div class="ai-diagnosis">
+                            <strong>LIKELY: Acute MI (STEMI) - 92% confidence</strong>
+                        </div>
+                        <h4 style="font-size: 0.9rem; margin-bottom: 0.75rem;">RECOMMENDED:</h4>
+                        <ol class="recommendations-list">
+                            <li class="recommendation-item">1. Activate Code STEMI</li>
+                            <li class="recommendation-item">2. Notify cath lab</li>
+                            <li class="recommendation-item">3. STAT troponin, repeat ECG</li>
+                            <li class="recommendation-item">4. Cardiology consult &lt; 15 min</li>
+                            <li class="recommendation-item">5. Critical care bay assignment</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="timeline-tab">
+                    <ul class="timeline-list">
+                        <li class="timeline-item">
+                            <div class="timeline-time">TODAY 10:30 - 🚑 Ambulance Arrival</div>
+                            <div class="timeline-event">Chief complaint: Chest pain, ECG shows ST elevation</div>
+                        </li>
+                        <li class="timeline-item">
+                            <div class="timeline-time">2 days ago - 🏥 Apollo Hospital</div>
+                            <div class="timeline-event">Cardiology follow-up, condition stable</div>
+                        </li>
+                        <li class="timeline-item">
+                            <div class="timeline-time">10 days ago - 🧪 Laboratory</div>
+                            <div class="timeline-event">Lipid panel: Total cholesterol 245 mg/dL (HIGH)</div>
+                        </li>
+                        <li class="timeline-item">
+                            <div class="timeline-time">2 years ago - 🏥 Apollo Hospital</div>
+                            <div class="timeline-event">Admitted for Acute MI, underwent angioplasty</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-content" id="medications-tab">
+                    <ul class="medications-list">
+                        <li class="medication-item">
+                            <div class="medication-name">Metformin 500mg</div>
+                            <div class="medication-details">Twice daily • For Type 2 Diabetes Mellitus</div>
+                        </li>
+                        <li class="medication-item">
+                            <div class="medication-name">Aspirin 75mg</div>
+                            <div class="medication-details">Once daily • For CAD prophylaxis</div>
+                        </li>
+                        <li class="medication-item">
+                            <div class="medication-name">Atorvastatin 20mg</div>
+                            <div class="medication-details">Once daily • For hyperlipidemia</div>
+                        </li>
+                        <li class="medication-item">
+                            <div class="medication-name">Metoprolol 25mg</div>
+                            <div class="medication-details">Twice daily • For hypertension</div>
+                        </li>
+                        <li class="medication-item">
+                            <div class="medication-name">Lisinopril 10mg</div>
+                            <div class="medication-details">Once daily • For hypertension</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-content" id="labs-tab">
+                    <div class="labs-grid">
+                        <div class="lab-item">
+                            <div class="lab-name">Total Cholesterol</div>
+                            <div class="lab-value vital-warning">245 mg/dL</div>
+                            <div class="lab-reference">Reference: &lt;200 mg/dL</div>
+                        </div>
+                        <div class="lab-item">
+                            <div class="lab-name">HbA1c</div>
+                            <div class="lab-value vital-normal">7.2%</div>
+                            <div class="lab-reference">Reference: &lt;7.0%</div>
+                        </div>
+                        <div class="lab-item">
+                            <div class="lab-name">LDL Cholesterol</div>
+                            <div class="lab-value vital-warning">155 mg/dL</div>
+                            <div class="lab-reference">Reference: &lt;100 mg/dL</div>
+                        </div>
+                        <div class="lab-item">
+                            <div class="lab-name">HDL Cholesterol</div>
+                            <div class="lab-value vital-normal">42 mg/dL</div>
+                            <div class="lab-reference">Reference: &gt;40 mg/dL</div>
+                        </div>
+                        <div class="lab-item">
+                            <div class="lab-name">Fasting Glucose</div>
+                            <div class="lab-value vital-warning">145 mg/dL</div>
+                            <div class="lab-reference">Reference: 70-100 mg/dL</div>
+                        </div>
+                        <div class="lab-item">
+                            <div class="lab-name">Creatinine</div>
+                            <div class="lab-value vital-normal">1.1 mg/dL</div>
+                            <div class="lab-reference">Reference: 0.7-1.3 mg/dL</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 1rem; padding: 0.75rem; background: #f9fafb; border-radius: 6px; font-size: 0.85rem; color: #666;">
+                        Last drawn: 10 days ago • Source: Apollo Hospital via ABDM
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Mode -->
+            <div class="comparison-container" id="comparisonView">
+                <div class="comparison-panel">
+                    <div class="comparison-header">
+                        <h3>Rajesh Kumar, 45M</h3>
+                        <span class="status-badge status-critical">🔴 CRITICAL - Chest Pain</span>
+                        <div style="margin-top: 0.5rem; font-size: 0.9rem; color: #666;">⏱ 3 min | 🚑 Ambulance</div>
+                    </div>
+
+                    <div class="comparison-section">
+                        <h4>Vitals</h4>
+                        <div class="vitals-grid">
+                            <div class="vital-item">
+                                <span class="vital-label">BP</span>
+                                <span class="vital-value vital-warning">180/110</span>
+                                <span class="vital-label">⚠ HIGH</span>
+                            </div>
+                            <div class="vital-item">
+                                <span class="vital-label">HR</span>
+                                <span class="vital-value vital-warning">125 bpm</span>
+                                <span class="vital-label">⚠ ELEVATED</span>
+                            </div>
+                            <div class="vital-item">
+                                <span class="vital-label">SpO2</span>
+                                <span class="vital-value vital-warning">94%</span>
+                                <span class="vital-label">⚠ LOW</span>
+                            </div>
+                            <div class="vital-item">
+                                <span class="vital-label">Temp</span>
+                                <span class="vital-value vital-normal">98.6°F</span>
+                                <span class="vital-label">✓ Normal</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="comparison-section">
+                        <h4>Alerts</h4>
+                        <ul class="alerts-list">
+                            <li class="alert-item alert-critical">• Previous MI (2 years ago)</li>
+                            <li class="alert-item alert-critical">• Diabetic (insulin)</li>
+                            <li class="alert-item alert-critical">• Allergy: Penicillin</li>
+                        </ul>
+                    </div>
+
+                    <div class="comparison-section">
+                        <h4>Current Medications</h4>
+                        <div style="font-size: 0.9rem;">5 medications<br>Cardiac + diabetes meds</div>
+                    </div>
+
+                    <div class="comparison-section">
+                        <h4>AI Assessment</h4>
+                        <div class="ai-diagnosis">
+                            <strong>STEMI - 92% confidence</strong>
+                        </div>
+                        <div style="font-size: 0.85rem; margin-top: 0.5rem;">
+                            Recommend:<br>
+                            • Code STEMI<br>
+                            • Cath lab<br>
+                            • STAT ECG/Troponin
+                        </div>
+                    </div>
+
+                    <div class="comparison-section">
+                        <div style="background: #fef3c7; padding: 1rem; border-radius: 6px; border-left: 4px solid #f59e0b;">
+                            <strong>⚠ HIGHER PRIORITY</strong><br>
+                            <span style="font-size: 0.85rem;">(acute cardiac, known history)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-panel">
+                    <div class="comparison-header">
+                        <h3>Priya Sharma, 28F</h3>
+                        <span class="status-badge status-critical">🔴 CRITICAL - Abdominal Pain</span>
+                        <div style="margin-top: 0.5rem; font-size: 0.9rem; color: #666;">⏱ 7 min | 🚗 Walk-in</div>
+                    </div>
+
+                    <div class="comparison-section">
+                        <h4>Vitals</h4>
+                        <div class="vitals-grid">
+                            <div class="vital-item">
+                                <span class="vital-label">BP</span>
+                                <span class="vital-value vital-warning">90/60</span>
+                                <span class="vital-label">⚠ LOW (hypotensive)</span>
+                            </div>
+                            <div class="vital-item">
+                                <span class="vital-label">HR</span>
+                                <span class="vital-value vital-warning">110 bpm</span>
+                                <span class="vital-label">⚠ ELEVATED</span>
+                            </div>
+                            <div class="vital-item">
+                                <span class="vital-label">SpO2</span>
+                                <span class="vital-value vital-normal">98%</span>
+                                <span class="vital-label">✓ Normal</span>
+                            </div>
+                            <div class="vital-item">
+                                <span class="vital-label">Temp</span>
+                                <span class="vital-value vital-warning">102°F</span>
+                                <span class="vital-label">⚠ FEVER</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="comparison-section">
+                        <h4>Alerts</h4>
+                        <ul class="alerts-list">
+                            <li class="alert-item alert-critical">• PREGNANT (12 weeks) ⚠⚠⚠</li>
+                            <li class="alert-item">• No known medical history</li>
+                            <li class="alert-item">• No known allergies</li>
+                        </ul>
+                    </div>
+
+                    <div class="comparison-section">
+                        <h4>Current Medications</h4>
+                        <div style="font-size: 0.9rem;">0 medications<br>None on record</div>
+                    </div>
+
+                    <div class="comparison-section">
+                        <h4>AI Assessment</h4>
+                        <div class="ai-diagnosis">
+                            <strong>Ectopic pregnancy? - 65% confidence</strong>
+                        </div>
+                        <div style="font-size: 0.85rem; margin-top: 0.5rem;">
+                            Recommend:<br>
+                            • OB/GYN STAT consult<br>
+                            • Ultrasound STAT<br>
+                            • Surgical consult if needed
+                        </div>
+                    </div>
+
+                    <div class="comparison-section">
+                        <div style="background: #fee2e2; padding: 1rem; border-radius: 6px; border-left: 4px solid #dc2626;">
+                            <strong>⚠ EQUAL OR HIGHER (pregnancy risk)</strong><br>
+                            <span style="font-size: 0.85rem;">(maternal + fetal risk)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-bar">
+                <button class="action-button">
+                    <div class="action-label">ESI LEVEL</div>
+                    <div class="action-value">[1-5]</div>
+                </button>
+                <button class="action-button">
+                    <div class="action-label">ASSIGN BAY</div>
+                    <div class="action-value">[Resus]</div>
+                </button>
+                <button class="action-button">
+                    <div class="action-label">CALL</div>
+                    <div class="action-value">[Cardio]</div>
+                </button>
+                <button class="action-button">
+                    <div class="action-label">ORDER</div>
+                    <div class="action-value">[STAT Labs]</div>
+                </button>
+                <button class="action-button" style="background: #10b981; color: white; border-color: #10b981;">
+                    <div class="action-label" style="color: white;">COMPLETE</div>
+                    <div class="action-value" style="color: white;">[& Handoff]</div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="status-footer">
+        <div class="dept-stats">
+            <span>Total: 28/45</span>
+            <span>RED: 3 | YELLOW: 12 | GREEN: 8 | BLUE: 5</span>
+            <span>Avg Wait: 15 min</span>
+        </div>
+        <div>
+            Last updated: <span id="lastUpdate">Just now</span>
+        </div>
+    </div>
+
+    <script>
+        // Mock patient data
+        const patients = [
+            // CRITICAL (RED)
+            {
+                id: 1,
+                name: "Rajesh Kumar",
+                age: 45,
+                gender: "M",
+                acuity: "critical",
+                complaint: "Chest pain",
+                waitTime: "3m",
+                arrival: "🚑",
+                vitals: "BP↑ HR↑ SpO2↓",
+                active: true,
+                bp: "180/110",
+                hr: "125",
+                spo2: "94%",
+                temp: "98.6°F",
+                rr: "22/min"
+            },
+            {
+                id: 2,
+                name: "Priya Sharma",
+                age: 28,
+                gender: "F",
+                acuity: "critical",
+                complaint: "Abd pain",
+                waitTime: "7m",
+                arrival: "🚗",
+                vitals: "BP↓ Pregnant",
+                bp: "90/60",
+                hr: "110",
+                spo2: "98%",
+                temp: "102°F",
+                rr: "18/min"
+            },
+            {
+                id: 3,
+                name: "Anil Patel",
+                age: 62,
+                gender: "M",
+                acuity: "critical",
+                complaint: "AMS",
+                waitTime: "12m",
+                arrival: "🚑",
+                vitals: "BP↑ Confused",
+                bp: "195/105",
+                hr: "88",
+                spo2: "91%",
+                temp: "100.2°F",
+                rr: "24/min"
+            },
+            // URGENT (YELLOW)
+            {
+                id: 4,
+                name: "Meena Singh",
+                age: 35,
+                gender: "F",
+                acuity: "urgent",
+                complaint: "Fever, rash",
+                waitTime: "18m",
+                arrival: "🚗",
+                vitals: "Temp↑ Rash",
+                bp: "125/80",
+                hr: "95",
+                spo2: "97%",
+                temp: "103.1°F",
+                rr: "18/min"
+            },
+            {
+                id: 5,
+                name: "Arjun Das",
+                age: 52,
+                gender: "M",
+                acuity: "urgent",
+                complaint: "Knee pain",
+                waitTime: "22m",
+                arrival: "🚗",
+                vitals: "Pain 8/10",
+                bp: "140/90",
+                hr: "82",
+                spo2: "98%",
+                temp: "98.4°F",
+                rr: "16/min"
+            },
+            {
+                id: 6,
+                name: "Lakshmi Reddy",
+                age: 41,
+                gender: "F",
+                acuity: "urgent",
+                complaint: "Migraine",
+                waitTime: "25m",
+                arrival: "🚗",
+                vitals: "Pain 9/10",
+                bp: "135/85",
+                hr: "78",
+                spo2: "99%",
+                temp: "98.6°F",
+                rr: "14/min"
+            },
+            {
+                id: 7,
+                name: "Suresh Nair",
+                age: 58,
+                gender: "M",
+                acuity: "urgent",
+                complaint: "SOB",
+                waitTime: "28m",
+                arrival: "🚗",
+                vitals: "SpO2↓",
+                bp: "145/92",
+                hr: "102",
+                spo2: "92%",
+                temp: "98.8°F",
+                rr: "22/min"
+            },
+            {
+                id: 8,
+                name: "Kavita Joshi",
+                age: 33,
+                gender: "F",
+                acuity: "urgent",
+                complaint: "Vomiting",
+                waitTime: "32m",
+                arrival: "🚗",
+                vitals: "Dehydrated",
+                bp: "105/68",
+                hr: "98",
+                spo2: "97%",
+                temp: "99.2°F",
+                rr: "18/min"
+            },
+            {
+                id: 9,
+                name: "Ramesh Gupta",
+                age: 67,
+                gender: "M",
+                acuity: "urgent",
+                complaint: "Fall injury",
+                waitTime: "35m",
+                arrival: "🚑",
+                vitals: "Head lac",
+                bp: "160/95",
+                hr: "76",
+                spo2: "96%",
+                temp: "98.6°F",
+                rr: "16/min"
+            },
+            {
+                id: 10,
+                name: "Anjali Mehta",
+                age: 29,
+                gender: "F",
+                acuity: "urgent",
+                complaint: "Allergic rxn",
+                waitTime: "38m",
+                arrival: "🚗",
+                vitals: "Hives",
+                bp: "118/75",
+                hr: "92",
+                spo2: "98%",
+                temp: "98.9°F",
+                rr: "18/min"
+            },
+            {
+                id: 11,
+                name: "Vivek Shah",
+                age: 44,
+                gender: "M",
+                acuity: "urgent",
+                complaint: "Back pain",
+                waitTime: "42m",
+                arrival: "🚗",
+                vitals: "Pain 7/10",
+                bp: "138/88",
+                hr: "80",
+                spo2: "99%",
+                temp: "98.5°F",
+                rr: "15/min"
+            },
+            {
+                id: 12,
+                name: "Deepa Iyer",
+                age: 37,
+                gender: "F",
+                acuity: "urgent",
+                complaint: "UTI symptoms",
+                waitTime: "45m",
+                arrival: "🚗",
+                vitals: "Dysuria",
+                bp: "122/78",
+                hr: "84",
+                spo2: "98%",
+                temp: "99.8°F",
+                rr: "16/min"
+            },
+            {
+                id: 13,
+                name: "Krishna Murthy",
+                age: 55,
+                gender: "M",
+                acuity: "urgent",
+                complaint: "Dental pain",
+                waitTime: "48m",
+                arrival: "🚗",
+                vitals: "Pain 8/10",
+                bp: "142/90",
+                hr: "88",
+                spo2: "99%",
+                temp: "98.7°F",
+                rr: "16/min"
+            },
+            {
+                id: 14,
+                name: "Shalini Rao",
+                age: 31,
+                gender: "F",
+                acuity: "urgent",
+                complaint: "Asthma",
+                waitTime: "52m",
+                arrival: "🚗",
+                vitals: "Wheezing",
+                bp: "128/82",
+                hr: "96",
+                spo2: "94%",
+                temp: "98.6°F",
+                rr: "24/min"
+            },
+            {
+                id: 15,
+                name: "Mohan Pillai",
+                age: 49,
+                gender: "M",
+                acuity: "urgent",
+                complaint: "Gout flare",
+                waitTime: "55m",
+                arrival: "🚗",
+                vitals: "Swelling",
+                bp: "145/92",
+                hr: "82",
+                spo2: "98%",
+                temp: "99.1°F",
+                rr: "16/min"
+            },
+            // MINOR (GREEN)
+            {
+                id: 16,
+                name: "Neha Kapoor",
+                age: 26,
+                gender: "F",
+                acuity: "minor",
+                complaint: "Cold/flu",
+                waitTime: "62m",
+                arrival: "🚗",
+                vitals: "Mild fever",
+                bp: "115/72",
+                hr: "78",
+                spo2: "98%",
+                temp: "100.2°F",
+                rr: "16/min"
+            },
+            {
+                id: 17,
+                name: "Amit Desai",
+                age: 38,
+                gender: "M",
+                acuity: "minor",
+                complaint: "Rash",
+                waitTime: "68m",
+                arrival: "🚗",
+                vitals: "Itching",
+                bp: "120/78",
+                hr: "72",
+                spo2: "99%",
+                temp: "98.6°F",
+                rr: "14/min"
+            },
+            {
+                id: 18,
+                name: "Pooja Khanna",
+                age: 22,
+                gender: "F",
+                acuity: "minor",
+                complaint: "Minor burn",
+                waitTime: "72m",
+                arrival: "🚗",
+                vitals: "1st degree",
+                bp: "118/74",
+                hr: "76",
+                spo2: "99%",
+                temp: "98.4°F",
+                rr: "14/min"
+            },
+            {
+                id: 19,
+                name: "Sandeep Kumar",
+                age: 42,
+                gender: "M",
+                acuity: "minor",
+                complaint: "Sprain",
+                waitTime: "78m",
+                arrival: "🚗",
+                vitals: "Ankle swelling",
+                bp: "125/80",
+                hr: "74",
+                spo2: "99%",
+                temp: "98.6°F",
+                rr: "15/min"
+            },
+            {
+                id: 20,
+                name: "Ritu Verma",
+                age: 34,
+                gender: "F",
+                acuity: "minor",
+                complaint: "Sore throat",
+                waitTime: "82m",
+                arrival: "🚗",
+                vitals: "Mild",
+                bp: "118/76",
+                hr: "70",
+                spo2: "99%",
+                temp: "99.1°F",
+                rr: "14/min"
+            },
+            {
+                id: 21,
+                name: "Prakash Reddy",
+                age: 51,
+                gender: "M",
+                acuity: "minor",
+                complaint: "Constipation",
+                waitTime: "88m",
+                arrival: "🚗",
+                vitals: "Discomfort",
+                bp: "130/82",
+                hr: "72",
+                spo2: "99%",
+                temp: "98.6°F",
+                rr: "14/min"
+            },
+            {
+                id: 22,
+                name: "Sneha Patel",
+                age: 27,
+                gender: "F",
+                acuity: "minor",
+                complaint: "Eye irritation",
+                waitTime: "92m",
+                arrival: "🚗",
+                vitals: "Redness",
+                bp: "116/74",
+                hr: "68",
+                spo2: "99%",
+                temp: "98.5°F",
+                rr: "14/min"
+            },
+            {
+                id: 23,
+                name: "Vinay Sharma",
+                age: 39,
+                gender: "M",
+                acuity: "minor",
+                complaint: "Insect bite",
+                waitTime: "98m",
+                arrival: "🚗",
+                vitals: "Local swelling",
+                bp: "122/78",
+                hr: "70",
+                spo2: "99%",
+                temp: "98.6°F",
+                rr: "14/min"
+            },
+            // IN TREATMENT (BLUE)
+            {
+                id: 24,
+                name: "Geeta Nair",
+                age: 46,
+                gender: "F",
+                acuity: "treatment",
+                complaint: "IV fluids",
+                waitTime: "125m",
+                arrival: "🚗",
+                vitals: "Stable",
+                bp: "120/80",
+                hr: "75",
+                spo2: "98%",
+                temp: "98.6°F",
+                rr: "16/min"
+            },
+            {
+                id: 25,
+                name: "Harish Jain",
+                age: 53,
+                gender: "M",
+                acuity: "treatment",
+                complaint: "X-ray pending",
+                waitTime: "142m",
+                arrival: "🚗",
+                vitals: "Stable",
+                bp: "135/85",
+                hr: "78",
+                spo2: "98%",
+                temp: "98.6°F",
+                rr: "16/min"
+            },
+            {
+                id: 26,
+                name: "Usha Menon",
+                age: 61,
+                gender: "F",
+                acuity: "treatment",
+                complaint: "Lab results",
+                waitTime: "156m",
+                arrival: "🚑",
+                vitals: "Stable",
+                bp: "128/82",
+                hr: "72",
+                spo2: "97%",
+                temp: "98.6°F",
+                rr: "16/min"
+            },
+            {
+                id: 27,
+                name: "Dinesh Kumar",
+                age: 48,
+                gender: "M",
+                acuity: "treatment",
+                complaint: "Wound care",
+                waitTime: "168m",
+                arrival: "🚗",
+                vitals: "Stable",
+                bp: "132/84",
+                hr: "76",
+                spo2: "98%",
+                temp: "98.6°F",
+                rr: "15/min"
+            },
+            {
+                id: 28,
+                name: "Madhavi Rao",
+                age: 36,
+                gender: "F",
+                acuity: "treatment",
+                complaint: "Obs pending",
+                waitTime: "182m",
+                arrival: "🚗",
+                vitals: "Stable",
+                bp: "118/76",
+                hr: "74",
+                spo2: "99%",
+                temp: "98.6°F",
+                rr: "14/min"
+            }
+        ];
+
+        let activePatientId = 1;
+        let compareMode = false;
+        let queueCollapsed = false;
+        let searchTerm = '';
+
+        // Render queue
+        function renderQueue() {
+            const queueContent = document.getElementById('queueContent');
+            const acuityGroups = {
+                critical: { patients: [], label: '🔴 CRITICAL', class: 'acuity-critical' },
+                urgent: { patients: [], label: '🟡 URGENT', class: 'acuity-urgent' },
+                minor: { patients: [], label: '🟢 MINOR', class: 'acuity-minor' },
+                treatment: { patients: [], label: '🔵 IN TREATMENT', class: 'acuity-treatment' }
+            };
+
+            // Filter and group patients
+            const filteredPatients = patients.filter(p => {
+                if (!searchTerm) return true;
+                const term = searchTerm.toLowerCase();
+                return p.name.toLowerCase().includes(term) ||
+                       p.complaint.toLowerCase().includes(term);
+            });
+
+            filteredPatients.forEach(p => {
+                acuityGroups[p.acuity].patients.push(p);
+            });
+
+            // Render grouped sections
+            queueContent.innerHTML = '';
+            Object.keys(acuityGroups).forEach(key => {
+                const group = acuityGroups[key];
+                if (group.patients.length === 0) return;
+
+                const section = document.createElement('div');
+                section.className = 'acuity-section';
+
+                const header = document.createElement('div');
+                header.className = `acuity-header ${group.class}`;
+                header.innerHTML = `<span>${group.label} (${group.patients.length})</span><span>▼</span>`;
+                header.onclick = () => toggleSection(key);
+                section.appendChild(header);
+
+                const patientsDiv = document.createElement('div');
+                patientsDiv.className = 'acuity-patients';
+                patientsDiv.id = `section-${key}`;
+
+                group.patients.forEach(patient => {
+                    const card = document.createElement('div');
+                    card.className = `patient-card ${patient.active ? 'active' : ''}`;
+                    card.onclick = () => selectPatient(patient.id);
+                    card.innerHTML = `
+                        <div class="patient-header">
+                            <span class="patient-indicator"></span>
+                            <span class="patient-name">${patient.name}, ${patient.age}${patient.gender}</span>
+                        </div>
+                        <div class="patient-info">
+                            <span>⏱ ${patient.waitTime}</span>
+                            <span>${patient.arrival}</span>
+                            <span>${patient.complaint}</span>
+                        </div>
+                        <div class="patient-vitals">${patient.vitals}</div>
+                    `;
+                    patientsDiv.appendChild(card);
+                });
+
+                section.appendChild(patientsDiv);
+                queueContent.appendChild(section);
+            });
+
+            // Update counts
+            document.getElementById('queueCount').textContent = patients.length;
+            document.getElementById('criticalCount').textContent = acuityGroups.critical.patients.length;
+            document.getElementById('urgentCount').textContent = acuityGroups.urgent.patients.length;
+            document.getElementById('minorCount').textContent = acuityGroups.minor.patients.length;
+            document.getElementById('treatmentCount').textContent = acuityGroups.treatment.patients.length;
+        }
+
+        // Select patient
+        function selectPatient(id) {
+            patients.forEach(p => p.active = (p.id === id));
+            activePatientId = id;
+            renderQueue();
+            updateDetailPanel();
+        }
+
+        // Update detail panel
+        function updateDetailPanel() {
+            const patient = patients.find(p => p.id === activePatientId);
+            if (!patient) return;
+
+            document.getElementById('detailPatientName').textContent = `${patient.name}, ${patient.age}${patient.gender}`;
+            document.getElementById('detailWaitTime').textContent = patient.waitTime;
+            document.getElementById('detailBP').textContent = patient.bp;
+            document.getElementById('detailHR').textContent = `${patient.hr} bpm`;
+            document.getElementById('detailSPO2').textContent = patient.spo2;
+            document.getElementById('detailTemp').textContent = patient.temp;
+            document.getElementById('detailRR').textContent = patient.rr;
+        }
+
+        // Toggle section
+        function toggleSection(key) {
+            const section = document.getElementById(`section-${key}`);
+            if (section.style.display === 'none') {
+                section.style.display = 'block';
+            } else {
+                section.style.display = 'none';
+            }
+        }
+
+        // Switch tabs
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+            event.target.classList.add('active');
+            document.getElementById(`${tabName}-tab`).classList.add('active');
+        }
+
+        // Toggle compare mode
+        function toggleCompareMode() {
+            compareMode = !compareMode;
+            const normalView = document.getElementById('normalView');
+            const comparisonView = document.getElementById('comparisonView');
+            const compareBtn = document.getElementById('compareBtn');
+
+            if (compareMode) {
+                normalView.style.display = 'none';
+                comparisonView.classList.add('active');
+                compareBtn.classList.add('active');
+                compareBtn.textContent = 'Exit Compare';
+            } else {
+                normalView.style.display = 'block';
+                comparisonView.classList.remove('active');
+                compareBtn.classList.remove('active');
+                compareBtn.textContent = 'Compare';
+            }
+        }
+
+        // Toggle queue collapse
+        function toggleQueueCollapse() {
+            queueCollapsed = !queueCollapsed;
+            const queuePanel = document.getElementById('queuePanel');
+            const collapseBtn = document.getElementById('collapseBtn');
+
+            if (queueCollapsed) {
+                queuePanel.classList.add('collapsed');
+                collapseBtn.textContent = '►';
+            } else {
+                queuePanel.classList.remove('collapsed');
+                collapseBtn.textContent = '◄';
+            }
+        }
+
+        // Filter queue
+        function filterQueue() {
+            searchTerm = document.getElementById('searchInput').value;
+            renderQueue();
+        }
+
+        // Drag handle functionality
+        let isDragging = false;
+        let startX = 0;
+        let startWidth = 0;
+
+        const dragHandle = document.getElementById('dragHandle');
+        const queuePanel = document.getElementById('queuePanel');
+
+        dragHandle.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+            startWidth = queuePanel.offsetWidth;
+            dragHandle.classList.add('dragging');
+            document.body.style.cursor = 'col-resize';
+            e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+
+            const delta = e.clientX - startX;
+            const newWidth = startWidth + delta;
+            const containerWidth = document.querySelector('.main-container').offsetWidth;
+
+            // Constrain width between 20% and 60% of container
+            const minWidth = containerWidth * 0.2;
+            const maxWidth = containerWidth * 0.6;
+
+            if (newWidth >= minWidth && newWidth <= maxWidth) {
+                queuePanel.style.width = `${newWidth}px`;
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (isDragging) {
+                isDragging = false;
+                dragHandle.classList.remove('dragging');
+                document.body.style.cursor = 'default';
+            }
+        });
+
+        // Search on Enter
+        document.getElementById('searchInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                filterQueue();
+            }
+        });
+
+        // Initialize
+        renderQueue();
+        updateDetailPanel();
+
+        // Update timestamp
+        setInterval(() => {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString();
+            document.getElementById('lastUpdate').textContent = timeStr;
+        }, 1000);
+    </script>
+</body>
+</html>
