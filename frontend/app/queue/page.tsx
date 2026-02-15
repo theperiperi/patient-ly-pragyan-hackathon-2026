@@ -25,7 +25,9 @@ import {
   ClipboardList,
   Sparkles,
   Check,
+  Mic,
 } from "lucide-react";
+import Link from "next/link";
 
 type FilterType = "all" | "critical" | "pending" | "approved" | "triaging";
 type SortType = "acuity" | "arrival" | "wait";
@@ -603,6 +605,14 @@ export default function QueuePage() {
           </div>
         )}
       </main>
+
+      {/* Floating Voice Intake Button */}
+      <Link
+        href="/intake"
+        className="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-slate-800 text-white shadow-lg flex items-center justify-center hover:bg-slate-700 active:scale-95 transition-all"
+      >
+        <Mic className="w-6 h-6" />
+      </Link>
 
       {/* Manual Review Modal */}
       <ManualReviewModal

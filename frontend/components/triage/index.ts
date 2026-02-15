@@ -10,3 +10,4 @@ export { ChiefComplaint } from "./chief-complaint";
 export { ModifyModal } from "./modify-modal";
 export { ManualReviewModal } from "./manual-review-modal";
 export { SwipeableCard } from "./swipeable-card";
+export { VoiceInputButton } from "./voice-input-button";
