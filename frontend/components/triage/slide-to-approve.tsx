@@ -15,6 +15,15 @@ interface SlideToApproveProps {
 
 type SlideState = "idle" | "sliding" | "approving" | "complete";
 
+const executionSteps = [
+  "Assigning bay...",
+  "Triggering protocols...",
+  "Issuing lab orders...",
+  "Requesting imaging...",
+  "Paging specialists...",
+  "Notifying care team...",
+];
+
 export function SlideToApprove({
   onApprove,
   onComplete,
@@ -26,18 +35,33 @@ export function SlideToApprove({
   const [slideProgress, setSlideProgress] = useState(0);
   const [state, setState] = useState<SlideState>("idle");
   const [isDragging, setIsDragging] = useState(false);
+  const [executionStep, setExecutionStep] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const startXRef = useRef(0);
   const containerWidthRef = useRef(0);
 
+  // Cycle through execution steps when approving
+  useEffect(() => {
+    if (state !== "approving") {
+      setExecutionStep(0);
+      return;
+    }
+
+    const interval = setInterval(() => {
+      setExecutionStep((prev) => (prev + 1) % executionSteps.length);
+    }, 350);
+
+    return () => clearInterval(interval);
+  }, [state]);
+
   const getSlideText = useCallback(() => {
     if (state === "complete") return "Approved";
-    if (state === "approving") return "Executing...";
+    if (state === "approving") return executionSteps[executionStep];
     if (slideProgress < 25) return "Slide to approve";
     if (slideProgress < 50) return "Keep sliding...";
     if (slideProgress < 75) return "Almost there...";
     return "Release to confirm";
-  }, [slideProgress, state]);
+  }, [slideProgress, state, executionStep]);
 
   const handleStart = useCallback(
     (clientX: number) => {

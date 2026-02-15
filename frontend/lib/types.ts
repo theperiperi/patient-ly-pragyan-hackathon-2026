@@ -72,6 +72,7 @@ export interface AIDecision {
   isolation: string | null;
   reasoning: string[];
   sbar: SBARHandoff;
+  alerts?: Alert[];  // Optional alerts from AI decision
 }
 
 export interface Patient {
