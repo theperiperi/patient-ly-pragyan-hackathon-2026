@@ -1,0 +1,7 @@
+# Voice API dependencies (Vercel Python serverless runtime)
+fastapi>=0.115.0
+python-multipart>=0.0.9
+openai>=1.0.0
+google-genai>=1.0.0
+pydantic>=2.0.0
+fhir.resources>=8.0.0
