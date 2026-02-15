@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Outfit, JetBrains_Mono } from "next/font/google";
+import { Outfit, JetBrains_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -12,6 +12,13 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
+});
+
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -65,7 +72,7 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
       </head>
       <body
-        className={`${outfit.variable} ${jetbrainsMono.variable} font-sans antialiased`}
+        className={`${outfit.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
         {children}
