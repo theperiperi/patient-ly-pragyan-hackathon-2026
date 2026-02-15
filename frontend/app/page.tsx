@@ -261,10 +261,12 @@ export default function Home() {
                 <Mic className="h-5 w-5 text-teal-600 dark:text-teal-400" />
                 Voice Intake
               </Link>
-              <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-500">
-                <CheckCircle2 className="h-4 w-4 text-emerald-500" />
-                <span>94.2% AI accuracy today</span>
-              </div>
+              <Link
+                href="/dashboard"
+                className="group inline-flex items-center gap-2 rounded-full border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 px-8 py-4 font-semibold text-base transition-all duration-300 hover:border-slate-400 dark:hover:border-slate-600 hover:shadow-lg"
+              >
+                View Dashboard
+              </Link>
             </div>
           </div>
 
