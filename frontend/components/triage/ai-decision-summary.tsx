@@ -10,6 +10,7 @@ import {
   Scan,
   Syringe,
   Zap,
+  Info,
 } from "lucide-react";
 
 interface AIDecisionSummaryProps {
@@ -43,11 +44,12 @@ export function AIDecisionSummary({ decision, className }: AIDecisionSummaryProp
         >
           ESI-{decision.esi} {decision.acuityLabel}
         </div>
-        <div className="flex items-baseline gap-1">
+        <div className="flex items-center gap-1.5">
           <span className={cn("text-xl font-semibold tabular-nums", confidenceColor)}>
             {decision.confidence}%
           </span>
           <span className="text-xs text-muted-foreground">confidence</span>
+          <Info className="w-4 h-4 text-muted-foreground/60 cursor-help" />
         </div>
       </div>
 
