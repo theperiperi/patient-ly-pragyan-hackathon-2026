@@ -16,19 +16,207 @@ import {
   Stethoscope,
   Heart,
   ChevronRight,
+  BarChart3,
   ArrowLeft,
-  Zap,
-  Shield,
+  CheckCircle2,
+  Timer,
   Gauge,
-  Radio,
-  Waves,
+  MessageSquare,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  Cell,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+  Radar,
+  Legend,
+  ComposedChart,
+  Line,
+  ScatterChart,
+  Scatter,
+  ZAxis,
+  Treemap,
+} from "recharts";
 
-// ============================================================================
-// DATA COMPUTATION
-// ============================================================================
+// Generate simulated hourly data
+function generateHourlyData() {
+  const hours = [];
+  const now = new Date();
+  for (let i = 23; i >= 0; i--) {
+    const hour = new Date(now.getTime() - i * 60 * 60 * 1000);
+    const hourLabel = hour.getHours().toString().padStart(2, "0") + ":00";
 
+    // Simulate realistic ED traffic patterns
+    const baseArrivals = 3 + Math.sin((hour.getHours() - 6) * Math.PI / 12) * 2;
+    const arrivals = Math.max(1, Math.round(baseArrivals + Math.random() * 3));
+    const triaged = Math.round(arrivals * (0.85 + Math.random() * 0.15));
+    const highRisk = Math.round(arrivals * (0.15 + Math.random() * 0.1));
+
+    hours.push({
+      hour: hourLabel,
+      arrivals,
+      triaged,
+      highRisk,
+      pending: arrivals - triaged,
+    });
+  }
+  return hours;
+}
+
+// Generate department heatmap data
+function generateDepartmentHeatmap() {
+  const departments = ["Emergency", "Cardiology", "Neurology", "Orthopedics", "Internal Med", "Pediatrics"];
+  const timeSlots = ["00-04", "04-08", "08-12", "12-16", "16-20", "20-24"];
+
+  const data: { dept: string; time: string; value: number; }[] = [];
+
+  departments.forEach(dept => {
+    timeSlots.forEach(time => {
+      // Simulate realistic patterns - busier during day
+      const timeIndex = timeSlots.indexOf(time);
+      const baseValue = timeIndex >= 2 && timeIndex <= 4 ? 8 : 4;
+      const value = Math.round(baseValue + Math.random() * 6);
+      data.push({ dept, time, value });
+    });
+  });
+
+  return { data, departments, timeSlots };
+}
+
+// Compute confidence distribution
+function computeConfidenceDistribution(patients: Patient[]) {
+  const buckets = [
+    { range: "60-70%", min: 60, max: 70, count: 0, color: "#ef4444" },
+    { range: "70-75%", min: 70, max: 75, count: 0, color: "#f97316" },
+    { range: "75-80%", min: 75, max: 80, count: 0, color: "#eab308" },
+    { range: "80-85%", min: 80, max: 85, count: 0, color: "#84cc16" },
+    { range: "85-90%", min: 85, max: 90, count: 0, color: "#22c55e" },
+    { range: "90-95%", min: 90, max: 95, count: 0, color: "#10b981" },
+    { range: "95-100%", min: 95, max: 100, count: 0, color: "#059669" },
+  ];
+
+  patients.forEach(p => {
+    const conf = p.aiDecision.confidence;
+    const bucket = buckets.find(b => conf >= b.min && conf < b.max);
+    if (bucket) bucket.count++;
+    else if (conf === 100) buckets[buckets.length - 1].count++;
+  });
+
+  return buckets;
+}
+
+// Compute vitals by risk level for radar chart
+function computeVitalsRadar(patients: Patient[]) {
+  const riskGroups = {
+    high: { patients: [] as Patient[], label: "High Risk (ESI 1-2)" },
+    medium: { patients: [] as Patient[], label: "Medium (ESI 3)" },
+    low: { patients: [] as Patient[], label: "Low Risk (ESI 4-5)" },
+  };
+
+  patients.forEach(p => {
+    if (p.aiDecision.esi <= 2) riskGroups.high.patients.push(p);
+    else if (p.aiDecision.esi === 3) riskGroups.medium.patients.push(p);
+    else riskGroups.low.patients.push(p);
+  });
+
+  const calcAvg = (group: Patient[], getter: (p: Patient) => number) => {
+    if (group.length === 0) return 0;
+    return group.reduce((sum, p) => sum + getter(p), 0) / group.length;
+  };
+
+  // Normalize vitals to 0-100 scale for radar
+  const normalize = (value: number, min: number, max: number) =>
+    Math.round(((value - min) / (max - min)) * 100);
+
+  const metrics = [
+    { metric: "Heart Rate", fullMark: 100 },
+    { metric: "BP Systolic", fullMark: 100 },
+    { metric: "SpO2", fullMark: 100 },
+    { metric: "Temperature", fullMark: 100 },
+    { metric: "Resp Rate", fullMark: 100 },
+  ];
+
+  return metrics.map(m => {
+    const getVital = (p: Patient): number => {
+      switch (m.metric) {
+        case "Heart Rate": return typeof p.vitals.hr.value === 'number' ? p.vitals.hr.value : 80;
+        case "BP Systolic": {
+          const bp = String(p.vitals.bp.value);
+          return parseInt(bp.split('/')[0]) || 120;
+        }
+        case "SpO2": return typeof p.vitals.spo2.value === 'number' ? p.vitals.spo2.value : 98;
+        case "Temperature": return typeof p.vitals.temp.value === 'number' ? p.vitals.temp.value : 98.6;
+        case "Resp Rate": return typeof p.vitals.rr.value === 'number' ? p.vitals.rr.value : 16;
+        default: return 0;
+      }
+    };
+
+    const getNormalized = (value: number): number => {
+      switch (m.metric) {
+        case "Heart Rate": return normalize(value, 40, 180);
+        case "BP Systolic": return normalize(value, 70, 200);
+        case "SpO2": return normalize(value, 80, 100);
+        case "Temperature": return normalize(value, 95, 105);
+        case "Resp Rate": return normalize(value, 8, 40);
+        default: return 50;
+      }
+    };
+
+    return {
+      metric: m.metric,
+      high: getNormalized(calcAvg(riskGroups.high.patients, getVital)),
+      medium: getNormalized(calcAvg(riskGroups.medium.patients, getVital)),
+      low: getNormalized(calcAvg(riskGroups.low.patients, getVital)),
+      fullMark: 100,
+    };
+  });
+}
+
+// Compute chief complaint word frequency
+function computeComplaintFrequency(patients: Patient[]) {
+  const wordCounts: Record<string, number> = {};
+  const stopWords = new Set(['and', 'the', 'with', 'for', 'from', 'has', 'been', 'was', 'are', 'is', 'of', 'to', 'in', 'on', 'a', 'an']);
+
+  patients.forEach(p => {
+    const words = p.chiefComplaint.toLowerCase()
+      .replace(/[^a-z\s]/g, '')
+      .split(/\s+/)
+      .filter(w => w.length > 2 && !stopWords.has(w));
+
+    words.forEach(word => {
+      wordCounts[word] = (wordCounts[word] || 0) + 1;
+    });
+  });
+
+  return Object.entries(wordCounts)
+    .map(([name, value]) => ({ name, value }))
+    .sort((a, b) => b.value - a.value)
+    .slice(0, 15);
+}
+
+// ESI vs Confidence scatter data
+function computeESIConfidenceScatter(patients: Patient[]) {
+  return patients.map(p => ({
+    esi: p.aiDecision.esi,
+    confidence: p.aiDecision.confidence,
+    name: p.name,
+    complaint: p.chiefComplaint.slice(0, 30),
+    size: p.aiDecision.esi <= 2 ? 100 : p.aiDecision.esi === 3 ? 60 : 40,
+  }));
+}
+
+// Compute stats
 function computeStats(patients: Patient[]) {
   const stats = {
     total: patients.length,
@@ -39,8 +227,6 @@ function computeStats(patients: Patient[]) {
     highRisk: 0,
     mediumRisk: 0,
     lowRisk: 0,
-    avgTriageTime: 47,
-    triaged24h: 24,
   };
 
   let totalConfidence = 0;
@@ -61,757 +247,691 @@ function computeStats(patients: Patient[]) {
   return stats;
 }
 
-// ============================================================================
-// ANIMATED COMPONENTS
-// ============================================================================
-
-// Animated number counter with smooth easing
-function AnimatedNumber({
+// Summary card component
+function SummaryCard({
+  title,
   value,
-  suffix = "",
-  decimals = 0,
-  duration = 1500
+  subtitle,
+  icon: Icon,
+  trend,
+  trendValue,
+  color = "teal",
 }: {
-  value: number;
-  suffix?: string;
-  decimals?: number;
-  duration?: number;
+  title: string;
+  value: React.ReactNode;
+  subtitle?: string;
+  icon: React.ElementType;
+  trend?: "up" | "down";
+  trendValue?: string;
+  color?: "teal" | "red" | "amber" | "emerald" | "violet";
 }) {
+  const colorClasses = {
+    teal: "bg-teal-50 dark:bg-teal-900/20 text-teal-600 dark:text-teal-400",
+    red: "bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400",
+    amber: "bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400",
+    emerald: "bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400",
+    violet: "bg-violet-50 dark:bg-violet-900/20 text-violet-600 dark:text-violet-400",
+  };
+
+  return (
+    <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5">
+      <div className="flex items-start justify-between">
+        <div>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mb-1">{title}</p>
+          <p className="text-3xl font-bold text-slate-900 dark:text-slate-100 tabular-nums">
+            {value}
+          </p>
+          {subtitle && (
+            <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">{subtitle}</p>
+          )}
+        </div>
+        <div className={cn("p-3 rounded-xl", colorClasses[color])}>
+          <Icon className="h-5 w-5" />
+        </div>
+      </div>
+      {trend && trendValue && (
+        <div className="flex items-center gap-1 mt-3 text-xs">
+          {trend === "up" ? (
+            <TrendingUp className="h-3 w-3 text-emerald-500" />
+          ) : (
+            <TrendingDown className="h-3 w-3 text-red-500" />
+          )}
+          <span className={trend === "up" ? "text-emerald-600" : "text-red-600"}>
+            {trendValue}
+          </span>
+          <span className="text-slate-400">vs last hour</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Custom tooltip for charts
+function CustomTooltip({ active, payload, label }: { active?: boolean; payload?: Array<{ name: string; value: number; color: string }>; label?: string }) {
+  if (active && payload && payload.length) {
+    return (
+      <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg p-3">
+        <p className="font-medium text-slate-900 dark:text-slate-100 mb-1">{label}</p>
+        {payload.map((entry, index) => (
+          <p key={index} className="text-sm" style={{ color: entry.color }}>
+            {entry.name}: <span className="font-semibold">{entry.value}</span>
+          </p>
+        ))}
+      </div>
+    );
+  }
+  return null;
+}
+
+// Heatmap cell component
+function HeatmapCell({ value, maxValue }: { value: number; maxValue: number }) {
+  const intensity = value / maxValue;
+  const bg = `rgba(20, 184, 166, ${0.1 + intensity * 0.8})`; // teal color
+
+  return (
+    <div
+      className="h-10 w-full rounded flex items-center justify-center text-xs font-medium transition-all hover:scale-105"
+      style={{
+        backgroundColor: bg,
+        color: intensity > 0.5 ? 'white' : 'rgb(15, 118, 110)',
+      }}
+    >
+      {value}
+    </div>
+  );
+}
+
+// Animated counter
+function AnimatedCounter({ value }: { value: number }) {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    const steps = 60;
+    const duration = 1000;
+    const steps = 30;
     const increment = value / steps;
     let step = 0;
 
     const timer = setInterval(() => {
       step++;
-      // Ease out cubic
-      const progress = 1 - Math.pow(1 - step / steps, 3);
-      setCurrent(Number((value * progress).toFixed(decimals)));
+      setCurrent(Math.min(Math.round(increment * step), value));
       if (step >= steps) clearInterval(timer);
     }, duration / steps);
 
     return () => clearInterval(timer);
-  }, [value, decimals, duration]);
+  }, [value]);
 
-  return (
-    <span className="font-mono tabular-nums">
-      {decimals > 0 ? current.toFixed(decimals) : current}
-      {suffix}
-    </span>
-  );
+  return <span className="tabular-nums">{current}</span>;
 }
 
-// Live pulse indicator with glow
-function PulseIndicator({ color = "emerald", size = "md" }: { color?: string; size?: "sm" | "md" | "lg" }) {
-  const sizeClasses = {
-    sm: "h-1.5 w-1.5",
-    md: "h-2.5 w-2.5",
-    lg: "h-3 w-3",
-  };
+// Treemap custom content
+const TreemapContent = (props: { x: number; y: number; width: number; height: number; name: string; value: number }) => {
+  const { x, y, width, height, name, value } = props;
 
-  const colorClasses: Record<string, string> = {
-    emerald: "bg-emerald-500 shadow-emerald-500/50",
-    red: "bg-red-500 shadow-red-500/50",
-    amber: "bg-amber-500 shadow-amber-500/50",
-    cyan: "bg-cyan-500 shadow-cyan-500/50",
-  };
+  if (width < 40 || height < 30) return null;
 
   return (
-    <span className="relative flex">
-      <span className={cn(
-        "absolute inline-flex h-full w-full rounded-full opacity-75 animate-ping",
-        colorClasses[color]?.split(" ")[0]
-      )} />
-      <span className={cn(
-        "relative inline-flex rounded-full shadow-lg",
-        sizeClasses[size],
-        colorClasses[color]
-      )} />
-    </span>
-  );
-}
-
-// Heartbeat line animation
-function HeartbeatLine() {
-  return (
-    <div className="absolute inset-0 overflow-hidden opacity-20">
-      <svg
-        className="absolute top-1/2 -translate-y-1/2 w-full h-12 animate-pulse-line"
-        viewBox="0 0 1200 50"
-        preserveAspectRatio="none"
+    <g>
+      <rect
+        x={x}
+        y={y}
+        width={width}
+        height={height}
+        fill="rgb(20, 184, 166)"
+        fillOpacity={0.3 + (value / 20) * 0.5}
+        stroke="white"
+        strokeWidth={2}
+        rx={4}
+      />
+      <text
+        x={x + width / 2}
+        y={y + height / 2 - 6}
+        textAnchor="middle"
+        fill="#0f766e"
+        fontSize={Math.min(14, width / 6)}
+        fontWeight="600"
       >
-        <path
-          d="M0,25 L200,25 L220,25 L230,10 L240,40 L250,5 L260,45 L270,20 L280,30 L290,25 L400,25 L1200,25"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          className="text-cyan-400"
-        />
-      </svg>
-    </div>
+        {name}
+      </text>
+      <text
+        x={x + width / 2}
+        y={y + height / 2 + 10}
+        textAnchor="middle"
+        fill="#0f766e"
+        fontSize={Math.min(12, width / 8)}
+      >
+        {value}
+      </text>
+    </g>
   );
-}
-
-// ============================================================================
-// METRIC CARDS
-// ============================================================================
-
-function MetricCard({
-  label,
-  value,
-  suffix = "",
-  subValue,
-  trend,
-  trendValue,
-  icon: Icon,
-  accentColor = "cyan",
-  delay = 0,
-  glowing = false,
-}: {
-  label: string;
-  value: number;
-  suffix?: string;
-  subValue?: string;
-  trend?: "up" | "down";
-  trendValue?: string;
-  icon: React.ElementType;
-  accentColor?: "cyan" | "red" | "amber" | "emerald" | "violet";
-  delay?: number;
-  glowing?: boolean;
-}) {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), delay);
-    return () => clearTimeout(timer);
-  }, [delay]);
-
-  const accentClasses: Record<string, { border: string; icon: string; glow: string }> = {
-    cyan: {
-      border: "border-cyan-500/30",
-      icon: "text-cyan-400",
-      glow: "shadow-cyan-500/20",
-    },
-    red: {
-      border: "border-red-500/30",
-      icon: "text-red-400",
-      glow: "shadow-red-500/20",
-    },
-    amber: {
-      border: "border-amber-500/30",
-      icon: "text-amber-400",
-      glow: "shadow-amber-500/20",
-    },
-    emerald: {
-      border: "border-emerald-500/30",
-      icon: "text-emerald-400",
-      glow: "shadow-emerald-500/20",
-    },
-    violet: {
-      border: "border-violet-500/30",
-      icon: "text-violet-400",
-      glow: "shadow-violet-500/20",
-    },
-  };
-
-  const accent = accentClasses[accentColor];
-
-  return (
-    <div
-      className={cn(
-        "relative overflow-hidden rounded-lg border bg-slate-900/80 backdrop-blur-sm p-4 transition-all duration-700",
-        accent.border,
-        glowing && `shadow-lg ${accent.glow}`,
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-      )}
-    >
-      {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent pointer-events-none" />
-
-      {/* Scanline effect */}
-      <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.1)_50%)] bg-[length:100%_4px] pointer-events-none opacity-30" />
-
-      <div className="relative">
-        <div className="flex items-start justify-between mb-3">
-          <p className="text-[11px] font-medium uppercase tracking-wider text-slate-400">
-            {label}
-          </p>
-          <Icon className={cn("h-4 w-4", accent.icon)} />
-        </div>
-
-        <div className="flex items-baseline gap-1">
-          <span className="text-3xl font-bold text-white">
-            {visible ? <AnimatedNumber value={value} suffix={suffix} /> : "0"}
-          </span>
-        </div>
-
-        {subValue && (
-          <p className="mt-1 text-xs text-slate-500">{subValue}</p>
-        )}
-
-        {trend && trendValue && (
-          <div className="flex items-center gap-1.5 mt-3 pt-3 border-t border-slate-800">
-            <div className={cn(
-              "flex items-center gap-1 text-xs font-medium",
-              trend === "up" ? "text-emerald-400" : "text-red-400"
-            )}>
-              {trend === "up" ? (
-                <TrendingUp className="h-3 w-3" />
-              ) : (
-                <TrendingDown className="h-3 w-3" />
-              )}
-              {trendValue}
-            </div>
-            <span className="text-xs text-slate-600">vs last hour</span>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
-// ============================================================================
-// ESI SEVERITY DISPLAY
-// ============================================================================
-
-function ESISeverityGrid({ byESI, total }: { byESI: Record<number, number>; total: number }) {
-  const esiConfig = [
-    { level: 1, label: "Resuscitation", color: "bg-red-500", textColor: "text-red-400", borderColor: "border-red-500/40", glowColor: "shadow-red-500/30" },
-    { level: 2, label: "Emergent", color: "bg-orange-500", textColor: "text-orange-400", borderColor: "border-orange-500/40", glowColor: "shadow-orange-500/30" },
-    { level: 3, label: "Urgent", color: "bg-amber-500", textColor: "text-amber-400", borderColor: "border-amber-500/40", glowColor: "shadow-amber-500/30" },
-    { level: 4, label: "Less Urgent", color: "bg-lime-500", textColor: "text-lime-400", borderColor: "border-lime-500/40", glowColor: "shadow-lime-500/20" },
-    { level: 5, label: "Non-Urgent", color: "bg-emerald-500", textColor: "text-emerald-400", borderColor: "border-emerald-500/40", glowColor: "shadow-emerald-500/20" },
-  ];
-
-  return (
-    <div className="space-y-3">
-      {esiConfig.map(({ level, label, color, textColor, borderColor, glowColor }) => {
-        const count = byESI[level];
-        const pct = total > 0 ? (count / total) * 100 : 0;
-        const isHighPriority = level <= 2;
-
-        return (
-          <div
-            key={level}
-            className={cn(
-              "relative rounded-lg border p-3 transition-all duration-300",
-              borderColor,
-              isHighPriority && count > 0 && `shadow-lg ${glowColor}`,
-              "bg-slate-900/60 hover:bg-slate-900/80"
-            )}
-          >
-            {/* Progress bar background */}
-            <div className="absolute inset-0 rounded-lg overflow-hidden">
-              <div
-                className={cn("h-full opacity-10 transition-all duration-1000", color)}
-                style={{ width: `${pct}%` }}
-              />
-            </div>
-
-            <div className="relative flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className={cn(
-                  "flex items-center justify-center h-8 w-8 rounded-md font-mono font-bold text-sm",
-                  color,
-                  "text-white"
-                )}>
-                  {level}
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-slate-200">{label}</p>
-                  <p className="text-xs text-slate-500">ESI Level {level}</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <div className="text-right">
-                  <p className={cn("text-2xl font-bold font-mono", textColor)}>
-                    {count}
-                  </p>
-                  <p className="text-xs text-slate-500">{pct.toFixed(1)}%</p>
-                </div>
-
-                {isHighPriority && count > 0 && (
-                  <PulseIndicator color={level === 1 ? "red" : "amber"} size="sm" />
-                )}
-              </div>
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
-// ============================================================================
-// DEPARTMENT WORKLOAD
-// ============================================================================
-
-function DepartmentWorkload({ data }: { data: Record<string, number> }) {
-  const sorted = Object.entries(data).sort((a, b) => b[1] - a[1]);
-  const max = sorted[0]?.[1] || 1;
-  const total = Object.values(data).reduce((a, b) => a + b, 0);
-
-  const deptIcons: Record<string, React.ElementType> = {
-    Cardiology: Heart,
-    "Emergency Medicine": Zap,
-    "Internal Medicine": Stethoscope,
-    Neurology: Brain,
-    Orthopedics: Activity,
-    default: Stethoscope,
-  };
-
-  return (
-    <div className="space-y-2">
-      {sorted.slice(0, 7).map(([dept, count], idx) => {
-        const Icon = deptIcons[dept] || deptIcons.default;
-        const pct = (count / max) * 100;
-        const share = ((count / total) * 100).toFixed(0);
-
-        return (
-          <div
-            key={dept}
-            className="group relative rounded-md border border-slate-800 bg-slate-900/40 p-3 hover:border-slate-700 hover:bg-slate-900/60 transition-all duration-200"
-            style={{ animationDelay: `${idx * 50}ms` }}
-          >
-            <div className="flex items-center justify-between mb-2">
-              <div className="flex items-center gap-2">
-                <Icon className="h-4 w-4 text-slate-500 group-hover:text-cyan-400 transition-colors" />
-                <span className="text-sm text-slate-300 group-hover:text-white transition-colors">
-                  {dept}
-                </span>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="text-xs text-slate-500">{share}%</span>
-                <span className="font-mono font-semibold text-cyan-400">{count}</span>
-              </div>
-            </div>
-
-            {/* Progress bar */}
-            <div className="h-1 rounded-full bg-slate-800 overflow-hidden">
-              <div
-                className="h-full bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full transition-all duration-700"
-                style={{ width: `${pct}%` }}
-              />
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
-// ============================================================================
-// RISK DISTRIBUTION
-// ============================================================================
-
-function RiskGauge({ high, medium, low, total }: { high: number; medium: number; low: number; total: number }) {
-  const highPct = (high / total) * 100;
-  const medPct = (medium / total) * 100;
-  const lowPct = (low / total) * 100;
-
-  return (
-    <div className="space-y-4">
-      {/* Main gauge */}
-      <div className="relative h-3 rounded-full bg-slate-800 overflow-hidden">
-        <div className="absolute inset-0 flex">
-          <div
-            className="h-full bg-gradient-to-r from-red-600 to-red-500 transition-all duration-1000"
-            style={{ width: `${highPct}%` }}
-          />
-          <div
-            className="h-full bg-gradient-to-r from-amber-500 to-amber-400 transition-all duration-1000"
-            style={{ width: `${medPct}%` }}
-          />
-          <div
-            className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 transition-all duration-1000"
-            style={{ width: `${lowPct}%` }}
-          />
-        </div>
-        {/* Glow overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
-      </div>
-
-      {/* Legend */}
-      <div className="grid grid-cols-3 gap-4">
-        {[
-          { label: "High Risk", value: high, pct: highPct, color: "red", icon: AlertTriangle },
-          { label: "Medium", value: medium, pct: medPct, color: "amber", icon: Clock },
-          { label: "Low Risk", value: low, pct: lowPct, color: "emerald", icon: Shield },
-        ].map(({ label, value, pct, color, icon: Icon }) => (
-          <div key={label} className="text-center">
-            <div className="flex items-center justify-center gap-2 mb-1">
-              <div className={cn("h-2 w-2 rounded-full", `bg-${color}-500`)} />
-              <span className="text-xs text-slate-400">{label}</span>
-            </div>
-            <div className={cn("text-2xl font-bold font-mono", `text-${color}-400`)}>
-              {value}
-            </div>
-            <div className="text-xs text-slate-600">{pct.toFixed(1)}%</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-// ============================================================================
-// RECENT ACTIVITY TABLE
-// ============================================================================
-
-function ActivityTable({ patients }: { patients: Patient[] }) {
-  const recent = patients.slice(0, 10);
-
-  const esiColors: Record<number, string> = {
-    1: "bg-red-500 shadow-red-500/50",
-    2: "bg-orange-500 shadow-orange-500/40",
-    3: "bg-amber-500 shadow-amber-500/30",
-    4: "bg-lime-500",
-    5: "bg-emerald-500",
-  };
-
-  return (
-    <div className="overflow-hidden rounded-lg border border-slate-800">
-      {/* Table header */}
-      <div className="grid grid-cols-12 gap-2 px-4 py-3 bg-slate-900/80 border-b border-slate-800 text-[11px] font-medium uppercase tracking-wider text-slate-500">
-        <div className="col-span-3">Patient</div>
-        <div className="col-span-4">Chief Complaint</div>
-        <div className="col-span-1 text-center">ESI</div>
-        <div className="col-span-2 text-center">Confidence</div>
-        <div className="col-span-2 text-right">Time</div>
-      </div>
-
-      {/* Table body */}
-      <div className="divide-y divide-slate-800/50">
-        {recent.map((patient, idx) => (
-          <div
-            key={patient.id}
-            className="grid grid-cols-12 gap-2 px-4 py-3 hover:bg-slate-800/30 transition-colors group"
-            style={{ animationDelay: `${idx * 30}ms` }}
-          >
-            <div className="col-span-3">
-              <p className="text-sm font-medium text-slate-200 group-hover:text-white transition-colors truncate">
-                {patient.name}
-              </p>
-              <p className="text-xs text-slate-600 font-mono">
-                {patient.age}{patient.gender} • {patient.abha.slice(0, 11)}
-              </p>
-            </div>
-
-            <div className="col-span-4 flex items-center">
-              <p className="text-sm text-slate-400 truncate">
-                {patient.chiefComplaint}
-              </p>
-            </div>
-
-            <div className="col-span-1 flex items-center justify-center">
-              <span
-                className={cn(
-                  "inline-flex h-6 w-6 items-center justify-center rounded text-[11px] font-bold text-white shadow-lg",
-                  esiColors[patient.aiDecision.esi]
-                )}
-              >
-                {patient.aiDecision.esi}
-              </span>
-            </div>
-
-            <div className="col-span-2 flex items-center justify-center">
-              <div className="flex items-center gap-2">
-                <div className="w-12 h-1.5 rounded-full bg-slate-800 overflow-hidden">
-                  <div
-                    className={cn(
-                      "h-full rounded-full transition-all duration-500",
-                      patient.aiDecision.confidence >= 85
-                        ? "bg-emerald-500"
-                        : patient.aiDecision.confidence >= 70
-                        ? "bg-amber-500"
-                        : "bg-red-500"
-                    )}
-                    style={{ width: `${patient.aiDecision.confidence}%` }}
-                  />
-                </div>
-                <span className={cn(
-                  "text-sm font-mono font-semibold",
-                  patient.aiDecision.confidence >= 85
-                    ? "text-emerald-400"
-                    : patient.aiDecision.confidence >= 70
-                    ? "text-amber-400"
-                    : "text-red-400"
-                )}>
-                  {patient.aiDecision.confidence}%
-                </span>
-              </div>
-            </div>
-
-            <div className="col-span-2 flex items-center justify-end">
-              <span className="text-xs text-slate-500 font-mono">
-                {patient.arrivalTime}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-// ============================================================================
-// MAIN DASHBOARD
-// ============================================================================
+};
 
 export default function DashboardPage() {
   const [mounted, setMounted] = useState(false);
+
   const stats = useMemo(() => computeStats(mockPatients), []);
-  const [currentTime, setCurrentTime] = useState(new Date());
+  const hourlyData = useMemo(() => generateHourlyData(), []);
+  const heatmapData = useMemo(() => generateDepartmentHeatmap(), []);
+  const confidenceDistribution = useMemo(() => computeConfidenceDistribution(mockPatients), []);
+  const vitalsRadar = useMemo(() => computeVitalsRadar(mockPatients), []);
+  const complaintFrequency = useMemo(() => computeComplaintFrequency(mockPatients), []);
+  const esiConfidenceScatter = useMemo(() => computeESIConfidenceScatter(mockPatients), []);
+
+  const heatmapMax = Math.max(...heatmapData.data.map(d => d.value));
 
   useEffect(() => {
     setMounted(true);
-    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
-    return () => clearInterval(timer);
   }, []);
 
+  if (!mounted) {
+    return <div className="min-h-screen bg-slate-50 dark:bg-slate-950" />;
+  }
+
   return (
-    <div className="min-h-screen bg-[#0a0e14] text-slate-100">
-      {/* Ambient background */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(14,165,233,0.08),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(16,185,129,0.05),transparent_50%)]" />
-        {/* Grid pattern */}
-        <div
-          className="absolute inset-0 opacity-[0.015]"
-          style={{
-            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-            backgroundSize: "40px 40px",
-          }}
-        />
-      </div>
-
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-900/80 backdrop-blur-xl">
-        <div className="relative max-w-[1600px] mx-auto px-6 py-4">
-          <HeartbeatLine />
-
-          <div className="relative flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <Link
-                href="/"
-                className="p-2 -ml-2 rounded-lg hover:bg-slate-800 transition-colors"
-              >
-                <ArrowLeft className="w-5 h-5 text-slate-400" />
-              </Link>
-
-              <div className="flex items-center gap-3">
-                <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-gradient-to-br from-cyan-500 to-teal-600 shadow-lg shadow-cyan-500/20">
-                  <Gauge className="h-5 w-5 text-white" />
-                </div>
-                <div>
-                  <h1 className="text-lg font-semibold text-white">Command Center</h1>
-                  <p className="text-xs text-slate-500">Patient.ly Analytics</p>
-                </div>
-              </div>
+      <header className="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur border-b border-slate-200 dark:border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Link
+              href="/"
+              className="p-1.5 -ml-1.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800"
+            >
+              <ArrowLeft className="w-5 h-5 text-slate-600 dark:text-slate-400" />
+            </Link>
+            <div className="flex items-center gap-2">
+              <Activity className="h-5 w-5 text-teal-600" />
+              <span className="font-semibold text-slate-900 dark:text-slate-100">
+                Analytics Dashboard
+              </span>
             </div>
-
-            <div className="flex items-center gap-6">
-              {/* Live indicator */}
-              <div className="flex items-center gap-3 px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700/50">
-                <PulseIndicator color="emerald" />
-                <span className="text-sm text-slate-400">System Online</span>
-                <div className="h-4 w-px bg-slate-700" />
-                <span className="font-mono text-sm text-emerald-400">
-                  {currentTime.toLocaleTimeString("en-US", { hour12: false })}
-                </span>
-              </div>
-
-              <Link
-                href="/queue"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-to-r from-cyan-500 to-teal-600 text-white text-sm font-semibold hover:from-cyan-400 hover:to-teal-500 transition-all shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/30"
-              >
-                <Radio className="h-4 w-4" />
-                Open Queue
-                <ArrowRight className="h-4 w-4" />
-              </Link>
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 text-sm text-slate-500">
+              <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>Live</span>
             </div>
+            <Link
+              href="/queue"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-teal-600 text-white text-sm font-medium hover:bg-teal-700 transition-colors"
+            >
+              Open Queue
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </header>
 
-      <main className="relative max-w-[1600px] mx-auto px-6 py-6 space-y-6">
-        {/* Top Metrics Row */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <MetricCard
-            label="Total Patients"
-            value={stats.total}
-            subValue="In system today"
+      <main className="max-w-7xl mx-auto px-4 py-6 space-y-6">
+        {/* Summary Cards */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <SummaryCard
+            title="Total Patients"
+            value={<AnimatedCounter value={stats.total} />}
+            subtitle="In system today"
             icon={Users}
             trend="up"
             trendValue="+12%"
-            accentColor="cyan"
-            delay={0}
+            color="teal"
           />
-          <MetricCard
-            label="High Risk (ESI 1-2)"
-            value={stats.highRisk}
-            subValue="Requires immediate care"
+          <SummaryCard
+            title="High Risk (ESI 1-2)"
+            value={<AnimatedCounter value={stats.highRisk} />}
+            subtitle="Requires immediate attention"
             icon={AlertTriangle}
             trend="down"
             trendValue="-3%"
-            accentColor="red"
-            delay={100}
-            glowing={stats.highRisk > 0}
+            color="red"
           />
-          <MetricCard
-            label="AI Confidence"
-            value={stats.avgConfidence}
-            suffix="%"
-            subValue="Average accuracy"
+          <SummaryCard
+            title="Avg. Confidence"
+            value={`${stats.avgConfidence}%`}
+            subtitle="AI prediction accuracy"
             icon={Brain}
             trend="up"
             trendValue="+2.1%"
-            accentColor="violet"
-            delay={200}
+            color="violet"
           />
-          <MetricCard
-            label="Avg. Triage Time"
-            value={stats.avgTriageTime}
-            suffix="s"
-            subValue="Arrival to decision"
-            icon={Zap}
+          <SummaryCard
+            title="Avg. Triage Time"
+            value="47s"
+            subtitle="From arrival to decision"
+            icon={Timer}
             trend="down"
             trendValue="-12s"
-            accentColor="emerald"
-            delay={300}
+            color="emerald"
           />
         </div>
 
-        {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-3 gap-6">
-          {/* Left Column - ESI Distribution */}
-          <div className="lg:col-span-1 space-y-6">
-            <div className="rounded-xl border border-slate-800 bg-slate-900/50 backdrop-blur-sm overflow-hidden">
-              <div className="px-5 py-4 border-b border-slate-800 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <Waves className="h-4 w-4 text-cyan-400" />
-                  <h2 className="font-semibold text-white">ESI Distribution</h2>
-                </div>
-                <span className="text-xs font-mono text-slate-500">
-                  {stats.total} total
-                </span>
+        {/* Row 1: Patient Flow + Department Heatmap */}
+        <div className="grid lg:grid-cols-2 gap-6">
+          {/* Hourly Patient Flow */}
+          <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-2">
+                <BarChart3 className="h-5 w-5 text-slate-400" />
+                <h2 className="font-semibold text-slate-900 dark:text-slate-100">
+                  Patient Flow (24h)
+                </h2>
               </div>
-              <div className="p-5">
-                <ESISeverityGrid byESI={stats.byESI} total={stats.total} />
+              <div className="flex items-center gap-4 text-xs">
+                <div className="flex items-center gap-1.5">
+                  <div className="h-2.5 w-2.5 rounded-full bg-teal-500" />
+                  <span className="text-slate-500">Arrivals</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <div className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
+                  <span className="text-slate-500">Triaged</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <div className="h-2.5 w-2.5 rounded-full bg-red-500" />
+                  <span className="text-slate-500">High Risk</span>
+                </div>
               </div>
             </div>
-
-            {/* Risk Gauge */}
-            <div className="rounded-xl border border-slate-800 bg-slate-900/50 backdrop-blur-sm overflow-hidden">
-              <div className="px-5 py-4 border-b border-slate-800 flex items-center gap-2">
-                <Shield className="h-4 w-4 text-cyan-400" />
-                <h2 className="font-semibold text-white">Risk Overview</h2>
-              </div>
-              <div className="p-5">
-                <RiskGauge
-                  high={stats.highRisk}
-                  medium={stats.mediumRisk}
-                  low={stats.lowRisk}
-                  total={stats.total}
-                />
-              </div>
+            <div className="h-64">
+              <ResponsiveContainer width="100%" height="100%">
+                <ComposedChart data={hourlyData}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                  <XAxis
+                    dataKey="hour"
+                    tick={{ fontSize: 10, fill: '#94a3b8' }}
+                    interval={2}
+                  />
+                  <YAxis tick={{ fontSize: 10, fill: '#94a3b8' }} />
+                  <Tooltip content={<CustomTooltip />} />
+                  <Area
+                    type="monotone"
+                    dataKey="arrivals"
+                    fill="rgb(20, 184, 166)"
+                    fillOpacity={0.2}
+                    stroke="rgb(20, 184, 166)"
+                    strokeWidth={2}
+                    name="Arrivals"
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="triaged"
+                    stroke="rgb(16, 185, 129)"
+                    strokeWidth={2}
+                    dot={false}
+                    name="Triaged"
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="highRisk"
+                    stroke="rgb(239, 68, 68)"
+                    strokeWidth={2}
+                    dot={false}
+                    name="High Risk"
+                  />
+                </ComposedChart>
+              </ResponsiveContainer>
             </div>
           </div>
 
-          {/* Center/Right - Department & Activity */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* Department Workload */}
-            <div className="rounded-xl border border-slate-800 bg-slate-900/50 backdrop-blur-sm overflow-hidden">
-              <div className="px-5 py-4 border-b border-slate-800 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <Stethoscope className="h-4 w-4 text-cyan-400" />
-                  <h2 className="font-semibold text-white">Department Workload</h2>
-                </div>
-                <span className="text-xs text-slate-500">
-                  {Object.keys(stats.byDepartment).length} departments
-                </span>
-              </div>
-              <div className="p-5">
-                <DepartmentWorkload data={stats.byDepartment} />
-              </div>
+          {/* Department Heatmap */}
+          <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6">
+            <div className="flex items-center gap-2 mb-6">
+              <Stethoscope className="h-5 w-5 text-slate-400" />
+              <h2 className="font-semibold text-slate-900 dark:text-slate-100">
+                Department Load Heatmap
+              </h2>
             </div>
-
-            {/* Recent Activity */}
-            <div className="rounded-xl border border-slate-800 bg-slate-900/50 backdrop-blur-sm overflow-hidden">
-              <div className="px-5 py-4 border-b border-slate-800 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <Activity className="h-4 w-4 text-cyan-400" />
-                  <h2 className="font-semibold text-white">Recent Triage Activity</h2>
-                </div>
-                <Link
-                  href="/queue"
-                  className="text-xs text-cyan-400 hover:text-cyan-300 font-medium flex items-center gap-1 transition-colors"
-                >
-                  View all
-                  <ChevronRight className="h-3 w-3" />
-                </Link>
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr>
+                    <th className="text-left text-xs font-medium text-slate-400 pb-2 pr-2">Dept</th>
+                    {heatmapData.timeSlots.map(time => (
+                      <th key={time} className="text-center text-xs font-medium text-slate-400 pb-2 px-1 w-16">
+                        {time}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {heatmapData.departments.map(dept => (
+                    <tr key={dept}>
+                      <td className="text-xs text-slate-600 dark:text-slate-400 pr-2 py-1 whitespace-nowrap">
+                        {dept}
+                      </td>
+                      {heatmapData.timeSlots.map(time => {
+                        const cell = heatmapData.data.find(d => d.dept === dept && d.time === time);
+                        return (
+                          <td key={time} className="px-1 py-1">
+                            <HeatmapCell value={cell?.value || 0} maxValue={heatmapMax} />
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="flex items-center justify-end gap-2 mt-4">
+              <span className="text-xs text-slate-400">Low</span>
+              <div className="flex h-2 w-24 rounded overflow-hidden">
+                {[0.1, 0.3, 0.5, 0.7, 0.9].map((opacity, i) => (
+                  <div
+                    key={i}
+                    className="flex-1"
+                    style={{ backgroundColor: `rgba(20, 184, 166, ${opacity})` }}
+                  />
+                ))}
               </div>
-              <ActivityTable patients={mockPatients} />
+              <span className="text-xs text-slate-400">High</span>
             </div>
           </div>
         </div>
 
-        {/* Footer Stats Bar */}
-        <div className="rounded-xl border border-slate-800 bg-slate-900/50 backdrop-blur-sm p-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-8">
-              <div className="flex items-center gap-3">
-                <div className="h-8 w-8 rounded-lg bg-red-500/10 flex items-center justify-center">
-                  <AlertTriangle className="h-4 w-4 text-red-400" />
-                </div>
-                <div>
-                  <p className="text-xs text-slate-500 uppercase tracking-wide">Critical</p>
-                  <p className="text-lg font-bold font-mono text-red-400">{stats.byAcuity.critical}</p>
-                </div>
-              </div>
-              <div className="h-8 w-px bg-slate-800" />
-              <div className="flex items-center gap-3">
-                <div className="h-8 w-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
-                  <Clock className="h-4 w-4 text-amber-400" />
-                </div>
-                <div>
-                  <p className="text-xs text-slate-500 uppercase tracking-wide">Urgent</p>
-                  <p className="text-lg font-bold font-mono text-amber-400">{stats.byAcuity.urgent}</p>
-                </div>
-              </div>
-              <div className="h-8 w-px bg-slate-800" />
-              <div className="flex items-center gap-3">
-                <div className="h-8 w-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
-                  <Shield className="h-4 w-4 text-emerald-400" />
-                </div>
-                <div>
-                  <p className="text-xs text-slate-500 uppercase tracking-wide">Minor</p>
-                  <p className="text-lg font-bold font-mono text-emerald-400">{stats.byAcuity.minor}</p>
-                </div>
-              </div>
+        {/* Row 2: Confidence Distribution + Vitals Radar */}
+        <div className="grid lg:grid-cols-2 gap-6">
+          {/* AI Confidence Distribution */}
+          <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6">
+            <div className="flex items-center gap-2 mb-6">
+              <Brain className="h-5 w-5 text-slate-400" />
+              <h2 className="font-semibold text-slate-900 dark:text-slate-100">
+                AI Confidence Distribution
+              </h2>
             </div>
+            <div className="h-64">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={confidenceDistribution} barCategoryGap="15%">
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" vertical={false} />
+                  <XAxis
+                    dataKey="range"
+                    tick={{ fontSize: 10, fill: '#94a3b8' }}
+                    axisLine={false}
+                  />
+                  <YAxis
+                    tick={{ fontSize: 10, fill: '#94a3b8' }}
+                    axisLine={false}
+                  />
+                  <Tooltip
+                    content={({ active, payload }) => {
+                      if (active && payload && payload.length) {
+                        return (
+                          <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg p-3">
+                            <p className="font-medium text-slate-900 dark:text-slate-100">
+                              {payload[0].payload.range}
+                            </p>
+                            <p className="text-sm text-slate-600">
+                              {payload[0].value} patients
+                            </p>
+                          </div>
+                        );
+                      }
+                      return null;
+                    }}
+                  />
+                  <Bar dataKey="count" radius={[4, 4, 0, 0]}>
+                    {confidenceDistribution.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+            <p className="text-xs text-slate-400 text-center mt-2">
+              Distribution of AI confidence scores across all triage decisions
+            </p>
+          </div>
 
-            <div className="flex items-center gap-4 text-xs text-slate-500">
-              <span>Last updated: just now</span>
-              <PulseIndicator color="cyan" size="sm" />
+          {/* Vitals Radar Chart */}
+          <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6">
+            <div className="flex items-center gap-2 mb-6">
+              <Heart className="h-5 w-5 text-slate-400" />
+              <h2 className="font-semibold text-slate-900 dark:text-slate-100">
+                Vitals by Risk Level
+              </h2>
             </div>
+            <div className="h-64">
+              <ResponsiveContainer width="100%" height="100%">
+                <RadarChart data={vitalsRadar}>
+                  <PolarGrid stroke="#e2e8f0" />
+                  <PolarAngleAxis
+                    dataKey="metric"
+                    tick={{ fontSize: 11, fill: '#64748b' }}
+                  />
+                  <PolarRadiusAxis
+                    angle={90}
+                    domain={[0, 100]}
+                    tick={{ fontSize: 9, fill: '#94a3b8' }}
+                  />
+                  <Radar
+                    name="High Risk"
+                    dataKey="high"
+                    stroke="#ef4444"
+                    fill="#ef4444"
+                    fillOpacity={0.2}
+                    strokeWidth={2}
+                  />
+                  <Radar
+                    name="Medium"
+                    dataKey="medium"
+                    stroke="#f59e0b"
+                    fill="#f59e0b"
+                    fillOpacity={0.2}
+                    strokeWidth={2}
+                  />
+                  <Radar
+                    name="Low Risk"
+                    dataKey="low"
+                    stroke="#10b981"
+                    fill="#10b981"
+                    fillOpacity={0.2}
+                    strokeWidth={2}
+                  />
+                  <Legend
+                    wrapperStyle={{ fontSize: 12 }}
+                  />
+                </RadarChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+        </div>
+
+        {/* Row 3: ESI vs Confidence Scatter + Complaint Frequency */}
+        <div className="grid lg:grid-cols-2 gap-6">
+          {/* ESI vs Confidence Scatter Plot */}
+          <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6">
+            <div className="flex items-center gap-2 mb-6">
+              <Gauge className="h-5 w-5 text-slate-400" />
+              <h2 className="font-semibold text-slate-900 dark:text-slate-100">
+                ESI Level vs AI Confidence
+              </h2>
+            </div>
+            <div className="h-64">
+              <ResponsiveContainer width="100%" height="100%">
+                <ScatterChart>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                  <XAxis
+                    type="number"
+                    dataKey="esi"
+                    name="ESI Level"
+                    domain={[0.5, 5.5]}
+                    ticks={[1, 2, 3, 4, 5]}
+                    tick={{ fontSize: 10, fill: '#94a3b8' }}
+                    label={{ value: 'ESI Level', position: 'bottom', fontSize: 11, fill: '#64748b' }}
+                  />
+                  <YAxis
+                    type="number"
+                    dataKey="confidence"
+                    name="Confidence"
+                    domain={[60, 100]}
+                    tick={{ fontSize: 10, fill: '#94a3b8' }}
+                    label={{ value: 'Confidence %', angle: -90, position: 'insideLeft', fontSize: 11, fill: '#64748b' }}
+                  />
+                  <ZAxis type="number" dataKey="size" range={[30, 120]} />
+                  <Tooltip
+                    content={({ active, payload }) => {
+                      if (active && payload && payload.length) {
+                        const data = payload[0].payload;
+                        return (
+                          <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-lg p-3">
+                            <p className="font-medium text-slate-900 dark:text-slate-100">
+                              {data.name}
+                            </p>
+                            <p className="text-xs text-slate-500 mb-1">{data.complaint}...</p>
+                            <p className="text-sm">ESI: <span className="font-semibold">{data.esi}</span></p>
+                            <p className="text-sm">Confidence: <span className="font-semibold">{data.confidence}%</span></p>
+                          </div>
+                        );
+                      }
+                      return null;
+                    }}
+                  />
+                  <Scatter
+                    data={esiConfidenceScatter}
+                    fill="rgb(20, 184, 166)"
+                    fillOpacity={0.6}
+                  />
+                </ScatterChart>
+              </ResponsiveContainer>
+            </div>
+            <p className="text-xs text-slate-400 text-center mt-2">
+              Each point represents a patient; size indicates severity
+            </p>
+          </div>
+
+          {/* Chief Complaint Treemap */}
+          <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6">
+            <div className="flex items-center gap-2 mb-6">
+              <MessageSquare className="h-5 w-5 text-slate-400" />
+              <h2 className="font-semibold text-slate-900 dark:text-slate-100">
+                Chief Complaint Keywords
+              </h2>
+            </div>
+            <div className="h-64">
+              <ResponsiveContainer width="100%" height="100%">
+                <Treemap
+                  data={complaintFrequency}
+                  dataKey="value"
+                  aspectRatio={4 / 3}
+                  stroke="#fff"
+                  content={<TreemapContent x={0} y={0} width={0} height={0} name="" value={0} />}
+                />
+              </ResponsiveContainer>
+            </div>
+            <p className="text-xs text-slate-400 text-center mt-2">
+              Most frequent terms in patient chief complaints
+            </p>
+          </div>
+        </div>
+
+        {/* Acuity Summary Cards */}
+        <div className="grid grid-cols-3 gap-4">
+          <div className="rounded-xl border-2 border-red-200 dark:border-red-900/50 bg-red-50 dark:bg-red-900/20 p-5">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-medium text-red-800 dark:text-red-300">Critical (ESI 1)</span>
+              <AlertTriangle className="h-5 w-5 text-red-600" />
+            </div>
+            <p className="text-4xl font-bold text-red-700 dark:text-red-400">
+              {stats.byESI[1]}
+            </p>
+            <p className="text-xs text-red-600/70 dark:text-red-400/70 mt-1">
+              Immediate resuscitation
+            </p>
+          </div>
+          <div className="rounded-xl border-2 border-amber-200 dark:border-amber-900/50 bg-amber-50 dark:bg-amber-900/20 p-5">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-medium text-amber-800 dark:text-amber-300">Urgent (ESI 2-3)</span>
+              <Clock className="h-5 w-5 text-amber-600" />
+            </div>
+            <p className="text-4xl font-bold text-amber-700 dark:text-amber-400">
+              {stats.byESI[2] + stats.byESI[3]}
+            </p>
+            <p className="text-xs text-amber-600/70 dark:text-amber-400/70 mt-1">
+              Time-sensitive care
+            </p>
+          </div>
+          <div className="rounded-xl border-2 border-emerald-200 dark:border-emerald-900/50 bg-emerald-50 dark:bg-emerald-900/20 p-5">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-medium text-emerald-800 dark:text-emerald-300">Minor (ESI 4-5)</span>
+              <CheckCircle2 className="h-5 w-5 text-emerald-600" />
+            </div>
+            <p className="text-4xl font-bold text-emerald-700 dark:text-emerald-400">
+              {stats.byESI[4] + stats.byESI[5]}
+            </p>
+            <p className="text-xs text-emerald-600/70 dark:text-emerald-400/70 mt-1">
+              Standard queue
+            </p>
+          </div>
+        </div>
+
+        {/* Recent Activity - Compact */}
+        <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-2">
+              <Activity className="h-5 w-5 text-slate-400" />
+              <h2 className="font-semibold text-slate-900 dark:text-slate-100">
+                Recent Triage Decisions
+              </h2>
+            </div>
+            <Link
+              href="/queue"
+              className="text-sm text-teal-600 hover:text-teal-700 font-medium flex items-center gap-1"
+            >
+              View all
+              <ChevronRight className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-slate-200 dark:border-slate-700">
+                  <th className="text-left py-2 px-2 font-medium text-slate-500">Patient</th>
+                  <th className="text-left py-2 px-2 font-medium text-slate-500">Chief Complaint</th>
+                  <th className="text-center py-2 px-2 font-medium text-slate-500">ESI</th>
+                  <th className="text-center py-2 px-2 font-medium text-slate-500">Confidence</th>
+                  <th className="text-left py-2 px-2 font-medium text-slate-500">Department</th>
+                </tr>
+              </thead>
+              <tbody>
+                {mockPatients.slice(0, 5).map((patient) => (
+                  <tr
+                    key={patient.id}
+                    className="border-b border-slate-100 dark:border-slate-800"
+                  >
+                    <td className="py-2 px-2">
+                      <span className="font-medium text-slate-900 dark:text-slate-100">{patient.name}</span>
+                      <span className="text-slate-400 ml-1 text-xs">{patient.age}{patient.gender}</span>
+                    </td>
+                    <td className="py-2 px-2 text-slate-600 dark:text-slate-400 max-w-48 truncate">
+                      {patient.chiefComplaint}
+                    </td>
+                    <td className="py-2 px-2 text-center">
+                      <span
+                        className={cn(
+                          "inline-flex h-6 w-6 items-center justify-center rounded text-white font-bold text-xs",
+                          patient.aiDecision.esi === 1 ? "bg-red-600" :
+                          patient.aiDecision.esi === 2 ? "bg-orange-500" :
+                          patient.aiDecision.esi === 3 ? "bg-amber-500" :
+                          patient.aiDecision.esi === 4 ? "bg-lime-500" : "bg-green-500"
+                        )}
+                      >
+                        {patient.aiDecision.esi}
+                      </span>
+                    </td>
+                    <td className="py-2 px-2 text-center">
+                      <span className={cn(
+                        "font-semibold tabular-nums",
+                        patient.aiDecision.confidence >= 85 ? "text-emerald-600" :
+                        patient.aiDecision.confidence >= 70 ? "text-amber-600" : "text-red-600"
+                      )}>
+                        {patient.aiDecision.confidence}%
+                      </span>
+                    </td>
+                    <td className="py-2 px-2 text-slate-600 dark:text-slate-400">
+                      {patient.aiDecision.specialists[0] || "—"}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </main>
-
-      {/* Custom styles for animations */}
-      <style jsx global>{`
-        @keyframes pulse-line {
-          0%, 100% { opacity: 0.2; transform: translateX(-100%); }
-          50% { opacity: 0.4; transform: translateX(0%); }
-        }
-        .animate-pulse-line {
-          animation: pulse-line 4s ease-in-out infinite;
-        }
-      `}</style>
     </div>
   );
 }
