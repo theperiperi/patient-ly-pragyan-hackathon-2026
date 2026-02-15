@@ -75,17 +75,16 @@ function WorkflowStep({
       style={{ animationDelay: `${delay}ms` }}
     >
       <div className="relative z-10 flex flex-col items-center text-center md:items-start md:text-left">
-        {/* Step number badge */}
-        <div className="mb-4 flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-teal-500 to-emerald-600 text-white font-semibold text-sm shadow-lg shadow-teal-500/25">
+        {/* Icon container with number badge */}
+        <div className="relative mb-4">
+          {/* Number badge - top left */}
+          <div className="absolute -top-2 -left-2 z-10 flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-teal-500 to-emerald-600 text-white font-bold text-xs shadow-lg shadow-teal-500/25">
             {number}
           </div>
-          <div className="hidden md:block h-px w-12 bg-gradient-to-r from-teal-500/50 to-transparent"></div>
-        </div>
-
-        {/* Icon container */}
-        <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-          <Icon className="h-7 w-7 text-slate-700 dark:text-slate-300" />
+          {/* Icon box */}
+          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+            <Icon className="h-7 w-7 text-slate-700 dark:text-slate-300" />
+          </div>
         </div>
 
         {/* Content */}
@@ -255,122 +254,181 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Hero visual - Abstract representation */}
+          {/* Hero visual - Browser mockup */}
           <div
             className={`animate-fade-in-up mt-16 md:mt-24 relative ${mounted ? "" : "opacity-0"}`}
             style={{ animationDelay: "500ms" }}
           >
-            <div className="relative mx-auto max-w-4xl">
-              {/* Main card mockup */}
-              <div className="relative rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xl shadow-slate-900/10 dark:shadow-black/30 overflow-hidden">
-                {/* Header bar */}
-                <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 px-6 py-4">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-100 dark:bg-teal-900/50">
-                      <Activity className="h-4 w-4 text-teal-600 dark:text-teal-400" />
-                    </div>
-                    <span className="font-semibold text-slate-900 dark:text-slate-100">
-                      Triage Queue
-                    </span>
+            <div className="relative mx-auto max-w-5xl">
+              {/* Browser window chrome */}
+              <div className="relative rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-800 shadow-2xl shadow-slate-900/20 dark:shadow-black/40 overflow-hidden">
+                {/* Browser top bar */}
+                <div className="flex items-center gap-2 px-4 py-3 bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700">
+                  {/* Traffic lights */}
+                  <div className="flex items-center gap-1.5">
+                    <div className="h-3 w-3 rounded-full bg-red-400"></div>
+                    <div className="h-3 w-3 rounded-full bg-amber-400"></div>
+                    <div className="h-3 w-3 rounded-full bg-emerald-400"></div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <LiveIndicator />
-                    <span className="text-sm text-slate-500">Live</span>
+                  {/* URL bar */}
+                  <div className="flex-1 mx-4">
+                    <div className="flex items-center gap-2 rounded-md bg-slate-100 dark:bg-slate-800 px-3 py-1.5 text-xs text-slate-500">
+                      <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                      </svg>
+                      <span>patient.ly/queue</span>
+                    </div>
                   </div>
                 </div>
 
-                {/* Content preview */}
-                <div className="p-6 space-y-4">
-                  {/* Patient card 1 */}
-                  <div className="flex items-center gap-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-900/50 p-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-red-500 text-white font-bold text-sm">
-                      ESI-2
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="font-semibold text-slate-900 dark:text-slate-100">
-                          Ganesh Bhat
-                        </span>
-                        <span className="text-sm text-slate-500">57M</span>
-                        <span className="ml-auto flex items-center gap-1 text-sm font-medium text-emerald-600">
-                          <Brain className="h-3.5 w-3.5" />
-                          92%
-                        </span>
+                {/* App content */}
+                <div className="bg-white dark:bg-slate-900">
+                  {/* App header */}
+                  <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 px-6 py-4">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-100 dark:bg-teal-900/50">
+                        <Activity className="h-4 w-4 text-teal-600 dark:text-teal-400" />
                       </div>
-                      <p className="text-sm text-slate-600 dark:text-slate-400">
-                        Chest pain radiating to left arm
-                      </p>
+                      <span className="font-semibold text-slate-900 dark:text-slate-100">
+                        Patient.ly
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <div className="hidden sm:flex items-center gap-2 text-sm">
+                        <LiveIndicator />
+                        <span className="text-slate-500">3 awaiting review</span>
+                      </div>
+                      <div className="h-8 w-8 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-xs font-medium text-slate-600 dark:text-slate-300">
+                        NS
+                      </div>
                     </div>
                   </div>
 
-                  {/* Patient card 2 */}
-                  <div className="flex items-center gap-4 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-100 dark:border-amber-900/50 p-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-amber-500 text-white font-bold text-sm">
-                      ESI-3
+                  {/* Queue content */}
+                  <div className="p-4 sm:p-6">
+                    {/* Section tabs */}
+                    <div className="flex items-center gap-1 mb-4 p-1 bg-slate-100 dark:bg-slate-800 rounded-lg w-fit">
+                      <button className="px-4 py-2 text-sm font-medium rounded-md bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 shadow-sm">
+                        Queue
+                      </button>
+                      <button className="px-4 py-2 text-sm text-slate-500 hover:text-slate-700">
+                        Completed
+                      </button>
                     </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="font-semibold text-slate-900 dark:text-slate-100">
-                          Priya Sharma
-                        </span>
-                        <span className="text-sm text-slate-500">34F</span>
-                        <span className="ml-auto flex items-center gap-1 text-sm font-medium text-emerald-600">
-                          <Brain className="h-3.5 w-3.5" />
-                          88%
-                        </span>
-                      </div>
-                      <p className="text-sm text-slate-600 dark:text-slate-400">
-                        Severe abdominal pain, nausea
-                      </p>
-                    </div>
-                  </div>
 
-                  {/* AI Processing indicator */}
-                  <div className="flex items-center gap-4 rounded-xl bg-violet-50 dark:bg-violet-900/20 border border-violet-100 dark:border-violet-900/50 p-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-violet-500 text-white">
-                      <Brain className="h-5 w-5 animate-pulse" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2">
-                        <span className="font-semibold text-violet-700 dark:text-violet-300">
-                          AI Triaging...
-                        </span>
+                    {/* Patient cards */}
+                    <div className="space-y-3">
+                      {/* Patient 1 - High priority */}
+                      <div className="group flex items-center gap-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900/50 p-4 hover:border-red-300 dark:hover:border-red-800 transition-colors cursor-pointer">
+                        <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-red-500 text-white font-bold text-sm shrink-0">
+                          ESI-2
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 mb-1 flex-wrap">
+                            <span className="font-semibold text-slate-900 dark:text-slate-100">
+                              Ganesh Bhat
+                            </span>
+                            <span className="text-sm text-slate-500">57M</span>
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-100 dark:bg-red-900/40 text-xs font-medium text-red-700 dark:text-red-300">
+                              <AlertTriangle className="h-3 w-3" />
+                              Cardiac Risk
+                            </span>
+                          </div>
+                          <p className="text-sm text-slate-600 dark:text-slate-400 truncate">
+                            Chest pain radiating to left arm, diaphoresis
+                          </p>
+                        </div>
+                        <div className="hidden sm:flex flex-col items-end gap-1 shrink-0">
+                          <span className="flex items-center gap-1.5 text-sm font-semibold text-emerald-600 dark:text-emerald-400">
+                            <Brain className="h-4 w-4" />
+                            92% confidence
+                          </span>
+                          <span className="text-xs text-slate-400">Bay 1 • Cardio</span>
+                        </div>
+                        <ArrowRight className="h-5 w-5 text-slate-300 group-hover:text-slate-500 transition-colors shrink-0" />
                       </div>
-                      <div className="h-1.5 w-full bg-violet-100 dark:bg-violet-900/50 rounded-full overflow-hidden">
-                        <div className="h-full w-2/3 bg-violet-500 rounded-full animate-pulse"></div>
+
+                      {/* Patient 2 - Medium priority */}
+                      <div className="group flex items-center gap-4 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-900/50 p-4 hover:border-amber-300 dark:hover:border-amber-800 transition-colors cursor-pointer">
+                        <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-amber-500 text-white font-bold text-sm shrink-0">
+                          ESI-3
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 mb-1 flex-wrap">
+                            <span className="font-semibold text-slate-900 dark:text-slate-100">
+                              Priya Sharma
+                            </span>
+                            <span className="text-sm text-slate-500">34F</span>
+                          </div>
+                          <p className="text-sm text-slate-600 dark:text-slate-400 truncate">
+                            Severe abdominal pain, nausea, fever 101.2°F
+                          </p>
+                        </div>
+                        <div className="hidden sm:flex flex-col items-end gap-1 shrink-0">
+                          <span className="flex items-center gap-1.5 text-sm font-semibold text-emerald-600 dark:text-emerald-400">
+                            <Brain className="h-4 w-4" />
+                            88% confidence
+                          </span>
+                          <span className="text-xs text-slate-400">Bay 4 • General</span>
+                        </div>
+                        <ArrowRight className="h-5 w-5 text-slate-300 group-hover:text-slate-500 transition-colors shrink-0" />
+                      </div>
+
+                      {/* Patient 3 - AI Processing */}
+                      <div className="flex items-center gap-4 rounded-xl bg-violet-50 dark:bg-violet-900/20 border border-violet-200 dark:border-violet-900/50 p-4">
+                        <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-violet-500 text-white shrink-0">
+                          <Brain className="h-6 w-6 animate-pulse" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="font-semibold text-slate-900 dark:text-slate-100">
+                              Rahul Verma
+                            </span>
+                            <span className="text-sm text-slate-500">28M</span>
+                          </div>
+                          <p className="text-sm text-slate-600 dark:text-slate-400 mb-2">
+                            Analyzing medical history...
+                          </p>
+                          <div className="flex items-center gap-3">
+                            <div className="h-1.5 flex-1 max-w-48 bg-violet-100 dark:bg-violet-900/50 rounded-full overflow-hidden">
+                              <div className="h-full w-3/4 bg-violet-500 rounded-full animate-shimmer"></div>
+                            </div>
+                            <span className="text-xs text-violet-600 dark:text-violet-400 font-medium">AI Triaging</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Floating elements */}
-              <div className="absolute -top-4 -right-4 md:-top-8 md:-right-8 animate-float">
+              {/* Floating stat cards */}
+              <div className="absolute -top-4 -right-4 md:-top-6 md:-right-6 animate-float">
                 <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-lg p-3">
                   <div className="flex items-center gap-2">
                     <div className="h-8 w-8 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center">
                       <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                     </div>
                     <div>
-                      <div className="text-xs text-slate-500">Approved</div>
+                      <div className="text-xs text-slate-500">Approved Today</div>
                       <div className="text-sm font-semibold text-slate-900 dark:text-slate-100">
-                        24 today
+                        24 patients
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="absolute -bottom-4 -left-4 md:-bottom-8 md:-left-8 animate-float" style={{ animationDelay: "1s" }}>
+              <div className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 animate-float" style={{ animationDelay: "1s" }}>
                 <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-lg p-3">
                   <div className="flex items-center gap-2">
                     <div className="h-8 w-8 rounded-full bg-teal-100 dark:bg-teal-900/50 flex items-center justify-center">
                       <Database className="h-4 w-4 text-teal-600 dark:text-teal-400" />
                     </div>
                     <div>
-                      <div className="text-xs text-slate-500">ABDM Linked</div>
+                      <div className="text-xs text-slate-500">ABDM Records</div>
                       <div className="text-sm font-semibold text-slate-900 dark:text-slate-100">
-                        111 patients
+                        Auto-synced
                       </div>
                     </div>
                   </div>
@@ -396,9 +454,6 @@ export default function Home() {
 
           {/* Workflow steps */}
           <div className="grid md:grid-cols-3 gap-8 md:gap-12 relative">
-            {/* Connection lines (desktop) */}
-            <div className="hidden md:block absolute top-14 left-1/4 right-1/4 h-px bg-gradient-to-r from-teal-500/50 via-teal-500/50 to-teal-500/50"></div>
-
             <WorkflowStep
               number={1}
               icon={Stethoscope}
@@ -449,8 +504,7 @@ export default function Home() {
             <FeatureCard
               icon={Brain}
               title="AI-First Decisions"
-              description="Claude analyzes patient data and generates complete triage recommendations including ESI level, bay assignment, and required interventions."
-              highlight="Powered by Claude"
+              description="AI analyzes patient data and generates complete triage recommendations including ESI level, bay assignment, and required interventions."
               delay={1000}
             />
             <FeatureCard
@@ -549,8 +603,10 @@ export default function Home() {
               AI-Native Triage System for Emergency Departments
             </div>
             <div className="flex items-center gap-1">
-              <span>Powered by</span>
-              <span className="font-medium text-slate-900 dark:text-slate-100">Claude</span>
+              <span>Built with</span>
+              <span className="text-red-500">♥</span>
+              <span>by</span>
+              <span className="font-medium text-slate-900 dark:text-slate-100">Delta</span>
             </div>
           </div>
         </div>
