@@ -35,18 +35,21 @@ class GeminiExtractor:
 
     def extract(self, transcript: str) -> VoiceExtractionResult:
         try:
-            import google.generativeai as genai
+            from google import genai
         except ImportError:
-            raise ImportError("google-generativeai required: pip install google-generativeai")
+            raise ImportError("google-genai required: pip install google-genai")
 
-        genai.configure(api_key=self.api_key)
-        model = genai.GenerativeModel(
-            self.model,
-            system_instruction=VOICE_EXTRACTION_SYSTEM_PROMPT,
-        )
-
+        client = genai.Client(api_key=self.api_key)
         prompt = VOICE_EXTRACTION_PROMPT.format(transcript=transcript)
-        response = model.generate_content(prompt)
+
+        response = client.models.generate_content(
+            model=self.model,
+            contents=prompt,
+            config={
+                "system_instruction": VOICE_EXTRACTION_SYSTEM_PROMPT,
+                "temperature": 0.1,
+            },
+        )
         text = _strip_code_fences(response.text)
         raw = json.loads(text)
         return VoiceExtractionResult(**raw)
