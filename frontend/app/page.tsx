@@ -16,6 +16,12 @@ import {
   TrendingUp,
   Database,
   Sparkles,
+  MapPin,
+  FlaskConical,
+  Scan,
+  Syringe,
+  ChevronLeft,
+  Heart,
 } from "lucide-react";
 
 // Animated counter component
@@ -254,181 +260,202 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Hero visual - Browser mockup */}
+          {/* Hero visual - Triage Approval Page Mockup */}
           <div
             className={`animate-fade-in-up mt-16 md:mt-24 relative ${mounted ? "" : "opacity-0"}`}
             style={{ animationDelay: "500ms" }}
           >
-            <div className="relative mx-auto max-w-5xl">
-              {/* Browser window chrome */}
-              <div className="relative rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-800 shadow-2xl shadow-slate-900/20 dark:shadow-black/40 overflow-hidden">
-                {/* Browser top bar */}
-                <div className="flex items-center gap-2 px-4 py-3 bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700">
-                  {/* Traffic lights */}
-                  <div className="flex items-center gap-1.5">
-                    <div className="h-3 w-3 rounded-full bg-red-400"></div>
-                    <div className="h-3 w-3 rounded-full bg-amber-400"></div>
-                    <div className="h-3 w-3 rounded-full bg-emerald-400"></div>
-                  </div>
-                  {/* URL bar */}
-                  <div className="flex-1 mx-4">
-                    <div className="flex items-center gap-2 rounded-md bg-slate-100 dark:bg-slate-800 px-3 py-1.5 text-xs text-slate-500">
-                      <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                      </svg>
-                      <span>patient.ly/queue</span>
-                    </div>
-                  </div>
-                </div>
+            <div className="relative mx-auto max-w-lg">
+              {/* Mobile device frame */}
+              <div className="relative rounded-[2.5rem] border-[8px] border-slate-800 dark:border-slate-700 bg-slate-800 dark:bg-slate-700 shadow-2xl shadow-slate-900/30 dark:shadow-black/50 overflow-hidden">
+                {/* Notch */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-slate-800 dark:bg-slate-700 rounded-b-2xl z-10"></div>
 
-                {/* App content */}
-                <div className="bg-white dark:bg-slate-900">
+                {/* Screen content */}
+                <div className="bg-white dark:bg-slate-900 rounded-[2rem] overflow-hidden">
                   {/* App header */}
-                  <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 px-6 py-4">
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-100 dark:bg-teal-900/50">
-                        <Activity className="h-4 w-4 text-teal-600 dark:text-teal-400" />
+                  <div className="flex items-center justify-between px-5 py-3 border-b border-slate-100 dark:border-slate-800 pt-8">
+                    <div className="flex items-center gap-2">
+                      <div className="p-1.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800">
+                        <ChevronLeft className="h-5 w-5 text-slate-600 dark:text-slate-400" />
                       </div>
-                      <span className="font-semibold text-slate-900 dark:text-slate-100">
-                        Patient.ly
+                      <span className="text-sm font-semibold text-slate-900 dark:text-slate-100">Review</span>
+                      <span className="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-[10px] font-medium text-slate-600 dark:text-slate-400">
+                        1/3
                       </span>
                     </div>
-                    <div className="flex items-center gap-4">
-                      <div className="hidden sm:flex items-center gap-2 text-sm">
-                        <LiveIndicator />
-                        <span className="text-slate-500">3 awaiting review</span>
+                    <div className="flex items-center gap-1.5">
+                      <LiveIndicator />
+                      <span className="text-xs text-slate-500">2 pending</span>
+                    </div>
+                  </div>
+
+                  {/* Patient info */}
+                  <div className="px-5 py-4 space-y-4">
+                    {/* Patient header */}
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Ganesh Bhat</h3>
+                        <p className="text-sm text-slate-500">57 years • Male • MRN: 847291</p>
                       </div>
-                      <div className="h-8 w-8 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-xs font-medium text-slate-600 dark:text-slate-300">
-                        NS
+                      <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-red-100 dark:bg-red-900/40 text-xs font-medium text-red-700 dark:text-red-300">
+                        <Heart className="h-3 w-3" />
+                        Cardiac
+                      </span>
+                    </div>
+
+                    {/* Chief complaint */}
+                    <div className="p-3 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-900/40">
+                      <p className="text-sm font-medium text-red-800 dark:text-red-200">
+                        &ldquo;Chest pain radiating to left arm, onset 2 hours ago, associated with diaphoresis&rdquo;
+                      </p>
+                    </div>
+
+                    {/* AI Decision header */}
+                    <div className="flex items-center gap-3">
+                      <div className="px-3 py-1.5 rounded font-semibold text-sm bg-red-600 text-white">
+                        ESI-2 Urgent
+                      </div>
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-xl font-semibold text-emerald-600 dark:text-emerald-400 tabular-nums">92%</span>
+                        <span className="text-xs text-slate-500">confidence</span>
+                      </div>
+                    </div>
+
+                    {/* Bay + Page */}
+                    <div className="grid grid-cols-2 gap-2">
+                      <div className="p-2.5 rounded bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                        <div className="flex items-center gap-1 text-[10px] text-slate-500 uppercase tracking-wide mb-0.5">
+                          <MapPin className="w-3 h-3" />
+                          <span>Bay</span>
+                        </div>
+                        <div className="font-semibold text-sm text-slate-900 dark:text-slate-100">Trauma Bay 1</div>
+                      </div>
+                      <div className="p-2.5 rounded bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                        <div className="flex items-center gap-1 text-[10px] text-slate-500 uppercase tracking-wide mb-0.5">
+                          <Users className="w-3 h-3" />
+                          <span>Page</span>
+                        </div>
+                        <div className="font-semibold text-sm text-slate-900 dark:text-slate-100">Cardiology</div>
+                      </div>
+                    </div>
+
+                    {/* Actions */}
+                    <div className="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
+                      <div className="px-2.5 py-1.5 bg-slate-50 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
+                        <span className="text-[10px] font-medium text-slate-500 uppercase tracking-wider">AI Suggested Actions</span>
+                      </div>
+                      <div className="divide-y divide-slate-100 dark:divide-slate-800">
+                        {/* Protocols */}
+                        <div className="flex items-start gap-2 px-2.5 py-2.5 bg-amber-50/50 dark:bg-amber-900/10">
+                          <Zap className="w-3.5 h-3.5 text-amber-600 mt-0.5 flex-shrink-0" />
+                          <div>
+                            <span className="text-[10px] text-amber-700 dark:text-amber-400 font-medium block mb-1">Protocols</span>
+                            <div className="flex flex-wrap gap-1">
+                              <span className="px-2 py-0.5 rounded text-[10px] bg-amber-100 dark:bg-amber-900/30 border border-amber-300 dark:border-amber-700 text-amber-800 dark:text-amber-300 font-medium">STEMI Alert</span>
+                              <span className="px-2 py-0.5 rounded text-[10px] bg-amber-100 dark:bg-amber-900/30 border border-amber-300 dark:border-amber-700 text-amber-800 dark:text-amber-300 font-medium">Chest Pain</span>
+                            </div>
+                          </div>
+                        </div>
+                        {/* Labs */}
+                        <div className="flex items-start gap-2 px-2.5 py-2.5">
+                          <FlaskConical className="w-3.5 h-3.5 text-teal-600 mt-0.5 flex-shrink-0" />
+                          <div>
+                            <span className="text-[10px] text-slate-500 font-medium block mb-1">Labs</span>
+                            <div className="flex flex-wrap gap-1">
+                              <span className="px-2 py-0.5 rounded text-[10px] bg-teal-50 dark:bg-teal-900/20 border border-teal-200 dark:border-teal-800 text-teal-800 dark:text-teal-300">Troponin</span>
+                              <span className="px-2 py-0.5 rounded text-[10px] bg-teal-50 dark:bg-teal-900/20 border border-teal-200 dark:border-teal-800 text-teal-800 dark:text-teal-300">BMP</span>
+                              <span className="px-2 py-0.5 rounded text-[10px] bg-teal-50 dark:bg-teal-900/20 border border-teal-200 dark:border-teal-800 text-teal-800 dark:text-teal-300">CBC</span>
+                            </div>
+                          </div>
+                        </div>
+                        {/* Imaging */}
+                        <div className="flex items-start gap-2 px-2.5 py-2.5 bg-slate-50/50 dark:bg-slate-800/50">
+                          <Scan className="w-3.5 h-3.5 text-slate-500 mt-0.5 flex-shrink-0" />
+                          <div>
+                            <span className="text-[10px] text-slate-500 font-medium block mb-1">Imaging</span>
+                            <div className="flex flex-wrap gap-1">
+                              <span className="px-2 py-0.5 rounded text-[10px] bg-slate-100 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300">12-lead ECG</span>
+                              <span className="px-2 py-0.5 rounded text-[10px] bg-slate-100 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300">Chest X-ray</span>
+                            </div>
+                          </div>
+                        </div>
+                        {/* Interventions */}
+                        <div className="flex items-start gap-2 px-2.5 py-2.5">
+                          <Syringe className="w-3.5 h-3.5 text-red-600 mt-0.5 flex-shrink-0" />
+                          <div>
+                            <span className="text-[10px] text-slate-500 font-medium block mb-1">Interventions</span>
+                            <div className="flex flex-wrap gap-1">
+                              <span className="px-2 py-0.5 rounded text-[10px] bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-800 dark:text-red-300">IV Access</span>
+                              <span className="px-2 py-0.5 rounded text-[10px] bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-800 dark:text-red-300">Aspirin 325mg</span>
+                              <span className="px-2 py-0.5 rounded text-[10px] bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-800 dark:text-red-300">O2 if SpO2 &lt;94%</span>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Queue content */}
-                  <div className="p-4 sm:p-6">
-                    {/* Section tabs */}
-                    <div className="flex items-center gap-1 mb-4 p-1 bg-slate-100 dark:bg-slate-800 rounded-lg w-fit">
-                      <button className="px-4 py-2 text-sm font-medium rounded-md bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 shadow-sm">
-                        Queue
-                      </button>
-                      <button className="px-4 py-2 text-sm text-slate-500 hover:text-slate-700">
-                        Completed
-                      </button>
+                  {/* Sticky footer - Slide to approve */}
+                  <div className="px-5 py-4 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900">
+                    {/* Slide to approve mockup */}
+                    <div className="relative h-14 rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                      {/* Progress fill - animated */}
+                      <div className="absolute inset-y-0 left-0 w-1/2 bg-emerald-200 dark:bg-emerald-900/50 animate-pulse"></div>
+
+                      {/* Slider knob */}
+                      <div className="absolute top-1 bottom-1 left-1 w-12 rounded bg-emerald-600 flex items-center justify-center" style={{ transform: "translateX(calc(50% + 10px))" }}>
+                        <ArrowRight className="w-5 h-5 text-white" />
+                      </div>
+
+                      {/* Text */}
+                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <span className="font-medium text-sm text-emerald-800 dark:text-emerald-300">
+                          Slide to approve →
+                        </span>
+                      </div>
                     </div>
 
-                    {/* Patient cards */}
-                    <div className="space-y-3">
-                      {/* Patient 1 - High priority */}
-                      <div className="group flex items-center gap-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900/50 p-4 hover:border-red-300 dark:hover:border-red-800 transition-colors cursor-pointer">
-                        <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-red-500 text-white font-bold text-sm shrink-0">
-                          ESI-2
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2 mb-1 flex-wrap">
-                            <span className="font-semibold text-slate-900 dark:text-slate-100">
-                              Ganesh Bhat
-                            </span>
-                            <span className="text-sm text-slate-500">57M</span>
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-100 dark:bg-red-900/40 text-xs font-medium text-red-700 dark:text-red-300">
-                              <AlertTriangle className="h-3 w-3" />
-                              Cardiac Risk
-                            </span>
-                          </div>
-                          <p className="text-sm text-slate-600 dark:text-slate-400 truncate">
-                            Chest pain radiating to left arm, diaphoresis
-                          </p>
-                        </div>
-                        <div className="hidden sm:flex flex-col items-end gap-1 shrink-0">
-                          <span className="flex items-center gap-1.5 text-sm font-semibold text-emerald-600 dark:text-emerald-400">
-                            <Brain className="h-4 w-4" />
-                            92% confidence
-                          </span>
-                          <span className="text-xs text-slate-400">Bay 1 • Cardio</span>
-                        </div>
-                        <ArrowRight className="h-5 w-5 text-slate-300 group-hover:text-slate-500 transition-colors shrink-0" />
-                      </div>
-
-                      {/* Patient 2 - Medium priority */}
-                      <div className="group flex items-center gap-4 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-900/50 p-4 hover:border-amber-300 dark:hover:border-amber-800 transition-colors cursor-pointer">
-                        <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-amber-500 text-white font-bold text-sm shrink-0">
-                          ESI-3
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2 mb-1 flex-wrap">
-                            <span className="font-semibold text-slate-900 dark:text-slate-100">
-                              Priya Sharma
-                            </span>
-                            <span className="text-sm text-slate-500">34F</span>
-                          </div>
-                          <p className="text-sm text-slate-600 dark:text-slate-400 truncate">
-                            Severe abdominal pain, nausea, fever 101.2°F
-                          </p>
-                        </div>
-                        <div className="hidden sm:flex flex-col items-end gap-1 shrink-0">
-                          <span className="flex items-center gap-1.5 text-sm font-semibold text-emerald-600 dark:text-emerald-400">
-                            <Brain className="h-4 w-4" />
-                            88% confidence
-                          </span>
-                          <span className="text-xs text-slate-400">Bay 4 • General</span>
-                        </div>
-                        <ArrowRight className="h-5 w-5 text-slate-300 group-hover:text-slate-500 transition-colors shrink-0" />
-                      </div>
-
-                      {/* Patient 3 - AI Processing */}
-                      <div className="flex items-center gap-4 rounded-xl bg-violet-50 dark:bg-violet-900/20 border border-violet-200 dark:border-violet-900/50 p-4">
-                        <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-violet-500 text-white shrink-0">
-                          <Brain className="h-6 w-6 animate-pulse" />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2 mb-1">
-                            <span className="font-semibold text-slate-900 dark:text-slate-100">
-                              Rahul Verma
-                            </span>
-                            <span className="text-sm text-slate-500">28M</span>
-                          </div>
-                          <p className="text-sm text-slate-600 dark:text-slate-400 mb-2">
-                            Analyzing medical history...
-                          </p>
-                          <div className="flex items-center gap-3">
-                            <div className="h-1.5 flex-1 max-w-48 bg-violet-100 dark:bg-violet-900/50 rounded-full overflow-hidden">
-                              <div className="h-full w-3/4 bg-violet-500 rounded-full animate-shimmer"></div>
-                            </div>
-                            <span className="text-xs text-violet-600 dark:text-violet-400 font-medium">AI Triaging</span>
-                          </div>
-                        </div>
-                      </div>
+                    {/* Alternative buttons */}
+                    <div className="grid grid-cols-2 gap-2 mt-2">
+                      <button className="h-9 px-4 rounded border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400 font-medium text-xs">
+                        Modify
+                      </button>
+                      <button className="h-9 px-4 rounded border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-medium text-xs">
+                        Manual Review
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Floating stat cards */}
-              <div className="absolute -top-4 -right-4 md:-top-6 md:-right-6 animate-float">
+              {/* Floating cards */}
+              <div className="absolute -top-4 -right-4 md:top-8 md:-right-16 animate-float">
                 <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-lg p-3">
                   <div className="flex items-center gap-2">
                     <div className="h-8 w-8 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center">
-                      <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+                      <Brain className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                     </div>
                     <div>
-                      <div className="text-xs text-slate-500">Approved Today</div>
+                      <div className="text-xs text-slate-500">AI Analysis</div>
                       <div className="text-sm font-semibold text-slate-900 dark:text-slate-100">
-                        24 patients
+                        Complete
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 animate-float" style={{ animationDelay: "1s" }}>
+              <div className="absolute -bottom-4 -left-4 md:bottom-24 md:-left-16 animate-float" style={{ animationDelay: "1s" }}>
                 <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-lg p-3">
                   <div className="flex items-center gap-2">
                     <div className="h-8 w-8 rounded-full bg-teal-100 dark:bg-teal-900/50 flex items-center justify-center">
                       <Database className="h-4 w-4 text-teal-600 dark:text-teal-400" />
                     </div>
                     <div>
-                      <div className="text-xs text-slate-500">ABDM Records</div>
+                      <div className="text-xs text-slate-500">ABDM History</div>
                       <div className="text-sm font-semibold text-slate-900 dark:text-slate-100">
-                        Auto-synced
+                        12 records
                       </div>
                     </div>
                   </div>
