@@ -1,7 +1,7 @@
 // Voice API client for the voice ingestion backend
 
 const VOICE_API_URL =
-  process.env.NEXT_PUBLIC_VOICE_API_URL || "http://localhost:8000";
+  process.env.NEXT_PUBLIC_VOICE_API_URL || "";
 
 // --- Response types from voice API ---
 
