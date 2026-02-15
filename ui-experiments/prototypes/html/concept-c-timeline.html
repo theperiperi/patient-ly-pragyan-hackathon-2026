@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concept C: Timeline-Centric Triage - Rajesh Kumar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --critical-red: #dc2626;
+            --warning-amber: #f59e0b;
+            --routine-green: #10b981;
+            --preventive-blue: #3b82f6;
+            --bg-dark: #111827;
+            --bg-darker: #0f172a;
+            --bg-card: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: var(--bg-darker);
+            padding: 1rem 2rem;
+            border-bottom: 2px solid var(--critical-red);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .patient-banner {
+            background: linear-gradient(135deg, var(--critical-red), #991b1b);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .patient-info h2 {
+            font-size: 1.75rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .patient-info p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .arrival-info {
+            text-align: right;
+            font-size: 1.1rem;
+        }
+
+        .arrival-info .ambulance {
+            font-size: 1.5rem;
+            margin-top: 0.25rem;
+        }
+
+        .main-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 0;
+            height: calc(100vh - 180px);
+        }
+
+        .sidebar {
+            background: var(--bg-card);
+            border-right: 1px solid var(--border-color);
+            padding: 1.5rem;
+            overflow-y: auto;
+        }
+
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-section h3 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .vitals-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .vital-card {
+            background: var(--bg-darker);
+            padding: 0.75rem;
+            border-radius: 6px;
+            border-left: 3px solid var(--warning-amber);
+        }
+
+        .vital-card.normal {
+            border-left-color: var(--routine-green);
+        }
+
+        .vital-card.critical {
+            border-left-color: var(--critical-red);
+        }
+
+        .vital-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .vital-value {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .alert-item {
+            background: rgba(220, 38, 38, 0.1);
+            border-left: 3px solid var(--critical-red);
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            border-radius: 4px;
+        }
+
+        .med-list, .condition-list {
+            list-style: none;
+        }
+
+        .med-list li, .condition-list li {
+            padding: 0.5rem;
+            margin-bottom: 0.25rem;
+            background: var(--bg-darker);
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .data-source {
+            display: flex;
+            align-items: center;
+            padding: 0.4rem;
+            margin-bottom: 0.25rem;
+            font-size: 0.85rem;
+        }
+
+        .data-source .checkmark {
+            color: var(--routine-green);
+            margin-right: 0.5rem;
+        }
+
+        .timeline-container {
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .timeline-controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            align-items: center;
+        }
+
+        .zoom-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .zoom-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .zoom-btn.active {
+            background: var(--preventive-blue);
+            border-color: var(--preventive-blue);
+        }
+
+        .zoom-btn:hover {
+            background: var(--border-color);
+        }
+
+        .timeline-wrapper {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .timeline-axis {
+            position: relative;
+            height: 200px;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--border-color);
+            transform: translateY(-50%);
+        }
+
+        .timeline-event {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .event-marker {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 3px solid;
+            background: var(--bg-card);
+            position: relative;
+            z-index: 2;
+        }
+
+        .event-marker.critical {
+            border-color: var(--critical-red);
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
+        }
+
+        .event-marker.important {
+            border-color: var(--warning-amber);
+        }
+
+        .event-marker.routine {
+            border-color: var(--routine-green);
+        }
+
+        .event-marker.preventive {
+            border-color: var(--preventive-blue);
+        }
+
+        .timeline-event:hover .event-marker {
+            transform: scale(1.3);
+        }
+
+        .event-label {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 0.75rem;
+            text-align: center;
+            color: var(--text-secondary);
+            pointer-events: none;
+        }
+
+        .event-label .date {
+            display: block;
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .event-label .icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .event-detail {
+            background: var(--bg-darker);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--preventive-blue);
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .event-detail h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .event-detail .detail-grid {
+            display: grid;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .detail-item {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .detail-label {
+            color: var(--text-secondary);
+            min-width: 120px;
+        }
+
+        .charts-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .chart-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .chart-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .chart-canvas {
+            width: 100%;
+            height: 250px;
+        }
+
+        .ai-insights {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 2px solid var(--critical-red);
+        }
+
+        .ai-insights h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .diagnosis-box {
+            background: rgba(220, 38, 38, 0.1);
+            border: 1px solid var(--critical-red);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .diagnosis-box .diagnosis {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .confidence {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .evidence-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .evidence-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+
+        .evidence-list li:last-child {
+            border-bottom: none;
+        }
+
+        .checkmark-green {
+            color: var(--routine-green);
+            margin-right: 0.5rem;
+        }
+
+        .recommendations {
+            background: var(--bg-darker);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .recommendations h4 {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            color: var(--warning-amber);
+        }
+
+        .recommendations ol {
+            margin-left: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .recommendations li {
+            margin-bottom: 0.5rem;
+        }
+
+        .action-bar {
+            background: var(--bg-darker);
+            padding: 1rem 2rem;
+            display: flex;
+            gap: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .action-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .action-btn.critical {
+            background: var(--critical-red);
+            color: white;
+        }
+
+        .action-btn.primary {
+            background: var(--preventive-blue);
+            color: white;
+        }
+
+        .action-btn.secondary {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .trend-indicator {
+            font-size: 0.85rem;
+            padding: 0.5rem;
+            background: var(--bg-darker);
+            border-radius: 6px;
+            margin-top: 1rem;
+        }
+
+        .trend-indicator.warning {
+            border-left: 3px solid var(--warning-amber);
+        }
+
+        .trend-indicator.critical {
+            border-left: 3px solid var(--critical-red);
+        }
+
+        .trend-indicator.positive {
+            border-left: 3px solid var(--routine-green);
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        scrollbar-width: thin;
+        scrollbar-color: var(--border-color) var(--bg-darker);
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>TRIAGE TIMELINE VIEW</h1>
+        <div style="display: flex; gap: 2rem; align-items: center;">
+            <span>Apollo Hospital - Emergency Department</span>
+            <span style="color: var(--text-secondary);">Feb 14, 2026 10:30 AM</span>
+        </div>
+    </div>
+
+    <div class="patient-banner">
+        <div class="patient-info">
+            <h2>Rajesh Kumar, 45M</h2>
+            <p>ABHA: 22-7225-4829-5255 | MRN: APL-2024-891234</p>
+        </div>
+        <div class="arrival-info">
+            <div style="font-size: 1.5rem; font-weight: 700; color: #fff;">CRITICAL - Chest Pain</div>
+            <div class="ambulance pulse">🚑 Ambulance Arrival: 3 min ago</div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-section">
+                <h3>Current Vitals</h3>
+                <div class="vitals-grid">
+                    <div class="vital-card critical">
+                        <div class="vital-label">Blood Pressure</div>
+                        <div class="vital-value">180/110</div>
+                    </div>
+                    <div class="vital-card critical">
+                        <div class="vital-label">Heart Rate</div>
+                        <div class="vital-value">125 bpm</div>
+                    </div>
+                    <div class="vital-card critical">
+                        <div class="vital-label">SpO2</div>
+                        <div class="vital-value">94%</div>
+                    </div>
+                    <div class="vital-card normal">
+                        <div class="vital-label">Temperature</div>
+                        <div class="vital-value">98.6°F</div>
+                    </div>
+                    <div class="vital-card critical">
+                        <div class="vital-label">Resp Rate</div>
+                        <div class="vital-value">22/min</div>
+                    </div>
+                    <div class="vital-card critical">
+                        <div class="vital-label">Wait Time</div>
+                        <div class="vital-value">3 min</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Pre-Hospital Care</h3>
+                <div class="alert-item">
+                    <div style="font-weight: 600; margin-bottom: 0.5rem;">🚑 Ambulance</div>
+                    <div style="font-size: 0.8rem;">
+                        ✓ ECG performed<br>
+                        ✓ Aspirin 325mg given<br>
+                        ✓ O2 4L/min started
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Critical Alerts</h3>
+                <div class="alert-item">
+                    ⚠ Previous MI<br>
+                    <span style="font-size: 0.75rem; color: var(--text-secondary);">2 years ago (Dec 2023)</span>
+                </div>
+                <div class="alert-item">
+                    ⚠ Type 2 Diabetes<br>
+                    <span style="font-size: 0.75rem; color: var(--text-secondary);">On insulin therapy</span>
+                </div>
+                <div class="alert-item">
+                    ⚠ Allergy: Penicillin<br>
+                    <span style="font-size: 0.75rem; color: var(--text-secondary);">Anaphylaxis risk</span>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Current Medications</h3>
+                <ul class="med-list">
+                    <li>💊 Metformin 1000mg BD</li>
+                    <li>💊 Aspirin 75mg OD</li>
+                    <li>💊 Atorvastatin 40mg OD</li>
+                    <li>💊 Metoprolol 50mg BD</li>
+                    <li>💊 Lisinopril 10mg OD</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Active Conditions</h3>
+                <ul class="condition-list">
+                    <li>• Type 2 Diabetes Mellitus</li>
+                    <li>• Hypertension</li>
+                    <li>• CAD (s/p MI 2023)</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Data Sources</h3>
+                <div class="data-source">
+                    <span class="checkmark">✓</span> Ambulance (Real-time)
+                </div>
+                <div class="data-source">
+                    <span class="checkmark">✓</span> Apollo Hospital (ABDM)
+                </div>
+                <div class="data-source">
+                    <span class="checkmark">✓</span> AIIMS Delhi (ABDM)
+                </div>
+                <div class="data-source">
+                    <span class="checkmark">✓</span> Lab Network (ABDM)
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline Content -->
+        <div class="timeline-container">
+            <div class="timeline-controls">
+                <span style="font-weight: 600;">Timeline View:</span>
+                <div class="zoom-buttons">
+                    <button class="zoom-btn" data-zoom="30">30 Days</button>
+                    <button class="zoom-btn active" data-zoom="90">90 Days</button>
+                    <button class="zoom-btn" data-zoom="365">1 Year</button>
+                </div>
+            </div>
+
+            <div class="timeline-wrapper">
+                <div class="timeline-header">
+                    <span>90 Days Ago</span>
+                    <span>60 Days Ago</span>
+                    <span>30 Days Ago</span>
+                    <span style="font-weight: 700; color: var(--critical-red);">TODAY</span>
+                </div>
+
+                <div class="timeline-axis" id="timeline-axis">
+                    <div class="timeline-line"></div>
+                </div>
+
+                <div id="event-details"></div>
+            </div>
+
+            <div class="charts-container">
+                <div class="chart-card">
+                    <h3>📊 Blood Pressure Trend (Last 90 Days)</h3>
+                    <canvas id="bpChart" class="chart-canvas"></canvas>
+                    <div class="trend-indicator critical">
+                        ⚠ CRITICAL PATTERN: Sudden spike today (180/110) vs stable readings last 90 days (avg 135/85). Indicates acute cardiac event.
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h3>🧪 Recent Lab Trends</h3>
+                    <canvas id="labChart" class="chart-canvas"></canvas>
+                    <div class="trend-indicator warning">
+                        ⚠ Cholesterol increasing despite medication (245 mg/dL - HIGH)
+                    </div>
+                    <div class="trend-indicator positive" style="margin-top: 0.5rem;">
+                        ✓ HbA1c stable at 7.2% (diabetes controlled)
+                    </div>
+                </div>
+            </div>
+
+            <div class="ai-insights">
+                <h3>🤖 AI Risk Assessment</h3>
+
+                <div class="diagnosis-box">
+                    <div class="diagnosis">LIKELY DIAGNOSIS: Acute MI (STEMI)</div>
+                    <div class="confidence">Confidence: 92%</div>
+                </div>
+
+                <h4 style="margin-bottom: 0.75rem; color: var(--text-secondary);">Supporting Evidence:</h4>
+                <ul class="evidence-list">
+                    <li><span class="checkmark-green">✓</span> ECG: ST elevation in leads II, III, aVF (ambulance report)</li>
+                    <li><span class="checkmark-green">✓</span> Symptoms: Chest pain + shortness of breath (classic presentation)</li>
+                    <li><span class="checkmark-green">✓</span> History: Previous MI 2 years ago (high recurrence risk)</li>
+                    <li><span class="checkmark-green">✓</span> Risk factors: Diabetes, high cholesterol (245 mg/dL), hypertension</li>
+                    <li><span class="checkmark-green">✓</span> Acute onset: 30 minutes ago (timing consistent with STEMI)</li>
+                    <li><span class="checkmark-green">✓</span> Timeline pattern: Was stable 2 days ago, sudden deterioration</li>
+                </ul>
+
+                <div class="recommendations">
+                    <h4>RECOMMENDED ACTIONS:</h4>
+                    <ol>
+                        <li><strong>IMMEDIATE:</strong> Activate Code STEMI protocol</li>
+                        <li><strong>NOTIFY:</strong> Cath lab team within 5 minutes</li>
+                        <li><strong>LABS:</strong> STAT troponin, repeat ECG, complete metabolic panel</li>
+                        <li><strong>CONSULT:</strong> Cardiology within 15 minutes</li>
+                        <li><strong>TRANSFER:</strong> Move to critical care bay immediately</li>
+                        <li><strong>MEDS:</strong> Continue aspirin, consider heparin (check allergies)</li>
+                    </ol>
+                </div>
+
+                <div style="margin-top: 1rem; padding: 0.75rem; background: var(--bg-darker); border-radius: 6px; font-size: 0.85rem;">
+                    <strong>Similar Cases:</strong> 47 STEMI cases in last year at this facility<br>
+                    <strong>Average door-to-balloon time:</strong> 62 minutes<br>
+                    <strong>Target:</strong> < 90 minutes for best outcomes
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="action-bar">
+        <button class="action-btn critical">🚨 ACTIVATE CODE STEMI</button>
+        <button class="action-btn primary">📞 CALL CARDIOLOGY</button>
+        <button class="action-btn primary">🧪 ORDER STAT LABS</button>
+        <button class="action-btn secondary">🛏️ ASSIGN CRITICAL BAY</button>
+        <button class="action-btn secondary">📋 TRIAGE NOTES</button>
+    </div>
+
+    <script>
+        // Mock timeline data for Rajesh Kumar - 90 days of events
+        const timelineEvents = [
+            {
+                id: 1,
+                date: new Date('2026-02-14T10:30:00'),
+                daysAgo: 0,
+                type: 'critical',
+                icon: '🚑',
+                title: 'Ambulance Arrival',
+                location: 'Apollo Hospital ED',
+                details: {
+                    chiefComplaint: 'Chest pain radiating to left arm, shortness of breath',
+                    vitals: 'BP 180/110, HR 125, SpO2 94%, RR 22, Temp 98.6°F',
+                    treatment: 'Aspirin 325mg given, O2 4L/min, IV access established',
+                    ecg: 'ST elevation in leads II, III, aVF - STEMI pattern',
+                    onset: '30 minutes before arrival',
+                    transport: 'Code Red - Lights and sirens',
+                    documents: 'Ambulance Run Report, Pre-hospital ECG'
+                }
+            },
+            {
+                id: 2,
+                date: new Date('2026-02-12T14:00:00'),
+                daysAgo: 2,
+                type: 'routine',
+                icon: '🏥',
+                title: 'Routine Cardiology F/U',
+                location: 'Apollo Hospital - Cardiology',
+                details: {
+                    visitType: 'Routine post-MI follow-up',
+                    vitals: 'BP 135/85, HR 78, SpO2 98%, all stable',
+                    ecg: 'Normal sinus rhythm, no acute changes',
+                    echo: 'Echocardiogram: LVEF 55% (normal left ventricular function)',
+                    assessment: 'Recovering well from previous MI, continue current medications',
+                    plan: 'Return in 3 months for routine check-up',
+                    documents: 'Visit Summary, Echo Report, ECG'
+                }
+            },
+            {
+                id: 3,
+                date: new Date('2026-02-04T09:30:00'),
+                daysAgo: 10,
+                type: 'important',
+                icon: '🧪',
+                title: 'Lab Results (ABDM)',
+                location: 'SRL Diagnostics',
+                details: {
+                    lipidPanel: 'Total Cholesterol: 245 mg/dL (HIGH ⚠), LDL: 160 mg/dL (HIGH ⚠), HDL: 38 mg/dL (LOW ⚠), Triglycerides: 235 mg/dL (HIGH ⚠)',
+                    hba1c: 'HbA1c: 7.2% (diabetes under control)',
+                    renal: 'Creatinine: 1.1 mg/dL (normal kidney function)',
+                    liver: 'AST/ALT within normal limits',
+                    notes: 'Lipid panel concerning despite statin therapy - may need dose adjustment',
+                    documents: 'Complete Lab Report'
+                }
+            },
+            {
+                id: 4,
+                date: new Date('2026-01-30T10:00:00'),
+                daysAgo: 15,
+                type: 'routine',
+                icon: '💊',
+                title: 'Medication Refill',
+                location: 'Apollo Pharmacy',
+                details: {
+                    medications: 'Metformin 1000mg, Aspirin 75mg, Atorvastatin 40mg, Metoprolol 50mg, Lisinopril 10mg',
+                    supply: '30-day supply for all medications',
+                    compliance: 'Patient compliant with medication regimen',
+                    cost: 'Covered by insurance (Ayushman Bharat)',
+                    nextRefill: 'Due March 2, 2026'
+                }
+            },
+            {
+                id: 5,
+                date: new Date('2026-01-20T11:00:00'),
+                daysAgo: 25,
+                type: 'routine',
+                icon: '📊',
+                title: 'Vitals Check',
+                location: 'Home BP Monitor (ABDM)',
+                details: {
+                    bloodPressure: 'BP 138/88 (slightly elevated)',
+                    heartRate: 'HR 76 bpm (normal)',
+                    notes: 'Patient using home BP monitor, data synced via ABDM',
+                    trend: 'BP readings averaging 135-140 systolic over past month'
+                }
+            },
+            {
+                id: 6,
+                date: new Date('2026-01-05T15:00:00'),
+                daysAgo: 40,
+                type: 'routine',
+                icon: '🏥',
+                title: 'Diabetes Check',
+                location: 'Apollo Hospital - Endocrinology',
+                details: {
+                    visitType: 'Routine diabetes management',
+                    vitals: 'BP 132/84, HR 74, weight 82kg',
+                    bloodSugar: 'Fasting glucose: 128 mg/dL (acceptable)',
+                    footExam: 'Diabetic foot exam: No ulcers, normal sensation',
+                    eyeExam: 'Retinal screening: No diabetic retinopathy',
+                    plan: 'Continue current insulin regimen, return in 3 months'
+                }
+            },
+            {
+                id: 7,
+                date: new Date('2025-12-30T14:30:00'),
+                daysAgo: 46,
+                type: 'routine',
+                icon: '🏥',
+                title: '6-Month Stent Check',
+                location: 'Apollo Hospital - Cardiology',
+                details: {
+                    visitType: '6-month post-stent placement follow-up',
+                    procedure: 'Coronary angiography performed',
+                    findings: 'Stent patent with excellent flow, no restenosis',
+                    assessment: 'Excellent recovery from previous MI and stent placement',
+                    plan: 'Continue dual antiplatelet therapy, next check in 6 months',
+                    documents: 'Angiography Report, Cardiac Cath Report'
+                }
+            },
+            {
+                id: 8,
+                date: new Date('2025-12-22T10:00:00'),
+                daysAgo: 54,
+                type: 'routine',
+                icon: '🧪',
+                title: 'Routine Labs',
+                location: 'Metropolis Healthcare',
+                details: {
+                    lipidPanel: 'Total Cholesterol: 210 mg/dL, LDL: 135 mg/dL, HDL: 42 mg/dL',
+                    hba1c: 'HbA1c: 7.1% (stable)',
+                    renal: 'Creatinine: 1.0 mg/dL (normal)',
+                    notes: 'Labs generally stable, slight improvement in cholesterol'
+                }
+            },
+            {
+                id: 9,
+                date: new Date('2025-12-15T09:00:00'),
+                daysAgo: 61,
+                type: 'important',
+                icon: '🏥',
+                title: 'AIIMS Post-Op F/U',
+                location: 'AIIMS Delhi - Cardiothoracic Surgery',
+                details: {
+                    visitType: '2-week post-CABG surgery follow-up',
+                    vitals: 'BP 130/82, HR 72, SpO2 98%',
+                    wounds: 'Surgical wounds healing well, no infection',
+                    xray: 'Chest X-ray: Clear lung fields, normal heart size',
+                    rehab: 'Started cardiac rehabilitation program',
+                    referral: 'Referred to Apollo Hospital for local cardiology care',
+                    documents: 'Post-op Visit Summary, Chest X-ray'
+                }
+            },
+            {
+                id: 10,
+                date: new Date('2025-12-08T16:00:00'),
+                daysAgo: 68,
+                type: 'routine',
+                icon: '💊',
+                title: 'Medication Adjustment',
+                location: 'Apollo Hospital',
+                details: {
+                    changes: 'Atorvastatin increased from 20mg to 40mg',
+                    reason: 'Suboptimal lipid control post-MI',
+                    newRegimen: 'Updated medication list provided',
+                    followUp: 'Recheck lipids in 6 weeks'
+                }
+            },
+            {
+                id: 11,
+                date: new Date('2025-12-01T12:00:00'),
+                daysAgo: 75,
+                type: 'critical',
+                icon: '🏥',
+                title: 'CABG Surgery',
+                location: 'AIIMS Delhi - Cardiac Surgery',
+                details: {
+                    procedure: 'Coronary Artery Bypass Graft (CABG) x 3 vessels',
+                    indication: 'Triple vessel coronary artery disease post-MI',
+                    surgeon: 'Dr. Sharma (CTVS)',
+                    duration: '4 hours',
+                    outcome: 'Successful surgery, stable postoperatively',
+                    icu: 'ICU stay: 3 days, then transferred to ward',
+                    discharge: 'Discharged after 7 days with home care instructions',
+                    documents: 'Operative Note, Discharge Summary, Post-op Instructions'
+                }
+            },
+            {
+                id: 12,
+                date: new Date('2025-11-28T08:00:00'),
+                daysAgo: 78,
+                type: 'important',
+                icon: '🧪',
+                title: 'Pre-Op Labs',
+                location: 'AIIMS Delhi Lab',
+                details: {
+                    purpose: 'Pre-operative workup for CABG surgery',
+                    cbc: 'Complete blood count: Within normal limits',
+                    coagulation: 'PT/INR: Normal, safe for surgery',
+                    metabolic: 'Comprehensive metabolic panel: Normal',
+                    cardiac: 'Troponin: Slightly elevated (expected post-MI)',
+                    clearance: 'Cleared for surgery'
+                }
+            },
+            {
+                id: 13,
+                date: new Date('2025-11-25T14:00:00'),
+                daysAgo: 81,
+                type: 'important',
+                icon: '🏥',
+                title: 'Cardiology Consultation',
+                location: 'AIIMS Delhi - Cardiology',
+                details: {
+                    reason: 'Evaluation for coronary artery bypass surgery',
+                    findings: 'Triple vessel disease on angiography',
+                    recommendation: 'CABG surgery recommended over PCI',
+                    risks: 'Discussed surgical risks with patient and family',
+                    consent: 'Patient agreed to proceed with surgery',
+                    scheduling: 'Surgery scheduled for Dec 1, 2025'
+                }
+            },
+            {
+                id: 14,
+                date: new Date('2025-11-22T10:30:00'),
+                daysAgo: 84,
+                type: 'critical',
+                icon: '🏥',
+                title: 'Cardiac Catheterization',
+                location: 'AIIMS Delhi - Cath Lab',
+                details: {
+                    procedure: 'Diagnostic coronary angiography',
+                    findings: 'Severe 3-vessel coronary artery disease: 90% LAD stenosis, 85% RCA stenosis, 80% LCx stenosis',
+                    lvef: 'LVEF: 48% (mildly reduced)',
+                    recommendation: 'CABG surgery recommended',
+                    risk: 'High risk for recurrent MI without intervention',
+                    documents: 'Cath Report, Angiogram Images'
+                }
+            },
+            {
+                id: 15,
+                date: new Date('2025-11-20T22:00:00'),
+                daysAgo: 86,
+                type: 'critical',
+                icon: '🚑',
+                title: 'ED Visit - Chest Pain',
+                location: 'AIIMS Delhi - Emergency',
+                details: {
+                    presentation: 'Chest pain, not relieved by rest',
+                    vitals: 'BP 155/95, HR 98, SpO2 96%',
+                    ecg: 'T-wave inversions, no acute ST changes',
+                    troponin: 'Troponin mildly elevated',
+                    diagnosis: 'Unstable angina (post-MI)',
+                    admission: 'Admitted to cardiology for evaluation and management',
+                    treatment: 'Started on heparin, upgraded antiplatelet therapy'
+                }
+            },
+            {
+                id: 16,
+                date: new Date('2025-11-15T11:00:00'),
+                daysAgo: 91,
+                type: 'routine',
+                icon: '🏥',
+                title: 'Post-MI Follow-Up',
+                location: 'Apollo Hospital - Cardiology',
+                details: {
+                    visitType: '3-month post-MI follow-up',
+                    vitals: 'BP 140/88, HR 80, SpO2 98%',
+                    symptoms: 'Occasional chest discomfort with exertion',
+                    ecg: 'Old MI changes, no acute findings',
+                    plan: 'Stress test scheduled, continue medications',
+                    concern: 'Symptoms concerning for possible ischemia'
+                }
+            }
+        ];
+
+        // Render timeline events
+        function renderTimeline() {
+            const axis = document.getElementById('timeline-axis');
+            const maxDays = 90;
+
+            timelineEvents.forEach(event => {
+                const position = ((maxDays - event.daysAgo) / maxDays) * 100;
+
+                const eventElement = document.createElement('div');
+                eventElement.className = 'timeline-event';
+                eventElement.style.left = `${position}%`;
+                eventElement.setAttribute('data-event-id', event.id);
+
+                const marker = document.createElement('div');
+                marker.className = `event-marker ${event.type}`;
+
+                const label = document.createElement('div');
+                label.className = 'event-label';
+                label.innerHTML = `
+                    <span class="icon">${event.icon}</span>
+                    <span class="date">${event.daysAgo === 0 ? 'NOW' : event.daysAgo + 'd ago'}</span>
+                    <span>${event.title}</span>
+                `;
+
+                eventElement.appendChild(marker);
+                eventElement.appendChild(label);
+                axis.appendChild(eventElement);
+
+                eventElement.addEventListener('click', () => showEventDetails(event));
+            });
+        }
+
+        // Show event details
+        function showEventDetails(event) {
+            const container = document.getElementById('event-details');
+            const detailsHTML = `
+                <div class="event-detail">
+                    <h3>
+                        <span>${event.icon}</span>
+                        ${event.title} - ${event.location}
+                        <span style="margin-left: auto; font-size: 0.9rem; color: var(--text-secondary);">
+                            ${event.date.toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
+                        </span>
+                    </h3>
+                    <div class="detail-grid">
+                        ${Object.entries(event.details).map(([key, value]) => `
+                            <div class="detail-item">
+                                <span class="detail-label">${formatLabel(key)}:</span>
+                                <span>${value}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            container.innerHTML = detailsHTML;
+            container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function formatLabel(key) {
+            return key.replace(/([A-Z])/g, ' $1')
+                .replace(/^./, str => str.toUpperCase());
+        }
+
+        // Chart: Blood Pressure Trend
+        function drawBPChart() {
+            const canvas = document.getElementById('bpChart');
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width = canvas.offsetWidth * 2;
+            const height = canvas.height = canvas.offsetHeight * 2;
+            ctx.scale(2, 2);
+
+            const w = width / 2;
+            const h = height / 2;
+
+            // BP data points (systolic/diastolic over 90 days)
+            const dataPoints = [
+                { day: 90, systolic: 140, diastolic: 88 },
+                { day: 84, systolic: 155, diastolic: 95 }, // ED visit
+                { day: 75, systolic: 145, diastolic: 90 }, // Post-surgery
+                { day: 61, systolic: 130, diastolic: 82 },
+                { day: 54, systolic: 132, diastolic: 84 },
+                { day: 46, systolic: 135, diastolic: 85 },
+                { day: 40, systolic: 132, diastolic: 84 },
+                { day: 25, systolic: 138, diastolic: 88 },
+                { day: 15, systolic: 135, diastolic: 85 },
+                { day: 10, systolic: 133, diastolic: 84 },
+                { day: 2, systolic: 135, diastolic: 85 },
+                { day: 0, systolic: 180, diastolic: 110 }  // TODAY - CRITICAL
+            ];
+
+            // Scale
+            const padding = 40;
+            const chartWidth = w - padding * 2;
+            const chartHeight = h - padding * 2;
+            const maxBP = 200;
+            const minBP = 60;
+
+            // Draw axes
+            ctx.strokeStyle = '#334155';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(padding, padding);
+            ctx.lineTo(padding, h - padding);
+            ctx.lineTo(w - padding, h - padding);
+            ctx.stroke();
+
+            // Y-axis labels
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '11px sans-serif';
+            ctx.textAlign = 'right';
+            for (let bp = 80; bp <= 200; bp += 20) {
+                const y = h - padding - ((bp - minBP) / (maxBP - minBP)) * chartHeight;
+                ctx.fillText(bp, padding - 10, y + 4);
+
+                // Grid lines
+                ctx.strokeStyle = '#1e293b';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(padding, y);
+                ctx.lineTo(w - padding, y);
+                ctx.stroke();
+            }
+
+            // X-axis labels
+            ctx.textAlign = 'center';
+            const xLabels = ['90d', '75d', '60d', '45d', '30d', '15d', 'NOW'];
+            xLabels.forEach((label, i) => {
+                const x = padding + (chartWidth / (xLabels.length - 1)) * i;
+                ctx.fillText(label, x, h - padding + 20);
+            });
+
+            // Draw systolic line
+            ctx.strokeStyle = '#dc2626';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            dataPoints.forEach((point, i) => {
+                const x = padding + chartWidth - ((point.day / 90) * chartWidth);
+                const y = h - padding - ((point.systolic - minBP) / (maxBP - minBP)) * chartHeight;
+                if (i === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            });
+            ctx.stroke();
+
+            // Draw diastolic line
+            ctx.strokeStyle = '#f59e0b';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            dataPoints.forEach((point, i) => {
+                const x = padding + chartWidth - ((point.day / 90) * chartWidth);
+                const y = h - padding - ((point.diastolic - minBP) / (maxBP - minBP)) * chartHeight;
+                if (i === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            });
+            ctx.stroke();
+
+            // Draw data points
+            dataPoints.forEach((point, i) => {
+                const x = padding + chartWidth - ((point.day / 90) * chartWidth);
+                const ySys = h - padding - ((point.systolic - minBP) / (maxBP - minBP)) * chartHeight;
+                const yDia = h - padding - ((point.diastolic - minBP) / (maxBP - minBP)) * chartHeight;
+
+                // Systolic point
+                ctx.fillStyle = '#dc2626';
+                ctx.beginPath();
+                ctx.arc(x, ySys, i === dataPoints.length - 1 ? 6 : 4, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Diastolic point
+                ctx.fillStyle = '#f59e0b';
+                ctx.beginPath();
+                ctx.arc(x, yDia, i === dataPoints.length - 1 ? 6 : 4, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Highlight current (critical) values
+                if (i === dataPoints.length - 1) {
+                    ctx.strokeStyle = '#dc2626';
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.arc(x, ySys, 10, 0, Math.PI * 2);
+                    ctx.stroke();
+                }
+            });
+
+            // Legend
+            ctx.textAlign = 'left';
+            ctx.fillStyle = '#dc2626';
+            ctx.fillRect(w - 150, 20, 20, 3);
+            ctx.fillStyle = '#f1f5f9';
+            ctx.fillText('Systolic', w - 125, 24);
+
+            ctx.fillStyle = '#f59e0b';
+            ctx.fillRect(w - 150, 35, 20, 3);
+            ctx.fillStyle = '#f1f5f9';
+            ctx.fillText('Diastolic', w - 125, 39);
+        }
+
+        // Chart: Lab Results (Cholesterol and HbA1c)
+        function drawLabChart() {
+            const canvas = document.getElementById('labChart');
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width = canvas.offsetWidth * 2;
+            const height = canvas.height = canvas.offsetHeight * 2;
+            ctx.scale(2, 2);
+
+            const w = width / 2;
+            const h = height / 2;
+
+            // Lab data over time
+            const cholesterolData = [
+                { label: '90d ago', value: 195 },
+                { label: '60d ago', value: 210 },
+                { label: '10d ago', value: 245 }
+            ];
+
+            const hba1cData = [
+                { label: '90d ago', value: 7.1 },
+                { label: '60d ago', value: 7.2 },
+                { label: '10d ago', value: 7.2 }
+            ];
+
+            const padding = 40;
+            const barWidth = 40;
+            const spacing = 60;
+
+            // Cholesterol bars (left side)
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '12px sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('Cholesterol (mg/dL)', padding, 25);
+
+            cholesterolData.forEach((data, i) => {
+                const x = padding + i * spacing;
+                const maxHeight = h / 2 - 60;
+                const barHeight = (data.value / 300) * maxHeight;
+                const y = h / 2 - 20 - barHeight;
+
+                // Bar color based on value
+                ctx.fillStyle = data.value > 240 ? '#dc2626' : data.value > 200 ? '#f59e0b' : '#10b981';
+                ctx.fillRect(x, y, barWidth, barHeight);
+
+                // Value label
+                ctx.fillStyle = '#f1f5f9';
+                ctx.textAlign = 'center';
+                ctx.fillText(data.value, x + barWidth / 2, y - 5);
+
+                // X-axis label
+                ctx.fillStyle = '#94a3b8';
+                ctx.font = '10px sans-serif';
+                ctx.fillText(data.label, x + barWidth / 2, h / 2);
+            });
+
+            // HbA1c bars (right side)
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '12px sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('HbA1c (%)', padding, h / 2 + 45);
+
+            hba1cData.forEach((data, i) => {
+                const x = padding + i * spacing;
+                const maxHeight = h / 2 - 60;
+                const barHeight = (data.value / 10) * maxHeight;
+                const y = h - 40 - barHeight;
+
+                // Bar
+                ctx.fillStyle = data.value < 7.5 ? '#10b981' : '#f59e0b';
+                ctx.fillRect(x, y, barWidth, barHeight);
+
+                // Value label
+                ctx.fillStyle = '#f1f5f9';
+                ctx.textAlign = 'center';
+                ctx.fillText(data.value.toFixed(1), x + barWidth / 2, y - 5);
+
+                // X-axis label
+                ctx.fillStyle = '#94a3b8';
+                ctx.font = '10px sans-serif';
+                ctx.fillText(data.label, x + barWidth / 2, h - 20);
+            });
+        }
+
+        // Zoom controls
+        document.querySelectorAll('.zoom-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.zoom-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                // In a real implementation, this would re-render the timeline with different time scale
+            });
+        });
+
+        // Initialize
+        renderTimeline();
+        drawBPChart();
+        drawLabChart();
+
+        // Auto-show the most recent (critical) event
+        setTimeout(() => {
+            showEventDetails(timelineEvents[0]);
+        }, 500);
+    </script>
+</body>
+</html>

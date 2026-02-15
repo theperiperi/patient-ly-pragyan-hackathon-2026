@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Concept F: Swipe to Approve AI Triage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --color-approve: #10B981;
+            --color-reject: #EF4444;
+            --color-review: #F59E0B;
+            --color-ai: #8B5CF6;
+            --bg: #0F172A;
+            --bg-card: #1E293B;
+            --text: #F1F5F9;
+            --text-secondary: #94A3B8;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow: hidden;
+            height: 100vh;
+            touch-action: pan-y;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--color-ai), #6D28D9);
+            padding: 1rem;
+            padding-top: calc(1rem + env(safe-area-inset-top));
+            text-align: center;
+        }
+
+        .header-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .header-subtitle {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: space-around;
+            padding: 0.75rem 1rem;
+            background: rgba(139, 92, 246, 0.1);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-ai);
+        }
+
+        .stat-label {
+            font-size: 0.65rem;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .swipe-container {
+            position: relative;
+            height: calc(100vh - 200px - env(safe-area-inset-bottom));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .card-stack {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 100%;
+        }
+
+        .patient-card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            cursor: grab;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-origin: center;
+        }
+
+        .patient-card:active {
+            cursor: grabbing;
+        }
+
+        .patient-card.dragging {
+            transition: none;
+        }
+
+        .patient-card.approve-hint {
+            box-shadow: 0 10px 40px rgba(16, 185, 129, 0.5);
+        }
+
+        .patient-card.reject-hint {
+            box-shadow: 0 10px 40px rgba(239, 68, 68, 0.5);
+        }
+
+        .swipe-indicator {
+            position: absolute;
+            top: 2rem;
+            font-size: 3rem;
+            font-weight: 900;
+            opacity: 0;
+            transition: opacity 0.2s;
+            text-transform: uppercase;
+            transform: rotate(-20deg);
+            pointer-events: none;
+        }
+
+        .swipe-approve {
+            right: 2rem;
+            color: var(--color-approve);
+            border: 4px solid var(--color-approve);
+            padding: 0.5rem 1.5rem;
+            border-radius: 10px;
+        }
+
+        .swipe-reject {
+            left: 2rem;
+            color: var(--color-reject);
+            border: 4px solid var(--color-reject);
+            padding: 0.5rem 1.5rem;
+            border-radius: 10px;
+            transform: rotate(20deg);
+        }
+
+        .patient-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .patient-name {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .patient-meta {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .confidence-meter {
+            background: rgba(139, 92, 246, 0.2);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .confidence-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .confidence-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-ai);
+        }
+
+        .ai-decision-box {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(109, 40, 217, 0.2));
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ai-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--color-ai);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .decision-grid {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .decision-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .decision-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        .decision-value {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .vitals-compact {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .vital-chip {
+            background: rgba(255,255,255,0.05);
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .vital-chip.critical {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--color-reject);
+        }
+
+        .vital-chip.warning {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--color-review);
+        }
+
+        .vital-label {
+            opacity: 0.7;
+            font-size: 0.65rem;
+        }
+
+        .vital-value {
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .reasoning-preview {
+            background: rgba(0,0,0,0.2);
+            border-left: 3px solid var(--color-ai);
+            padding: 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        .reasoning-item {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .reasoning-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .action-bar {
+            position: fixed;
+            bottom: env(safe-area-inset-bottom);
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: var(--bg);
+            display: flex;
+            justify-content: space-around;
+            gap: 1rem;
+        }
+
+        .action-button {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: none;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .action-button:active {
+            transform: scale(0.9);
+        }
+
+        .btn-reject {
+            background: var(--color-reject);
+            color: white;
+        }
+
+        .btn-review {
+            background: var(--color-review);
+            color: white;
+        }
+
+        .btn-approve {
+            background: var(--color-approve);
+            color: white;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem 2rem;
+            display: none;
+        }
+
+        .empty-state.show {
+            display: block;
+        }
+
+        .empty-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+
+        .empty-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .empty-message {
+            color: var(--text-secondary);
+        }
+
+        .undo-button {
+            position: fixed;
+            top: calc(60px + env(safe-area-inset-top));
+            right: 1rem;
+            background: rgba(139, 92, 246, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--color-ai);
+            color: var(--text);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s;
+            z-index: 100;
+        }
+
+        .undo-button.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tutorial-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        .tutorial-overlay.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .tutorial-content {
+            text-align: center;
+            padding: 2rem;
+            max-width: 400px;
+        }
+
+        .tutorial-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .tutorial-steps {
+            margin: 2rem 0;
+        }
+
+        .tutorial-step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .tutorial-icon {
+            font-size: 2rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tutorial-icon.approve {
+            background: var(--color-approve);
+        }
+
+        .tutorial-icon.reject {
+            background: var(--color-reject);
+        }
+
+        .tutorial-icon.review {
+            background: var(--color-review);
+        }
+
+        .start-button {
+            background: var(--color-ai);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="tutorial-overlay" id="tutorial">
+        <div class="tutorial-content">
+            <div class="tutorial-title">🤖 AI Triage Review</div>
+            <div class="tutorial-steps">
+                <div class="tutorial-step">
+                    <div class="tutorial-icon approve">→</div>
+                    <div>
+                        <strong>Swipe Right</strong><br>
+                        <span style="color: var(--text-secondary); font-size: 0.875rem;">Approve AI decision</span>
+                    </div>
+                </div>
+                <div class="tutorial-step">
+                    <div class="tutorial-icon reject">←</div>
+                    <div>
+                        <strong>Swipe Left</strong><br>
+                        <span style="color: var(--text-secondary); font-size: 0.875rem;">Override & manual triage</span>
+                    </div>
+                </div>
+                <div class="tutorial-step">
+                    <div class="tutorial-icon review">⚠</div>
+                    <div>
+                        <strong>Tap Center</strong><br>
+                        <span style="color: var(--text-secondary); font-size: 0.875rem;">Review & modify decision</span>
+                    </div>
+                </div>
+            </div>
+            <button class="start-button" onclick="startTriage()">Start Reviewing (12 Pending)</button>
+        </div>
+    </div>
+
+    <div class="header">
+        <div class="header-title">🤖 AI Triage Review</div>
+        <div class="header-subtitle">Swipe to Approve/Override</div>
+    </div>
+
+    <div class="stats-bar">
+        <div class="stat">
+            <div class="stat-value" id="remaining">12</div>
+            <div class="stat-label">Pending</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value" id="approved">0</div>
+            <div class="stat-label">Approved</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value" id="overridden">0</div>
+            <div class="stat-label">Override</div>
+        </div>
+    </div>
+
+    <button class="undo-button" id="undoBtn" onclick="undo()">↶ Undo</button>
+
+    <div class="swipe-container">
+        <div class="card-stack" id="cardStack">
+            <!-- Cards will be dynamically inserted -->
+        </div>
+
+        <div class="empty-state" id="emptyState">
+            <div class="empty-icon">✓</div>
+            <div class="empty-title">All Done!</div>
+            <div class="empty-message">
+                You've reviewed all pending AI triage decisions.<br>
+                Great work! 🎉
+            </div>
+        </div>
+    </div>
+
+    <div class="action-bar">
+        <button class="action-button btn-reject" onclick="rejectCard()">✗</button>
+        <button class="action-button btn-review" onclick="reviewCard()">⚠</button>
+        <button class="action-button btn-approve" onclick="approveCard()">✓</button>
+    </div>
+
+    <script>
+        const patients = [
+            {
+                name: "Rajesh Kumar",
+                age: 45,
+                gender: "M",
+                abha: "**-5255",
+                complaint: "Chest pain, SOB",
+                arrival: "3 min ago",
+                confidence: 96,
+                vitals: [
+                    { label: "BP", value: "180/110", critical: true },
+                    { label: "HR", value: "125", critical: true },
+                    { label: "SpO2", value: "94%", warning: true },
+                    { label: "Temp", value: "98.6°F" },
+                    { label: "RR", value: "22", warning: true }
+                ],
+                decision: {
+                    esi: "1 (Critical)",
+                    bay: "Resus Bay 1",
+                    specialist: "Cardiology",
+                    tests: "STAT ECG, Troponin"
+                },
+                reasoning: [
+                    "ECG shows ST elevation (STEMI)",
+                    "Previous MI 2 years ago",
+                    "Time-critical cardiac emergency"
+                ]
+            },
+            {
+                name: "Priya Sharma",
+                age: 28,
+                gender: "F",
+                abha: "**-7891",
+                complaint: "Severe abdominal pain",
+                arrival: "7 min ago",
+                confidence: 88,
+                vitals: [
+                    { label: "BP", value: "90/60", critical: true },
+                    { label: "HR", value: "110", warning: true },
+                    { label: "SpO2", value: "98%" },
+                    { label: "Temp", value: "102°F", critical: true },
+                    { label: "RR", value: "18" }
+                ],
+                decision: {
+                    esi: "1 (Critical)",
+                    bay: "OB/GYN Bay",
+                    specialist: "OB/GYN + Surgery",
+                    tests: "Ultrasound STAT, hCG"
+                },
+                reasoning: [
+                    "Pregnant (12w) + acute abdomen",
+                    "Hypotensive + fever",
+                    "Possible ectopic/appendicitis"
+                ]
+            },
+            {
+                name: "Anil Patel",
+                age: 62,
+                gender: "M",
+                abha: "**-3421",
+                complaint: "Altered mental status",
+                arrival: "12 min ago",
+                confidence: 92,
+                vitals: [
+                    { label: "BP", value: "85/50", critical: true },
+                    { label: "HR", value: "95" },
+                    { label: "SpO2", value: "88%", critical: true },
+                    { label: "Temp", value: "99.1°F" },
+                    { label: "RR", value: "24", critical: true }
+                ],
+                decision: {
+                    esi: "1 (Critical)",
+                    bay: "Resus Bay 2",
+                    specialist: "Neurology + ICU",
+                    tests: "CT Head STAT, BMP, ABG"
+                },
+                reasoning: [
+                    "Hypotensive + hypoxic",
+                    "Multiple comorbidities",
+                    "Possible stroke or sepsis"
+                ]
+            },
+            // ... (can add more patients)
+        ];
+
+        let currentIndex = 0;
+        let stats = { approved: 0, overridden: 0 };
+        let undoStack = [];
+        let startX, startY, currentX, currentY;
+        let isDragging = false;
+
+        function createCard(patient) {
+            const card = document.createElement('div');
+            card.className = 'patient-card';
+            card.innerHTML = `
+                <div class="swipe-indicator swipe-approve">APPROVE</div>
+                <div class="swipe-indicator swipe-reject">OVERRIDE</div>
+
+                <div class="patient-header">
+                    <div class="patient-name">${patient.name}, ${patient.age}${patient.gender}</div>
+                    <div class="patient-meta">ABHA: ${patient.abha} | ${patient.arrival}</div>
+                    <div class="patient-meta">${patient.complaint}</div>
+                </div>
+
+                <div class="confidence-meter">
+                    <div class="confidence-label">🤖 AI Confidence</div>
+                    <div class="confidence-value">${patient.confidence}%</div>
+                </div>
+
+                <div class="vitals-compact">
+                    ${patient.vitals.map(v => `
+                        <div class="vital-chip ${v.critical ? 'critical' : v.warning ? 'warning' : ''}">
+                            <span class="vital-label">${v.label}</span>
+                            <span class="vital-value">${v.value}</span>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="ai-decision-box">
+                    <div class="ai-label">🤖 RECOMMENDED TRIAGE</div>
+                    <div class="decision-grid">
+                        <div class="decision-row">
+                            <span class="decision-label">ESI Level</span>
+                            <span class="decision-value">${patient.decision.esi}</span>
+                        </div>
+                        <div class="decision-row">
+                            <span class="decision-label">Assign To</span>
+                            <span class="decision-value">${patient.decision.bay}</span>
+                        </div>
+                        <div class="decision-row">
+                            <span class="decision-label">Specialist</span>
+                            <span class="decision-value">${patient.decision.specialist}</span>
+                        </div>
+                        <div class="decision-row">
+                            <span class="decision-label">Tests</span>
+                            <span class="decision-value">${patient.decision.tests}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reasoning-preview">
+                    ${patient.reasoning.map(r => `
+                        <div class="reasoning-item">
+                            <span>✓</span>
+                            <span>${r}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+
+            // Add touch/mouse events
+            card.addEventListener('mousedown', handleStart);
+            card.addEventListener('touchstart', handleStart);
+            card.addEventListener('mousemove', handleMove);
+            card.addEventListener('touchmove', handleMove);
+            card.addEventListener('mouseup', handleEnd);
+            card.addEventListener('touchend', handleEnd);
+            card.addEventListener('mouseleave', handleEnd);
+
+            return card;
+        }
+
+        function renderCards() {
+            const stack = document.getElementById('cardStack');
+            stack.innerHTML = '';
+
+            for (let i = currentIndex; i < Math.min(currentIndex + 3, patients.length); i++) {
+                const card = createCard(patients[i]);
+                const offset = (i - currentIndex) * 10;
+                card.style.transform = `translateY(${offset}px) scale(${1 - offset * 0.01})`;
+                card.style.zIndex = patients.length - i;
+                card.style.opacity = 1 - offset * 0.1;
+                stack.appendChild(card);
+            }
+
+            updateStats();
+        }
+
+        function handleStart(e) {
+            if (e.target.closest('.action-button')) return;
+
+            isDragging = true;
+            const touch = e.touches ? e.touches[0] : e;
+            startX = touch.clientX;
+            startY = touch.clientY;
+            this.classList.add('dragging');
+        }
+
+        function handleMove(e) {
+            if (!isDragging) return;
+            e.preventDefault();
+
+            const touch = e.touches ? e.touches[0] : e;
+            currentX = touch.clientX - startX;
+            currentY = touch.clientY - startY;
+
+            const rotation = currentX / 20;
+            this.style.transform = `translate(${currentX}px, ${currentY}px) rotate(${rotation}deg)`;
+
+            const approveIndicator = this.querySelector('.swipe-approve');
+            const rejectIndicator = this.querySelector('.swipe-reject');
+
+            if (currentX > 50) {
+                approveIndicator.style.opacity = Math.min(currentX / 100, 1);
+                rejectIndicator.style.opacity = 0;
+                this.classList.add('approve-hint');
+                this.classList.remove('reject-hint');
+            } else if (currentX < -50) {
+                rejectIndicator.style.opacity = Math.min(Math.abs(currentX) / 100, 1);
+                approveIndicator.style.opacity = 0;
+                this.classList.add('reject-hint');
+                this.classList.remove('approve-hint');
+            } else {
+                approveIndicator.style.opacity = 0;
+                rejectIndicator.style.opacity = 0;
+                this.classList.remove('approve-hint', 'reject-hint');
+            }
+        }
+
+        function handleEnd(e) {
+            if (!isDragging) return;
+            isDragging = false;
+
+            this.classList.remove('dragging');
+            const approveIndicator = this.querySelector('.swipe-approve');
+            const rejectIndicator = this.querySelector('.swipe-reject');
+
+            if (currentX > 120) {
+                approveCard();
+            } else if (currentX < -120) {
+                rejectCard();
+            } else {
+                // Snap back
+                this.style.transform = '';
+                approveIndicator.style.opacity = 0;
+                rejectIndicator.style.opacity = 0;
+                this.classList.remove('approve-hint', 'reject-hint');
+            }
+
+            currentX = 0;
+            currentY = 0;
+        }
+
+        function approveCard() {
+            const card = document.querySelector('.patient-card');
+            if (!card) return;
+
+            card.style.transition = 'all 0.3s';
+            card.style.transform = 'translateX(500px) rotate(20deg)';
+            card.style.opacity = '0';
+
+            undoStack.push({ index: currentIndex, action: 'approve' });
+            stats.approved++;
+
+            setTimeout(() => {
+                currentIndex++;
+                renderCards();
+                showUndo();
+            }, 300);
+        }
+
+        function rejectCard() {
+            const card = document.querySelector('.patient-card');
+            if (!card) return;
+
+            card.style.transition = 'all 0.3s';
+            card.style.transform = 'translateX(-500px) rotate(-20deg)';
+            card.style.opacity = '0';
+
+            undoStack.push({ index: currentIndex, action: 'override' });
+            stats.overridden++;
+
+            setTimeout(() => {
+                currentIndex++;
+                renderCards();
+                showUndo();
+            }, 300);
+        }
+
+        function reviewCard() {
+            alert('Opening modification panel...\n(In real app, would show editable form)');
+        }
+
+        function undo() {
+            if (undoStack.length === 0) return;
+
+            const last = undoStack.pop();
+            currentIndex = last.index;
+
+            if (last.action === 'approve') stats.approved--;
+            if (last.action === 'override') stats.overridden--;
+
+            renderCards();
+            hideUndo();
+        }
+
+        function showUndo() {
+            const btn = document.getElementById('undoBtn');
+            btn.classList.add('show');
+            setTimeout(() => btn.classList.remove('show'), 3000);
+        }
+
+        function hideUndo() {
+            document.getElementById('undoBtn').classList.remove('show');
+        }
+
+        function updateStats() {
+            document.getElementById('remaining').textContent = patients.length - currentIndex;
+            document.getElementById('approved').textContent = stats.approved;
+            document.getElementById('overridden').textContent = stats.overridden;
+
+            if (currentIndex >= patients.length) {
+                document.getElementById('emptyState').classList.add('show');
+            }
+        }
+
+        function startTriage() {
+            document.getElementById('tutorial').classList.add('hide');
+            renderCards();
+        }
+
+        // Initialize
+        // renderCards(); // Will be called after tutorial
+    </script>
+</body>
+</html>

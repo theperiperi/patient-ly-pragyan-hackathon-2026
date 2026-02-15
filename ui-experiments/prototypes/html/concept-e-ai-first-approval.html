@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concept E: AI-First Triage Approval</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-approve: #10B981;
+            --color-reject: #EF4444;
+            --color-modify: #F59E0B;
+            --color-ai: #8B5CF6;
+            --color-critical: #DC2626;
+            --color-urgent: #F59E0B;
+            --color-minor: #10B981;
+            --color-bg: #F9FAFB;
+            --color-surface: #FFFFFF;
+            --color-text: #111827;
+            --color-text-secondary: #6B7280;
+            --color-border: #E5E7EB;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--color-ai), #6D28D9);
+            color: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .ai-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        .main-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .filter-bar {
+            background: var(--color-surface);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .filter-label {
+            font-weight: 600;
+            color: var(--color-text-secondary);
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--color-border);
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.active {
+            background: var(--color-ai);
+            color: white;
+            border-color: var(--color-ai);
+        }
+
+        .filter-btn:hover {
+            border-color: var(--color-ai);
+        }
+
+        .bulk-actions {
+            background: var(--color-surface);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .bulk-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .bulk-approve {
+            background: var(--color-approve);
+            color: white;
+        }
+
+        .bulk-approve:hover {
+            background: #059669;
+            transform: translateY(-1px);
+        }
+
+        .bulk-review {
+            background: var(--color-modify);
+            color: white;
+        }
+
+        .bulk-review:hover {
+            background: #D97706;
+            transform: translateY(-1px);
+        }
+
+        .decisions-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .decision-card {
+            background: var(--color-surface);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-left: 4px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .decision-card.critical {
+            border-left-color: var(--color-critical);
+        }
+
+        .decision-card.urgent {
+            border-left-color: var(--color-urgent);
+        }
+
+        .decision-card.minor {
+            border-left-color: var(--color-minor);
+        }
+
+        .decision-card:hover {
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+        }
+
+        .decision-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .patient-info {
+            flex: 1;
+        }
+
+        .patient-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .patient-details {
+            color: var(--color-text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .confidence-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .confidence-high {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--color-approve);
+        }
+
+        .confidence-medium {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--color-modify);
+        }
+
+        .confidence-low {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--color-reject);
+        }
+
+        .ai-decision {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(109, 40, 217, 0.1));
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .ai-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-ai);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .decision-details {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .decision-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .decision-label {
+            font-size: 0.75rem;
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .decision-value {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .reasoning-section {
+            background: rgba(139, 92, 246, 0.05);
+            border-left: 3px solid var(--color-ai);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+
+        .reasoning-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--color-ai);
+        }
+
+        .reasoning-list {
+            list-style: none;
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
+
+        .reasoning-list li {
+            padding: 0.25rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .reasoning-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-approve);
+            font-weight: bold;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 0.875rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .btn-approve {
+            background: var(--color-approve);
+            color: white;
+        }
+
+        .btn-approve:hover {
+            background: #059669;
+            transform: scale(1.02);
+        }
+
+        .btn-modify {
+            background: var(--color-modify);
+            color: white;
+        }
+
+        .btn-modify:hover {
+            background: #D97706;
+            transform: scale(1.02);
+        }
+
+        .btn-reject {
+            background: var(--color-reject);
+            color: white;
+        }
+
+        .btn-reject:hover {
+            background: #DC2626;
+            transform: scale(1.02);
+        }
+
+        .approved-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(16, 185, 129, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+            border-radius: 12px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .decision-card.approved .approved-overlay {
+            opacity: 1;
+        }
+
+        .decision-card.approved {
+            opacity: 0.6;
+        }
+
+        .vitals-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .vital {
+            text-align: center;
+            padding: 0.5rem;
+            background: rgba(0,0,0,0.02);
+            border-radius: 6px;
+        }
+
+        .vital-label {
+            font-size: 0.7rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .vital-value {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .vital.critical {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--color-reject);
+        }
+
+        .vital.warning {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--color-modify);
+        }
+
+        .expand-btn {
+            background: none;
+            border: none;
+            color: var(--color-ai);
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 600;
+            padding: 0.5rem 0;
+            text-decoration: underline;
+        }
+
+        .expand-btn:hover {
+            color: #6D28D9;
+        }
+
+        .expanded-details {
+            display: none;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .decision-card.expanded .expanded-details {
+            display: block;
+        }
+
+        .toast {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            opacity: 0;
+            transform: translateY(-100px);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .toast-icon {
+            font-size: 1.5rem;
+        }
+
+        .toast-message {
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .decision-details {
+                grid-template-columns: 1fr;
+            }
+
+            .vitals-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-top">
+            <div class="header-title">
+                <h1>🤖 AI-First Triage</h1>
+                <span class="ai-badge">AI Decisions Pending Review</span>
+            </div>
+            <div style="text-align: right;">
+                <div style="font-size: 0.875rem; opacity: 0.9;">Apollo Emergency Department</div>
+                <div style="font-size: 0.875rem; opacity: 0.9;">Dr. Priya Sharma | 10:35 AM</div>
+            </div>
+        </div>
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-value">12</div>
+                <div class="stat-label">Pending Review</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">16</div>
+                <div class="stat-label">Approved Today</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">94%</div>
+                <div class="stat-label">AI Accuracy</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">45s</div>
+                <div class="stat-label">Avg Review Time</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="filter-bar">
+            <span class="filter-label">Filter:</span>
+            <button class="filter-btn active">All Pending (12)</button>
+            <button class="filter-btn">High Confidence (8)</button>
+            <button class="filter-btn">Review Needed (4)</button>
+            <button class="filter-btn">Critical Only (3)</button>
+        </div>
+
+        <div class="bulk-actions">
+            <button class="bulk-btn bulk-approve" onclick="approveAll()">
+                ✓ Approve All High Confidence (8)
+            </button>
+            <button class="bulk-btn bulk-review" onclick="reviewLowConfidence()">
+                ⚠ Review Low Confidence (4)
+            </button>
+            <span style="margin-left: auto; color: var(--color-text-secondary); font-size: 0.875rem;">
+                💡 Tip: Use keyboard shortcuts: A (approve), M (modify), R (reject)
+            </span>
+        </div>
+
+        <div class="decisions-grid" id="decisionsGrid"></div>
+    </div>
+
+    <div class="toast" id="toast">
+        <span class="toast-icon">✓</span>
+        <span class="toast-message"></span>
+    </div>
+
+    <script>
+        const patients = [
+            {
+                id: 1,
+                name: "Rajesh Kumar",
+                age: 45,
+                gender: "M",
+                abha: "**-5255",
+                priority: "critical",
+                complaint: "Chest pain, SOB",
+                arrival: "3 min ago",
+                source: "🚑 Ambulance",
+                vitals: {
+                    bp: { value: "180/110", status: "critical" },
+                    hr: { value: "125", status: "critical" },
+                    spo2: { value: "94%", status: "warning" },
+                    temp: { value: "98.6°F", status: "normal" },
+                    rr: { value: "22", status: "warning" }
+                },
+                aiDecision: {
+                    esi: "1 (Critical)",
+                    bay: "Resus Bay 1",
+                    specialist: "Cardiology",
+                    tests: "STAT ECG, Troponin, CBC",
+                    confidence: 96,
+                    reasoning: [
+                        "ECG shows ST elevation (STEMI)",
+                        "Previous MI 2 years ago (high recurrence risk)",
+                        "Diabetic + high cholesterol (risk factors)",
+                        "Acute onset < 30 min (time-critical)",
+                        "Ambulance pre-hospital data confirms cardiac emergency"
+                    ]
+                }
+            },
+            {
+                id: 2,
+                name: "Priya Sharma",
+                age: 28,
+                gender: "F",
+                abha: "**-7891",
+                priority: "critical",
+                complaint: "Severe abdominal pain",
+                arrival: "7 min ago",
+                source: "🚗 Walk-in",
+                vitals: {
+                    bp: { value: "90/60", status: "critical" },
+                    hr: { value: "110", status: "warning" },
+                    spo2: { value: "98%", status: "normal" },
+                    temp: { value: "102°F", status: "critical" },
+                    rr: { value: "18", status: "normal" }
+                },
+                aiDecision: {
+                    esi: "1 (Critical)",
+                    bay: "OB/GYN Bay",
+                    specialist: "OB/GYN + Surgery",
+                    tests: "Ultrasound STAT, hCG, CBC",
+                    confidence: 88,
+                    reasoning: [
+                        "Pregnant (12 weeks) with acute abdomen",
+                        "Hypotensive (90/60) + fever (maternal + fetal risk)",
+                        "Possible ectopic pregnancy or appendicitis",
+                        "No prior ABDM records (unknown pregnancy complications)",
+                        "Requires immediate OB/GYN evaluation"
+                    ]
+                }
+            },
+            {
+                id: 3,
+                name: "Anil Patel",
+                age: 62,
+                gender: "M",
+                abha: "**-3421",
+                priority: "critical",
+                complaint: "Altered mental status",
+                arrival: "12 min ago",
+                source: "🚑 Ambulance",
+                vitals: {
+                    bp: { value: "85/50", status: "critical" },
+                    hr: { value: "95", status: "normal" },
+                    spo2: { value: "88%", status: "critical" },
+                    temp: { value: "99.1°F", status: "normal" },
+                    rr: { value: "24", status: "critical" }
+                },
+                aiDecision: {
+                    esi: "1 (Critical)",
+                    bay: "Resus Bay 2",
+                    specialist: "Neurology + ICU",
+                    tests: "CT Head STAT, BMP, ABG",
+                    confidence: 92,
+                    reasoning: [
+                        "Hypotensive (85/50) + hypoxic (88%)",
+                        "Multiple comorbidities: Diabetes, CVD, CKD",
+                        "History of TIA 6 months ago (stroke risk)",
+                        "Altered mental status (GCS likely <13)",
+                        "Possible stroke or sepsis - needs imaging STAT"
+                    ]
+                }
+            },
+            {
+                id: 4,
+                name: "Meena Singh",
+                age: 35,
+                gender: "F",
+                abha: "**-9012",
+                priority: "urgent",
+                complaint: "Fever + rash",
+                arrival: "18 min ago",
+                source: "🚗 Walk-in",
+                vitals: {
+                    bp: { value: "125/80", status: "normal" },
+                    hr: { value: "98", status: "normal" },
+                    spo2: { value: "97%", status: "normal" },
+                    temp: { value: "103°F", status: "critical" },
+                    rr: { value: "16", status: "normal" }
+                },
+                aiDecision: {
+                    esi: "2 (Urgent)",
+                    bay: "Acute Bay 3",
+                    specialist: "Internal Medicine",
+                    tests: "CBC, Blood Culture, Dengue NS1",
+                    confidence: 75,
+                    reasoning: [
+                        "High fever (103°F) for 3 days",
+                        "Maculopapular rash (possible dengue)",
+                        "Monsoon season (dengue prevalence high)",
+                        "No bleeding manifestations yet",
+                        "Requires evaluation within 30 min"
+                    ]
+                }
+            },
+            {
+                id: 5,
+                name: "Arjun Das",
+                age: 52,
+                gender: "M",
+                abha: "**-4567",
+                priority: "urgent",
+                complaint: "Right knee pain",
+                arrival: "22 min ago",
+                source: "🚗 Walk-in",
+                vitals: {
+                    bp: { value: "145/90", status: "warning" },
+                    hr: { value: "82", status: "normal" },
+                    spo2: { value: "98%", status: "normal" },
+                    temp: { value: "98.9°F", status: "normal" },
+                    rr: { value: "14", status: "normal" }
+                },
+                aiDecision: {
+                    esi: "3 (Moderate)",
+                    bay: "Ortho Bay 1",
+                    specialist: "Orthopedics",
+                    tests: "X-ray knee, ESR, CRP",
+                    confidence: 68,
+                    reasoning: [
+                        "Atraumatic knee pain + swelling",
+                        "Possible gout vs septic arthritis",
+                        "Mildly elevated BP (stress response)",
+                        "No history of similar episodes in ABDM",
+                        "Requires evaluation but not urgent"
+                    ]
+                }
+            },
+            {
+                id: 6,
+                name: "Lakshmi Reddy",
+                age: 41,
+                gender: "F",
+                abha: "**-8901",
+                priority: "urgent",
+                complaint: "Migraine + vomiting",
+                arrival: "25 min ago",
+                source: "🚗 Walk-in",
+                vitals: {
+                    bp: { value: "118/75", status: "normal" },
+                    hr: { value: "88", status: "normal" },
+                    spo2: { value: "99%", status: "normal" },
+                    temp: { value: "98.2°F", status: "normal" },
+                    rr: { value: "15", status: "normal" }
+                },
+                aiDecision: {
+                    esi: "3 (Moderate)",
+                    bay: "Acute Bay 4",
+                    specialist: "Neurology",
+                    tests: "None (clinical diagnosis)",
+                    confidence: 82,
+                    reasoning: [
+                        "Known migraine patient (ABDM history)",
+                        "Similar episode 2 months ago (successfully treated)",
+                        "All vitals normal",
+                        "Photophobia + nausea (classic migraine)",
+                        "Likely needs IV fluids + antiemetics"
+                    ]
+                }
+            }
+        ];
+
+        function renderDecisions() {
+            const grid = document.getElementById('decisionsGrid');
+            grid.innerHTML = patients.map(patient => `
+                <div class="decision-card ${patient.priority}" id="card-${patient.id}">
+                    <div class="decision-header">
+                        <div class="patient-info">
+                            <div class="patient-name">${patient.name}, ${patient.age}${patient.gender}</div>
+                            <div class="patient-details">
+                                ABHA: ${patient.abha} | ${patient.arrival} | ${patient.source}
+                            </div>
+                        </div>
+                        <div class="confidence-badge ${getConfidenceClass(patient.aiDecision.confidence)}">
+                            🤖 ${patient.aiDecision.confidence}% Confident
+                        </div>
+                    </div>
+
+                    <div class="vitals-grid">
+                        <div class="vital ${patient.vitals.bp.status}">
+                            <div class="vital-label">BP</div>
+                            <div class="vital-value">${patient.vitals.bp.value}</div>
+                        </div>
+                        <div class="vital ${patient.vitals.hr.status}">
+                            <div class="vital-label">HR</div>
+                            <div class="vital-value">${patient.vitals.hr.value}</div>
+                        </div>
+                        <div class="vital ${patient.vitals.spo2.status}">
+                            <div class="vital-label">SpO2</div>
+                            <div class="vital-value">${patient.vitals.spo2.value}</div>
+                        </div>
+                        <div class="vital ${patient.vitals.temp.status}">
+                            <div class="vital-label">Temp</div>
+                            <div class="vital-value">${patient.vitals.temp.value}</div>
+                        </div>
+                        <div class="vital ${patient.vitals.rr.status}">
+                            <div class="vital-label">RR</div>
+                            <div class="vital-value">${patient.vitals.rr.value}</div>
+                        </div>
+                    </div>
+
+                    <div class="ai-decision">
+                        <div class="ai-label">
+                            <span>🤖</span> AI RECOMMENDED TRIAGE
+                        </div>
+                        <div class="decision-details">
+                            <div class="decision-item">
+                                <div class="decision-label">ESI Level</div>
+                                <div class="decision-value">${patient.aiDecision.esi}</div>
+                            </div>
+                            <div class="decision-item">
+                                <div class="decision-label">Assign To</div>
+                                <div class="decision-value">${patient.aiDecision.bay}</div>
+                            </div>
+                            <div class="decision-item">
+                                <div class="decision-label">Specialist</div>
+                                <div class="decision-value">${patient.aiDecision.specialist}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reasoning-section">
+                        <div class="reasoning-title">AI Reasoning:</div>
+                        <ul class="reasoning-list">
+                            ${patient.aiDecision.reasoning.slice(0, 3).map(r => `<li>${r}</li>`).join('')}
+                        </ul>
+                        <button class="expand-btn" onclick="toggleExpand(${patient.id})">
+                            + Show ${patient.aiDecision.reasoning.length - 3} more reasons
+                        </button>
+                    </div>
+
+                    <div class="expanded-details">
+                        <div class="reasoning-title">Complete Analysis:</div>
+                        <ul class="reasoning-list">
+                            ${patient.aiDecision.reasoning.map(r => `<li>${r}</li>`).join('')}
+                        </ul>
+                        <div style="margin-top: 1rem;">
+                            <div class="decision-label">Recommended Tests</div>
+                            <div class="decision-value" style="margin-top: 0.5rem;">${patient.aiDecision.tests}</div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="action-btn btn-approve" onclick="approve(${patient.id})">
+                            ✓ Approve
+                        </button>
+                        <button class="action-btn btn-modify" onclick="modify(${patient.id})">
+                            ✏ Modify
+                        </button>
+                        <button class="action-btn btn-reject" onclick="reject(${patient.id})">
+                            ✗ Override
+                        </button>
+                    </div>
+
+                    <div class="approved-overlay">✓ APPROVED</div>
+                </div>
+            `).join('');
+        }
+
+        function getConfidenceClass(confidence) {
+            if (confidence >= 85) return 'confidence-high';
+            if (confidence >= 70) return 'confidence-medium';
+            return 'confidence-low';
+        }
+
+        function toggleExpand(id) {
+            const card = document.getElementById(`card-${id}`);
+            card.classList.toggle('expanded');
+            const btn = card.querySelector('.expand-btn');
+            btn.textContent = card.classList.contains('expanded')
+                ? '- Show less'
+                : '+ Show more reasons';
+        }
+
+        function showToast(message, icon = '✓') {
+            const toast = document.getElementById('toast');
+            toast.querySelector('.toast-icon').textContent = icon;
+            toast.querySelector('.toast-message').textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        function approve(id) {
+            const card = document.getElementById(`card-${id}`);
+            card.classList.add('approved');
+            const patient = patients.find(p => p.id === id);
+            showToast(`Approved: ${patient.name} → ${patient.aiDecision.bay}`);
+
+            // Simulate removing from queue after animation
+            setTimeout(() => {
+                card.style.opacity = '0';
+                setTimeout(() => card.remove(), 300);
+                updateStats();
+            }, 1500);
+        }
+
+        function modify(id) {
+            const patient = patients.find(p => p.id === id);
+            showToast(`Opening modification panel for ${patient.name}`, '✏');
+            // In real app, would open modal to modify AI decision
+        }
+
+        function reject(id) {
+            const patient = patients.find(p => p.id === id);
+            if (confirm(`Override AI decision for ${patient.name}?\nThis will require manual triage.`)) {
+                showToast(`AI decision rejected. Manual triage required.`, '✗');
+                const card = document.getElementById(`card-${id}`);
+                card.style.opacity = '0';
+                setTimeout(() => card.remove(), 300);
+                updateStats();
+            }
+        }
+
+        function approveAll() {
+            const highConfidence = patients.filter(p => p.aiDecision.confidence >= 85);
+            if (confirm(`Approve all ${highConfidence.length} high-confidence AI decisions?`)) {
+                highConfidence.forEach((patient, index) => {
+                    setTimeout(() => approve(patient.id), index * 200);
+                });
+            }
+        }
+
+        function reviewLowConfidence() {
+            const lowConfidence = patients.filter(p => p.aiDecision.confidence < 85);
+            lowConfidence.forEach(patient => {
+                const card = document.getElementById(`card-${patient.id}`);
+                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                card.style.background = 'rgba(245, 158, 11, 0.1)';
+                setTimeout(() => card.style.background = '', 2000);
+            });
+        }
+
+        function updateStats() {
+            const remaining = document.querySelectorAll('.decision-card').length;
+            const statValue = document.querySelector('.stat-value');
+            if (statValue) statValue.textContent = remaining;
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            const cards = document.querySelectorAll('.decision-card:not(.approved)');
+            if (cards.length === 0) return;
+
+            const firstCard = cards[0];
+            const id = parseInt(firstCard.id.replace('card-', ''));
+
+            if (e.key === 'a') approve(id);
+            if (e.key === 'm') modify(id);
+            if (e.key === 'r') reject(id);
+        });
+
+        // Initialize
+        renderDecisions();
+    </script>
+</body>
+</html>

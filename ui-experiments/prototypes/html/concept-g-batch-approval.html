@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concept G: AI Batch Approval Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-high: #10B981;
+            --color-medium: #F59E0B;
+            --color-low: #EF4444;
+            --color-ai: #8B5CF6;
+            --color-bg: #F9FAFB;
+            --color-surface: #FFFFFF;
+            --color-text: #111827;
+            --color-text-secondary: #6B7280;
+            --color-border: #E5E7EB;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--color-ai), #6D28D9);
+            color: white;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .title-section h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .ai-performance {
+            text-align: right;
+        }
+
+        .ai-score {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .ai-label {
+            opacity: 0.9;
+            font-size: 0.875rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        .stat-card {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        .main-container {
+            max-width: 1600px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .control-bar {
+            background: var(--color-surface);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .confidence-filter {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-chip {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            border: 2px solid var(--color-border);
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .filter-chip.active {
+            background: var(--color-ai);
+            border-color: var(--color-ai);
+            color: white;
+        }
+
+        .filter-chip:hover:not(.active) {
+            border-color: var(--color-ai);
+            background: rgba(139, 92, 246, 0.05);
+        }
+
+        .batch-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .batch-btn {
+            padding: 0.875rem 1.75rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .btn-approve-all {
+            background: var(--color-high);
+            color: white;
+        }
+
+        .btn-approve-all:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+        }
+
+        .btn-review-selected {
+            background: var(--color-medium);
+            color: white;
+        }
+
+        .btn-review-selected:hover {
+            background: #D97706;
+        }
+
+        .confidence-bands {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .confidence-band {
+            background: var(--color-surface);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .band-header {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .band-header:hover {
+            background: rgba(0,0,0,0.02);
+        }
+
+        .band-header.high {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.1));
+        }
+
+        .band-header.medium {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(217, 119, 6, 0.1));
+        }
+
+        .band-header.low {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.1));
+        }
+
+        .band-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .band-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .band-icon.high {
+            background: var(--color-high);
+            color: white;
+        }
+
+        .band-icon.medium {
+            background: var(--color-medium);
+            color: white;
+        }
+
+        .band-icon.low {
+            background: var(--color-low);
+            color: white;
+        }
+
+        .band-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .band-meta {
+            color: var(--color-text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .band-stats {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .band-stat {
+            text-align: center;
+        }
+
+        .band-stat-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+
+        .band-stat-label {
+            font-size: 0.75rem;
+            color: var(--color-text-secondary);
+        }
+
+        .band-action {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .band-action.high {
+            background: var(--color-high);
+            color: white;
+        }
+
+        .band-action.medium {
+            background: var(--color-medium);
+            color: white;
+        }
+
+        .band-action.low {
+            background: var(--color-low);
+            color: white;
+        }
+
+        .band-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+        }
+
+        .band-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .confidence-band.expanded .band-content {
+            max-height: 2000px;
+        }
+
+        .patients-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .patients-table thead {
+            background: rgba(0,0,0,0.02);
+        }
+
+        .patients-table th {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-text-secondary);
+            font-weight: 600;
+        }
+
+        .patients-table td {
+            padding: 1.25rem 1.5rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .patients-table tbody tr {
+            transition: background 0.2s;
+        }
+
+        .patients-table tbody tr:hover {
+            background: rgba(139, 92, 246, 0.05);
+        }
+
+        .patient-cell {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .patient-checkbox {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .patient-info-cell {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .patient-name {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .patient-meta {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
+
+        .confidence-cell {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .confidence-bar {
+            flex: 1;
+            height: 8px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .confidence-fill {
+            height: 100%;
+            transition: width 0.3s;
+        }
+
+        .confidence-fill.high {
+            background: var(--color-high);
+        }
+
+        .confidence-fill.medium {
+            background: var(--color-medium);
+        }
+
+        .confidence-fill.low {
+            background: var(--color-low);
+        }
+
+        .confidence-value {
+            font-weight: 700;
+            min-width: 45px;
+        }
+
+        .decision-cell {
+            font-size: 0.875rem;
+        }
+
+        .decision-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.25rem;
+        }
+
+        .decision-label {
+            color: var(--color-text-secondary);
+        }
+
+        .decision-value {
+            font-weight: 600;
+        }
+
+        .action-cell {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.125rem;
+            transition: all 0.2s;
+        }
+
+        .approve-icon {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--color-high);
+        }
+
+        .approve-icon:hover {
+            background: var(--color-high);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .modify-icon {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--color-medium);
+        }
+
+        .modify-icon:hover {
+            background: var(--color-medium);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .reject-icon {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--color-low);
+        }
+
+        .reject-icon:hover {
+            background: var(--color-low);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .approval-animation {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: var(--color-high);
+            color: white;
+            padding: 3rem 4rem;
+            border-radius: 20px;
+            font-size: 3rem;
+            font-weight: 700;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            z-index: 1000;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .approval-animation.show {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        @media (max-width: 1200px) {
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .control-bar {
+                grid-template-columns: 1fr;
+            }
+
+            .band-stats {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="header-top">
+                <div class="title-section">
+                    <h1>🤖 AI Batch Approval Dashboard</h1>
+                    <div class="subtitle">Review & approve AI triage decisions by confidence level</div>
+                </div>
+                <div class="ai-performance">
+                    <div class="ai-score">94.2%</div>
+                    <div class="ai-label">AI Accuracy (Last 30 Days)</div>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">28</div>
+                    <div class="stat-label">Pending Review</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">18</div>
+                    <div class="stat-label">High Confidence (≥85%)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">7</div>
+                    <div class="stat-label">Medium (70-84%)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">Review Needed (<70%)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">156</div>
+                    <div class="stat-label">Approved Today</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="control-bar">
+            <div class="confidence-filter">
+                <span style="font-weight: 600; color: var(--color-text-secondary);">Filter:</span>
+                <button class="filter-chip active" onclick="filterBand('all')">
+                    <span>📊</span> All Decisions (28)
+                </button>
+                <button class="filter-chip" onclick="filterBand('high')">
+                    <span style="color: var(--color-high);">●</span> High Confidence (18)
+                </button>
+                <button class="filter-chip" onclick="filterBand('medium')">
+                    <span style="color: var(--color-medium);">●</span> Medium (7)
+                </button>
+                <button class="filter-chip" onclick="filterBand('low')">
+                    <span style="color: var(--color-low);">●</span> Review Needed (3)
+                </button>
+            </div>
+            <div class="batch-actions">
+                <button class="batch-btn btn-approve-all" onclick="approveAllHigh()">
+                    ✓ Approve All High Confidence
+                </button>
+            </div>
+        </div>
+
+        <div class="confidence-bands">
+            <!-- High Confidence Band -->
+            <div class="confidence-band" id="band-high">
+                <div class="band-header high" onclick="toggleBand('high')">
+                    <div class="band-title">
+                        <div class="band-icon high">✓</div>
+                        <div class="band-info">
+                            <h3>High Confidence (85-100%)</h3>
+                            <div class="band-meta">AI is very confident - safe to approve quickly</div>
+                        </div>
+                    </div>
+                    <div class="band-stats">
+                        <div class="band-stat">
+                            <div class="band-stat-value">18</div>
+                            <div class="band-stat-label">Patients</div>
+                        </div>
+                        <div class="band-stat">
+                            <div class="band-stat-value">91.5%</div>
+                            <div class="band-stat-label">Avg Confidence</div>
+                        </div>
+                        <button class="band-action high" onclick="event.stopPropagation(); approveBand('high')">
+                            Approve All 18 →
+                        </button>
+                    </div>
+                </div>
+                <div class="band-content">
+                    <table class="patients-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 30px;"><input type="checkbox" class="patient-checkbox"></th>
+                                <th>Patient</th>
+                                <th>Confidence</th>
+                                <th>AI Decision</th>
+                                <th style="width: 150px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="high-patients">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Medium Confidence Band -->
+            <div class="confidence-band" id="band-medium">
+                <div class="band-header medium" onclick="toggleBand('medium')">
+                    <div class="band-title">
+                        <div class="band-icon medium">⚠</div>
+                        <div class="band-info">
+                            <h3>Medium Confidence (70-84%)</h3>
+                            <div class="band-meta">AI is moderately confident - quick review recommended</div>
+                        </div>
+                    </div>
+                    <div class="band-stats">
+                        <div class="band-stat">
+                            <div class="band-stat-value">7</div>
+                            <div class="band-stat-label">Patients</div>
+                        </div>
+                        <div class="band-stat">
+                            <div class="band-stat-value">77.1%</div>
+                            <div class="band-stat-label">Avg Confidence</div>
+                        </div>
+                        <button class="band-action medium" onclick="event.stopPropagation(); reviewBand('medium')">
+                            Review All 7 →
+                        </button>
+                    </div>
+                </div>
+                <div class="band-content">
+                    <table class="patients-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 30px;"><input type="checkbox" class="patient-checkbox"></th>
+                                <th>Patient</th>
+                                <th>Confidence</th>
+                                <th>AI Decision</th>
+                                <th style="width: 150px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="medium-patients">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Low Confidence Band -->
+            <div class="confidence-band expanded" id="band-low">
+                <div class="band-header low" onclick="toggleBand('low')">
+                    <div class="band-title">
+                        <div class="band-icon low">!</div>
+                        <div class="band-info">
+                            <h3>Review Needed (<70%)</h3>
+                            <div class="band-meta">AI needs help - manual review required</div>
+                        </div>
+                    </div>
+                    <div class="band-stats">
+                        <div class="band-stat">
+                            <div class="band-stat-value">3</div>
+                            <div class="band-stat-label">Patients</div>
+                        </div>
+                        <div class="band-stat">
+                            <div class="band-stat-value">62.3%</div>
+                            <div class="band-stat-label">Avg Confidence</div>
+                        </div>
+                        <button class="band-action low" onclick="event.stopPropagation(); reviewBand('low')">
+                            Review All 3 →
+                        </button>
+                    </div>
+                </div>
+                <div class="band-content">
+                    <table class="patients-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 30px;"><input type="checkbox" class="patient-checkbox"></th>
+                                <th>Patient</th>
+                                <th>Confidence</th>
+                                <th>AI Decision</th>
+                                <th style="width: 150px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="low-patients">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="approval-animation" id="approvalAnimation">
+        ✓ APPROVED
+    </div>
+
+    <script>
+        const patients = [
+            // High confidence
+            { name: "Rajesh Kumar", age: 45, gender: "M", abha: "**-5255", complaint: "Chest pain, SOB", confidence: 96, esi: "1", bay: "Resus Bay 1", specialist: "Cardiology" },
+            { name: "Anil Patel", age: 62, gender: "M", abha: "**-3421", complaint: "Altered mental status", confidence: 92, esi: "1", bay: "Resus Bay 2", specialist: "Neurology" },
+            // Medium confidence
+            { name: "Priya Sharma", age: 28, gender: "F", abha: "**-7891", complaint: "Abdominal pain", confidence: 88, esi: "1", bay: "OB/GYN Bay", specialist: "OB/GYN" },
+            { name: "Lakshmi Reddy", age: 41, gender: "F", abha: "**-8901", complaint: "Migraine + vomiting", confidence: 82, esi: "3", bay: "Acute Bay 4", specialist: "Neurology" },
+            { name: "Meena Singh", age: 35, gender: "F", abha: "**-9012", complaint: "Fever + rash", confidence: 75, esi: "2", bay: "Acute Bay 3", specialist: "Internal Med" },
+            // Low confidence
+            { name: "Arjun Das", age: 52, gender: "M", abha: "**-4567", complaint: "Knee pain", confidence: 68, esi: "3", bay: "Ortho Bay 1", specialist: "Orthopedics" },
+            { name: "Sunita Joshi", age: 30, gender: "F", abha: "**-2345", complaint: "Headache", confidence: 65, esi: "4", bay: "Minor Bay 2", specialist: "None" },
+            { name: "Ravi Kumar", age: 22, gender: "M", abha: "**-6789", complaint: "Laceration", confidence: 58, esi: "4", bay: "Minor Bay 3", specialist: "Surgery" },
+        ];
+
+        function getConfidenceLevel(confidence) {
+            if (confidence >= 85) return 'high';
+            if (confidence >= 70) return 'medium';
+            return 'low';
+        }
+
+        function renderPatients() {
+            const highTbody = document.getElementById('high-patients');
+            const mediumTbody = document.getElementById('medium-patients');
+            const lowTbody = document.getElementById('low-patients');
+
+            patients.forEach((patient, index) => {
+                const level = getConfidenceLevel(patient.confidence);
+                const row = `
+                    <tr id="patient-${index}">
+                        <td><input type="checkbox" class="patient-checkbox"></td>
+                        <td>
+                            <div class="patient-info-cell">
+                                <div class="patient-name">${patient.name}, ${patient.age}${patient.gender}</div>
+                                <div class="patient-meta">ABHA: ${patient.abha} | ${patient.complaint}</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="confidence-cell">
+                                <div class="confidence-bar">
+                                    <div class="confidence-fill ${level}" style="width: ${patient.confidence}%"></div>
+                                </div>
+                                <div class="confidence-value">${patient.confidence}%</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="decision-cell">
+                                <div class="decision-row">
+                                    <span class="decision-label">ESI:</span>
+                                    <span class="decision-value">${patient.esi}</span>
+                                </div>
+                                <div class="decision-row">
+                                    <span class="decision-label">Bay:</span>
+                                    <span class="decision-value">${patient.bay}</span>
+                                </div>
+                                <div class="decision-row">
+                                    <span class="decision-label">Specialist:</span>
+                                    <span class="decision-value">${patient.specialist}</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="action-cell">
+                                <button class="action-icon approve-icon" onclick="approvePatient(${index})" title="Approve">✓</button>
+                                <button class="action-icon modify-icon" onclick="modifyPatient(${index})" title="Modify">✏</button>
+                                <button class="action-icon reject-icon" onclick="rejectPatient(${index})" title="Override">✗</button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+
+                if (level === 'high') highTbody.innerHTML += row;
+                else if (level === 'medium') mediumTbody.innerHTML += row;
+                else lowTbody.innerHTML += row;
+            });
+        }
+
+        function toggleBand(band) {
+            const element = document.getElementById(`band-${band}`);
+            element.classList.toggle('expanded');
+        }
+
+        function filterBand(band) {
+            document.querySelectorAll('.filter-chip').forEach(chip => chip.classList.remove('active'));
+            event.target.closest('.filter-chip').classList.add('active');
+
+            const bands = ['high', 'medium', 'low'];
+            bands.forEach(b => {
+                const element = document.getElementById(`band-${b}`);
+                if (band === 'all' || band === b) {
+                    element.style.display = 'block';
+                } else {
+                    element.style.display = 'none';
+                }
+            });
+        }
+
+        function showApprovalAnimation(count = 1) {
+            const animation = document.getElementById('approvalAnimation');
+            animation.textContent = count > 1 ? `✓ ${count} APPROVED` : '✓ APPROVED';
+            animation.classList.add('show');
+            setTimeout(() => animation.classList.remove('show'), 1500);
+        }
+
+        function approvePatient(index) {
+            const row = document.getElementById(`patient-${index}`);
+            row.style.transition = 'all 0.3s';
+            row.style.opacity = '0';
+            row.style.transform = 'translateX(100px)';
+            setTimeout(() => row.remove(), 300);
+            showApprovalAnimation();
+        }
+
+        function modifyPatient(index) {
+            alert(`Opening modification panel for patient ${index}...`);
+        }
+
+        function rejectPatient(index) {
+            const row = document.getElementById(`patient-${index}`);
+            if (confirm('Override AI decision? This will require manual triage.')) {
+                row.style.transition = 'all 0.3s';
+                row.style.opacity = '0';
+                row.style.transform = 'translateX(-100px)';
+                setTimeout(() => row.remove(), 300);
+            }
+        }
+
+        function approveBand(band) {
+            const tbody = document.getElementById(`${band}-patients`);
+            const rows = tbody.querySelectorAll('tr');
+            const count = rows.length;
+
+            rows.forEach((row, index) => {
+                setTimeout(() => {
+                    row.style.transition = 'all 0.3s';
+                    row.style.opacity = '0';
+                    row.style.transform = 'translateX(100px)';
+                    setTimeout(() => row.remove(), 300);
+                }, index * 100);
+            });
+
+            showApprovalAnimation(count);
+        }
+
+        function approveAllHigh() {
+            if (confirm('Approve all 18 high-confidence AI decisions?')) {
+                approveBand('high');
+            }
+        }
+
+        function reviewBand(band) {
+            const tbody = document.getElementById(`${band}-patients`);
+            tbody.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            tbody.style.background = 'rgba(245, 158, 11, 0.1)';
+            setTimeout(() => tbody.style.background = '', 2000);
+        }
+
+        // Initialize
+        renderPatients();
+    </script>
+</body>
+</html>

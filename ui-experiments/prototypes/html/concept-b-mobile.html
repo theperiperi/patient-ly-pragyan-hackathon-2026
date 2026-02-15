@@ -1,0 +1,2102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Patient-First Mobile Triage</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            /* Light Mode Colors */
+            --bg-primary: #F8F9FA;
+            --bg-secondary: #FFFFFF;
+            --bg-tertiary: #F1F3F5;
+            --text-primary: #212529;
+            --text-secondary: #6C757D;
+            --text-tertiary: #ADB5BD;
+
+            /* Priority Colors */
+            --critical: #DC3545;
+            --urgent: #FFC107;
+            --moderate: #28A745;
+            --minor: #17A2B8;
+
+            /* Alert Colors */
+            --alert-bg: #FFF3CD;
+            --alert-border: #FFE69C;
+            --alert-text: #856404;
+
+            /* UI Colors */
+            --primary: #0D6EFD;
+            --border: #DEE2E6;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --overlay: rgba(0, 0, 0, 0.5);
+
+            /* Spacing */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+
+            /* Touch Targets */
+            --touch-min: 44px;
+
+            /* Transitions */
+            --transition-fast: 0.15s ease;
+            --transition-normal: 0.3s ease;
+        }
+
+        body.dark-mode {
+            --bg-primary: #1A1A1A;
+            --bg-secondary: #2D2D2D;
+            --bg-tertiary: #3A3A3A;
+            --text-primary: #F5F5F5;
+            --text-secondary: #B8B8B8;
+            --text-tertiary: #808080;
+            --critical: #FF6B6B;
+            --urgent: #FFD93D;
+            --moderate: #6BCF7F;
+            --border: #404040;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --alert-bg: #3A3520;
+            --alert-border: #5A5230;
+            --alert-text: #FFD93D;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 16px;
+            line-height: 1.5;
+            overflow-x: hidden;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .header-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .icon-btn {
+            min-width: var(--touch-min);
+            min-height: var(--touch-min);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background var(--transition-fast);
+            font-size: 20px;
+        }
+
+        .icon-btn:active {
+            background: var(--bg-tertiary);
+        }
+
+        .badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: var(--critical);
+            color: white;
+            border-radius: 10px;
+            padding: 2px 6px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .status-indicator.online {
+            background: rgba(40, 167, 69, 0.1);
+            color: var(--moderate);
+        }
+
+        .status-indicator.offline {
+            background: var(--alert-bg);
+            color: var(--alert-text);
+        }
+
+        /* Summary Bar */
+        .summary-bar {
+            background: var(--bg-secondary);
+            padding: var(--spacing-md);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .summary-item {
+            flex: 1;
+        }
+
+        .summary-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .summary-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: var(--spacing-xs);
+        }
+
+        /* Search Bar */
+        .search-container {
+            padding: var(--spacing-md);
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .search-wrapper {
+            position: relative;
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 40px 12px 40px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-size: 16px;
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            outline: none;
+            transition: border-color var(--transition-fast);
+        }
+
+        .search-input:focus {
+            border-color: var(--primary);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        .voice-btn {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            min-width: var(--touch-min);
+            min-height: var(--touch-min);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Queue List */
+        .queue-container {
+            padding: var(--spacing-md);
+            padding-bottom: 80px;
+        }
+
+        .priority-section {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .priority-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            margin-bottom: var(--spacing-md);
+            font-weight: 600;
+        }
+
+        .priority-badge {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .priority-badge.critical { background: var(--critical); }
+        .priority-badge.urgent { background: var(--urgent); }
+        .priority-badge.moderate { background: var(--moderate); }
+        .priority-badge.minor { background: var(--minor); }
+
+        /* Patient Card */
+        .patient-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            box-shadow: 0 2px 8px var(--shadow);
+            border-left: 4px solid var(--border);
+            cursor: pointer;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .patient-card:active {
+            transform: scale(0.98);
+            box-shadow: 0 1px 4px var(--shadow);
+        }
+
+        .patient-card.critical { border-left-color: var(--critical); }
+        .patient-card.urgent { border-left-color: var(--urgent); }
+        .patient-card.moderate { border-left-color: var(--moderate); }
+        .patient-card.minor { border-left-color: var(--minor); }
+
+        .patient-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .patient-info {
+            flex: 1;
+        }
+
+        .patient-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .priority-icon {
+            font-size: 16px;
+        }
+
+        .patient-meta {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .wait-time {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .complaint {
+            font-size: 15px;
+            color: var(--text-primary);
+            margin: var(--spacing-md) 0;
+            line-height: 1.4;
+        }
+
+        .vitals {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            padding: var(--spacing-sm) 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            margin: var(--spacing-md) 0;
+        }
+
+        .vital {
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .vital-label {
+            color: var(--text-secondary);
+        }
+
+        .vital-value {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .vital-value.critical { color: var(--critical); }
+        .vital-value.warning { color: var(--urgent); }
+        .vital-value.normal { color: var(--moderate); }
+
+        .alerts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+            margin: var(--spacing-md) 0;
+        }
+
+        .alert-tag {
+            padding: 4px 10px;
+            background: var(--alert-bg);
+            border: 1px solid var(--alert-border);
+            color: var(--alert-text);
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .card-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+        }
+
+        .btn {
+            flex: 1;
+            min-height: var(--touch-min);
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform var(--transition-fast), opacity var(--transition-fast);
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        /* Detail View Overlay */
+        .detail-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--overlay);
+            z-index: 200;
+            display: none;
+            animation: fadeIn var(--transition-normal);
+        }
+
+        .detail-overlay.active {
+            display: block;
+        }
+
+        .detail-view {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg-primary);
+            z-index: 201;
+            overflow-y: auto;
+            transform: translateY(100%);
+            transition: transform var(--transition-normal);
+        }
+
+        .detail-view.active {
+            transform: translateY(0);
+        }
+
+        .detail-header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .detail-content {
+            padding: var(--spacing-md);
+            padding-bottom: 100px;
+        }
+
+        .detail-patient-header {
+            text-align: center;
+            padding: var(--spacing-lg) 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .detail-priority {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .detail-priority.critical {
+            background: rgba(220, 53, 69, 0.15);
+            color: var(--critical);
+        }
+
+        .detail-priority.urgent {
+            background: rgba(255, 193, 7, 0.15);
+            color: var(--urgent);
+        }
+
+        .detail-name {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .detail-meta {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .section {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .info-card {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: var(--spacing-md);
+            border: 1px solid var(--border);
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .info-value {
+            font-weight: 600;
+            text-align: right;
+            font-size: 14px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: var(--spacing-lg);
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: var(--spacing-md);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -18px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 2px solid var(--bg-primary);
+        }
+
+        .timeline-time {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .timeline-content {
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+
+        /* Action Sheet */
+        .action-sheet-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--overlay);
+            z-index: 300;
+            display: none;
+            animation: fadeIn var(--transition-normal);
+        }
+
+        .action-sheet-overlay.active {
+            display: block;
+        }
+
+        .action-sheet {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-secondary);
+            border-radius: 20px 20px 0 0;
+            z-index: 301;
+            max-height: 80vh;
+            overflow-y: auto;
+            transform: translateY(100%);
+            transition: transform var(--transition-normal);
+            box-shadow: 0 -4px 20px var(--shadow);
+        }
+
+        .action-sheet.active {
+            transform: translateY(0);
+        }
+
+        .action-sheet-handle {
+            width: 36px;
+            height: 4px;
+            background: var(--border);
+            border-radius: 2px;
+            margin: var(--spacing-md) auto;
+        }
+
+        .action-sheet-content {
+            padding: 0 var(--spacing-md) var(--spacing-xl) var(--spacing-md);
+        }
+
+        .action-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .triage-levels {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .triage-level {
+            flex: 1;
+            min-height: 60px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            background: var(--bg-tertiary);
+        }
+
+        .triage-level.selected {
+            border-width: 3px;
+            transform: scale(1.05);
+        }
+
+        .triage-level.level-1 { border-color: var(--critical); }
+        .triage-level.level-2 { border-color: var(--urgent); }
+        .triage-level.level-3 { border-color: var(--moderate); }
+        .triage-level.level-4 { border-color: var(--minor); }
+
+        .triage-level.selected.level-1 { background: rgba(220, 53, 69, 0.1); }
+        .triage-level.selected.level-2 { background: rgba(255, 193, 7, 0.1); }
+        .triage-level.selected.level-3 { background: rgba(40, 167, 69, 0.1); }
+        .triage-level.selected.level-4 { background: rgba(23, 162, 184, 0.1); }
+
+        .triage-number {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .triage-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: var(--spacing-xs);
+        }
+
+        .action-group {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .action-group-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-secondary);
+        }
+
+        .action-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .action-btn {
+            min-height: var(--touch-min);
+            padding: 12px 16px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            text-align: left;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .action-btn:active {
+            background: var(--bg-primary);
+        }
+
+        .checkbox-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            cursor: pointer;
+            min-height: var(--touch-min);
+        }
+
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-secondary);
+            transition: all var(--transition-fast);
+        }
+
+        .checkbox-item.checked .checkbox {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .checkbox-item.checked .checkbox::after {
+            content: '✓';
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: var(--spacing-sm);
+            display: flex;
+            justify-content: space-around;
+            box-shadow: 0 -2px 10px var(--shadow);
+            z-index: 50;
+        }
+
+        .nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: var(--spacing-sm);
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            min-height: var(--touch-min);
+            cursor: pointer;
+            transition: color var(--transition-fast);
+        }
+
+        .nav-item.active {
+            color: var(--primary);
+        }
+
+        .nav-icon {
+            font-size: 22px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Responsive Breakpoints */
+        @media (min-width: 768px) {
+            .queue-container {
+                max-width: 768px;
+                margin: 0 auto;
+            }
+
+            .detail-view {
+                max-width: 768px;
+                margin: 0 auto;
+                left: 50%;
+                transform: translateX(-50%) translateY(100%);
+            }
+
+            .detail-view.active {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            .action-sheet {
+                max-width: 768px;
+                left: 50%;
+                transform: translateX(-50%) translateY(100%);
+            }
+
+            .action-sheet.active {
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .header-title {
+                font-size: 20px;
+            }
+
+            .patient-card {
+                transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+            }
+
+            .patient-card:hover {
+                box-shadow: 0 4px 16px var(--shadow);
+            }
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: var(--spacing-xl);
+            color: var(--text-secondary);
+        }
+
+        .spinner {
+            border: 3px solid var(--border);
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto var(--spacing-md);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: var(--spacing-xl);
+            color: var(--text-secondary);
+        }
+
+        .empty-icon {
+            font-size: 64px;
+            margin-bottom: var(--spacing-md);
+            opacity: 0.5;
+        }
+
+        /* Data Source Tags */
+        .data-sources {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+        }
+
+        .source-tag {
+            padding: 4px 10px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .source-tag.active {
+            background: rgba(13, 110, 253, 0.1);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <button class="icon-btn" id="menuBtn">☰</button>
+            <h1 class="header-title">Triage Queue</h1>
+        </div>
+        <div class="header-right">
+            <div class="status-indicator online" id="statusIndicator">
+                <span>📶</span>
+                <span id="statusText">Online</span>
+            </div>
+            <button class="icon-btn" id="darkModeToggle">🌙</button>
+            <button class="icon-btn" style="position: relative;" id="notificationBtn">
+                🔔
+                <span class="badge" id="notificationBadge">2</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Summary Bar -->
+    <div class="summary-bar">
+        <div class="summary-item">
+            <div class="summary-value" id="totalPatients">18</div>
+            <div class="summary-label">Patients</div>
+        </div>
+        <div class="summary-item">
+            <div class="summary-value" id="avgWaitTime">12</div>
+            <div class="summary-label">Avg Wait (min)</div>
+        </div>
+        <div class="summary-item">
+            <div class="summary-value" id="criticalCount">3</div>
+            <div class="summary-label">Critical</div>
+        </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+        <div class="search-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" placeholder="Search patients..." id="searchInput">
+            <button class="voice-btn" id="voiceBtn">🎤</button>
+        </div>
+    </div>
+
+    <!-- Queue Container -->
+    <div class="queue-container" id="queueContainer">
+        <!-- Patient cards will be inserted here by JavaScript -->
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item active">
+            <span class="nav-icon">📋</span>
+            <span>Queue</span>
+        </a>
+        <a href="#" class="nav-item" id="newPatientBtn">
+            <span class="nav-icon">➕</span>
+            <span>New</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="nav-icon">📊</span>
+            <span>Stats</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="nav-icon">👤</span>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+    <!-- Detail View -->
+    <div class="detail-overlay" id="detailOverlay"></div>
+    <div class="detail-view" id="detailView">
+        <div class="detail-header">
+            <button class="icon-btn" id="closeDetailBtn">←</button>
+            <h2 style="font-size: 18px; font-weight: 600;">Patient Details</h2>
+            <button class="icon-btn">⋮</button>
+        </div>
+        <div class="detail-content" id="detailContent">
+            <!-- Detail content will be inserted here by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Action Sheet -->
+    <div class="action-sheet-overlay" id="actionSheetOverlay"></div>
+    <div class="action-sheet" id="actionSheet">
+        <div class="action-sheet-handle"></div>
+        <div class="action-sheet-content">
+            <h3 class="action-title">Triage Actions</h3>
+
+            <div class="action-group">
+                <div class="action-group-title">ASSIGN TRIAGE LEVEL</div>
+                <div class="triage-levels" id="triageLevels">
+                    <div class="triage-level level-1" data-level="1">
+                        <div class="triage-number">1</div>
+                        <div class="triage-label">Critical</div>
+                    </div>
+                    <div class="triage-level level-2" data-level="2">
+                        <div class="triage-number">2</div>
+                        <div class="triage-label">Urgent</div>
+                    </div>
+                    <div class="triage-level level-3" data-level="3">
+                        <div class="triage-number">3</div>
+                        <div class="triage-label">Moderate</div>
+                    </div>
+                    <div class="triage-level level-4" data-level="4">
+                        <div class="triage-number">4</div>
+                        <div class="triage-label">Minor</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-group">
+                <div class="action-group-title">ASSIGN TO</div>
+                <div class="action-list">
+                    <button class="action-btn">🛏️ Resus Bay 1</button>
+                    <button class="action-btn">🛏️ Trauma Bay 2</button>
+                    <button class="action-btn">🛏️ Critical Care Bay 3</button>
+                    <button class="action-btn">➕ Select other...</button>
+                </div>
+            </div>
+
+            <div class="action-group">
+                <div class="action-group-title">NOTIFY TEAM</div>
+                <div class="action-list">
+                    <button class="action-btn">📞 Call Emergency Physician</button>
+                    <button class="action-btn">🔔 Alert Cardiologist</button>
+                    <button class="action-btn">🚨 Code STEMI</button>
+                </div>
+            </div>
+
+            <div class="action-group">
+                <div class="action-group-title">ORDER TESTS (STAT)</div>
+                <div class="checkbox-list" id="testList">
+                    <div class="checkbox-item checked" data-test="ecg">
+                        <div class="checkbox"></div>
+                        <span>ECG (12-lead)</span>
+                    </div>
+                    <div class="checkbox-item checked" data-test="troponin">
+                        <div class="checkbox"></div>
+                        <span>Troponin</span>
+                    </div>
+                    <div class="checkbox-item checked" data-test="cbc">
+                        <div class="checkbox"></div>
+                        <span>CBC, BMP</span>
+                    </div>
+                    <div class="checkbox-item checked" data-test="xray">
+                        <div class="checkbox"></div>
+                        <span>Chest X-Ray</span>
+                    </div>
+                    <div class="checkbox-item" data-test="ddimer">
+                        <div class="checkbox"></div>
+                        <span>D-Dimer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-group">
+                <button class="btn btn-primary" style="width: 100%; margin-bottom: var(--spacing-sm);" id="completeTriageBtn">
+                    Complete Triage
+                </button>
+                <button class="btn btn-secondary" style="width: 100%;" id="saveDraftBtn">
+                    Save as Draft
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mock Patient Data - Realistic Indian patients
+        const patients = [
+            {
+                id: 1,
+                name: "Rajesh Kumar",
+                age: 45,
+                gender: "M",
+                abha: "22-7225-4829-5255",
+                phone: "+91-9876543210",
+                priority: "critical",
+                waitTime: 3,
+                source: "Ambulance",
+                complaint: "Chest pain radiating to left arm, shortness of breath",
+                onset: "30 min ago",
+                vitals: {
+                    bp: { value: "180/110", status: "critical", label: "BP" },
+                    hr: { value: "125", status: "critical", label: "HR" },
+                    spo2: { value: "94%", status: "warning", label: "SpO2" },
+                    temp: { value: "98.6°F", status: "normal", label: "Temp" },
+                    rr: { value: "22/min", status: "warning", label: "RR" }
+                },
+                alerts: [
+                    { text: "Previous MI 2 years ago", icon: "⚠️" },
+                    { text: "Diabetic on insulin", icon: "⚠️" },
+                    { text: "Allergy: Penicillin", icon: "🚫" }
+                ],
+                medications: [
+                    "Metformin 500mg BD",
+                    "Aspirin 75mg OD",
+                    "Atorvastatin 20mg OD",
+                    "Metoprolol 25mg BD",
+                    "Lisinopril 10mg OD"
+                ],
+                timeline: [
+                    { time: "3 min ago", event: "Ambulance Report", detail: "ECG: ST elevation, Aspirin given" },
+                    { time: "2 days ago", event: "Apollo Hospital", detail: "Cardiology follow-up, stable" },
+                    { time: "3 days ago", event: "Lab Results", detail: "Cholesterol high, HbA1c 7.2%" }
+                ],
+                dataSources: ["Ambulance", "ABDM", "Labs", "Pharmacy"]
+            },
+            {
+                id: 2,
+                name: "Priya Sharma",
+                age: 28,
+                gender: "F",
+                abha: "22-5612-8934-7891",
+                phone: "+91-9123456789",
+                priority: "critical",
+                waitTime: 7,
+                source: "Walk-in",
+                complaint: "Severe abdominal pain, vomiting",
+                onset: "2 hours ago",
+                vitals: {
+                    bp: { value: "90/60", status: "warning", label: "BP" },
+                    hr: { value: "110", status: "warning", label: "HR" },
+                    temp: { value: "102°F", status: "critical", label: "Temp" },
+                    spo2: { value: "98%", status: "normal", label: "SpO2" },
+                    rr: { value: "20/min", status: "normal", label: "RR" }
+                },
+                alerts: [
+                    { text: "Pregnant (12 weeks)", icon: "🤰" },
+                    { text: "First pregnancy", icon: "ℹ️" }
+                ],
+                medications: [
+                    "Folic acid 5mg OD",
+                    "Iron supplements"
+                ],
+                timeline: [
+                    { time: "7 min ago", event: "Arrived", detail: "Walk-in, severe pain" },
+                    { time: "1 week ago", event: "OB/GYN Visit", detail: "Routine prenatal checkup, normal" },
+                    { time: "3 weeks ago", event: "Ultrasound", detail: "Dating scan, 9 weeks" }
+                ],
+                dataSources: ["ABDM", "OB/GYN Records"]
+            },
+            {
+                id: 3,
+                name: "Anil Patel",
+                age: 62,
+                gender: "M",
+                abha: "22-4567-1234-9876",
+                phone: "+91-9988776655",
+                priority: "critical",
+                waitTime: 12,
+                source: "Ambulance",
+                complaint: "Altered mental status, confusion",
+                onset: "1 hour ago",
+                vitals: {
+                    bp: { value: "160/95", status: "warning", label: "BP" },
+                    hr: { value: "98", status: "normal", label: "HR" },
+                    temp: { value: "101.2°F", status: "warning", label: "Temp" },
+                    spo2: { value: "96%", status: "normal", label: "SpO2" },
+                    rr: { value: "18/min", status: "normal", label: "RR" }
+                },
+                alerts: [
+                    { text: "History of stroke", icon: "⚠️" },
+                    { text: "Hypertensive", icon: "⚠️" },
+                    { text: "Type 2 Diabetes", icon: "⚠️" }
+                ],
+                medications: [
+                    "Clopidogrel 75mg OD",
+                    "Amlodipine 5mg OD",
+                    "Metformin 1000mg BD"
+                ],
+                timeline: [
+                    { time: "12 min ago", event: "Ambulance", detail: "Found confused at home by family" },
+                    { time: "1 month ago", event: "Neurology Follow-up", detail: "Post-stroke care, recovering well" }
+                ],
+                dataSources: ["Ambulance", "ABDM", "Neurology Records"]
+            },
+            {
+                id: 4,
+                name: "Meena Singh",
+                age: 35,
+                gender: "F",
+                abha: "22-8901-2345-6789",
+                phone: "+91-9876501234",
+                priority: "urgent",
+                waitTime: 18,
+                source: "Walk-in",
+                complaint: "Fever for 3 days, rash on arms and legs",
+                onset: "3 days ago",
+                vitals: {
+                    temp: { value: "103°F", status: "critical", label: "Temp" },
+                    hr: { value: "105", status: "warning", label: "HR" },
+                    bp: { value: "110/70", status: "normal", label: "BP" },
+                    spo2: { value: "97%", status: "normal", label: "SpO2" },
+                    rr: { value: "18/min", status: "normal", label: "RR" }
+                },
+                alerts: [
+                    { text: "Possible dengue", icon: "⚠️" }
+                ],
+                medications: [],
+                timeline: [
+                    { time: "18 min ago", event: "Arrived", detail: "Walk-in with fever and rash" }
+                ],
+                dataSources: ["Walk-in"]
+            },
+            {
+                id: 5,
+                name: "Suresh Reddy",
+                age: 52,
+                gender: "M",
+                abha: "22-3456-7890-1234",
+                phone: "+91-9123450987",
+                priority: "urgent",
+                waitTime: 22,
+                source: "Walk-in",
+                complaint: "Severe headache, visual disturbances",
+                onset: "4 hours ago",
+                vitals: {
+                    bp: { value: "195/115", status: "critical", label: "BP" },
+                    hr: { value: "88", status: "normal", label: "HR" },
+                    temp: { value: "98.4°F", status: "normal", label: "Temp" },
+                    spo2: { value: "98%", status: "normal", label: "SpO2" },
+                    rr: { value: "16/min", status: "normal", label: "RR" }
+                },
+                alerts: [
+                    { text: "Hypertensive crisis", icon: "⚠️" },
+                    { text: "Non-compliant with meds", icon: "ℹ️" }
+                ],
+                medications: [
+                    "Losartan 50mg OD (not taking)",
+                    "Hydrochlorothiazide 12.5mg OD (not taking)"
+                ],
+                timeline: [
+                    { time: "22 min ago", event: "Walk-in", detail: "Severe headache, BP very high" },
+                    { time: "2 months ago", event: "Primary Care", detail: "HTN diagnosis, meds prescribed" }
+                ],
+                dataSources: ["ABDM", "Primary Care"]
+            },
+            {
+                id: 6,
+                name: "Lakshmi Iyer",
+                age: 41,
+                gender: "F",
+                abha: "22-6789-0123-4567",
+                phone: "+91-9988001122",
+                priority: "urgent",
+                waitTime: 25,
+                source: "Walk-in",
+                complaint: "Difficulty breathing, wheezing",
+                onset: "1 hour ago",
+                vitals: {
+                    spo2: { value: "91%", status: "warning", label: "SpO2" },
+                    hr: { value: "115", status: "warning", label: "HR" },
+                    rr: { value: "28/min", status: "critical", label: "RR" },
+                    bp: { value: "130/85", status: "normal", label: "BP" },
+                    temp: { value: "98.8°F", status: "normal", label: "Temp" }
+                },
+                alerts: [
+                    { text: "Asthma exacerbation", icon: "⚠️" },
+                    { text: "Allergy: Dust", icon: "🚫" }
+                ],
+                medications: [
+                    "Salbutamol inhaler PRN",
+                    "Budesonide 200mcg BD"
+                ],
+                timeline: [
+                    { time: "25 min ago", event: "Walk-in", detail: "Acute asthma attack" },
+                    { time: "1 week ago", event: "Pulmonology", detail: "Routine follow-up, stable" }
+                ],
+                dataSources: ["ABDM", "Pulmonology"]
+            },
+            {
+                id: 7,
+                name: "Arjun Das",
+                age: 19,
+                gender: "M",
+                abha: "22-2345-6789-0123",
+                phone: "+91-9876123456",
+                priority: "urgent",
+                waitTime: 28,
+                source: "Walk-in",
+                complaint: "Motorcycle accident, left leg injury",
+                onset: "45 min ago",
+                vitals: {
+                    bp: { value: "105/65", status: "warning", label: "BP" },
+                    hr: { value: "110", status: "warning", label: "HR" },
+                    spo2: { value: "97%", status: "normal", label: "SpO2" },
+                    temp: { value: "98.2°F", status: "normal", label: "Temp" },
+                    rr: { value: "20/min", status: "normal", label: "RR" }
+                },
+                alerts: [
+                    { text: "Possible fracture", icon: "⚠️" },
+                    { text: "Road traffic accident", icon: "🚗" }
+                ],
+                medications: [],
+                timeline: [
+                    { time: "28 min ago", event: "Arrived", detail: "RTA, left leg trauma" }
+                ],
+                dataSources: ["Emergency"]
+            },
+            {
+                id: 8,
+                name: "Deepa Nair",
+                age: 33,
+                gender: "F",
+                abha: "22-5678-9012-3456",
+                phone: "+91-9123987654",
+                priority: "urgent",
+                waitTime: 30,
+                source: "Walk-in",
+                complaint: "Severe back pain, unable to walk",
+                onset: "Morning",
+                vitals: {
+                    bp: { value: "120/80", status: "normal", label: "BP" },
+                    hr: { value: "90", status: "normal", label: "HR" },
+                    temp: { value: "98.6°F", status: "normal", label: "Temp" },
+                    spo2: { value: "99%", status: "normal", label: "SpO2" },
+                    rr: { value: "16/min", status: "normal", label: "RR" }
+                },
+                alerts: [
+                    { text: "Acute onset", icon: "⚠️" }
+                ],
+                medications: [],
+                timeline: [
+                    { time: "30 min ago", event: "Walk-in", detail: "Severe lower back pain" }
+                ],
+                dataSources: ["Walk-in"]
+            },
+            {
+                id: 9,
+                name: "Vikram Malhotra",
+                age: 58,
+                gender: "M",
+                abha: "22-7890-1234-5678",
+                phone: "+91-9988112233",
+                priority: "urgent",
+                waitTime: 32,
+                source: "Walk-in",
+                complaint: "Dizziness, near syncope",
+                onset: "2 hours ago",
+                vitals: {
+                    bp: { value: "85/55", status: "warning", label: "BP" },
+                    hr: { value: "58", status: "warning", label: "HR" },
+                    temp: { value: "97.8°F", status: "normal", label: "Temp" },
+                    spo2: { value: "98%", status: "normal", label: "SpO2" },
+                    rr: { value: "14/min", status: "normal", label: "RR" }
+                },
+                alerts: [
+                    { text: "Bradycardia", icon: "⚠️" },
+                    { text: "Hypotensive", icon: "⚠️" }
+                ],
+                medications: [
+                    "Bisoprolol 5mg OD",
+                    "Lisinopril 10mg OD"
+                ],
+                timeline: [
+                    { time: "32 min ago", event: "Walk-in", detail: "Multiple episodes of dizziness" }
+                ],
+                dataSources: ["Walk-in"]
+            },
+            {
+                id: 10,
+                name: "Kavita Desai",
+                age: 67,
+                gender: "F",
+                abha: "22-9012-3456-7890",
+                phone: "+91-9876665544",
+                priority: "urgent",
+                waitTime: 35,
+                source: "Walk-in",
+                complaint: "Vomiting blood, weakness",
+                onset: "3 hours ago",
+                vitals: {
+                    bp: { value: "95/60", status: "warning", label: "BP" },
+                    hr: { value: "115", status: "warning", label: "HR" },
+                    temp: { value: "98.4°F", status: "normal", label: "Temp" },
+                    spo2: { value: "96%", status: "normal", label: "SpO2" },
+                    rr: { value: "22/min", status: "warning", label: "RR" }
+                },
+                alerts: [
+                    { text: "GI bleeding", icon: "⚠️" },
+                    { text: "Anemic", icon: "ℹ️" }
+                ],
+                medications: [
+                    "Aspirin 75mg OD",
+                    "Omeprazole 20mg OD"
+                ],
+                timeline: [
+                    { time: "35 min ago", event: "Walk-in", detail: "Hematemesis x2" }
+                ],
+                dataSources: ["Walk-in"]
+            },
+            {
+                id: 11,
+                name: "Ramesh Gupta",
+                age: 48,
+                gender: "M",
+                abha: "22-1234-5678-9012",
+                phone: "+91-9123445566",
+                priority: "moderate",
+                waitTime: 38,
+                source: "Walk-in",
+                complaint: "Ankle sprain, swelling",
+                onset: "This evening",
+                vitals: {
+                    bp: { value: "125/82", status: "normal", label: "BP" },
+                    hr: { value: "82", status: "normal", label: "HR" },
+                    temp: { value: "98.6°F", status: "normal", label: "Temp" },
+                    spo2: { value: "99%", status: "normal", label: "SpO2" }
+                },
+                alerts: [],
+                medications: [],
+                timeline: [
+                    { time: "38 min ago", event: "Walk-in", detail: "Twisted ankle while playing cricket" }
+                ],
+                dataSources: ["Walk-in"]
+            },
+            {
+                id: 12,
+                name: "Sunita Verma",
+                age: 39,
+                gender: "F",
+                abha: "22-3456-7890-1234",
+                phone: "+91-9988776600",
+                priority: "moderate",
+                waitTime: 42,
+                source: "Walk-in",
+                complaint: "Ear pain, hearing loss",
+                onset: "2 days ago",
+                vitals: {
+                    temp: { value: "99.2°F", status: "normal", label: "Temp" },
+                    bp: { value: "118/76", status: "normal", label: "BP" },
+                    hr: { value: "78", status: "normal", label: "HR" }
+                },
+                alerts: [],
+                medications: [],
+                timeline: [
+                    { time: "42 min ago", event: "Walk-in", detail: "Right ear pain, possible infection" }
+                ],
+                dataSources: ["Walk-in"]
+            },
+            {
+                id: 13,
+                name: "Amit Joshi",
+                age: 26,
+                gender: "M",
+                abha: "22-5678-9012-3456",
+                phone: "+91-9876112233",
+                priority: "moderate",
+                waitTime: 45,
+                source: "Walk-in",
+                complaint: "Cut on hand, needs stitches",
+                onset: "1 hour ago",
+                vitals: {
+                    bp: { value: "120/78", status: "normal", label: "BP" },
+                    hr: { value: "88", status: "normal", label: "HR" }
+                },
+                alerts: [
+                    { text: "Tetanus status unknown", icon: "ℹ️" }
+                ],
+                medications: [],
+                timeline: [
+                    { time: "45 min ago", event: "Walk-in", detail: "Laceration from kitchen knife" }
+                ],
+                dataSources: ["Walk-in"]
+            },
+            {
+                id: 14,
+                name: "Rekha Sinha",
+                age: 44,
+                gender: "F",
+                abha: "22-7890-1234-5678",
+                phone: "+91-9123556677",
+                priority: "moderate",
+                waitTime: 48,
+                source: "Walk-in",
+                complaint: "Migraine, photophobia",
+                onset: "This morning",
+                vitals: {
+                    bp: { value: "122/80", status: "normal", label: "BP" },
+                    hr: { value: "76", status: "normal", label: "HR" },
+                    temp: { value: "98.6°F", status: "normal", label: "Temp" }
+                },
+                alerts: [
+                    { text: "Chronic migraines", icon: "ℹ️" }
+                ],
+                medications: [
+                    "Sumatriptan 50mg PRN"
+                ],
+                timeline: [
+                    { time: "48 min ago", event: "Walk-in", detail: "Severe migraine attack" }
+                ],
+                dataSources: ["ABDM"]
+            },
+            {
+                id: 15,
+                name: "Karthik Menon",
+                age: 31,
+                gender: "M",
+                abha: "22-9012-3456-7890",
+                phone: "+91-9988334455",
+                priority: "minor",
+                waitTime: 52,
+                source: "Walk-in",
+                complaint: "Sore throat, mild fever",
+                onset: "2 days ago",
+                vitals: {
+                    temp: { value: "99.8°F", status: "normal", label: "Temp" },
+                    bp: { value: "115/75", status: "normal", label: "BP" },
+                    hr: { value: "80", status: "normal", label: "HR" }
+                },
+                alerts: [],
+                medications: [],
+                timeline: [
+                    { time: "52 min ago", event: "Walk-in", detail: "Pharyngitis symptoms" }
+                ],
+                dataSources: ["Walk-in"]
+            },
+            {
+                id: 16,
+                name: "Pooja Kapoor",
+                age: 23,
+                gender: "F",
+                abha: "22-1234-5678-9012",
+                phone: "+91-9876998877",
+                priority: "minor",
+                waitTime: 55,
+                source: "Walk-in",
+                complaint: "Urinary symptoms, burning",
+                onset: "Yesterday",
+                vitals: {
+                    temp: { value: "98.8°F", status: "normal", label: "Temp" },
+                    bp: { value: "110/70", status: "normal", label: "BP" }
+                },
+                alerts: [],
+                medications: [],
+                timeline: [
+                    { time: "55 min ago", event: "Walk-in", detail: "UTI symptoms" }
+                ],
+                dataSources: ["Walk-in"]
+            },
+            {
+                id: 17,
+                name: "Manoj Kumar",
+                age: 56,
+                gender: "M",
+                abha: "22-3456-7890-1234",
+                phone: "+91-9123667788",
+                priority: "minor",
+                waitTime: 58,
+                source: "Walk-in",
+                complaint: "Skin rash on chest",
+                onset: "1 week ago",
+                vitals: {
+                    bp: { value: "128/84", status: "normal", label: "BP" },
+                    temp: { value: "98.6°F", status: "normal", label: "Temp" }
+                },
+                alerts: [],
+                medications: [],
+                timeline: [
+                    { time: "58 min ago", event: "Walk-in", detail: "Dermatological complaint" }
+                ],
+                dataSources: ["Walk-in"]
+            },
+            {
+                id: 18,
+                name: "Anjali Rao",
+                age: 29,
+                gender: "F",
+                abha: "22-5678-9012-3456",
+                phone: "+91-9988445566",
+                priority: "minor",
+                waitTime: 62,
+                source: "Walk-in",
+                complaint: "Cold symptoms, runny nose",
+                onset: "3 days ago",
+                vitals: {
+                    temp: { value: "99.1°F", status: "normal", label: "Temp" },
+                    bp: { value: "112/72", status: "normal", label: "BP" }
+                },
+                alerts: [],
+                medications: [],
+                timeline: [
+                    { time: "62 min ago", event: "Walk-in", detail: "Upper respiratory infection symptoms" }
+                ],
+                dataSources: ["Walk-in"]
+            }
+        ];
+
+        // State Management
+        let currentPatient = null;
+        let searchTerm = '';
+        let isOnline = true;
+        let selectedTriageLevel = null;
+
+        // DOM Elements
+        const queueContainer = document.getElementById('queueContainer');
+        const searchInput = document.getElementById('searchInput');
+        const detailOverlay = document.getElementById('detailOverlay');
+        const detailView = document.getElementById('detailView');
+        const detailContent = document.getElementById('detailContent');
+        const closeDetailBtn = document.getElementById('closeDetailBtn');
+        const actionSheetOverlay = document.getElementById('actionSheetOverlay');
+        const actionSheet = document.getElementById('actionSheet');
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const statusIndicator = document.getElementById('statusIndicator');
+        const statusText = document.getElementById('statusText');
+        const voiceBtn = document.getElementById('voiceBtn');
+        const completeTriageBtn = document.getElementById('completeTriageBtn');
+        const saveDraftBtn = document.getElementById('saveDraftBtn');
+
+        // Initialize App
+        function init() {
+            renderQueue();
+            setupEventListeners();
+            updateSummary();
+
+            // Check for dark mode preference
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.classList.add('dark-mode');
+                darkModeToggle.textContent = '☀️';
+            }
+        }
+
+        // Render Queue
+        function renderQueue() {
+            const filteredPatients = filterPatients();
+            const groupedPatients = groupByPriority(filteredPatients);
+
+            queueContainer.innerHTML = '';
+
+            // Render each priority section
+            ['critical', 'urgent', 'moderate', 'minor'].forEach(priority => {
+                if (groupedPatients[priority] && groupedPatients[priority].length > 0) {
+                    const section = createPrioritySection(priority, groupedPatients[priority]);
+                    queueContainer.appendChild(section);
+                }
+            });
+
+            if (filteredPatients.length === 0) {
+                queueContainer.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">🏥</div>
+                        <h3>No patients found</h3>
+                        <p>Try adjusting your search</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Filter Patients
+        function filterPatients() {
+            if (!searchTerm) return patients;
+
+            const term = searchTerm.toLowerCase();
+            return patients.filter(p =>
+                p.name.toLowerCase().includes(term) ||
+                p.complaint.toLowerCase().includes(term) ||
+                p.abha.includes(term)
+            );
+        }
+
+        // Group by Priority
+        function groupByPriority(patients) {
+            return patients.reduce((acc, patient) => {
+                if (!acc[patient.priority]) acc[patient.priority] = [];
+                acc[patient.priority].push(patient);
+                return acc;
+            }, {});
+        }
+
+        // Create Priority Section
+        function createPrioritySection(priority, patients) {
+            const section = document.createElement('div');
+            section.className = 'priority-section';
+
+            const priorityLabels = {
+                critical: { label: 'CRITICAL', count: patients.length },
+                urgent: { label: 'URGENT', count: patients.length },
+                moderate: { label: 'MODERATE', count: patients.length },
+                minor: { label: 'MINOR', count: patients.length }
+            };
+
+            const info = priorityLabels[priority];
+
+            section.innerHTML = `
+                <div class="priority-header">
+                    <span class="priority-badge ${priority}"></span>
+                    <span>${info.label} - ${info.count} PATIENT${info.count !== 1 ? 'S' : ''}</span>
+                </div>
+            `;
+
+            patients.forEach(patient => {
+                const card = createPatientCard(patient);
+                section.appendChild(card);
+            });
+
+            return section;
+        }
+
+        // Create Patient Card
+        function createPatientCard(patient) {
+            const card = document.createElement('div');
+            card.className = `patient-card ${patient.priority}`;
+            card.dataset.patientId = patient.id;
+
+            const priorityIcons = {
+                critical: '🔴',
+                urgent: '🟡',
+                moderate: '🟢',
+                minor: '🔵'
+            };
+
+            const sourceIcons = {
+                'Ambulance': '🚑',
+                'Walk-in': '🚶',
+                'Transfer': '🏥'
+            };
+
+            // Format vitals
+            const vitalsHtml = Object.values(patient.vitals).slice(0, 4).map(vital =>
+                `<div class="vital">
+                    <span class="vital-label">${vital.label}:</span>
+                    <span class="vital-value ${vital.status}">${vital.value}</span>
+                </div>`
+            ).join('');
+
+            // Format alerts
+            const alertsHtml = patient.alerts.slice(0, 2).map(alert =>
+                `<div class="alert-tag">${alert.icon} ${alert.text}</div>`
+            ).join('');
+
+            card.innerHTML = `
+                <div class="patient-header">
+                    <div class="patient-info">
+                        <div class="patient-name">
+                            <span class="priority-icon">${priorityIcons[patient.priority]}</span>
+                            <span>${patient.name}, ${patient.age}${patient.gender}</span>
+                        </div>
+                        <div class="patient-meta">
+                            <span>ABHA: **-${patient.abha.slice(-4)}</span>
+                            <span>${sourceIcons[patient.source] || '📋'} ${patient.source}</span>
+                        </div>
+                    </div>
+                    <div class="wait-time">
+                        ⏱ ${patient.waitTime}min
+                    </div>
+                </div>
+
+                <div class="complaint">${patient.complaint}</div>
+
+                <div class="vitals">${vitalsHtml}</div>
+
+                ${alertsHtml ? `<div class="alerts">${alertsHtml}</div>` : ''}
+
+                <div class="card-actions">
+                    <button class="btn btn-primary" onclick="openTriageActions(${patient.id})">
+                        Triage Now
+                    </button>
+                    <button class="btn btn-secondary" onclick="openPatientDetail(${patient.id})">
+                        View All
+                    </button>
+                </div>
+            `;
+
+            return card;
+        }
+
+        // Open Patient Detail
+        function openPatientDetail(patientId) {
+            currentPatient = patients.find(p => p.id === patientId);
+            if (!currentPatient) return;
+
+            renderPatientDetail(currentPatient);
+
+            detailOverlay.classList.add('active');
+            detailView.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Render Patient Detail
+        function renderPatientDetail(patient) {
+            const priorityLabels = {
+                critical: 'CRITICAL',
+                urgent: 'URGENT',
+                moderate: 'MODERATE',
+                minor: 'MINOR'
+            };
+
+            // Format all vitals
+            const vitalsRows = Object.entries(patient.vitals).map(([key, vital]) => `
+                <div class="info-row">
+                    <span class="info-label">${vital.label}</span>
+                    <span class="info-value ${vital.status}">${vital.value}</span>
+                </div>
+            `).join('');
+
+            // Format medications
+            const medsHtml = patient.medications.length > 0
+                ? patient.medications.map(med => `<div class="info-row"><span>${med}</span></div>`).join('')
+                : '<div class="info-row"><span class="info-label">No medications on record</span></div>';
+
+            // Format timeline
+            const timelineHtml = patient.timeline.map(item => `
+                <div class="timeline-item">
+                    <div class="timeline-time">${item.time}</div>
+                    <div class="timeline-content">
+                        <strong>${item.event}</strong><br>
+                        ${item.detail}
+                    </div>
+                </div>
+            `).join('');
+
+            // Format data sources
+            const sourcesHtml = patient.dataSources.map(source =>
+                `<div class="source-tag active">✓ ${source}</div>`
+            ).join('');
+
+            // Format alerts
+            const alertsHtml = patient.alerts.map(alert =>
+                `<div class="alert-tag">${alert.icon} ${alert.text}</div>`
+            ).join('');
+
+            detailContent.innerHTML = `
+                <div class="detail-patient-header">
+                    <div class="detail-priority ${patient.priority}">
+                        ${priorityLabels[patient.priority]}
+                    </div>
+                    <div class="detail-name">${patient.name}, ${patient.age}${patient.gender}</div>
+                    <div class="detail-meta">
+                        ABHA: ${patient.abha}<br>
+                        Phone: ${patient.phone}<br>
+                        Arrived: ${patient.waitTime} min ago via ${patient.source}
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">CHIEF COMPLAINT</div>
+                    <div class="info-card">
+                        <p style="margin-bottom: 8px;">${patient.complaint}</p>
+                        <p style="color: var(--text-secondary); font-size: 14px;">Onset: ${patient.onset}</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">
+                        VITAL SIGNS
+                        <span style="color: var(--moderate); font-size: 11px;">● Live</span>
+                    </div>
+                    <div class="info-card">
+                        ${vitalsRows}
+                    </div>
+                </div>
+
+                ${patient.alerts.length > 0 ? `
+                <div class="section">
+                    <div class="section-title">⚠️ CRITICAL ALERTS</div>
+                    <div class="alerts">
+                        ${alertsHtml}
+                    </div>
+                </div>
+                ` : ''}
+
+                <div class="section">
+                    <div class="section-title">
+                        💊 CURRENT MEDICATIONS
+                        <span style="font-size: 11px; font-weight: normal;">ABDM</span>
+                    </div>
+                    <div class="info-card">
+                        ${medsHtml}
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">📋 RECENT HISTORY</div>
+                    <div class="timeline">
+                        ${timelineHtml}
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">📊 DATA SOURCES</div>
+                    <div class="data-sources">
+                        ${sourcesHtml}
+                    </div>
+                </div>
+
+                <div class="section">
+                    <button class="btn btn-primary" style="width: 100%; margin-bottom: 8px;" onclick="openTriageActions(${patient.id})">
+                        Triage Now
+                    </button>
+                    <button class="btn btn-secondary" style="width: 100%;" onclick="closePatientDetail()">
+                        Back to Queue
+                    </button>
+                </div>
+            `;
+        }
+
+        // Close Patient Detail
+        function closePatientDetail() {
+            detailOverlay.classList.remove('active');
+            detailView.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Open Triage Actions
+        function openTriageActions(patientId) {
+            currentPatient = patients.find(p => p.id === patientId);
+            if (!currentPatient) return;
+
+            // Close detail view if open
+            closePatientDetail();
+
+            actionSheetOverlay.classList.add('active');
+            actionSheet.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Action Sheet
+        function closeActionSheet() {
+            actionSheetOverlay.classList.remove('active');
+            actionSheet.classList.remove('active');
+            document.body.style.overflow = '';
+            selectedTriageLevel = null;
+
+            // Reset triage level selection
+            document.querySelectorAll('.triage-level').forEach(level => {
+                level.classList.remove('selected');
+            });
+        }
+
+        // Update Summary
+        function updateSummary() {
+            const critical = patients.filter(p => p.priority === 'critical').length;
+            const avgWait = Math.round(patients.reduce((sum, p) => sum + p.waitTime, 0) / patients.length);
+
+            document.getElementById('totalPatients').textContent = patients.length;
+            document.getElementById('avgWaitTime').textContent = avgWait;
+            document.getElementById('criticalCount').textContent = critical;
+        }
+
+        // Toggle Dark Mode
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        }
+
+        // Toggle Offline Mode
+        function toggleOfflineMode() {
+            isOnline = !isOnline;
+
+            if (isOnline) {
+                statusIndicator.classList.remove('offline');
+                statusIndicator.classList.add('online');
+                statusText.textContent = 'Online';
+                statusIndicator.innerHTML = '<span>📶</span><span id="statusText">Online</span>';
+            } else {
+                statusIndicator.classList.remove('online');
+                statusIndicator.classList.add('offline');
+                statusText.textContent = 'Offline';
+                statusIndicator.innerHTML = '<span>⚠️</span><span id="statusText">Offline</span>';
+            }
+        }
+
+        // Voice Input Simulation
+        function simulateVoiceInput() {
+            voiceBtn.style.color = 'var(--critical)';
+            setTimeout(() => {
+                voiceBtn.style.color = '';
+                alert('Voice input: "Show critical patients"\n\nVoice input is a UI demonstration. In production, this would use the Web Speech API.');
+            }, 1000);
+        }
+
+        // Complete Triage
+        function completeTriage() {
+            if (!currentPatient) return;
+
+            const level = selectedTriageLevel || 'not selected';
+            alert(`Triage completed for ${currentPatient.name}\n\nTriage Level: ${level}\n\nIn production, this would save to the database and update the queue.`);
+            closeActionSheet();
+        }
+
+        // Save Draft
+        function saveDraft() {
+            if (!currentPatient) return;
+
+            alert(`Draft saved for ${currentPatient.name}\n\nYou can continue later.`);
+            closeActionSheet();
+        }
+
+        // Setup Event Listeners
+        function setupEventListeners() {
+            // Search
+            searchInput.addEventListener('input', (e) => {
+                searchTerm = e.target.value;
+                renderQueue();
+            });
+
+            // Close detail view
+            closeDetailBtn.addEventListener('click', closePatientDetail);
+            detailOverlay.addEventListener('click', closePatientDetail);
+
+            // Close action sheet
+            actionSheetOverlay.addEventListener('click', closeActionSheet);
+
+            // Dark mode toggle
+            darkModeToggle.addEventListener('click', toggleDarkMode);
+
+            // Offline mode toggle
+            statusIndicator.addEventListener('click', toggleOfflineMode);
+
+            // Voice button
+            voiceBtn.addEventListener('click', simulateVoiceInput);
+
+            // Complete triage
+            completeTriageBtn.addEventListener('click', completeTriage);
+            saveDraftBtn.addEventListener('click', saveDraft);
+
+            // Triage level selection
+            document.querySelectorAll('.triage-level').forEach(level => {
+                level.addEventListener('click', function() {
+                    document.querySelectorAll('.triage-level').forEach(l => l.classList.remove('selected'));
+                    this.classList.add('selected');
+                    selectedTriageLevel = this.dataset.level;
+                });
+            });
+
+            // Checkbox items
+            document.querySelectorAll('.checkbox-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    this.classList.toggle('checked');
+                });
+            });
+
+            // Prevent detail view from closing when clicking inside
+            detailView.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+
+            // Prevent action sheet from closing when clicking inside
+            actionSheet.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        }
+
+        // Global functions for inline onclick handlers
+        window.openPatientDetail = openPatientDetail;
+        window.openTriageActions = openTriageActions;
+        window.closePatientDetail = closePatientDetail;
+        window.closeActionSheet = closeActionSheet;
+
+        // Initialize app when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    </script>
+</body>
+</html>
