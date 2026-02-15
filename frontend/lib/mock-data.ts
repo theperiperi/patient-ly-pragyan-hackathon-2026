@@ -1,0 +1,23306 @@
+import { Patient } from "./types";
+
+// Auto-generated from ABDM-compliant Synthea data
+// Generated: 2026-02-15T10:41:43.740131
+// Total patients: 111
+
+export const mockPatients: Patient[] = [
+  {
+    "id": "1",
+    "name": "Tenzin Namgyal",
+    "age": 33,
+    "gender": "M",
+    "abha": "71-3556-9223-0038",
+    "arrivalTime": "16 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Difficulty breathing",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 92,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "2/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Lack of access to transportation (finding)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Transport problem (finding)",
+          "status": "active",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Limited social contact (finding)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Severe anxiety (panic) (finding)",
+          "status": "active",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Part-time employment (finding)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Social isolation (finding)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        }
+      ],
+      "medications": [],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "14 years ago",
+          "type": "General examination of patient",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "13 years ago",
+          "type": "General examination of patient",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "12 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "Apollo Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "10 years ago",
+          "type": "General examination of patient",
+          "facility": "Cloudnine Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "7 years ago",
+          "type": "General examination of patient",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 80,
+      "bay": "Treatment Room 2",
+      "queuePosition": 3,
+      "specialists": [
+        "Cardiology",
+        "Neurology"
+      ],
+      "protocols": [
+        "Trauma Protocol",
+        "Stroke Protocol"
+      ],
+      "labs": [
+        "D-Dimer",
+        "CMP",
+        "Liver Function",
+        "Urinalysis"
+      ],
+      "imaging": [
+        "Chest X-Ray",
+        "Ultrasound"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 1 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "2",
+    "name": "Manoj Gupta",
+    "age": 45,
+    "gender": "M",
+    "abha": "96-1288-4740-6785",
+    "arrivalTime": "16 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Difficulty breathing",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 68,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 14,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Adolescent idiopathic scoliosis (disorder)",
+          "status": "active",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Impacted molars (disorder)",
+          "status": "active",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Chronic intractable migraine without aura (disorder)",
+          "status": "active",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Chronic pain (finding)",
+          "status": "active",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Only received primary school education (finding)",
+          "status": "active",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Limited social contact (finding)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Refugee (person)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "CMC Vellore"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Penicillin V Potassium 500 MG Oral Tablet",
+          "dosage": "100mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Amoxicillin 250 MG / Clavulanate 125 MG Oral Table",
+          "dosage": "10mg",
+          "frequency": "as needed"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "34 years ago",
+          "type": "Follow-up encounter (procedure",
+          "facility": "Medanta Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "31 years ago",
+          "type": "Emergency room admission (proc",
+          "facility": "AIIMS Delhi",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "30 years ago",
+          "type": "Emergency room admission (proc",
+          "facility": "CMC Vellore",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "30 years ago",
+          "type": "Emergency hospital admission (",
+          "facility": "Apollo Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "26 years ago",
+          "type": "General examination of patient",
+          "facility": "Apollo Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 81,
+      "bay": "Treatment Room 2",
+      "queuePosition": 8,
+      "specialists": [
+        "Cardiology",
+        "Pulmonology"
+      ],
+      "protocols": [
+        "Diabetic Emergency",
+        "Chest Pain Protocol"
+      ],
+      "labs": [
+        "Liver Function",
+        "Urinalysis",
+        "Kidney Function",
+        "D-Dimer"
+      ],
+      "imaging": [
+        "Echo",
+        "MRI"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 5 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "3",
+    "name": "Senthil Natarajan",
+    "age": 46,
+    "gender": "M",
+    "abha": "17-0335-7920-2996",
+    "arrivalTime": "19 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Difficulty swallowing",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 72,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "History of appendectomy (situation)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Part-time employment (finding)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Gingival disease (disorder)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "5mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Amoxicillin 250 MG / Clavulanate 125 MG Oral Table",
+          "dosage": "1g",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Amoxicillin 250 MG / Clavulanate 125 MG Oral Table",
+          "dosage": "5mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "ciprofloxacin 500 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "28 years ago",
+          "type": "General examination of patient",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "20 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "20 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Kokilaben Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "12 years ago",
+          "type": "General examination of patient",
+          "facility": "AIIMS Delhi",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "9 years ago",
+          "type": "General examination of patient",
+          "facility": "Medanta Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 96,
+      "bay": "Fast Track 1",
+      "queuePosition": 3,
+      "specialists": [
+        "Orthopedics",
+        "Gastroenterology"
+      ],
+      "protocols": [
+        "Sepsis Protocol",
+        "Chest Pain Protocol"
+      ],
+      "labs": [
+        "Troponin",
+        "BNP",
+        "Lipid Panel",
+        "D-Dimer"
+      ],
+      "imaging": [
+        "Ultrasound",
+        "Chest X-Ray"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 3 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "4",
+    "name": "Kruti Mehta",
+    "age": 68,
+    "gender": "F",
+    "abha": "93-3450-1728-7060",
+    "arrivalTime": "31 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Back pain radiating to legs",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 82,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 16,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "7/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "warning",
+        "text": "Active: Prediabetes (finding)"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Prediabetes (finding)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Anemia (disorder)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Essential hypertension (disorder)",
+          "status": "active",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Metabolic syndrome X (disorder)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Loss of teeth (disorder)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        }
+      ],
+      "medications": [
+        {
+          "name": "ferrous sulfate 325 MG Oral Tablet",
+          "dosage": "25mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Clopidogrel 75 MG Oral Tablet",
+          "dosage": "250mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Simvastatin 20 MG Oral Tablet",
+          "dosage": "25mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "24 HR metoprolol succinate 100 MG Extended Release",
+          "dosage": "100mg",
+          "frequency": "three times daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "49 years ago",
+          "type": "General examination of patient",
+          "facility": "Fortis Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "48 years ago",
+          "type": "General examination of patient",
+          "facility": "Lilavati Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "42 years ago",
+          "type": "General examination of patient",
+          "facility": "Cloudnine Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "42 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Max Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "36 years ago",
+          "type": "General examination of patient",
+          "facility": "Manipal Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 85,
+      "bay": "Treatment Room 2",
+      "queuePosition": 9,
+      "specialists": [
+        "Nephrology",
+        "Pulmonology"
+      ],
+      "protocols": [
+        "Diabetic Emergency",
+        "Trauma Protocol"
+      ],
+      "labs": [
+        "Liver Function",
+        "Urinalysis",
+        "CMP",
+        "D-Dimer"
+      ],
+      "imaging": [
+        "Ultrasound",
+        "Echo"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "5",
+    "name": "Himani Baruah",
+    "age": 67,
+    "gender": "F",
+    "abha": "26-3602-1255-0316",
+    "arrivalTime": "4 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Skin rash with fever",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 62,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.4,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 14,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "Allergy: Allergic disposition (finding)"
+      },
+      {
+        "type": "critical",
+        "text": "Allergy: Mold (organism) (mild)"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "active",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Educated to high school level (finding)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Past pregnancy history of miscarriage (situation)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Hyperlipidemia (disorder)",
+          "status": "active",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Osteoarthritis of knee (disorder)",
+          "status": "active",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Prediabetes (finding)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "diphenhydrAMINE Hydrochloride 25 MG Oral Tablet",
+          "dosage": "1g",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Naproxen sodium 220 MG Oral Tablet",
+          "dosage": "500mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "budesonide 0.125 MG/ML Inhalation Suspension",
+          "dosage": "1g",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "albuterol 0.83 MG/ML Inhalation Solution",
+          "dosage": "500mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "budesonide 0.125 MG/ML Inhalation Suspension",
+          "dosage": "5mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "albuterol 0.83 MG/ML Inhalation Solution",
+          "dosage": "1g",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "budesonide 0.125 MG/ML Inhalation Suspension",
+          "dosage": "10mg",
+          "frequency": "every 8 hours"
+        }
+      ],
+      "allergies": [
+        "Allergic disposition (finding)",
+        "Mold (organism) (mild)",
+        "House dust mite (organism)",
+        "Animal dander (substance) (mild)",
+        "Grass pollen (substance)"
+      ],
+      "encounters": [
+        {
+          "date": "66 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Cloudnine Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "66 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "65 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Kokilaben Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "65 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Safdarjung Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "50 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Max Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 80,
+      "bay": "Treatment Room 3",
+      "queuePosition": 1,
+      "specialists": [
+        "General Surgery",
+        "Internal Medicine"
+      ],
+      "protocols": [
+        "Diabetic Emergency",
+        "Respiratory Distress"
+      ],
+      "labs": [
+        "BNP",
+        "CMP",
+        "CBC",
+        "Troponin"
+      ],
+      "imaging": [
+        "MRI",
+        "Echo"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "6",
+    "name": "Mebanmi Marbaniang",
+    "age": 55,
+    "gender": "F",
+    "abha": "92-0716-4809-6141",
+    "arrivalTime": "18 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Joint pain and swelling",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 99,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 101.9,
+        "unit": "\u00b0F",
+        "status": "warning",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 12,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "2/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Only received primary school education (finding)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Recurrent urinary tract infection (disorder)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Past pregnancy history of miscarriage (situation)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Has a criminal record (finding)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "History of tubal ligation (situation)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Essential hypertension (disorder)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Acetaminophen 300 MG / Hydrocodone Bitartrate 5 MG",
+          "dosage": "1.0mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Acetaminophen 300 MG / Hydrocodone Bitartrate 5 MG",
+          "dosage": "1.0mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "250mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Naproxen sodium 220 MG Oral Tablet",
+          "dosage": "100mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "37 years ago",
+          "type": "General examination of patient",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "36 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Fortis Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "33 years ago",
+          "type": "General examination of patient",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "30 years ago",
+          "type": "Prenatal visit (regime/therapy",
+          "facility": "Medanta Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "21 years ago",
+          "type": "General examination of patient",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Lab tests ordered. Results pending."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 81,
+      "bay": "Fast Track 2",
+      "queuePosition": 4,
+      "specialists": [
+        "General Surgery",
+        "Cardiology"
+      ],
+      "protocols": [
+        "Stroke Protocol",
+        "Trauma Protocol"
+      ],
+      "labs": [
+        "Troponin",
+        "Lipid Panel",
+        "HbA1c",
+        "Urinalysis"
+      ],
+      "imaging": [
+        "Ultrasound",
+        "Chest X-Ray"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 5 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "7",
+    "name": "Gurpreet Singh",
+    "age": 72,
+    "gender": "M",
+    "abha": "33-4276-5379-2810",
+    "arrivalTime": "17 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Persistent cough with blood",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 94,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 14,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Educated to high school level (finding)",
+          "status": "active",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Social isolation (finding)",
+          "status": "resolved",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Part-time employment (finding)",
+          "status": "resolved",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Not in labor force (finding)",
+          "status": "resolved",
+          "source": "Max Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Ibuprofen 200 MG Oral Tablet",
+          "dosage": "1g",
+          "frequency": "as needed"
+        },
+        {
+          "name": "zidovudine 300 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "zidovudine 300 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "56 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "AIIMS Delhi",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "54 years ago",
+          "type": "General examination of patient",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "50 years ago",
+          "type": "General examination of patient",
+          "facility": "Safdarjung Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "47 years ago",
+          "type": "General examination of patient",
+          "facility": "Narayana Health",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "44 years ago",
+          "type": "General examination of patient",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 2,
+      "acuityLabel": "URGENT",
+      "acuityColor": "urgent",
+      "confidence": 80,
+      "bay": "Acute Care 2",
+      "queuePosition": 5,
+      "specialists": [
+        "Nephrology",
+        "Neurology"
+      ],
+      "protocols": [
+        "Sepsis Protocol",
+        "Stroke Protocol"
+      ],
+      "labs": [
+        "Liver Function",
+        "Urinalysis",
+        "Troponin",
+        "CBC"
+      ],
+      "imaging": [
+        "MRI",
+        "Ultrasound"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 2 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 2.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "URGENT acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Acute Care 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "8",
+    "name": "Mukesh Agarwal",
+    "age": 72,
+    "gender": "M",
+    "abha": "00-4019-0245-5455",
+    "arrivalTime": "13 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Severe allergic reaction",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 91,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 97,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "4/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Educated to high school level (finding)",
+          "status": "active",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Gout",
+          "status": "active",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Social isolation (finding)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Polyp of colon (disorder)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "100mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "5mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "500mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "",
+          "dosage": "50mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "100mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "",
+          "dosage": "100mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "250mg",
+          "frequency": "three times daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "56 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "AIIMS Delhi",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "54 years ago",
+          "type": "General examination of patient",
+          "facility": "Lilavati Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "47 years ago",
+          "type": "General examination of patient",
+          "facility": "AIIMS Delhi",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "43 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Fortis Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "24 years ago",
+          "type": "Urgent care clinic (environmen",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 1,
+      "acuityLabel": "CRITICAL",
+      "acuityColor": "critical",
+      "confidence": 79,
+      "bay": "Trauma Bay",
+      "queuePosition": 6,
+      "specialists": [
+        "Internal Medicine",
+        "Neurology"
+      ],
+      "protocols": [
+        "Chest Pain Protocol",
+        "Stroke Protocol"
+      ],
+      "labs": [
+        "HbA1c",
+        "Liver Function",
+        "Urinalysis",
+        "CMP"
+      ],
+      "imaging": [
+        "Chest X-Ray",
+        "ECG"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 1 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 1.",
+        "background": "8 known conditions. Currently on 5 medications.",
+        "assessment": "CRITICAL acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Resus Bay 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "9",
+    "name": "Narasimha Varma",
+    "age": 21,
+    "gender": "M",
+    "abha": "25-7292-9031-4463",
+    "arrivalTime": "20 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Severe abdominal pain",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 89,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.4,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "8/10",
+        "unit": "",
+        "status": "critical",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "PAIN: 8/10 - Critical"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Acute viral pharyngitis (disorder)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Acute viral pharyngitis (disorder)",
+          "status": "resolved",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Gingivitis (disorder)",
+          "status": "resolved",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Gingivitis (disorder)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Infection of tooth (disorder)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Apollo Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "5mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "",
+          "dosage": "500mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "50mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Naproxen sodium 220 MG Oral Tablet",
+          "dosage": "1g",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Ibuprofen 200 MG Oral Tablet",
+          "dosage": "500mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG / HYDROcodone Bitartrate 7.5 ",
+          "dosage": "1.0mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "",
+          "dosage": "10mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "1g",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "5mg",
+          "frequency": "every 8 hours"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "12 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Kokilaben Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Lilavati Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "8 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "CMC Vellore",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "7 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Medanta Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "7 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Max Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 2,
+      "acuityLabel": "URGENT",
+      "acuityColor": "urgent",
+      "confidence": 76,
+      "bay": "Acute Care 2",
+      "queuePosition": 5,
+      "specialists": [
+        "General Surgery",
+        "Neurology"
+      ],
+      "protocols": [
+        "Trauma Protocol",
+        "Diabetic Emergency"
+      ],
+      "labs": [
+        "Lipid Panel",
+        "BNP",
+        "Troponin",
+        "Kidney Function"
+      ],
+      "imaging": [
+        "Echo",
+        "ECG"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 2 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 2.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "URGENT acuity. Vitals show 1 critical, 0 warning signs.",
+        "recommendation": "Assign to Acute Care 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "10",
+    "name": "Moumita Swastika Ganguly",
+    "age": 78,
+    "gender": "F",
+    "abha": "83-7696-4864-5607",
+    "arrivalTime": "27 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Chest tightness and palpitations",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 75,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 91,
+        "unit": "%",
+        "status": "warning",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 16,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Educated to high school level (finding)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Past pregnancy history of miscarriage (situation)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Prediabetes (finding)",
+          "status": "active",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Anemia (disorder)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "History of tubal ligation (situation)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Sleep disorder (disorder)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Obstructive sleep apnea syndrome (disorder)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "10mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "100mg",
+          "frequency": "at bedtime"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "60 years ago",
+          "type": "General examination of patient",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "53 years ago",
+          "type": "Prenatal visit (regime/therapy",
+          "facility": "Lilavati Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "47 years ago",
+          "type": "General examination of patient",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "44 years ago",
+          "type": "General examination of patient",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "43 years ago",
+          "type": "Admission to surgical departme",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 1,
+      "acuityLabel": "CRITICAL",
+      "acuityColor": "critical",
+      "confidence": 91,
+      "bay": "Trauma Bay",
+      "queuePosition": 7,
+      "specialists": [
+        "Cardiology",
+        "General Surgery"
+      ],
+      "protocols": [
+        "Sepsis Protocol",
+        "Diabetic Emergency"
+      ],
+      "labs": [
+        "HbA1c",
+        "D-Dimer",
+        "Lipid Panel",
+        "BNP"
+      ],
+      "imaging": [
+        "Ultrasound",
+        "MRI"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 1 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 1.",
+        "background": "8 known conditions. Currently on 5 medications.",
+        "assessment": "CRITICAL acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Resus Bay 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "11",
+    "name": "Nyima Nyima Tashi",
+    "age": 54,
+    "gender": "M",
+    "abha": "36-6532-8429-4833",
+    "arrivalTime": "30 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Abdominal bloating with pain",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 99,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 102.9,
+        "unit": "\u00b0F",
+        "status": "warning",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 12,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "8/10",
+        "unit": "",
+        "status": "critical",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "Allergy: Allergic disposition (finding)"
+      },
+      {
+        "type": "critical",
+        "text": "Allergy: Mold (organism) (mild)"
+      },
+      {
+        "type": "critical",
+        "text": "PAIN: 8/10 - Critical"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Unemployed (finding)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Gingivitis (disorder)",
+          "status": "resolved",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Acute viral pharyngitis (disorder)",
+          "status": "resolved",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Chlorpheniramine Maleate 2 MG/ML Oral Solution",
+          "dosage": "100mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "",
+          "dosage": "50mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Penicillin V Potassium 500 MG Oral Tablet",
+          "dosage": "5mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "losartan potassium 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Ibuprofen 200 MG Oral Tablet",
+          "dosage": "500mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "losartan potassium 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [
+        "Allergic disposition (finding)",
+        "Mold (organism) (mild)",
+        "House dust mite (organism)",
+        "Animal dander (substance) (mild)",
+        "Grass pollen (substance)"
+      ],
+      "encounters": [
+        {
+          "date": "54 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Manipal Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "54 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Narayana Health",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "51 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Apollo Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "36 years ago",
+          "type": "General examination of patient",
+          "facility": "Fortis Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "26 years ago",
+          "type": "General examination of patient",
+          "facility": "Cloudnine Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 2,
+      "acuityLabel": "URGENT",
+      "acuityColor": "urgent",
+      "confidence": 83,
+      "bay": "Acute Care 2",
+      "queuePosition": 2,
+      "specialists": [
+        "Internal Medicine",
+        "Cardiology"
+      ],
+      "protocols": [
+        "Chest Pain Protocol",
+        "Trauma Protocol"
+      ],
+      "labs": [
+        "HbA1c",
+        "CBC",
+        "BNP",
+        "Urinalysis"
+      ],
+      "imaging": [
+        "Echo",
+        "Chest X-Ray"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 2 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 2.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "URGENT acuity. Vitals show 1 critical, 1 warning signs.",
+        "recommendation": "Assign to Acute Care 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "12",
+    "name": "Ravi Anil Chauhan",
+    "age": 43,
+    "gender": "M",
+    "abha": "98-6382-5362-2727",
+    "arrivalTime": "25 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Severe allergic reaction",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 63,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.1,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Housing unsatisfactory (finding)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Social isolation (finding)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Chronic intractable migraine without aura (disorder)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Limited social contact (finding)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Part-time employment (finding)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Amoxicillin 250 MG / Clavulanate 125 MG Oral Table",
+          "dosage": "10mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "60 ACTUAT Fluticasone propionate 0.25 MG/ACTUAT / ",
+          "dosage": "500mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "albuterol 5 MG/ML Inhalation Solution",
+          "dosage": "5mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "albuterol 5 MG/ML Inhalation Solution",
+          "dosage": "50mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "60 ACTUAT Fluticasone propionate 0.25 MG/ACTUAT / ",
+          "dosage": "250mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "albuterol 5 MG/ML Inhalation Solution",
+          "dosage": "250mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "60 ACTUAT Fluticasone propionate 0.25 MG/ACTUAT / ",
+          "dosage": "100mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "three times daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "25 years ago",
+          "type": "General examination of patient",
+          "facility": "Manipal Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "18 years ago",
+          "type": "General examination of patient",
+          "facility": "AIIMS Delhi",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "15 years ago",
+          "type": "Emergency room admission (proc",
+          "facility": "Kokilaben Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "15 years ago",
+          "type": "General examination of patient",
+          "facility": "Lilavati Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "9 years ago",
+          "type": "General examination of patient",
+          "facility": "Apollo Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 5,
+      "acuityLabel": "NON-URGENT",
+      "acuityColor": "minor",
+      "confidence": 89,
+      "bay": "Waiting Area",
+      "queuePosition": 5,
+      "specialists": [
+        "Nephrology",
+        "Internal Medicine"
+      ],
+      "protocols": [
+        "Trauma Protocol",
+        "Chest Pain Protocol"
+      ],
+      "labs": [
+        "Troponin",
+        "Urinalysis",
+        "CBC",
+        "BNP"
+      ],
+      "imaging": [
+        "Ultrasound",
+        "CT Scan"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 5 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 5.",
+        "background": "8 known conditions. Currently on 2 medications.",
+        "assessment": "NON-URGENT acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Waiting Area. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "13",
+    "name": "Deepak Rohit Yadav",
+    "age": 1,
+    "gender": "M",
+    "abha": "78-6799-5005-2058",
+    "arrivalTime": "13 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Dizziness and weakness",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 76,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "8/10",
+        "unit": "",
+        "status": "critical",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "PAIN: 8/10 - Critical"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Viral sinusitis (disorder)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Lilavati Hospital"
+        }
+      ],
+      "medications": [],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "5 months ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Lilavati Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "4 months ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Kokilaben Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "2 months ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Manipal Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "1 month ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Cloudnine Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 91,
+      "bay": "Treatment Room 1",
+      "queuePosition": 4,
+      "specialists": [
+        "Nephrology",
+        "Gastroenterology"
+      ],
+      "protocols": [
+        "Stroke Protocol",
+        "Chest Pain Protocol"
+      ],
+      "labs": [
+        "D-Dimer",
+        "Lipid Panel",
+        "Liver Function",
+        "BNP"
+      ],
+      "imaging": [
+        "Chest X-Ray",
+        "ECG"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "4 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "4 known conditions. Currently on 1 medications.",
+        "assessment": "MODERATE acuity. Vitals show 1 critical, 0 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "14",
+    "name": "Arun Chandrasekhar",
+    "age": 72,
+    "gender": "M",
+    "abha": "92-5750-4451-6755",
+    "arrivalTime": "20 min ago",
+    "arrivalMode": "Referral",
+    "chiefComplaint": "Difficulty breathing",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 82,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 91,
+        "unit": "%",
+        "status": "warning",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 100.3,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "3/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "Allergy: Allergic disposition (finding)"
+      },
+      {
+        "type": "critical",
+        "text": "Allergy: Shellfish (substance) (moderate)"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Loss of teeth (disorder)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Educated to high school level (finding)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Hyperlipidemia (disorder)",
+          "status": "active",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Social isolation (finding)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "250mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Clopidogrel 75 MG Oral Tablet",
+          "dosage": "25mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Simvastatin 20 MG Oral Tablet",
+          "dosage": "500mg",
+          "frequency": "as needed"
+        }
+      ],
+      "allergies": [
+        "Allergic disposition (finding)",
+        "Shellfish (substance) (moderate)"
+      ],
+      "encounters": [
+        {
+          "date": "71 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Narayana Health",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "71 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "CMC Vellore",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "56 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "54 years ago",
+          "type": "General examination of patient",
+          "facility": "Max Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "28 years ago",
+          "type": "General examination of patient",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 1,
+      "acuityLabel": "CRITICAL",
+      "acuityColor": "critical",
+      "confidence": 85,
+      "bay": "Resus Bay 1",
+      "queuePosition": 3,
+      "specialists": [
+        "Gastroenterology",
+        "Pulmonology"
+      ],
+      "protocols": [
+        "Chest Pain Protocol",
+        "Diabetic Emergency"
+      ],
+      "labs": [
+        "Troponin",
+        "Kidney Function",
+        "HbA1c",
+        "CMP"
+      ],
+      "imaging": [
+        "ECG",
+        "Chest X-Ray"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 1 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 1.",
+        "background": "8 known conditions. Currently on 5 medications.",
+        "assessment": "CRITICAL acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Resus Bay 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "15",
+    "name": "Ratul Choudhury",
+    "age": 10,
+    "gender": "M",
+    "abha": "29-7406-8385-0817",
+    "arrivalTime": "31 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "High fever with body aches",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 92,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 100.0,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "7/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Sprain (morphologic abnormality)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Sprain of wrist (disorder)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Acute viral pharyngitis (disorder)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Acute bronchitis (disorder)",
+          "status": "resolved",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Acetaminophen 160 MG Chewable Tablet",
+          "dosage": "250mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "500mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "25mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "",
+          "dosage": "250mg",
+          "frequency": "three times daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Manipal Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Fortis Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Max Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "CMC Vellore",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "8 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Kokilaben Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 82,
+      "bay": "Treatment Room 2",
+      "queuePosition": 5,
+      "specialists": [
+        "Internal Medicine",
+        "Nephrology"
+      ],
+      "protocols": [
+        "Diabetic Emergency",
+        "Stroke Protocol"
+      ],
+      "labs": [
+        "D-Dimer",
+        "Kidney Function",
+        "CMP",
+        "HbA1c"
+      ],
+      "imaging": [
+        "MRI",
+        "ECG"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "16",
+    "name": "Sagolsem Kumar",
+    "age": 80,
+    "gender": "M",
+    "abha": "04-9610-7502-1558",
+    "arrivalTime": "2 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Difficulty breathing",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 85,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.1,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 16,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "4/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Serving in military service (finding)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Has a criminal record (finding)",
+          "status": "active",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Essential hypertension (disorder)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Chronic kidney disease stage 1 (disorder)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Disorder of kidney due to diabetes mellitus (disorder)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Smokes tobacco daily (finding)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "24 HR nicotine 0.292 MG/HR Transdermal System",
+          "dosage": "1g",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "62 years ago",
+          "type": "General examination of patient",
+          "facility": "Max Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "38 years ago",
+          "type": "General examination of patient",
+          "facility": "Max Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "36 years ago",
+          "type": "Urgent care clinic (environmen",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "35 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "34 years ago",
+          "type": "Urgent care clinic (environmen",
+          "facility": "Max Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 1,
+      "acuityLabel": "CRITICAL",
+      "acuityColor": "critical",
+      "confidence": 97,
+      "bay": "Resus Bay 1",
+      "queuePosition": 6,
+      "specialists": [
+        "Neurology",
+        "Nephrology"
+      ],
+      "protocols": [
+        "Trauma Protocol",
+        "Chest Pain Protocol"
+      ],
+      "labs": [
+        "Troponin",
+        "CBC",
+        "D-Dimer",
+        "CMP"
+      ],
+      "imaging": [
+        "Chest X-Ray",
+        "CT Scan"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 1 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 1.",
+        "background": "8 known conditions. Currently on 1 medications.",
+        "assessment": "CRITICAL acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Resus Bay 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "17",
+    "name": "Lalchhanhimi Lalremruati Ralte",
+    "age": 69,
+    "gender": "F",
+    "abha": "70-2646-8884-4551",
+    "arrivalTime": "12 min ago",
+    "arrivalMode": "Referral",
+    "chiefComplaint": "Difficulty breathing",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 62,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 12,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "7/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "History of appendectomy (situation)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Refugee (person)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Past pregnancy history of miscarriage (situation)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Essential hypertension (disorder)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Prediabetes (finding)",
+          "status": "active",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Disorder of kidney due to diabetes mellitus (disorder)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        }
+      ],
+      "medications": [
+        {
+          "name": "ferrous sulfate 325 MG Oral Tablet",
+          "dosage": "1g",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "insulin isophane, human 70 UNT/ML / insulin, regul",
+          "dosage": "1g",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "24 HR tacrolimus 1 MG Extended Release Oral Tablet",
+          "dosage": "100mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "insulin isophane, human 70 UNT/ML / insulin, regul",
+          "dosage": "25mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "24 HR tacrolimus 1 MG Extended Release Oral Tablet",
+          "dosage": "25mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "insulin isophane, human 70 UNT/ML / insulin, regul",
+          "dosage": "250mg",
+          "frequency": "as needed"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "64 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "51 years ago",
+          "type": "General examination of patient",
+          "facility": "AIIMS Delhi",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "37 years ago",
+          "type": "General examination of patient",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "33 years ago",
+          "type": "Prenatal visit (regime/therapy",
+          "facility": "Safdarjung Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "33 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Cloudnine Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 84,
+      "bay": "Fast Track 2",
+      "queuePosition": 10,
+      "specialists": [
+        "Orthopedics",
+        "General Surgery"
+      ],
+      "protocols": [
+        "Sepsis Protocol",
+        "Diabetic Emergency"
+      ],
+      "labs": [
+        "CBC",
+        "D-Dimer",
+        "Liver Function",
+        "HbA1c"
+      ],
+      "imaging": [
+        "CT Scan",
+        "ECG"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 2 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "18",
+    "name": "Prasanna Ranjan Panda",
+    "age": 53,
+    "gender": "M",
+    "abha": "97-3804-1801-3202",
+    "arrivalTime": "18 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Dizziness and weakness",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 85,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "Allergy: Allergic disposition (finding)"
+      },
+      {
+        "type": "critical",
+        "text": "Allergy: Bee venom (substance)"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Housing unsatisfactory (finding)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "active",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Chronic pain (finding)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Chronic low back pain (finding)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Viral sinusitis (disorder)",
+          "status": "resolved",
+          "source": "Fortis Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "diphenhydrAMINE Hydrochloride 25 MG Oral Tablet",
+          "dosage": "5mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Acetaminophen 300 MG / Hydrocodone Bitartrate 5 MG",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "5mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Amoxicillin 250 MG / Clavulanate 125 MG Oral Table",
+          "dosage": "1g",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Cefuroxime 250 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "50mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "",
+          "dosage": "250mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "",
+          "dosage": "250mg",
+          "frequency": "twice daily"
+        }
+      ],
+      "allergies": [
+        "Allergic disposition (finding)",
+        "Bee venom (substance)",
+        "Mold (organism)",
+        "House dust mite (organism)",
+        "Animal dander (substance) (mild)"
+      ],
+      "encounters": [
+        {
+          "date": "52 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "52 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "50 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Kokilaben Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "35 years ago",
+          "type": "General examination of patient",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "28 years ago",
+          "type": "General examination of patient",
+          "facility": "Manipal Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 78,
+      "bay": "Treatment Room 1",
+      "queuePosition": 5,
+      "specialists": [
+        "Internal Medicine",
+        "Cardiology"
+      ],
+      "protocols": [
+        "Trauma Protocol",
+        "Stroke Protocol"
+      ],
+      "labs": [
+        "HbA1c",
+        "Lipid Panel",
+        "BNP",
+        "Liver Function"
+      ],
+      "imaging": [
+        "Echo",
+        "MRI"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "19",
+    "name": "Anita Kavita Joshi",
+    "age": 31,
+    "gender": "F",
+    "abha": "62-5848-8102-2230",
+    "arrivalTime": "20 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Uncontrolled bleeding",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 81,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 99,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.8,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "5/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Social isolation (finding)",
+          "status": "active",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Limited social contact (finding)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Normal pregnancy (finding)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "{7",
+          "dosage": "25mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "{21",
+          "dosage": "500mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "21 DAY ethinyl estradiol 0.000625 MG/HR / etonoges",
+          "dosage": "500mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "fosfomycin 3000 MG Granules for Oral Solution",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "{7",
+          "dosage": "100mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "",
+          "dosage": "50mg",
+          "frequency": "twice daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "16 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "13 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Cloudnine Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "12 years ago",
+          "type": "General examination of patient",
+          "facility": "Fortis Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "11 years ago",
+          "type": "General examination of patient",
+          "facility": "Lilavati Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "10 years ago",
+          "type": "Consultation for treatment (pr",
+          "facility": "Fortis Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 94,
+      "bay": "Treatment Room 3",
+      "queuePosition": 10,
+      "specialists": [
+        "Orthopedics",
+        "Gastroenterology"
+      ],
+      "protocols": [
+        "Diabetic Emergency",
+        "Stroke Protocol"
+      ],
+      "labs": [
+        "Liver Function",
+        "Urinalysis",
+        "HbA1c",
+        "Lipid Panel"
+      ],
+      "imaging": [
+        "Echo",
+        "MRI"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "20",
+    "name": "Chayanika Hazarika",
+    "age": 33,
+    "gender": "F",
+    "abha": "79-6566-8972-2851",
+    "arrivalTime": "14 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Sudden vision changes",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 99,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 12,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "Allergy: Allergic disposition (finding)"
+      },
+      {
+        "type": "critical",
+        "text": "Allergy: Tree pollen (substance)"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Educated to high school level (finding)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Past pregnancy history of miscarriage (situation)",
+          "status": "active",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Chronic pain (finding)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Chronic low back pain (finding)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Limited social contact (finding)",
+          "status": "resolved",
+          "source": "Max Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "diphenhydrAMINE Hydrochloride 25 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "NDA020800 0.3 ML Epinephrine 1 MG/ML Auto-Injector",
+          "dosage": "50mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG / Oxycodone Hydrochloride 10 ",
+          "dosage": "1.0mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Ibuprofen 400 MG Oral Tablet [Ibu]",
+          "dosage": "250mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "tramadol hydrochloride 50 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "{28",
+          "dosage": "50mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG / Oxycodone Hydrochloride 10 ",
+          "dosage": "1.0mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Ibuprofen 400 MG Oral Tablet [Ibu]",
+          "dosage": "50mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "tramadol hydrochloride 50 MG Oral Tablet",
+          "dosage": "1g",
+          "frequency": "once daily"
+        },
+        {
+          "name": "168 HR Ethinyl Estradiol 0.00146 MG/HR / norelgest",
+          "dosage": "10mg",
+          "frequency": "as needed"
+        }
+      ],
+      "allergies": [
+        "Allergic disposition (finding)",
+        "Tree pollen (substance)"
+      ],
+      "encounters": [
+        {
+          "date": "30 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Cloudnine Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "30 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Kokilaben Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "15 years ago",
+          "type": "General examination of patient",
+          "facility": "Lilavati Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "12 years ago",
+          "type": "Prenatal visit (regime/therapy",
+          "facility": "AIIMS Delhi",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "12 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Manipal Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 78,
+      "bay": "Treatment Room 1",
+      "queuePosition": 5,
+      "specialists": [
+        "Gastroenterology",
+        "Nephrology"
+      ],
+      "protocols": [
+        "Respiratory Distress",
+        "Sepsis Protocol"
+      ],
+      "labs": [
+        "HbA1c",
+        "Liver Function",
+        "D-Dimer",
+        "Kidney Function"
+      ],
+      "imaging": [
+        "CT Scan",
+        "Ultrasound"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "21",
+    "name": "Rohit Dewangan",
+    "age": 12,
+    "gender": "M",
+    "abha": "87-8918-2222-4884",
+    "arrivalTime": "17 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Severe allergic reaction",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 73,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 14,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "5/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Primary dental caries (disorder)",
+          "status": "resolved",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Otitis media (disorder)",
+          "status": "resolved",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Cefuroxime 250 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Acetaminophen 160 MG Chewable Tablet",
+          "dosage": "1g",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "",
+          "dosage": "10mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "50mg",
+          "frequency": "every 8 hours"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "11 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Lilavati Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Lilavati Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "Apollo Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Medanta Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "Lilavati Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 76,
+      "bay": "Treatment Room 2",
+      "queuePosition": 3,
+      "specialists": [
+        "Nephrology",
+        "Orthopedics"
+      ],
+      "protocols": [
+        "Chest Pain Protocol",
+        "Stroke Protocol"
+      ],
+      "labs": [
+        "CMP",
+        "Kidney Function",
+        "Troponin",
+        "D-Dimer"
+      ],
+      "imaging": [
+        "CT Scan",
+        "ECG"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 3 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "22",
+    "name": "Sreelekha Sen",
+    "age": 5,
+    "gender": "F",
+    "abha": "36-8905-2528-1107",
+    "arrivalTime": "20 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Uncontrolled bleeding",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 99,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.1,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 14,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "4/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Injury of neck (disorder)",
+          "status": "resolved",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Whiplash injury to neck (disorder)",
+          "status": "resolved",
+          "source": "PGIMER Chandigarh"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Ibuprofen 100 MG Oral Tablet",
+          "dosage": "5mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "5 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "5 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Apollo Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "5 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Apollo Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "5 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Cloudnine Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "4 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Follow-up visit. Condition improving."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 87,
+      "bay": "Treatment Room 3",
+      "queuePosition": 7,
+      "specialists": [
+        "Cardiology",
+        "Internal Medicine"
+      ],
+      "protocols": [
+        "Chest Pain Protocol",
+        "Sepsis Protocol"
+      ],
+      "labs": [
+        "CBC",
+        "BNP",
+        "Lipid Panel",
+        "Troponin"
+      ],
+      "imaging": [
+        "Echo",
+        "ECG"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 3 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "23",
+    "name": "Parul Hetal Shah",
+    "age": 91,
+    "gender": "F",
+    "abha": "51-1700-6540-6269",
+    "arrivalTime": "43 min ago",
+    "arrivalMode": "Referral",
+    "chiefComplaint": "Sudden confusion",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 67,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Social isolation (finding)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Past pregnancy history of miscarriage (situation)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Victim of intimate partner abuse (finding)",
+          "status": "active",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Osteoporosis (disorder)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Pulmonary emphysema (disorder)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Ischemic heart disease (disorder)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        }
+      ],
+      "medications": [
+        {
+          "name": "albuterol 5 MG/ML Inhalation Solution",
+          "dosage": "1g",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "60 ACTUAT Fluticasone propionate 0.25 MG/ACTUAT / ",
+          "dosage": "500mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "albuterol 5 MG/ML Inhalation Solution",
+          "dosage": "50mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "60 ACTUAT Fluticasone propionate 0.25 MG/ACTUAT / ",
+          "dosage": "25mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "albuterol 5 MG/ML Inhalation Solution",
+          "dosage": "250mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "60 ACTUAT Fluticasone propionate 0.25 MG/ACTUAT / ",
+          "dosage": "10mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "500mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "albuterol 5 MG/ML Inhalation Solution",
+          "dosage": "5mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "60 ACTUAT Fluticasone propionate 0.25 MG/ACTUAT / ",
+          "dosage": "10mg",
+          "frequency": "every 8 hours"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "73 years ago",
+          "type": "General examination of patient",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "51 years ago",
+          "type": "General examination of patient",
+          "facility": "Kokilaben Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "45 years ago",
+          "type": "Prenatal visit (regime/therapy",
+          "facility": "CMC Vellore",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "33 years ago",
+          "type": "General examination of patient",
+          "facility": "Manipal Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "31 years ago",
+          "type": "General examination of patient",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 2,
+      "acuityLabel": "URGENT",
+      "acuityColor": "urgent",
+      "confidence": 79,
+      "bay": "Acute Care 1",
+      "queuePosition": 7,
+      "specialists": [
+        "Internal Medicine",
+        "Orthopedics"
+      ],
+      "protocols": [
+        "Stroke Protocol",
+        "Diabetic Emergency"
+      ],
+      "labs": [
+        "CBC",
+        "D-Dimer",
+        "Lipid Panel",
+        "BNP"
+      ],
+      "imaging": [
+        "Ultrasound",
+        "MRI"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 2 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 2.",
+        "background": "8 known conditions. Currently on 3 medications.",
+        "assessment": "URGENT acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Acute Care 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "24",
+    "name": "Rohit Prasad",
+    "age": 56,
+    "gender": "M",
+    "abha": "57-4415-8748-3717",
+    "arrivalTime": "17 min ago",
+    "arrivalMode": "Referral",
+    "chiefComplaint": "Difficulty swallowing",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 66,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 92,
+        "unit": "%",
+        "status": "warning",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 100.3,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 14,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "5/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Adolescent idiopathic scoliosis (disorder)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Osteoarthritis of knee (disorder)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Acute bronchitis (disorder)",
+          "status": "resolved",
+          "source": "Fortis Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "25mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "",
+          "dosage": "500mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Acetaminophen 21.7 MG/ML / Dextromethorphan Hydrob",
+          "dosage": "1g",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "as needed"
+        },
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "",
+          "dosage": "5mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Ibuprofen 200 MG Oral Tablet",
+          "dosage": "50mg",
+          "frequency": "twice daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "46 years ago",
+          "type": "Follow-up encounter (procedure",
+          "facility": "Safdarjung Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "38 years ago",
+          "type": "General examination of patient",
+          "facility": "Kokilaben Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "34 years ago",
+          "type": "General examination of patient",
+          "facility": "Cloudnine Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "19 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Manipal Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "19 years ago",
+          "type": "General examination of patient",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 85,
+      "bay": "Treatment Room 3",
+      "queuePosition": 2,
+      "specialists": [
+        "Orthopedics",
+        "Pulmonology"
+      ],
+      "protocols": [
+        "Respiratory Distress",
+        "Diabetic Emergency"
+      ],
+      "labs": [
+        "CMP",
+        "BNP",
+        "Kidney Function",
+        "Troponin"
+      ],
+      "imaging": [
+        "CT Scan",
+        "Ultrasound"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 2 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 2 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "25",
+    "name": "Konkona Mukherjee",
+    "age": 61,
+    "gender": "F",
+    "abha": "91-0485-2734-4307",
+    "arrivalTime": "10 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Difficulty swallowing",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 88,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 82,
+        "unit": "%",
+        "status": "critical",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 100.4,
+        "unit": "\u00b0F",
+        "status": "warning",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 12,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "3/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "SPO2: 82 - Critical"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Adolescent idiopathic scoliosis (disorder)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "History of tubal ligation (situation)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Sepsis (disorder)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Septic shock (disorder)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Part-time employment (finding)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "250mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "",
+          "dosage": "250mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "twice daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "51 years ago",
+          "type": "Follow-up encounter (procedure",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "43 years ago",
+          "type": "General examination of patient",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "27 years ago",
+          "type": "General examination of patient",
+          "facility": "Kokilaben Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "25 years ago",
+          "type": "Admission to surgical departme",
+          "facility": "Medanta Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "12 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Lilavati Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 91,
+      "bay": "Treatment Room 2",
+      "queuePosition": 6,
+      "specialists": [
+        "Nephrology",
+        "General Surgery"
+      ],
+      "protocols": [
+        "Trauma Protocol",
+        "Chest Pain Protocol"
+      ],
+      "labs": [
+        "Liver Function",
+        "BNP",
+        "CBC",
+        "HbA1c"
+      ],
+      "imaging": [
+        "ECG",
+        "Ultrasound"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 2 medications.",
+        "assessment": "MODERATE acuity. Vitals show 1 critical, 1 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "26",
+    "name": "Vilhounuo Konyak",
+    "age": 66,
+    "gender": "F",
+    "abha": "18-0789-0210-9446",
+    "arrivalTime": "7 min ago",
+    "arrivalMode": "Referral",
+    "chiefComplaint": "Chest tightness and palpitations",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 93,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 80,
+        "unit": "%",
+        "status": "critical",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "2/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "warning",
+        "text": "Active: Prediabetes (finding)"
+      },
+      {
+        "type": "critical",
+        "text": "SPO2: 80 - Critical"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Prediabetes (finding)",
+          "status": "active",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "History of tubal ligation (situation)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Chronic sinusitis (disorder)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Anemia (disorder)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Has a criminal record (finding)",
+          "status": "active",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "History of appendectomy (situation)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "500mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "at bedtime"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "48 years ago",
+          "type": "General examination of patient",
+          "facility": "Fortis Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "44 years ago",
+          "type": "General examination of patient",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "30 years ago",
+          "type": "Admission to surgical departme",
+          "facility": "Medanta Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "26 years ago",
+          "type": "General examination of patient",
+          "facility": "Manipal Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "23 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Medanta Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 97,
+      "bay": "Treatment Room 2",
+      "queuePosition": 6,
+      "specialists": [
+        "Internal Medicine",
+        "Orthopedics"
+      ],
+      "protocols": [
+        "Sepsis Protocol",
+        "Trauma Protocol"
+      ],
+      "labs": [
+        "BNP",
+        "Liver Function",
+        "CMP",
+        "CBC"
+      ],
+      "imaging": [
+        "Ultrasound",
+        "ECG"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 2 medications.",
+        "assessment": "MODERATE acuity. Vitals show 1 critical, 0 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "27",
+    "name": "Mohanlal Panicker",
+    "age": 20,
+    "gender": "M",
+    "abha": "60-6838-6030-1839",
+    "arrivalTime": "1 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Persistent cough with blood",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 64,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 100.1,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Chronic sinusitis (disorder)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Viral sinusitis (disorder)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Gingivitis (disorder)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Sprain (morphologic abnormality)",
+          "status": "resolved",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Sprain of wrist (disorder)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "10mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Ibuprofen 200 MG Oral Tablet",
+          "dosage": "100mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "5mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "",
+          "dosage": "5mg",
+          "frequency": "at bedtime"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "11 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Safdarjung Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "8 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Medanta Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "8 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Safdarjung Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 95,
+      "bay": "Treatment Room 2",
+      "queuePosition": 10,
+      "specialists": [
+        "Pulmonology",
+        "Cardiology"
+      ],
+      "protocols": [
+        "Respiratory Distress",
+        "Sepsis Protocol"
+      ],
+      "labs": [
+        "Troponin",
+        "D-Dimer",
+        "Liver Function",
+        "CMP"
+      ],
+      "imaging": [
+        "Ultrasound",
+        "Echo"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 1 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "28",
+    "name": "Lakshmi Kamala Sastry",
+    "age": 44,
+    "gender": "F",
+    "abha": "13-3320-1245-4117",
+    "arrivalTime": "17 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Joint pain and swelling",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 78,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.4,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 14,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "5/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Loss of teeth (disorder)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Impacted molars (disorder)",
+          "status": "active",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Chronic pain (finding)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Educated to high school level (finding)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Misuses drugs (finding)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Dependent drug abuse (disorder)",
+          "status": "active",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Victim of intimate partner abuse (finding)",
+          "status": "resolved",
+          "source": "Apollo Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "500mg",
+          "frequency": "three times daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "31 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "29 years ago",
+          "type": "Emergency room admission (proc",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "29 years ago",
+          "type": "Emergency hospital admission (",
+          "facility": "Fortis Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "27 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Narayana Health",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "26 years ago",
+          "type": "General examination of patient",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 92,
+      "bay": "Treatment Room 2",
+      "queuePosition": 7,
+      "specialists": [
+        "General Surgery",
+        "Nephrology"
+      ],
+      "protocols": [
+        "Chest Pain Protocol",
+        "Diabetic Emergency"
+      ],
+      "labs": [
+        "Troponin",
+        "Liver Function",
+        "Lipid Panel",
+        "CBC"
+      ],
+      "imaging": [
+        "Echo",
+        "CT Scan"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 1 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "29",
+    "name": "Ganesh Bhat",
+    "age": 57,
+    "gender": "M",
+    "abha": "67-1946-7036-6117",
+    "arrivalTime": "43 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Severe vomiting and dehydration",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 74,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "Allergy: Allergic disposition (finding)"
+      },
+      {
+        "type": "critical",
+        "text": "Allergy: Penicillin V (mild)"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Only received primary school education (finding)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Lack of access to transportation (finding)",
+          "status": "active",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Prediabetes (finding)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Anemia (disorder)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Transport problem (finding)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Aortic valve regurgitation (disorder)",
+          "status": "active",
+          "source": "Narayana Health"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "5mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Naproxen sodium 220 MG Oral Tablet",
+          "dosage": "500mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "",
+          "dosage": "500mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "ciprofloxacin 500 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "",
+          "dosage": "500mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "250mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "50mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "",
+          "dosage": "10mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "",
+          "dosage": "5mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "5mg",
+          "frequency": "at bedtime"
+        }
+      ],
+      "allergies": [
+        "Allergic disposition (finding)",
+        "Penicillin V (mild)",
+        "Wheat (substance) (moderate)"
+      ],
+      "encounters": [
+        {
+          "date": "57 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Manipal Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "57 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "AIIMS Delhi",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "40 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "CMC Vellore",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "39 years ago",
+          "type": "General examination of patient",
+          "facility": "CMC Vellore",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "38 years ago",
+          "type": "General examination of patient",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 75,
+      "bay": "Fast Track 2",
+      "queuePosition": 9,
+      "specialists": [
+        "General Surgery",
+        "Internal Medicine"
+      ],
+      "protocols": [
+        "Diabetic Emergency",
+        "Stroke Protocol"
+      ],
+      "labs": [
+        "BNP",
+        "Troponin",
+        "Urinalysis",
+        "D-Dimer"
+      ],
+      "imaging": [
+        "CT Scan",
+        "Ultrasound"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 5 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "30",
+    "name": "Simran Gill",
+    "age": 82,
+    "gender": "F",
+    "abha": "87-1873-2302-0276",
+    "arrivalTime": "43 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Back pain radiating to legs",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 60,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 90,
+        "unit": "%",
+        "status": "warning",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.7,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "5/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Past pregnancy history of miscarriage (situation)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Housing unsatisfactory (finding)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Transport problem (finding)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Lack of access to transportation (finding)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Loss of teeth (disorder)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "aspirin 81 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "labetalol hydrochloride 100 MG Oral Tablet",
+          "dosage": "25mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "simvastatin 5 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "benazepril hydrochloride 20 MG / hydrochlorothiazi",
+          "dosage": "5mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "prasugrel 10 MG Oral Tablet",
+          "dosage": "500mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "insulin isophane, human 70 UNT/ML / insulin, regul",
+          "dosage": "5mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "insulin isophane, human 70 UNT/ML / insulin, regul",
+          "dosage": "100mg",
+          "frequency": "as needed"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "66 years ago",
+          "type": "Prenatal visit (regime/therapy",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "65 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "AIIMS Delhi",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "64 years ago",
+          "type": "General examination of patient",
+          "facility": "Max Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "60 years ago",
+          "type": "General examination of patient",
+          "facility": "Narayana Health",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "54 years ago",
+          "type": "General examination of patient",
+          "facility": "Apollo Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 1,
+      "acuityLabel": "CRITICAL",
+      "acuityColor": "critical",
+      "confidence": 85,
+      "bay": "Trauma Bay",
+      "queuePosition": 1,
+      "specialists": [
+        "Internal Medicine",
+        "Gastroenterology"
+      ],
+      "protocols": [
+        "Trauma Protocol",
+        "Sepsis Protocol"
+      ],
+      "labs": [
+        "CMP",
+        "Kidney Function",
+        "BNP",
+        "Urinalysis"
+      ],
+      "imaging": [
+        "Echo",
+        "Ultrasound"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 1 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 1.",
+        "background": "8 known conditions. Currently on 3 medications.",
+        "assessment": "CRITICAL acuity. Vitals show 0 critical, 2 warning signs.",
+        "recommendation": "Assign to Resus Bay 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "31",
+    "name": "Lalnunpuii Pachuau",
+    "age": 91,
+    "gender": "F",
+    "abha": "52-2689-9847-2430",
+    "arrivalTime": "20 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Dizziness and weakness",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 76,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 100.0,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 16,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "4/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Chronic sinusitis (disorder)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Prediabetes (finding)",
+          "status": "active",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "History of tubal ligation (situation)",
+          "status": "active",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Anemia (disorder)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Hyperlipidemia (disorder)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Osteoarthritis of knee (disorder)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Naproxen sodium 220 MG Oral Tablet",
+          "dosage": "100mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Clopidogrel 75 MG Oral Tablet",
+          "dosage": "5mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Simvastatin 20 MG Oral Tablet",
+          "dosage": "250mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "24 HR metoprolol succinate 100 MG Extended Release",
+          "dosage": "250mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Nitroglycerin 0.4 MG/ACTUAT Mucosal Spray",
+          "dosage": "25mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Acetaminophen 300 MG / Hydrocodone Bitartrate 5 MG",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "tramadol hydrochloride 50 MG Oral Tablet",
+          "dosage": "500mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "tramadol hydrochloride 50 MG Oral Tablet",
+          "dosage": "100mg",
+          "frequency": "three times daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "73 years ago",
+          "type": "General examination of patient",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "59 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Lilavati Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "57 years ago",
+          "type": "General examination of patient",
+          "facility": "CMC Vellore",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "55 years ago",
+          "type": "Admission to surgical departme",
+          "facility": "Safdarjung Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "54 years ago",
+          "type": "General examination of patient",
+          "facility": "CMC Vellore",
+          "summary": "Follow-up visit. Condition improving."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 1,
+      "acuityLabel": "CRITICAL",
+      "acuityColor": "critical",
+      "confidence": 76,
+      "bay": "Trauma Bay",
+      "queuePosition": 6,
+      "specialists": [
+        "Orthopedics",
+        "Pulmonology"
+      ],
+      "protocols": [
+        "Stroke Protocol",
+        "Sepsis Protocol"
+      ],
+      "labs": [
+        "BNP",
+        "CMP",
+        "HbA1c",
+        "Lipid Panel"
+      ],
+      "imaging": [
+        "ECG",
+        "Chest X-Ray"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 1 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 1.",
+        "background": "8 known conditions. Currently on 1 medications.",
+        "assessment": "CRITICAL acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Resus Bay 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "32",
+    "name": "Pooja Patil",
+    "age": 40,
+    "gender": "F",
+    "abha": "00-8630-8179-3133",
+    "arrivalTime": "14 min ago",
+    "arrivalMode": "Referral",
+    "chiefComplaint": "Joint pain and swelling",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 92,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "6/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Limited social contact (finding)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Victim of intimate partner abuse (finding)",
+          "status": "resolved",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Part-time employment (finding)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Viral sinusitis (disorder)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "250mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "",
+          "dosage": "50mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "",
+          "dosage": "50mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "every 8 hours"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "22 years ago",
+          "type": "General examination of patient",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "12 years ago",
+          "type": "General examination of patient",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "10 years ago",
+          "type": "Postnatal visit (regime/therap",
+          "facility": "Fortis Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "9 years ago",
+          "type": "General examination of patient",
+          "facility": "CMC Vellore",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "8 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "CMC Vellore",
+          "summary": "Routine checkup. Vitals stable."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 76,
+      "bay": "Fast Track 2",
+      "queuePosition": 5,
+      "specialists": [
+        "Orthopedics",
+        "Pulmonology"
+      ],
+      "protocols": [
+        "Trauma Protocol",
+        "Sepsis Protocol"
+      ],
+      "labs": [
+        "CBC",
+        "Troponin",
+        "BNP",
+        "CMP"
+      ],
+      "imaging": [
+        "CT Scan",
+        "Chest X-Ray"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 3 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "33",
+    "name": "Dawa Sherpa",
+    "age": 36,
+    "gender": "M",
+    "abha": "46-6995-0644-2006",
+    "arrivalTime": "44 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Sudden confusion",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 96,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 100.3,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "8/10",
+        "unit": "",
+        "status": "critical",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "PAIN: 8/10 - Critical"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Social isolation (finding)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Chronic intractable migraine without aura (disorder)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Dependent drug abuse (disorder)",
+          "status": "active",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Limited social contact (finding)",
+          "status": "resolved",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Part-time employment (finding)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "three times daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "23 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "AIIMS Delhi",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "17 years ago",
+          "type": "General examination of patient",
+          "facility": "CMC Vellore",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "16 years ago",
+          "type": "General examination of patient",
+          "facility": "Cloudnine Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "16 years ago",
+          "type": "Emergency room admission (proc",
+          "facility": "Fortis Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "15 years ago",
+          "type": "Emergency room admission (proc",
+          "facility": "AIIMS Delhi",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 2,
+      "acuityLabel": "URGENT",
+      "acuityColor": "urgent",
+      "confidence": 89,
+      "bay": "Acute Care 1",
+      "queuePosition": 9,
+      "specialists": [
+        "Internal Medicine",
+        "Cardiology"
+      ],
+      "protocols": [
+        "Stroke Protocol",
+        "Diabetic Emergency"
+      ],
+      "labs": [
+        "BNP",
+        "Lipid Panel",
+        "D-Dimer",
+        "CMP"
+      ],
+      "imaging": [
+        "Echo",
+        "ECG"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 2 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 2.",
+        "background": "8 known conditions. Currently on 1 medications.",
+        "assessment": "URGENT acuity. Vitals show 1 critical, 0 warning signs.",
+        "recommendation": "Assign to Acute Care 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "34",
+    "name": "Tanushree Sen",
+    "age": 33,
+    "gender": "F",
+    "abha": "21-4233-1752-3593",
+    "arrivalTime": "20 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Sudden confusion",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 71,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 100.1,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "4/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Loss of teeth (disorder)",
+          "status": "active",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Recurrent urinary tract infection (disorder)",
+          "status": "active",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Educated to high school level (finding)",
+          "status": "active",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Victim of intimate partner abuse (finding)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Part-time employment (finding)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "PGIMER Chandigarh"
+        }
+      ],
+      "medications": [
+        {
+          "name": "{28",
+          "dosage": "25mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "",
+          "dosage": "250mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "{7",
+          "dosage": "250mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "{28",
+          "dosage": "250mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "{28",
+          "dosage": "1g",
+          "frequency": "every 8 hours"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "18 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "18 years ago",
+          "type": "Follow-up encounter (procedure",
+          "facility": "Fortis Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "15 years ago",
+          "type": "General examination of patient",
+          "facility": "Cloudnine Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "11 years ago",
+          "type": "General examination of patient",
+          "facility": "Fortis Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "10 years ago",
+          "type": "Consultation for treatment (pr",
+          "facility": "CMC Vellore",
+          "summary": "Follow-up visit. Condition improving."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 91,
+      "bay": "Fast Track 1",
+      "queuePosition": 1,
+      "specialists": [
+        "Internal Medicine",
+        "Cardiology"
+      ],
+      "protocols": [
+        "Diabetic Emergency",
+        "Trauma Protocol"
+      ],
+      "labs": [
+        "Lipid Panel",
+        "Kidney Function",
+        "CMP",
+        "Liver Function"
+      ],
+      "imaging": [
+        "ECG",
+        "Chest X-Ray"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 1 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "35",
+    "name": "Rosa Fernandes",
+    "age": 1,
+    "gender": "F",
+    "abha": "57-8484-3570-5903",
+    "arrivalTime": "28 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "High fever with body aches",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 72,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 12,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "2/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        }
+      ],
+      "medications": [],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "9 months ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Max Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "8 months ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Apollo Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "6 months ago",
+          "type": "Well child visit (procedure)",
+          "facility": "CMC Vellore",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "4 months ago",
+          "type": "Well child visit (procedure)",
+          "facility": "CMC Vellore",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "1 month ago",
+          "type": "Well child visit (procedure)",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Routine checkup. Vitals stable."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 5,
+      "acuityLabel": "NON-URGENT",
+      "acuityColor": "minor",
+      "confidence": 76,
+      "bay": "Waiting Area",
+      "queuePosition": 3,
+      "specialists": [
+        "General Surgery",
+        "Pulmonology"
+      ],
+      "protocols": [
+        "Trauma Protocol",
+        "Diabetic Emergency"
+      ],
+      "labs": [
+        "Kidney Function",
+        "Urinalysis",
+        "HbA1c",
+        "CBC"
+      ],
+      "imaging": [
+        "Echo",
+        "Chest X-Ray"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 5 assigned based on vital signs and presentation",
+        "4 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 5.",
+        "background": "4 known conditions. Currently on 4 medications.",
+        "assessment": "NON-URGENT acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Waiting Area. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "36",
+    "name": "Prasanna Das",
+    "age": 59,
+    "gender": "M",
+    "abha": "04-2402-5743-5393",
+    "arrivalTime": "44 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Chest tightness and palpitations",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 79,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "7/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "warning",
+        "text": "Active: Prediabetes (finding)"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Prediabetes (finding)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Anemia (disorder)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Social isolation (finding)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Limited social contact (finding)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Diabetes mellitus type 2 (disorder)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        }
+      ],
+      "medications": [
+        {
+          "name": "24 HR Metformin hydrochloride 500 MG Extended Rele",
+          "dosage": "100mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "24 HR Metformin hydrochloride 500 MG Extended Rele",
+          "dosage": "250mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Amoxicillin 250 MG / Clavulanate 125 MG Oral Table",
+          "dosage": "5mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "50mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "24 HR Metformin hydrochloride 500 MG Extended Rele",
+          "dosage": "250mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "24 HR Metformin hydrochloride 500 MG Extended Rele",
+          "dosage": "100mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "at bedtime"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "42 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "41 years ago",
+          "type": "General examination of patient",
+          "facility": "Manipal Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "37 years ago",
+          "type": "General examination of patient",
+          "facility": "Cloudnine Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "31 years ago",
+          "type": "General examination of patient",
+          "facility": "Max Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "25 years ago",
+          "type": "General examination of patient",
+          "facility": "Max Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 83,
+      "bay": "Fast Track 1",
+      "queuePosition": 1,
+      "specialists": [
+        "Neurology",
+        "Orthopedics"
+      ],
+      "protocols": [
+        "Diabetic Emergency",
+        "Respiratory Distress"
+      ],
+      "labs": [
+        "Liver Function",
+        "D-Dimer",
+        "Urinalysis",
+        "Kidney Function"
+      ],
+      "imaging": [
+        "Chest X-Ray",
+        "Echo"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "37",
+    "name": "Apeyu Ao",
+    "age": 7,
+    "gender": "F",
+    "abha": "47-9306-7854-3744",
+    "arrivalTime": "41 min ago",
+    "arrivalMode": "Referral",
+    "chiefComplaint": "Joint pain and swelling",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 72,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 12,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Otitis media (disorder)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Otitis media (disorder)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Amoxicillin 500 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Acetaminophen 160 MG Chewable Tablet",
+          "dosage": "1g",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Cefuroxime 250 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Acetaminophen 160 MG Chewable Tablet",
+          "dosage": "50mg",
+          "frequency": "at bedtime"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "7 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "7 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Lilavati Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "7 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "7 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "6 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Apollo Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 5,
+      "acuityLabel": "NON-URGENT",
+      "acuityColor": "minor",
+      "confidence": 80,
+      "bay": "Waiting Area",
+      "queuePosition": 9,
+      "specialists": [
+        "Cardiology",
+        "Internal Medicine"
+      ],
+      "protocols": [
+        "Sepsis Protocol",
+        "Trauma Protocol"
+      ],
+      "labs": [
+        "Troponin",
+        "D-Dimer",
+        "Kidney Function",
+        "Lipid Panel"
+      ],
+      "imaging": [
+        "Echo",
+        "ECG"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 5 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 5.",
+        "background": "8 known conditions. Currently on 3 medications.",
+        "assessment": "NON-URGENT acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Waiting Area. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "38",
+    "name": "Jayesh Trivedi",
+    "age": 36,
+    "gender": "M",
+    "abha": "23-7220-9048-4096",
+    "arrivalTime": "36 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Dizziness and weakness",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 76,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.7,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 16,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Housing unsatisfactory (finding)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Educated to high school level (finding)",
+          "status": "active",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Prediabetes (finding)",
+          "status": "active",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Anemia (disorder)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "ferrous sulfate 325 MG Oral Tablet",
+          "dosage": "250mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Cefuroxime 250 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG / oxyCODONE Hydrochloride 5 M",
+          "dosage": "1.0mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Ibuprofen 200 MG Oral Tablet",
+          "dosage": "1g",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "500mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Amoxicillin 250 MG / Clavulanate 125 MG Oral Table",
+          "dosage": "5mg",
+          "frequency": "twice daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "19 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Manipal Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "18 years ago",
+          "type": "General examination of patient",
+          "facility": "Kokilaben Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "17 years ago",
+          "type": "General examination of patient",
+          "facility": "Narayana Health",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "14 years ago",
+          "type": "General examination of patient",
+          "facility": "Safdarjung Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "11 years ago",
+          "type": "General examination of patient",
+          "facility": "Kokilaben Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 86,
+      "bay": "Treatment Room 2",
+      "queuePosition": 3,
+      "specialists": [
+        "Nephrology",
+        "General Surgery"
+      ],
+      "protocols": [
+        "Stroke Protocol",
+        "Respiratory Distress"
+      ],
+      "labs": [
+        "HbA1c",
+        "Urinalysis",
+        "CBC",
+        "Liver Function"
+      ],
+      "imaging": [
+        "ECG",
+        "CT Scan"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 1 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "39",
+    "name": "Dechen Yangchen Rai",
+    "age": 52,
+    "gender": "F",
+    "abha": "57-9452-3126-8932",
+    "arrivalTime": "8 min ago",
+    "arrivalMode": "Referral",
+    "chiefComplaint": "Severe headache",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 85,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.8,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 12,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "7/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Educated to high school level (finding)",
+          "status": "active",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Past pregnancy history of miscarriage (situation)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Victim of intimate partner abuse (finding)",
+          "status": "resolved",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Localized, primary osteoarthritis of the hand (disorder)",
+          "status": "active",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Prediabetes (finding)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Naproxen sodium 220 MG Oral Tablet",
+          "dosage": "100mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "100mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "{21",
+          "dosage": "25mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "34 years ago",
+          "type": "General examination of patient",
+          "facility": "Lilavati Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "24 years ago",
+          "type": "Prenatal visit (regime/therapy",
+          "facility": "Manipal Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "24 years ago",
+          "type": "General examination of patient",
+          "facility": "Medanta Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "15 years ago",
+          "type": "General examination of patient",
+          "facility": "Kokilaben Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "13 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 78,
+      "bay": "Treatment Room 2",
+      "queuePosition": 2,
+      "specialists": [
+        "Pulmonology",
+        "Internal Medicine"
+      ],
+      "protocols": [
+        "Trauma Protocol",
+        "Chest Pain Protocol"
+      ],
+      "labs": [
+        "Lipid Panel",
+        "CBC",
+        "HbA1c",
+        "Urinalysis"
+      ],
+      "imaging": [
+        "ECG",
+        "CT Scan"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 5 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "40",
+    "name": "Thokchom Thokchom",
+    "age": 41,
+    "gender": "M",
+    "abha": "94-8689-4374-8545",
+    "arrivalTime": "26 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Severe abdominal pain",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 91,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 14,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Limited social contact (finding)",
+          "status": "active",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Social isolation (finding)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "History of appendectomy (situation)",
+          "status": "active",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "PGIMER Chandigarh"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "100mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "50mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "",
+          "dosage": "500mg",
+          "frequency": "every 8 hours"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "24 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "23 years ago",
+          "type": "General examination of patient",
+          "facility": "CMC Vellore",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "19 years ago",
+          "type": "General examination of patient",
+          "facility": "Lilavati Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "17 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "Fortis Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "17 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Kokilaben Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 5,
+      "acuityLabel": "NON-URGENT",
+      "acuityColor": "minor",
+      "confidence": 78,
+      "bay": "Waiting Area",
+      "queuePosition": 7,
+      "specialists": [
+        "Internal Medicine",
+        "Neurology"
+      ],
+      "protocols": [
+        "Diabetic Emergency",
+        "Trauma Protocol"
+      ],
+      "labs": [
+        "Lipid Panel",
+        "CMP",
+        "Liver Function",
+        "Urinalysis"
+      ],
+      "imaging": [
+        "Ultrasound",
+        "MRI"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 5 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 5.",
+        "background": "8 known conditions. Currently on 1 medications.",
+        "assessment": "NON-URGENT acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Waiting Area. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "41",
+    "name": "Sudha Divya Murugan",
+    "age": 57,
+    "gender": "F",
+    "abha": "15-6730-9198-6656",
+    "arrivalTime": "32 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Chest tightness and palpitations",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 100,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.9,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "4/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "warning",
+        "text": "Active: Prediabetes (finding)"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Prediabetes (finding)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Anemia (disorder)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Past pregnancy history of miscarriage (situation)",
+          "status": "active",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "Lilavati Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "{21",
+          "dosage": "25mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "500mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "",
+          "dosage": "10mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "10mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "",
+          "dosage": "50mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "",
+          "dosage": "50mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "50mg",
+          "frequency": "at bedtime"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "39 years ago",
+          "type": "General examination of patient",
+          "facility": "CMC Vellore",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "38 years ago",
+          "type": "General examination of patient",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "32 years ago",
+          "type": "Prenatal visit (regime/therapy",
+          "facility": "Safdarjung Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "23 years ago",
+          "type": "General examination of patient",
+          "facility": "Cloudnine Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "17 years ago",
+          "type": "General examination of patient",
+          "facility": "AIIMS Delhi",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 5,
+      "acuityLabel": "NON-URGENT",
+      "acuityColor": "minor",
+      "confidence": 95,
+      "bay": "Fast Track 3",
+      "queuePosition": 1,
+      "specialists": [
+        "General Surgery",
+        "Pulmonology"
+      ],
+      "protocols": [
+        "Diabetic Emergency",
+        "Trauma Protocol"
+      ],
+      "labs": [
+        "Kidney Function",
+        "HbA1c",
+        "CMP",
+        "CBC"
+      ],
+      "imaging": [
+        "MRI",
+        "Ultrasound"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 5 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 5.",
+        "background": "8 known conditions. Currently on 2 medications.",
+        "assessment": "NON-URGENT acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Waiting Area. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "42",
+    "name": "Deepa Roy",
+    "age": 17,
+    "gender": "F",
+    "abha": "93-0517-1174-0252",
+    "arrivalTime": "28 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Persistent cough with blood",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 81,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 100.8,
+        "unit": "\u00b0F",
+        "status": "warning",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 14,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "4/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Gingivitis (disorder)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Gingival disease (disorder)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Streptococcal sore throat (disorder)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Viral sinusitis (disorder)",
+          "status": "resolved",
+          "source": "Fortis Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "5mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Penicillin V Potassium 250 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "500mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "{24",
+          "dosage": "25mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "100mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "{24",
+          "dosage": "25mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "500mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "AIIMS Delhi",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "Max Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "8 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Kokilaben Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "7 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "7 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "Apollo Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 96,
+      "bay": "Treatment Room 1",
+      "queuePosition": 9,
+      "specialists": [
+        "Orthopedics",
+        "Gastroenterology"
+      ],
+      "protocols": [
+        "Sepsis Protocol",
+        "Diabetic Emergency"
+      ],
+      "labs": [
+        "HbA1c",
+        "CMP",
+        "Kidney Function",
+        "Urinalysis"
+      ],
+      "imaging": [
+        "ECG",
+        "CT Scan"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 3 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "43",
+    "name": "Harbhajan Gill",
+    "age": 60,
+    "gender": "M",
+    "abha": "84-0889-7061-3369",
+    "arrivalTime": "10 min ago",
+    "arrivalMode": "Referral",
+    "chiefComplaint": "Trauma from fall",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 90,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 91,
+        "unit": "%",
+        "status": "warning",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 100.0,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "8/10",
+        "unit": "",
+        "status": "critical",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "Allergy: Allergic disposition (finding)"
+      },
+      {
+        "type": "critical",
+        "text": "Allergy: Aspirin"
+      },
+      {
+        "type": "critical",
+        "text": "PAIN: 8/10 - Critical"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Reports of violence in the environment (finding)",
+          "status": "resolved",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Polyp of colon (disorder)",
+          "status": "active",
+          "source": "Narayana Health"
+        }
+      ],
+      "medications": [
+        {
+          "name": "ferrous sulfate 325 MG Oral Tablet",
+          "dosage": "25mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "10mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Naproxen sodium 220 MG Oral Tablet",
+          "dosage": "250mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "ciprofloxacin 500 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "",
+          "dosage": "100mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Clopidogrel 75 MG Oral Tablet",
+          "dosage": "5mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Simvastatin 20 MG Oral Tablet",
+          "dosage": "500mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "24 HR metoprolol succinate 100 MG Extended Release",
+          "dosage": "250mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Nitroglycerin 0.4 MG/ACTUAT Mucosal Spray",
+          "dosage": "25mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "",
+          "dosage": "500mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [
+        "Allergic disposition (finding)",
+        "Aspirin",
+        "Eggs (edible) (substance)"
+      ],
+      "encounters": [
+        {
+          "date": "59 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "59 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Lilavati Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "43 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Fortis Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "42 years ago",
+          "type": "General examination of patient",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "16 years ago",
+          "type": "General examination of patient",
+          "facility": "Fortis Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 91,
+      "bay": "Treatment Room 3",
+      "queuePosition": 6,
+      "specialists": [
+        "Orthopedics",
+        "Nephrology"
+      ],
+      "protocols": [
+        "Respiratory Distress",
+        "Diabetic Emergency"
+      ],
+      "labs": [
+        "Urinalysis",
+        "HbA1c",
+        "D-Dimer",
+        "Kidney Function"
+      ],
+      "imaging": [
+        "CT Scan",
+        "Chest X-Ray"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 2 medications.",
+        "assessment": "MODERATE acuity. Vitals show 1 critical, 1 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "44",
+    "name": "Prakash Kulkarni",
+    "age": 20,
+    "gender": "M",
+    "abha": "38-0650-7204-3033",
+    "arrivalTime": "8 min ago",
+    "arrivalMode": "Referral",
+    "chiefComplaint": "Dizziness and weakness",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 82,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 12,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Child attention deficit disorder (disorder)",
+          "status": "resolved",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "resolved",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Fracture of bone (disorder)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Fracture of ankle (disorder)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Gingivitis (disorder)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Gingival disease (disorder)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "atomoxetine 100 MG Oral Capsule",
+          "dosage": "25mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Acetaminophen 325 MG / oxyCODONE Hydrochloride 5 M",
+          "dosage": "1.0mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Naproxen sodium 220 MG Oral Tablet",
+          "dosage": "100mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "",
+          "dosage": "50mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "250mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "",
+          "dosage": "100mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "500mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "11 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Narayana Health",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "10 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Medanta Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Apollo Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Kokilaben Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Lab tests ordered. Results pending."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 83,
+      "bay": "Treatment Room 2",
+      "queuePosition": 4,
+      "specialists": [
+        "Neurology",
+        "General Surgery"
+      ],
+      "protocols": [
+        "Chest Pain Protocol",
+        "Diabetic Emergency"
+      ],
+      "labs": [
+        "D-Dimer",
+        "CMP",
+        "Troponin",
+        "HbA1c"
+      ],
+      "imaging": [
+        "CT Scan",
+        "Chest X-Ray"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 5 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "45",
+    "name": "Rupa Deepa Paul",
+    "age": 26,
+    "gender": "F",
+    "abha": "94-5067-9563-3416",
+    "arrivalTime": "34 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Sudden vision changes",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 65,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 16,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "6/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Fracture of bone (disorder)",
+          "status": "resolved",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Fracture of ankle (disorder)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Educated to high school level (finding)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Gingivitis (disorder)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "{7",
+          "dosage": "500mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "{7",
+          "dosage": "1g",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "5mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Naproxen sodium 220 MG Oral Tablet",
+          "dosage": "5mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "{24",
+          "dosage": "10mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "{24",
+          "dosage": "500mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "5mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "{7",
+          "dosage": "1g",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "{24",
+          "dosage": "100mg",
+          "frequency": "three times daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "11 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Apollo Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "10 years ago",
+          "type": "Consultation for treatment (pr",
+          "facility": "CMC Vellore",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Consultation for treatment (pr",
+          "facility": "Medanta Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "CMC Vellore",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 88,
+      "bay": "Treatment Room 2",
+      "queuePosition": 10,
+      "specialists": [
+        "Neurology",
+        "Internal Medicine"
+      ],
+      "protocols": [
+        "Respiratory Distress",
+        "Sepsis Protocol"
+      ],
+      "labs": [
+        "Urinalysis",
+        "Lipid Panel",
+        "BNP",
+        "D-Dimer"
+      ],
+      "imaging": [
+        "CT Scan",
+        "MRI"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 2 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "46",
+    "name": "Sunil Gupta",
+    "age": 13,
+    "gender": "M",
+    "abha": "33-8533-7512-0425",
+    "arrivalTime": "40 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "High fever with body aches",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 91,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 100.3,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 16,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "2/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "Allergy: Allergic disposition (finding)"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Perennial allergic rhinitis with seasonal variation (disorder)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Sprain (morphologic abnormality)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Sprain of ankle (disorder)",
+          "status": "resolved",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Streptococcal sore throat (disorder)",
+          "status": "resolved",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Acute viral pharyngitis (disorder)",
+          "status": "resolved",
+          "source": "Fortis Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "cetirizine hydrochloride 5 MG Oral Tablet",
+          "dosage": "50mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "NDA020800 0.3 ML Epinephrine 1 MG/ML Auto-Injector",
+          "dosage": "25mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Ibuprofen 100 MG Oral Tablet",
+          "dosage": "1g",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Penicillin V Potassium 250 MG Oral Tablet",
+          "dosage": "1g",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Acetaminophen 21.7 MG/ML / Dextromethorphan Hydrob",
+          "dosage": "25mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "500mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "25mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "5mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Ibuprofen 100 MG Oral Tablet",
+          "dosage": "250mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "three times daily"
+        }
+      ],
+      "allergies": [
+        "Allergic disposition (finding)"
+      ],
+      "encounters": [
+        {
+          "date": "11 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Medanta Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "11 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "AIIMS Delhi",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "10 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Cloudnine Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Emergency room admission (proc",
+          "facility": "CMC Vellore",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "AIIMS Delhi",
+          "summary": "Routine checkup. Vitals stable."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 80,
+      "bay": "Fast Track 1",
+      "queuePosition": 8,
+      "specialists": [
+        "Pulmonology",
+        "Nephrology"
+      ],
+      "protocols": [
+        "Stroke Protocol",
+        "Diabetic Emergency"
+      ],
+      "labs": [
+        "CMP",
+        "BNP",
+        "D-Dimer",
+        "Liver Function"
+      ],
+      "imaging": [
+        "MRI",
+        "Ultrasound"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 3 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "47",
+    "name": "Lalchhuanawma Sailo",
+    "age": 59,
+    "gender": "M",
+    "abha": "52-3871-2552-7145",
+    "arrivalTime": "45 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Severe vomiting and dehydration",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 67,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.2,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 12,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "2/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Transport problem (finding)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Lack of access to transportation (finding)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Prediabetes (finding)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Clopidogrel 75 MG Oral Tablet",
+          "dosage": "5mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Simvastatin 20 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "24 HR metoprolol succinate 100 MG Extended Release",
+          "dosage": "5mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Nitroglycerin 0.4 MG/ACTUAT Mucosal Spray",
+          "dosage": "1g",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "",
+          "dosage": "500mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "nitrofurantoin, macrocrystals 25 MG / nitrofuranto",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "nitrofurantoin, macrocrystals 25 MG / nitrofuranto",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "",
+          "dosage": "250mg",
+          "frequency": "as needed"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "41 years ago",
+          "type": "General examination of patient",
+          "facility": "Cloudnine Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "37 years ago",
+          "type": "General examination of patient",
+          "facility": "Apollo Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "20 years ago",
+          "type": "Urgent care clinic (environmen",
+          "facility": "Kokilaben Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "17 years ago",
+          "type": "General examination of patient",
+          "facility": "AIIMS Delhi",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "15 years ago",
+          "type": "General examination of patient",
+          "facility": "AIIMS Delhi",
+          "summary": "Follow-up visit. Condition improving."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 94,
+      "bay": "Treatment Room 2",
+      "queuePosition": 9,
+      "specialists": [
+        "Gastroenterology",
+        "Internal Medicine"
+      ],
+      "protocols": [
+        "Trauma Protocol",
+        "Respiratory Distress"
+      ],
+      "labs": [
+        "CMP",
+        "Liver Function",
+        "HbA1c",
+        "Lipid Panel"
+      ],
+      "imaging": [
+        "Echo",
+        "MRI"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "48",
+    "name": "Harleen Kaur",
+    "age": 49,
+    "gender": "F",
+    "abha": "21-3002-5221-2528",
+    "arrivalTime": "26 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Sudden confusion",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 78,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.7,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 12,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "Allergy: Allergic disposition (finding)"
+      },
+      {
+        "type": "critical",
+        "text": "Allergy: Animal dander (substance)"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Chronic pain (finding)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Chronic intractable migraine without aura (disorder)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "active",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Impacted molars (disorder)",
+          "status": "active",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Dependent drug abuse (disorder)",
+          "status": "active",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Housing unsatisfactory (finding)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Only received primary school education (finding)",
+          "status": "active",
+          "source": "Max Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "{7",
+          "dosage": "100mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "{7",
+          "dosage": "50mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "50mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "sulfamethoxazole 800 MG / trimethoprim 160 MG Oral",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "amoxicillin 500 MG / clavulanate 125 MG Oral Table",
+          "dosage": "50mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "250mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Hydrocortisone 10 MG/ML Topical Cream",
+          "dosage": "5mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Loratadine 10 MG Oral Tablet",
+          "dosage": "250mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "NDA020800 0.3 ML Epinephrine 1 MG/ML Auto-Injector",
+          "dosage": "10mg",
+          "frequency": "every 8 hours"
+        }
+      ],
+      "allergies": [
+        "Allergic disposition (finding)",
+        "Animal dander (substance)",
+        "Sulfamethoxazole / Trimethoprim",
+        "Aspirin",
+        "Penicillin V"
+      ],
+      "encounters": [
+        {
+          "date": "35 years ago",
+          "type": "Emergency hospital admission (",
+          "facility": "AIIMS Delhi",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "35 years ago",
+          "type": "Emergency room admission (proc",
+          "facility": "AIIMS Delhi",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "34 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Max Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "34 years ago",
+          "type": "Emergency room admission (proc",
+          "facility": "Manipal Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "33 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Medanta Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 80,
+      "bay": "Fast Track 1",
+      "queuePosition": 5,
+      "specialists": [
+        "Cardiology",
+        "Nephrology"
+      ],
+      "protocols": [
+        "Sepsis Protocol",
+        "Trauma Protocol"
+      ],
+      "labs": [
+        "HbA1c",
+        "Troponin",
+        "Kidney Function",
+        "Liver Function"
+      ],
+      "imaging": [
+        "MRI",
+        "Echo"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "49",
+    "name": "Ramandeep Singh",
+    "age": 11,
+    "gender": "F",
+    "abha": "96-0318-9028-4223",
+    "arrivalTime": "3 min ago",
+    "arrivalMode": "Referral",
+    "chiefComplaint": "Trauma from fall",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 61,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 16,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "3/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Otitis media (disorder)",
+          "status": "resolved",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Otitis media (disorder)",
+          "status": "resolved",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Acute bronchitis (disorder)",
+          "status": "resolved",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Primary dental caries (disorder)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Amoxicillin 500 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Acetaminophen 160 MG Chewable Tablet",
+          "dosage": "10mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "100mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Acetaminophen 21.7 MG/ML / Dextromethorphan Hydrob",
+          "dosage": "250mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "",
+          "dosage": "50mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "",
+          "dosage": "10mg",
+          "frequency": "at bedtime"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "10 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Kokilaben Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "10 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Kokilaben Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "CMC Vellore",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Manipal Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "8 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Fortis Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 5,
+      "acuityLabel": "NON-URGENT",
+      "acuityColor": "minor",
+      "confidence": 91,
+      "bay": "Waiting Area",
+      "queuePosition": 9,
+      "specialists": [
+        "Cardiology",
+        "Pulmonology"
+      ],
+      "protocols": [
+        "Diabetic Emergency",
+        "Trauma Protocol"
+      ],
+      "labs": [
+        "HbA1c",
+        "D-Dimer",
+        "CMP",
+        "BNP"
+      ],
+      "imaging": [
+        "ECG",
+        "Echo"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 5 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 5.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "NON-URGENT acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Waiting Area. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "50",
+    "name": "Tenzin Bhutia",
+    "age": 15,
+    "gender": "M",
+    "abha": "15-3380-9829-4739",
+    "arrivalTime": "34 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Severe headache",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 89,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "2/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Childhood asthma (disorder)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Fracture of bone (disorder)",
+          "status": "resolved",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Fracture of clavicle (disorder)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Gingivitis (disorder)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Gingivitis (disorder)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Acute bronchitis (disorder)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "NDA020983 200 ACTUAT albuterol 0.09 MG/ACTUAT Mete",
+          "dosage": "50mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "120 ACTUAT fluticasone propionate 0.044 MG/ACTUAT ",
+          "dosage": "250mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "NDA020983 200 ACTUAT albuterol 0.09 MG/ACTUAT Mete",
+          "dosage": "250mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "120 ACTUAT fluticasone propionate 0.044 MG/ACTUAT ",
+          "dosage": "1g",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "NDA020983 200 ACTUAT albuterol 0.09 MG/ACTUAT Mete",
+          "dosage": "10mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "120 ACTUAT fluticasone propionate 0.044 MG/ACTUAT ",
+          "dosage": "50mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Acetaminophen 160 MG Chewable Tablet",
+          "dosage": "50mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "NDA020983 200 ACTUAT albuterol 0.09 MG/ACTUAT Mete",
+          "dosage": "50mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "120 ACTUAT fluticasone propionate 0.044 MG/ACTUAT ",
+          "dosage": "100mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "twice daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "11 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "10 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "CMC Vellore",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "AIIMS Delhi",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "8 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "AIIMS Delhi",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "8 years ago",
+          "type": "Emergency room admission (proc",
+          "facility": "Cloudnine Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 93,
+      "bay": "Fast Track 2",
+      "queuePosition": 8,
+      "specialists": [
+        "General Surgery",
+        "Pulmonology"
+      ],
+      "protocols": [
+        "Chest Pain Protocol",
+        "Sepsis Protocol"
+      ],
+      "labs": [
+        "Troponin",
+        "BNP",
+        "HbA1c",
+        "Liver Function"
+      ],
+      "imaging": [
+        "Ultrasound",
+        "Echo"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "51",
+    "name": "Anita Kavita Jadhav",
+    "age": 59,
+    "gender": "F",
+    "abha": "69-9633-1283-5640",
+    "arrivalTime": "29 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Numbness in extremities",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 71,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.8,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "4/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Has a criminal record (finding)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Past pregnancy history of miscarriage (situation)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Hyperlipidemia (disorder)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Part-time employment (finding)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Burn injury (morphologic abnormality)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Cefuroxime 250 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG / oxyCODONE Hydrochloride 5 M",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "5mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "{24",
+          "dosage": "500mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Penicillin V Potassium 500 MG Oral Tablet",
+          "dosage": "100mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Amoxicillin 250 MG / Clavulanate 125 MG Oral Table",
+          "dosage": "5mg",
+          "frequency": "as needed"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "40 years ago",
+          "type": "General examination of patient",
+          "facility": "AIIMS Delhi",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "33 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "Apollo Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "28 years ago",
+          "type": "Prenatal visit (regime/therapy",
+          "facility": "Apollo Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "19 years ago",
+          "type": "General examination of patient",
+          "facility": "Lilavati Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "15 years ago",
+          "type": "General examination of patient",
+          "facility": "Manipal Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 96,
+      "bay": "Fast Track 2",
+      "queuePosition": 2,
+      "specialists": [
+        "Neurology",
+        "Nephrology"
+      ],
+      "protocols": [
+        "Chest Pain Protocol",
+        "Diabetic Emergency"
+      ],
+      "labs": [
+        "Urinalysis",
+        "Lipid Panel",
+        "CBC",
+        "Kidney Function"
+      ],
+      "imaging": [
+        "ECG",
+        "Ultrasound"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 5 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "52",
+    "name": "Pynhun Passah",
+    "age": 10,
+    "gender": "M",
+    "abha": "93-3478-8829-5066",
+    "arrivalTime": "2 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Sudden confusion",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 75,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 83,
+        "unit": "%",
+        "status": "critical",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 106.0,
+        "unit": "\u00b0F",
+        "status": "critical",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 16,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "7/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "SPO2: 83 - Critical"
+      },
+      {
+        "type": "critical",
+        "text": "TEMP: 106.0 - Critical"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Viral sinusitis (disorder)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Suspected disease caused by Severe acute respiratory coronavirus 2 (situation)",
+          "status": "resolved",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Dyspnea (finding)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Wheezing (finding)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Fever (finding)",
+          "status": "resolved",
+          "source": "PGIMER Chandigarh"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Acetaminophen 160 MG Chewable Tablet",
+          "dosage": "10mg",
+          "frequency": "three times daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Narayana Health",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Max Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Medanta Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "8 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Narayana Health",
+          "summary": "Follow-up visit. Condition improving."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 2,
+      "acuityLabel": "URGENT",
+      "acuityColor": "urgent",
+      "confidence": 79,
+      "bay": "Acute Care 1",
+      "queuePosition": 5,
+      "specialists": [
+        "Neurology",
+        "Internal Medicine"
+      ],
+      "protocols": [
+        "Sepsis Protocol",
+        "Stroke Protocol"
+      ],
+      "labs": [
+        "Kidney Function",
+        "Liver Function",
+        "D-Dimer",
+        "BNP"
+      ],
+      "imaging": [
+        "MRI",
+        "Chest X-Ray"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 2 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 2.",
+        "background": "8 known conditions. Currently on 5 medications.",
+        "assessment": "URGENT acuity. Vitals show 2 critical, 1 warning signs.",
+        "recommendation": "Assign to Acute Care 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "53",
+    "name": "Sunitha Prasad",
+    "age": 16,
+    "gender": "F",
+    "abha": "79-9277-9850-7790",
+    "arrivalTime": "43 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Severe headache",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 73,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 99,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.8,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 14,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "4/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Viral sinusitis (disorder)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Gingivitis (disorder)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Gingival disease (disorder)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Gingivitis (disorder)",
+          "status": "resolved",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Acute bronchitis (disorder)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "250mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "100mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "10mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Penicillin V Potassium 250 MG Oral Tablet",
+          "dosage": "50mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "10mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "ciprofloxacin 250 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Ibuprofen 200 MG Oral Tablet",
+          "dosage": "100mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "three times daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "10 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Max Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Apollo Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "CMC Vellore",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "8 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Max Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 97,
+      "bay": "Fast Track 1",
+      "queuePosition": 9,
+      "specialists": [
+        "Gastroenterology",
+        "General Surgery"
+      ],
+      "protocols": [
+        "Chest Pain Protocol",
+        "Respiratory Distress"
+      ],
+      "labs": [
+        "Lipid Panel",
+        "CMP",
+        "Kidney Function",
+        "Liver Function"
+      ],
+      "imaging": [
+        "CT Scan",
+        "Ultrasound"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 5 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "54",
+    "name": "Radha Vidya Sharma",
+    "age": 16,
+    "gender": "F",
+    "abha": "45-0481-6941-8614",
+    "arrivalTime": "30 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Abdominal bloating with pain",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 83,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.4,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "7/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Gingivitis (disorder)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Acute viral pharyngitis (disorder)",
+          "status": "resolved",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Child attention deficit disorder (disorder)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "10mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "{24",
+          "dosage": "250mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Methylphenidate Hydrochloride 20 MG Oral Tablet",
+          "dosage": "25mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "{24",
+          "dosage": "5mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "cephalexin 500 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "",
+          "dosage": "5mg",
+          "frequency": "every 8 hours"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Apollo Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "8 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Medanta Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "7 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Apollo Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "7 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "6 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Max Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 96,
+      "bay": "Fast Track 1",
+      "queuePosition": 8,
+      "specialists": [
+        "Orthopedics",
+        "General Surgery"
+      ],
+      "protocols": [
+        "Stroke Protocol",
+        "Respiratory Distress"
+      ],
+      "labs": [
+        "Liver Function",
+        "D-Dimer",
+        "CBC",
+        "Lipid Panel"
+      ],
+      "imaging": [
+        "ECG",
+        "Ultrasound"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 1 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "55",
+    "name": "Priya Varma",
+    "age": 1,
+    "gender": "F",
+    "abha": "19-0840-6558-3782",
+    "arrivalTime": "33 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Sudden vision changes",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 97,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 14,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        }
+      ],
+      "medications": [],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "12 months ago",
+          "type": "Well child visit (procedure)",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "10 months ago",
+          "type": "Well child visit (procedure)",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "8 months ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Safdarjung Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "6 months ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Manipal Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "3 months ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Manipal Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 94,
+      "bay": "Fast Track 2",
+      "queuePosition": 9,
+      "specialists": [
+        "General Surgery",
+        "Nephrology"
+      ],
+      "protocols": [
+        "Stroke Protocol",
+        "Respiratory Distress"
+      ],
+      "labs": [
+        "D-Dimer",
+        "HbA1c",
+        "CMP",
+        "Troponin"
+      ],
+      "imaging": [
+        "Chest X-Ray",
+        "Echo"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "4 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "4 known conditions. Currently on 2 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "56",
+    "name": "Suman Agarwal",
+    "age": 9,
+    "gender": "F",
+    "abha": "88-3094-8395-9101",
+    "arrivalTime": "14 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Chest pain with shortness of breath",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 75,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.0,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Sprain (morphologic abnormality)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Sprain of ankle (disorder)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Viral sinusitis (disorder)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "PGIMER Chandigarh"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Acetaminophen 160 MG Chewable Tablet",
+          "dosage": "5mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Amoxicillin 500 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Acetaminophen 160 MG Chewable Tablet",
+          "dosage": "25mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "250mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "",
+          "dosage": "10mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Lilavati Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Lilavati Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "CMC Vellore",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Medanta Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 92,
+      "bay": "Treatment Room 2",
+      "queuePosition": 4,
+      "specialists": [
+        "Nephrology",
+        "Pulmonology"
+      ],
+      "protocols": [
+        "Stroke Protocol",
+        "Trauma Protocol"
+      ],
+      "labs": [
+        "BNP",
+        "Urinalysis",
+        "Lipid Panel",
+        "CMP"
+      ],
+      "imaging": [
+        "Echo",
+        "MRI"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 2 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "57",
+    "name": "Padma Padma Naidu",
+    "age": 4,
+    "gender": "F",
+    "abha": "95-9144-7624-9490",
+    "arrivalTime": "12 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Dizziness and weakness",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 70,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 102.4,
+        "unit": "\u00b0F",
+        "status": "warning",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "4/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "active",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Streptococcal sore throat (disorder)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Fracture of bone (disorder)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Fracture of forearm (disorder)",
+          "status": "resolved",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Primary dental caries (disorder)",
+          "status": "resolved",
+          "source": "Fortis Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Penicillin V Potassium 250 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Ibuprofen 100 MG Oral Tablet",
+          "dosage": "1g",
+          "frequency": "three times daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "4 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "4 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Apollo Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "3 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "CMC Vellore",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "3 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Kokilaben Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "3 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "AIIMS Delhi",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 95,
+      "bay": "Treatment Room 2",
+      "queuePosition": 4,
+      "specialists": [
+        "Neurology",
+        "Nephrology"
+      ],
+      "protocols": [
+        "Chest Pain Protocol",
+        "Diabetic Emergency"
+      ],
+      "labs": [
+        "Kidney Function",
+        "HbA1c",
+        "BNP",
+        "Troponin"
+      ],
+      "imaging": [
+        "Echo",
+        "MRI"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 1 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "58",
+    "name": "Wangkhem Thokchom",
+    "age": 60,
+    "gender": "F",
+    "abha": "07-6199-9293-7624",
+    "arrivalTime": "29 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Chest pain with shortness of breath",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 90,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Transport problem (finding)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Lack of access to transportation (finding)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Chronic sinusitis (disorder)",
+          "status": "active",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Past pregnancy history of miscarriage (situation)",
+          "status": "active",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Essential hypertension (disorder)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Prediabetes (finding)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Vitamin B12 5 MG/ML Injectable Solution",
+          "dosage": "50mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "insulin isophane, human 70 UNT/ML / insulin, regul",
+          "dosage": "25mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "100mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "insulin isophane, human 70 UNT/ML / insulin, regul",
+          "dosage": "250mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "insulin isophane, human 70 UNT/ML / insulin, regul",
+          "dosage": "250mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "insulin isophane, human 70 UNT/ML / insulin, regul",
+          "dosage": "500mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "42 years ago",
+          "type": "General examination of patient",
+          "facility": "Lilavati Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "41 years ago",
+          "type": "General examination of patient",
+          "facility": "Cloudnine Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "35 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Cloudnine Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "26 years ago",
+          "type": "Prenatal visit (regime/therapy",
+          "facility": "Medanta Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "26 years ago",
+          "type": "General examination of patient",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 91,
+      "bay": "Fast Track 1",
+      "queuePosition": 9,
+      "specialists": [
+        "Neurology",
+        "Cardiology"
+      ],
+      "protocols": [
+        "Stroke Protocol",
+        "Trauma Protocol"
+      ],
+      "labs": [
+        "CMP",
+        "Kidney Function",
+        "Urinalysis",
+        "BNP"
+      ],
+      "imaging": [
+        "CT Scan",
+        "Ultrasound"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "59",
+    "name": "Subrata Bose",
+    "age": 58,
+    "gender": "M",
+    "abha": "54-4383-5479-5950",
+    "arrivalTime": "37 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Abdominal bloating with pain",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 99,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 12,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "active",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Housing unsatisfactory (finding)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Educated to high school level (finding)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Refugee (person)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Chronic sinusitis (disorder)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Loss of teeth (disorder)",
+          "status": "active",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Essential hypertension (disorder)",
+          "status": "active",
+          "source": "Narayana Health"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "budesonide 0.125 MG/ML Inhalation Suspension",
+          "dosage": "100mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "albuterol 0.83 MG/ML Inhalation Solution",
+          "dosage": "25mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "budesonide 0.125 MG/ML Inhalation Suspension",
+          "dosage": "5mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "albuterol 0.83 MG/ML Inhalation Solution",
+          "dosage": "250mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "54 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "AIIMS Delhi",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "41 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "40 years ago",
+          "type": "General examination of patient",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "34 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Max Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "28 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Lab tests ordered. Results pending."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 94,
+      "bay": "Fast Track 1",
+      "queuePosition": 9,
+      "specialists": [
+        "Internal Medicine",
+        "Pulmonology"
+      ],
+      "protocols": [
+        "Respiratory Distress",
+        "Diabetic Emergency"
+      ],
+      "labs": [
+        "Liver Function",
+        "Troponin",
+        "Kidney Function",
+        "CBC"
+      ],
+      "imaging": [
+        "CT Scan",
+        "Chest X-Ray"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 5 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "60",
+    "name": "Geeta Sharma",
+    "age": 59,
+    "gender": "F",
+    "abha": "40-5566-2749-8470",
+    "arrivalTime": "37 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Difficulty breathing",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 83,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "6/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Otitis media (disorder)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Seizure disorder (disorder)",
+          "status": "active",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "History of seizure (situation)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Epilepsy (disorder)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Fortis Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Doxycycline Monohydrate 50 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Aspirin 81 MG Oral Tablet",
+          "dosage": "1g",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Diazepam 5 MG Oral Tablet",
+          "dosage": "5mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "clonazePAM 0.25 MG Oral Tablet",
+          "dosage": "5mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Penicillin G 375 MG/ML Injectable Solution",
+          "dosage": "1.0mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Aspirin 81 MG Oral Tablet",
+          "dosage": "25mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "carbamazepine 20 MG/ML Oral Suspension [Tegretol]",
+          "dosage": "5mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Penicillin V Potassium 250 MG Oral Tablet",
+          "dosage": "500mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Diazepam 5 MG Oral Tablet",
+          "dosage": "1g",
+          "frequency": "twice daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "59 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "59 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Max Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "58 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "AIIMS Delhi",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "58 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "CMC Vellore",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "58 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Narayana Health",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 79,
+      "bay": "Fast Track 2",
+      "queuePosition": 5,
+      "specialists": [
+        "Nephrology",
+        "Cardiology"
+      ],
+      "protocols": [
+        "Sepsis Protocol",
+        "Stroke Protocol"
+      ],
+      "labs": [
+        "Lipid Panel",
+        "CBC",
+        "Urinalysis",
+        "Kidney Function"
+      ],
+      "imaging": [
+        "Chest X-Ray",
+        "MRI"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "61",
+    "name": "Padma Aruna Reddy",
+    "age": 49,
+    "gender": "F",
+    "abha": "33-5312-1501-2058",
+    "arrivalTime": "42 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Chest pain with shortness of breath",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 65,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "8/10",
+        "unit": "",
+        "status": "critical",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "PAIN: 8/10 - Critical"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Chronic pain (finding)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Chronic intractable migraine without aura (disorder)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Impacted molars (disorder)",
+          "status": "active",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Dependent drug abuse (disorder)",
+          "status": "active",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Housing unsatisfactory (finding)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Only received primary school education (finding)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Prediabetes (finding)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Anemia (disorder)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "once daily"
+        },
+        {
+          "name": "{7",
+          "dosage": "1g",
+          "frequency": "as needed"
+        },
+        {
+          "name": "",
+          "dosage": "5mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "{24",
+          "dosage": "250mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "{24",
+          "dosage": "5mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "",
+          "dosage": "250mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "35 years ago",
+          "type": "Emergency hospital admission (",
+          "facility": "Safdarjung Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "35 years ago",
+          "type": "Emergency room admission (proc",
+          "facility": "Max Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "34 years ago",
+          "type": "Emergency room admission (proc",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "33 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "31 years ago",
+          "type": "General examination of patient",
+          "facility": "AIIMS Delhi",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 91,
+      "bay": "Treatment Room 3",
+      "queuePosition": 3,
+      "specialists": [
+        "General Surgery",
+        "Nephrology"
+      ],
+      "protocols": [
+        "Respiratory Distress",
+        "Chest Pain Protocol"
+      ],
+      "labs": [
+        "Troponin",
+        "Kidney Function",
+        "Urinalysis",
+        "D-Dimer"
+      ],
+      "imaging": [
+        "Ultrasound",
+        "Chest X-Ray"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "MODERATE acuity. Vitals show 1 critical, 0 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "62",
+    "name": "Sukhdeep Harleen Grewal",
+    "age": 30,
+    "gender": "F",
+    "abha": "70-7234-4899-5657",
+    "arrivalTime": "8 min ago",
+    "arrivalMode": "Referral",
+    "chiefComplaint": "Chest pain with shortness of breath",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 98,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "4/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Loss of teeth (disorder)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Educated to high school level (finding)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Transport problem (finding)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Not in labor force (finding)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Normal pregnancy (finding)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Eclampsia in pregnancy (disorder)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "cephalexin 500 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "{28",
+          "dosage": "50mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "21 DAY ethinyl estradiol 0.000625 MG/HR / etonoges",
+          "dosage": "50mg",
+          "frequency": "at bedtime"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "12 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "12 years ago",
+          "type": "General examination of patient",
+          "facility": "Lilavati Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "10 years ago",
+          "type": "General examination of patient",
+          "facility": "Max Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "10 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "Medanta Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Prenatal initial visit (regime",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 5,
+      "acuityLabel": "NON-URGENT",
+      "acuityColor": "minor",
+      "confidence": 79,
+      "bay": "Fast Track 3",
+      "queuePosition": 10,
+      "specialists": [
+        "Pulmonology",
+        "Internal Medicine"
+      ],
+      "protocols": [
+        "Trauma Protocol",
+        "Stroke Protocol"
+      ],
+      "labs": [
+        "Troponin",
+        "CBC",
+        "Lipid Panel",
+        "Urinalysis"
+      ],
+      "imaging": [
+        "MRI",
+        "ECG"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 5 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 5.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "NON-URGENT acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Waiting Area. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "63",
+    "name": "Rajesh Kurup",
+    "age": 18,
+    "gender": "M",
+    "abha": "72-7634-5239-6248",
+    "arrivalTime": "28 min ago",
+    "arrivalMode": "Referral",
+    "chiefComplaint": "Difficulty breathing",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 63,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Gingivitis (disorder)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Loose dental filling (finding)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Gingival disease (disorder)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Gingivitis (disorder)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Apollo Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "",
+          "dosage": "250mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "25mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Amoxicillin 250 MG / Clavulanate 125 MG Oral Table",
+          "dosage": "1g",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "100mg",
+          "frequency": "as needed"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "8 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "8 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "7 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "CMC Vellore",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "7 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "CMC Vellore",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 77,
+      "bay": "Treatment Room 2",
+      "queuePosition": 3,
+      "specialists": [
+        "Cardiology",
+        "Pulmonology"
+      ],
+      "protocols": [
+        "Stroke Protocol",
+        "Trauma Protocol"
+      ],
+      "labs": [
+        "D-Dimer",
+        "Troponin",
+        "HbA1c",
+        "CMP"
+      ],
+      "imaging": [
+        "Chest X-Ray",
+        "Ultrasound"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 1 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "64",
+    "name": "Radha Kumar",
+    "age": 52,
+    "gender": "F",
+    "abha": "13-6773-5323-9118",
+    "arrivalTime": "39 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "High fever with body aches",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 84,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.9,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "5/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "active",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Prediabetes (finding)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Anemia (disorder)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Essential hypertension (disorder)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Victim of intimate partner abuse (finding)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "{28",
+          "dosage": "500mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Meperidine Hydrochloride 50 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "5mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "168 HR Ethinyl Estradiol 0.00146 MG/HR / norelgest",
+          "dosage": "10mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "5mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "36 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "34 years ago",
+          "type": "General examination of patient",
+          "facility": "Lilavati Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "21 years ago",
+          "type": "General examination of patient",
+          "facility": "Lilavati Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "15 years ago",
+          "type": "General examination of patient",
+          "facility": "AIIMS Delhi",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "12 years ago",
+          "type": "General examination of patient",
+          "facility": "Fortis Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 78,
+      "bay": "Treatment Room 1",
+      "queuePosition": 8,
+      "specialists": [
+        "General Surgery",
+        "Neurology"
+      ],
+      "protocols": [
+        "Diabetic Emergency",
+        "Chest Pain Protocol"
+      ],
+      "labs": [
+        "Liver Function",
+        "Troponin",
+        "Kidney Function",
+        "BNP"
+      ],
+      "imaging": [
+        "Chest X-Ray",
+        "Echo"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 2 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "65",
+    "name": "Radha Varma",
+    "age": 78,
+    "gender": "F",
+    "abha": "53-3268-2017-0986",
+    "arrivalTime": "14 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Difficulty swallowing",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 90,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 100.9,
+        "unit": "\u00b0F",
+        "status": "warning",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "2/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Educated to high school level (finding)",
+          "status": "active",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Chronic sinusitis (disorder)",
+          "status": "active",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Body mass index 40+ - severely obese (finding)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Past pregnancy history of miscarriage (situation)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Prediabetes (finding)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Anemia (disorder)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Amoxicillin 250 MG / Clavulanate 125 MG Oral Table",
+          "dosage": "1g",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Amoxicillin 250 MG / Clavulanate 125 MG Oral Table",
+          "dosage": "25mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Penicillin V Potassium 500 MG Oral Tablet",
+          "dosage": "250mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "50mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "63 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Narayana Health",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "60 years ago",
+          "type": "General examination of patient",
+          "facility": "Lilavati Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "56 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Max Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "56 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "Manipal Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "47 years ago",
+          "type": "General examination of patient",
+          "facility": "Narayana Health",
+          "summary": "Lab tests ordered. Results pending."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 1,
+      "acuityLabel": "CRITICAL",
+      "acuityColor": "critical",
+      "confidence": 82,
+      "bay": "Resus Bay 1",
+      "queuePosition": 6,
+      "specialists": [
+        "Orthopedics",
+        "Cardiology"
+      ],
+      "protocols": [
+        "Diabetic Emergency",
+        "Trauma Protocol"
+      ],
+      "labs": [
+        "Liver Function",
+        "Kidney Function",
+        "BNP",
+        "Lipid Panel"
+      ],
+      "imaging": [
+        "Ultrasound",
+        "Chest X-Ray"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 1 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 1.",
+        "background": "8 known conditions. Currently on 5 medications.",
+        "assessment": "CRITICAL acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Resus Bay 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "66",
+    "name": "Karthik Rajan",
+    "age": 36,
+    "gender": "M",
+    "abha": "96-0369-3329-2201",
+    "arrivalTime": "43 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "High fever with body aches",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 73,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 12,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "2/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Lack of access to transportation (finding)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Transport problem (finding)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Not in labor force (finding)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Misuses drugs (finding)",
+          "status": "active",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Concussion injury of brain (disorder)",
+          "status": "resolved",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Concussion with no loss of consciousness (disorder)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "250mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Amoxicillin 250 MG / Clavulanate 125 MG Oral Table",
+          "dosage": "100mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Ibuprofen 200 MG Oral Tablet",
+          "dosage": "25mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "",
+          "dosage": "50mg",
+          "frequency": "at bedtime"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "20 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Max Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "18 years ago",
+          "type": "General examination of patient",
+          "facility": "Max Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "17 years ago",
+          "type": "General examination of patient",
+          "facility": "Lilavati Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "11 years ago",
+          "type": "General examination of patient",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Emergency room admission (proc",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 5,
+      "acuityLabel": "NON-URGENT",
+      "acuityColor": "minor",
+      "confidence": 93,
+      "bay": "Waiting Area",
+      "queuePosition": 2,
+      "specialists": [
+        "Neurology",
+        "General Surgery"
+      ],
+      "protocols": [
+        "Sepsis Protocol",
+        "Trauma Protocol"
+      ],
+      "labs": [
+        "HbA1c",
+        "Troponin",
+        "D-Dimer",
+        "Kidney Function"
+      ],
+      "imaging": [
+        "Ultrasound",
+        "CT Scan"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 5 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 5.",
+        "background": "8 known conditions. Currently on 2 medications.",
+        "assessment": "NON-URGENT acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Waiting Area. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "67",
+    "name": "Navneet Singh",
+    "age": 29,
+    "gender": "F",
+    "abha": "02-1954-5439-5181",
+    "arrivalTime": "26 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Severe vomiting and dehydration",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 66,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "5/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "active",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Not in labor force (finding)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Recurrent urinary tract infection (disorder)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Viral sinusitis (disorder)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "active",
+          "source": "Max Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "{24",
+          "dosage": "10mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "{28",
+          "dosage": "1g",
+          "frequency": "as needed"
+        },
+        {
+          "name": "{28",
+          "dosage": "100mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "",
+          "dosage": "250mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "{24",
+          "dosage": "500mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "{7",
+          "dosage": "25mg",
+          "frequency": "twice daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "13 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Narayana Health",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "11 years ago",
+          "type": "General examination of patient",
+          "facility": "Fortis Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "10 years ago",
+          "type": "General examination of patient",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "10 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Cloudnine Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "10 years ago",
+          "type": "Consultation for treatment (pr",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 89,
+      "bay": "Fast Track 2",
+      "queuePosition": 7,
+      "specialists": [
+        "Neurology",
+        "Orthopedics"
+      ],
+      "protocols": [
+        "Diabetic Emergency",
+        "Respiratory Distress"
+      ],
+      "labs": [
+        "Troponin",
+        "Kidney Function",
+        "Liver Function",
+        "BNP"
+      ],
+      "imaging": [
+        "ECG",
+        "Echo"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 3 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "68",
+    "name": "Kruti Shah",
+    "age": 17,
+    "gender": "F",
+    "abha": "16-2944-7046-3588",
+    "arrivalTime": "29 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Sudden confusion",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 61,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.2,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "7/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Acute bronchitis (disorder)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Gingivitis (disorder)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Primary dental caries (disorder)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Acute viral pharyngitis (disorder)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Gingivitis (disorder)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "500mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG / oxyCODONE Hydrochloride 5 M",
+          "dosage": "1.0mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Ibuprofen 200 MG Oral Tablet",
+          "dosage": "50mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "{21",
+          "dosage": "5mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "",
+          "dosage": "100mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "{7",
+          "dosage": "250mg",
+          "frequency": "every 8 hours"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "10 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Max Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Kokilaben Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "Safdarjung Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "8 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Apollo Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "7 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Cloudnine Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 80,
+      "bay": "Fast Track 2",
+      "queuePosition": 9,
+      "specialists": [
+        "Pulmonology",
+        "Orthopedics"
+      ],
+      "protocols": [
+        "Diabetic Emergency",
+        "Chest Pain Protocol"
+      ],
+      "labs": [
+        "CMP",
+        "Kidney Function",
+        "D-Dimer",
+        "Urinalysis"
+      ],
+      "imaging": [
+        "Ultrasound",
+        "Echo"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 3 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "69",
+    "name": "Sylvia Lina Menezes",
+    "age": 16,
+    "gender": "F",
+    "abha": "85-7723-6590-7533",
+    "arrivalTime": "18 min ago",
+    "arrivalMode": "Referral",
+    "chiefComplaint": "Difficulty breathing",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 66,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.8,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Acute bronchitis (disorder)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Gingival disease (disorder)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Acute viral pharyngitis (disorder)",
+          "status": "resolved",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Gingivitis (disorder)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Gingivitis (disorder)",
+          "status": "resolved",
+          "source": "Apollo Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "500mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "250mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "{5",
+          "dosage": "5mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "{28",
+          "dosage": "5mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "100mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Amoxicillin 250 MG / Clavulanate 125 MG Oral Table",
+          "dosage": "25mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "{7",
+          "dosage": "5mg",
+          "frequency": "every 8 hours"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "10 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Medanta Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "8 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "8 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "Lilavati Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "8 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Safdarjung Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 81,
+      "bay": "Fast Track 1",
+      "queuePosition": 9,
+      "specialists": [
+        "Internal Medicine",
+        "Cardiology"
+      ],
+      "protocols": [
+        "Chest Pain Protocol",
+        "Sepsis Protocol"
+      ],
+      "labs": [
+        "BNP",
+        "Kidney Function",
+        "HbA1c",
+        "Lipid Panel"
+      ],
+      "imaging": [
+        "CT Scan",
+        "Chest X-Ray"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 1 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "70",
+    "name": "Zosangzuala Fanai",
+    "age": 13,
+    "gender": "M",
+    "abha": "84-3397-2861-0287",
+    "arrivalTime": "43 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Abdominal bloating with pain",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 97,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 102.5,
+        "unit": "\u00b0F",
+        "status": "warning",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "3/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "Allergy: Allergic disposition (finding)"
+      },
+      {
+        "type": "critical",
+        "text": "Allergy: Mold (organism) (mild)"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Perennial allergic rhinitis with seasonal variation (disorder)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Streptococcal sore throat (disorder)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Otitis media (disorder)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Otitis media (disorder)",
+          "status": "resolved",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Loratadine 5 MG Chewable Tablet",
+          "dosage": "10mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "NDA020800 0.3 ML Epinephrine 1 MG/ML Auto-Injector",
+          "dosage": "250mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Penicillin V Potassium 250 MG Oral Tablet",
+          "dosage": "50mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Amoxicillin 500 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Acetaminophen 160 MG Chewable Tablet",
+          "dosage": "500mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Cefuroxime 250 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Acetaminophen 160 MG Chewable Tablet",
+          "dosage": "10mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Acetaminophen 21.7 MG/ML / Dextromethorphan Hydrob",
+          "dosage": "5mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "",
+          "dosage": "500mg",
+          "frequency": "every 8 hours"
+        }
+      ],
+      "allergies": [
+        "Allergic disposition (finding)",
+        "Mold (organism) (mild)",
+        "House dust mite (organism)",
+        "Animal dander (substance)",
+        "Grass pollen (substance)"
+      ],
+      "encounters": [
+        {
+          "date": "12 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "12 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Safdarjung Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Kokilaben Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "AIIMS Delhi",
+          "summary": "Routine checkup. Vitals stable."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 89,
+      "bay": "Treatment Room 2",
+      "queuePosition": 1,
+      "specialists": [
+        "Orthopedics",
+        "Neurology"
+      ],
+      "protocols": [
+        "Trauma Protocol",
+        "Stroke Protocol"
+      ],
+      "labs": [
+        "Kidney Function",
+        "Urinalysis",
+        "CBC",
+        "Lipid Panel"
+      ],
+      "imaging": [
+        "ECG",
+        "MRI"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 5 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "71",
+    "name": "Hemanta Kalita",
+    "age": 72,
+    "gender": "M",
+    "abha": "35-7304-3095-0446",
+    "arrivalTime": "43 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Severe allergic reaction",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 95,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 16,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "8/10",
+        "unit": "",
+        "status": "critical",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "PAIN: 8/10 - Critical"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Viral sinusitis (disorder)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Concussion injury of brain (disorder)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Concussion with no loss of consciousness (disorder)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Gingival disease (disorder)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Seizure disorder (disorder)",
+          "status": "active",
+          "source": "Sir Ganga Ram Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Diazepam 5 MG Oral Tablet",
+          "dosage": "1g",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Diazepam 5 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "three times daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "68 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Lilavati Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "66 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Safdarjung Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "65 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "64 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "Fortis Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "64 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Routine checkup. Vitals stable."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 1,
+      "acuityLabel": "CRITICAL",
+      "acuityColor": "critical",
+      "confidence": 89,
+      "bay": "Resus Bay 1",
+      "queuePosition": 7,
+      "specialists": [
+        "Pulmonology",
+        "Internal Medicine"
+      ],
+      "protocols": [
+        "Chest Pain Protocol",
+        "Respiratory Distress"
+      ],
+      "labs": [
+        "Troponin",
+        "Urinalysis",
+        "Lipid Panel",
+        "Kidney Function"
+      ],
+      "imaging": [
+        "ECG",
+        "Echo"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 1 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 1.",
+        "background": "8 known conditions. Currently on 5 medications.",
+        "assessment": "CRITICAL acuity. Vitals show 1 critical, 0 warning signs.",
+        "recommendation": "Assign to Resus Bay 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "72",
+    "name": "Rajesh Nair",
+    "age": 15,
+    "gender": "M",
+    "abha": "96-6858-3948-1517",
+    "arrivalTime": "21 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Dizziness and weakness",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 77,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "Allergy: Allergic disposition (finding)"
+      },
+      {
+        "type": "critical",
+        "text": "Allergy: Mold (organism)"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Perennial allergic rhinitis with seasonal variation (disorder)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Atopic dermatitis (disorder)",
+          "status": "active",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Gingival disease (disorder)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Primary dental caries (disorder)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Acute bronchitis (disorder)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Loratadine 5 MG Chewable Tablet",
+          "dosage": "100mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "NDA020800 0.3 ML Epinephrine 1 MG/ML Auto-Injector",
+          "dosage": "100mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "",
+          "dosage": "10mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Acetaminophen 21.7 MG/ML / Dextromethorphan Hydrob",
+          "dosage": "1g",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "",
+          "dosage": "500mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Methylphenidate Hydrochloride 20 MG Oral Tablet",
+          "dosage": "50mg",
+          "frequency": "three times daily"
+        }
+      ],
+      "allergies": [
+        "Allergic disposition (finding)",
+        "Mold (organism)",
+        "House dust mite (organism)",
+        "Animal dander (substance) (mild)",
+        "Grass pollen (substance)"
+      ],
+      "encounters": [
+        {
+          "date": "15 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Narayana Health",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "15 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Medanta Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "13 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Safdarjung Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "13 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Apollo Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "12 years ago",
+          "type": "Urgent care clinic (environmen",
+          "facility": "Narayana Health",
+          "summary": "Lab tests ordered. Results pending."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 98,
+      "bay": "Fast Track 1",
+      "queuePosition": 3,
+      "specialists": [
+        "Neurology",
+        "Cardiology"
+      ],
+      "protocols": [
+        "Chest Pain Protocol",
+        "Sepsis Protocol"
+      ],
+      "labs": [
+        "D-Dimer",
+        "CMP",
+        "Kidney Function",
+        "Troponin"
+      ],
+      "imaging": [
+        "CT Scan",
+        "Chest X-Ray"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "73",
+    "name": "Vikram Bhosale",
+    "age": 80,
+    "gender": "M",
+    "abha": "60-1874-3564-2539",
+    "arrivalTime": "17 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Sudden confusion",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 61,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 16,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "7/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Hyperlipidemia (disorder)",
+          "status": "active",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Ischemic heart disease (disorder)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Abnormal findings diagnostic imaging heart+coronary circulat (finding)",
+          "status": "active",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "History of coronary artery bypass grafting (situation)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Reports of violence in the environment (finding)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Clopidogrel 75 MG Oral Tablet",
+          "dosage": "25mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Simvastatin 20 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "24 HR metoprolol succinate 100 MG Extended Release",
+          "dosage": "5mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Nitroglycerin 0.4 MG/ACTUAT Mucosal Spray",
+          "dosage": "250mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "500mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "74 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Cloudnine Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "62 years ago",
+          "type": "General examination of patient",
+          "facility": "Apollo Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "49 years ago",
+          "type": "General examination of patient",
+          "facility": "Manipal Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "19 years ago",
+          "type": "General examination of patient",
+          "facility": "Lilavati Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "19 years ago",
+          "type": "Follow-up encounter (procedure",
+          "facility": "AIIMS Delhi",
+          "summary": "Routine checkup. Vitals stable."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 2,
+      "acuityLabel": "URGENT",
+      "acuityColor": "urgent",
+      "confidence": 75,
+      "bay": "Acute Care 1",
+      "queuePosition": 1,
+      "specialists": [
+        "Orthopedics",
+        "Nephrology"
+      ],
+      "protocols": [
+        "Trauma Protocol",
+        "Stroke Protocol"
+      ],
+      "labs": [
+        "Lipid Panel",
+        "HbA1c",
+        "CMP",
+        "D-Dimer"
+      ],
+      "imaging": [
+        "Chest X-Ray",
+        "Ultrasound"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 2 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 2.",
+        "background": "8 known conditions. Currently on 1 medications.",
+        "assessment": "URGENT acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Acute Care 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "74",
+    "name": "Apeyu Chang",
+    "age": 30,
+    "gender": "F",
+    "abha": "71-5293-1110-6499",
+    "arrivalTime": "4 min ago",
+    "arrivalMode": "Referral",
+    "chiefComplaint": "Severe headache",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 97,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "7/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Educated to high school level (finding)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Chronic pain (finding)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Transformed migraine (disorder)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Not in labor force (finding)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Gingivitis (disorder)",
+          "status": "resolved",
+          "source": "PGIMER Chandigarh"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet [Tylenol]",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet [Tylenol]",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "{28",
+          "dosage": "250mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet [Tylenol]",
+          "dosage": "1.0mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "{28",
+          "dosage": "50mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet [Tylenol]",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Vitamin B12 5 MG/ML Injectable Solution",
+          "dosage": "50mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Ibuprofen 200 MG Oral Tablet",
+          "dosage": "100mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "{28",
+          "dosage": "5mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet [Tylenol]",
+          "dosage": "1.0mg",
+          "frequency": "as needed"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "12 years ago",
+          "type": "General examination of patient",
+          "facility": "Manipal Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "12 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "10 years ago",
+          "type": "General examination of patient",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "10 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "9 years ago",
+          "type": "General examination of patient",
+          "facility": "Narayana Health",
+          "summary": "Follow-up visit. Condition improving."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 85,
+      "bay": "Treatment Room 2",
+      "queuePosition": 3,
+      "specialists": [
+        "Internal Medicine",
+        "Nephrology"
+      ],
+      "protocols": [
+        "Stroke Protocol",
+        "Chest Pain Protocol"
+      ],
+      "labs": [
+        "Lipid Panel",
+        "Troponin",
+        "Kidney Function",
+        "D-Dimer"
+      ],
+      "imaging": [
+        "Echo",
+        "ECG"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 1 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "75",
+    "name": "Senthil Krishnan",
+    "age": 59,
+    "gender": "M",
+    "abha": "31-4103-0752-9491",
+    "arrivalTime": "45 min ago",
+    "arrivalMode": "Referral",
+    "chiefComplaint": "Sudden confusion",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 66,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "5/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Chronic sinusitis (disorder)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Adolescent idiopathic scoliosis (disorder)",
+          "status": "active",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Unemployed (finding)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "50mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "10mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "250mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "57 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Max Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "48 years ago",
+          "type": "Follow-up encounter (procedure",
+          "facility": "Safdarjung Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "41 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Lilavati Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "40 years ago",
+          "type": "General examination of patient",
+          "facility": "Fortis Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "19 years ago",
+          "type": "General examination of patient",
+          "facility": "Lilavati Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 84,
+      "bay": "Treatment Room 3",
+      "queuePosition": 5,
+      "specialists": [
+        "Gastroenterology",
+        "Nephrology"
+      ],
+      "protocols": [
+        "Diabetic Emergency",
+        "Respiratory Distress"
+      ],
+      "labs": [
+        "BNP",
+        "CBC",
+        "D-Dimer",
+        "Urinalysis"
+      ],
+      "imaging": [
+        "Ultrasound",
+        "ECG"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "76",
+    "name": "Seema Verma",
+    "age": 34,
+    "gender": "F",
+    "abha": "50-9915-6323-2914",
+    "arrivalTime": "4 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Back pain radiating to legs",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 65,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 100.3,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 14,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Seizure disorder (disorder)",
+          "status": "active",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "History of seizure (situation)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Chronic intractable migraine without aura (disorder)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Impacted molars (disorder)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Chronic pain (finding)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Only received primary school education (finding)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Limited social contact (finding)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Abuse-Deterrent 12 HR Oxycodone Hydrochloride 15 M",
+          "dosage": "100mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Acetaminophen 325 MG / Oxycodone Hydrochloride 5 M",
+          "dosage": "100mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Acetaminophen 300 MG / HYDROcodone Bitartrate 5 MG",
+          "dosage": "100mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "250mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "{24",
+          "dosage": "10mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "1g",
+          "frequency": "as needed"
+        },
+        {
+          "name": "cephalexin 500 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "{7",
+          "dosage": "25mg",
+          "frequency": "as needed"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "31 years ago",
+          "type": "Emergency room admission (proc",
+          "facility": "Manipal Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "19 years ago",
+          "type": "Emergency room admission (proc",
+          "facility": "AIIMS Delhi",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "19 years ago",
+          "type": "Emergency room admission (proc",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "19 years ago",
+          "type": "Emergency hospital admission (",
+          "facility": "Manipal Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "15 years ago",
+          "type": "General examination of patient",
+          "facility": "Narayana Health",
+          "summary": "Follow-up visit. Condition improving."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 82,
+      "bay": "Fast Track 2",
+      "queuePosition": 8,
+      "specialists": [
+        "Internal Medicine",
+        "Orthopedics"
+      ],
+      "protocols": [
+        "Stroke Protocol",
+        "Chest Pain Protocol"
+      ],
+      "labs": [
+        "Lipid Panel",
+        "Kidney Function",
+        "D-Dimer",
+        "CBC"
+      ],
+      "imaging": [
+        "ECG",
+        "CT Scan"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 2 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "77",
+    "name": "Reena Yadav",
+    "age": 77,
+    "gender": "F",
+    "abha": "79-1363-2657-3548",
+    "arrivalTime": "6 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Uncontrolled bleeding",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 93,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.8,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "3/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "warning",
+        "text": "Active: Prediabetes (finding)"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Prediabetes (finding)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Anemia (disorder)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Chronic sinusitis (disorder)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Ischemic heart disease (disorder)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Abnormal findings diagnostic imaging heart+coronary circulat (finding)",
+          "status": "active",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "History of coronary artery bypass grafting (situation)",
+          "status": "active",
+          "source": "Tata Memorial Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Vitamin B12 5 MG/ML Injectable Solution",
+          "dosage": "10mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Clopidogrel 75 MG Oral Tablet",
+          "dosage": "25mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Simvastatin 20 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "24 HR metoprolol succinate 100 MG Extended Release",
+          "dosage": "100mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Nitroglycerin 0.4 MG/ACTUAT Mucosal Spray",
+          "dosage": "500mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet [Tylenol]",
+          "dosage": "1.0mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet [Tylenol]",
+          "dosage": "1.0mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet [Tylenol]",
+          "dosage": "1.0mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet [Tylenol]",
+          "dosage": "1.0mg",
+          "frequency": "three times daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "59 years ago",
+          "type": "General examination of patient",
+          "facility": "Medanta Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "52 years ago",
+          "type": "General examination of patient",
+          "facility": "Narayana Health",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "52 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Apollo Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "35 years ago",
+          "type": "General examination of patient",
+          "facility": "CMC Vellore",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "27 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 2,
+      "acuityLabel": "URGENT",
+      "acuityColor": "urgent",
+      "confidence": 87,
+      "bay": "Acute Care 1",
+      "queuePosition": 8,
+      "specialists": [
+        "Nephrology",
+        "Cardiology"
+      ],
+      "protocols": [
+        "Sepsis Protocol",
+        "Diabetic Emergency"
+      ],
+      "labs": [
+        "Urinalysis",
+        "CBC",
+        "BNP",
+        "Kidney Function"
+      ],
+      "imaging": [
+        "MRI",
+        "CT Scan"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 2 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 2.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "URGENT acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Acute Care 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "78",
+    "name": "Anil Pillai",
+    "age": 15,
+    "gender": "M",
+    "abha": "85-5261-9049-5187",
+    "arrivalTime": "41 min ago",
+    "arrivalMode": "Referral",
+    "chiefComplaint": "Dizziness and weakness",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 95,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Sprain (morphologic abnormality)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Sprain of ankle (disorder)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Sprain (morphologic abnormality)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Sprain of wrist (disorder)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Acute viral pharyngitis (disorder)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Gingivitis (disorder)",
+          "status": "resolved",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Primary dental caries (disorder)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Ibuprofen 100 MG Oral Tablet",
+          "dosage": "250mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Acetaminophen 160 MG Chewable Tablet",
+          "dosage": "500mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "",
+          "dosage": "500mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "500mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "",
+          "dosage": "100mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "10 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Kokilaben Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "10 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Emergency room admission (proc",
+          "facility": "Fortis Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Safdarjung Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "8 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 98,
+      "bay": "Treatment Room 1",
+      "queuePosition": 5,
+      "specialists": [
+        "Orthopedics",
+        "Gastroenterology"
+      ],
+      "protocols": [
+        "Sepsis Protocol",
+        "Respiratory Distress"
+      ],
+      "labs": [
+        "CBC",
+        "BNP",
+        "CMP",
+        "D-Dimer"
+      ],
+      "imaging": [
+        "Chest X-Ray",
+        "ECG"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 5 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "79",
+    "name": "Zirtluangi Sailo",
+    "age": 56,
+    "gender": "F",
+    "abha": "18-8217-4256-0330",
+    "arrivalTime": "45 min ago",
+    "arrivalMode": "Referral",
+    "chiefComplaint": "Severe vomiting and dehydration",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 74,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "6/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Educated to high school level (finding)",
+          "status": "active",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Loss of teeth (disorder)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Prediabetes (finding)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Anemia (disorder)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Recurrent urinary tract infection (disorder)",
+          "status": "active",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Chronic sinusitis (disorder)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "History of tubal ligation (situation)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Vitamin B12 5 MG/ML Injectable Solution",
+          "dosage": "50mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "250mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Naproxen sodium 220 MG Oral Tablet",
+          "dosage": "250mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "",
+          "dosage": "250mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "38 years ago",
+          "type": "General examination of patient",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "37 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "CMC Vellore",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "31 years ago",
+          "type": "General examination of patient",
+          "facility": "Safdarjung Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "31 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Lilavati Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "21 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Max Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 84,
+      "bay": "Fast Track 1",
+      "queuePosition": 8,
+      "specialists": [
+        "Orthopedics",
+        "Nephrology"
+      ],
+      "protocols": [
+        "Respiratory Distress",
+        "Sepsis Protocol"
+      ],
+      "labs": [
+        "HbA1c",
+        "CMP",
+        "Troponin",
+        "Kidney Function"
+      ],
+      "imaging": [
+        "MRI",
+        "CT Scan"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 3 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "80",
+    "name": "Daphibanri Daphibanri Wahlang",
+    "age": 55,
+    "gender": "F",
+    "abha": "90-6793-0540-7920",
+    "arrivalTime": "34 min ago",
+    "arrivalMode": "Referral",
+    "chiefComplaint": "Back pain radiating to legs",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 98,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "4/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "active",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Serving in military service (finding)",
+          "status": "active",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Only received primary school education (finding)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Prediabetes (finding)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Anemia (disorder)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Refugee (person)",
+          "status": "active",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "At increased risk for suicide (finding)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Sertraline 100 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "acetaminophen 300 MG / hydrocodone bitartrate 10 M",
+          "dosage": "250mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Ibuprofen 200 MG Oral Tablet",
+          "dosage": "500mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "50mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "39 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Apollo Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "37 years ago",
+          "type": "General examination of patient",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "33 years ago",
+          "type": "General examination of patient",
+          "facility": "Manipal Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "30 years ago",
+          "type": "General examination of patient",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "27 years ago",
+          "type": "General examination of patient",
+          "facility": "Kokilaben Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 76,
+      "bay": "Treatment Room 1",
+      "queuePosition": 9,
+      "specialists": [
+        "Cardiology",
+        "Orthopedics"
+      ],
+      "protocols": [
+        "Chest Pain Protocol",
+        "Sepsis Protocol"
+      ],
+      "labs": [
+        "Kidney Function",
+        "CMP",
+        "BNP",
+        "HbA1c"
+      ],
+      "imaging": [
+        "Echo",
+        "CT Scan"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "81",
+    "name": "Amarjeet Chahal",
+    "age": 80,
+    "gender": "M",
+    "abha": "88-0969-4994-4161",
+    "arrivalTime": "20 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Severe allergic reaction",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 62,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.7,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 16,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Seizure disorder (disorder)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "History of seizure (situation)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Victim of intimate partner abuse (finding)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Chronic sinusitis (disorder)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Part-time employment (finding)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "5mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "",
+          "dosage": "50mg",
+          "frequency": "every 8 hours"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "62 years ago",
+          "type": "General examination of patient",
+          "facility": "Kokilaben Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "58 years ago",
+          "type": "Emergency room admission (proc",
+          "facility": "Max Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "58 years ago",
+          "type": "General examination of patient",
+          "facility": "Narayana Health",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "47 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Safdarjung Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "43 years ago",
+          "type": "General examination of patient",
+          "facility": "CMC Vellore",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 2,
+      "acuityLabel": "URGENT",
+      "acuityColor": "urgent",
+      "confidence": 86,
+      "bay": "Acute Care 2",
+      "queuePosition": 10,
+      "specialists": [
+        "Orthopedics",
+        "Pulmonology"
+      ],
+      "protocols": [
+        "Diabetic Emergency",
+        "Sepsis Protocol"
+      ],
+      "labs": [
+        "D-Dimer",
+        "Lipid Panel",
+        "CBC",
+        "Liver Function"
+      ],
+      "imaging": [
+        "ECG",
+        "Echo"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 2 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 2.",
+        "background": "8 known conditions. Currently on 3 medications.",
+        "assessment": "URGENT acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Acute Care 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "82",
+    "name": "Teresa D'Souza",
+    "age": 77,
+    "gender": "F",
+    "abha": "73-4121-0019-8571",
+    "arrivalTime": "19 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Chest tightness and palpitations",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 78,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 12,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Educated to high school level (finding)",
+          "status": "active",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Past pregnancy history of miscarriage (situation)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Chronic sinusitis (disorder)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Victim of intimate partner abuse (finding)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Fracture of bone (disorder)",
+          "status": "resolved",
+          "source": "Max Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Meperidine Hydrochloride 50 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "500mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG / Oxycodone Hydrochloride 5 M",
+          "dosage": "5mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Clopidogrel 75 MG Oral Tablet",
+          "dosage": "25mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Simvastatin 20 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "24 HR metoprolol succinate 100 MG Extended Release",
+          "dosage": "25mg",
+          "frequency": "as needed"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "59 years ago",
+          "type": "General examination of patient",
+          "facility": "AIIMS Delhi",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "48 years ago",
+          "type": "Prenatal visit (regime/therapy",
+          "facility": "Safdarjung Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "43 years ago",
+          "type": "General examination of patient",
+          "facility": "CMC Vellore",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "29 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "15 years ago",
+          "type": "General examination of patient",
+          "facility": "Cloudnine Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 1,
+      "acuityLabel": "CRITICAL",
+      "acuityColor": "critical",
+      "confidence": 87,
+      "bay": "Resus Bay 2",
+      "queuePosition": 2,
+      "specialists": [
+        "Orthopedics",
+        "Nephrology"
+      ],
+      "protocols": [
+        "Sepsis Protocol",
+        "Diabetic Emergency"
+      ],
+      "labs": [
+        "D-Dimer",
+        "CBC",
+        "Kidney Function",
+        "Liver Function"
+      ],
+      "imaging": [
+        "Chest X-Ray",
+        "ECG"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 1 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 1.",
+        "background": "8 known conditions. Currently on 3 medications.",
+        "assessment": "CRITICAL acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Resus Bay 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "83",
+    "name": "Sanjay Sharma",
+    "age": 40,
+    "gender": "M",
+    "abha": "30-6609-8583-9563",
+    "arrivalTime": "35 min ago",
+    "arrivalMode": "Referral",
+    "chiefComplaint": "Abdominal bloating with pain",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 68,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 100.2,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 14,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "Allergy: Allergic disposition (finding)"
+      },
+      {
+        "type": "critical",
+        "text": "Allergy: Latex (substance)"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Not in labor force (finding)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Social isolation (finding)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Unemployed (finding)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Lilavati Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Chlorpheniramine Maleate 2 MG/ML Oral Solution",
+          "dosage": "1g",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "NDA020983 200 ACTUAT albuterol 0.09 MG/ACTUAT Mete",
+          "dosage": "5mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "budesonide 0.125 MG/ML Inhalation Suspension",
+          "dosage": "5mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "NDA020983 200 ACTUAT albuterol 0.09 MG/ACTUAT Mete",
+          "dosage": "1g",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "budesonide 0.125 MG/ML Inhalation Suspension",
+          "dosage": "250mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "NDA020983 200 ACTUAT albuterol 0.09 MG/ACTUAT Mete",
+          "dosage": "10mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "budesonide 0.125 MG/ML Inhalation Suspension",
+          "dosage": "25mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "NDA020983 200 ACTUAT albuterol 0.09 MG/ACTUAT Mete",
+          "dosage": "500mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "budesonide 0.125 MG/ML Inhalation Suspension",
+          "dosage": "25mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "NDA020983 200 ACTUAT albuterol 0.09 MG/ACTUAT Mete",
+          "dosage": "250mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [
+        "Allergic disposition (finding)",
+        "Latex (substance)",
+        "Mold (organism)",
+        "House dust mite (organism)",
+        "Animal dander (substance) (moderate)"
+      ],
+      "encounters": [
+        {
+          "date": "39 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Medanta Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "39 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Cloudnine Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "37 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Cloudnine Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "22 years ago",
+          "type": "General examination of patient",
+          "facility": "Lilavati Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "10 years ago",
+          "type": "General examination of patient",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 87,
+      "bay": "Fast Track 1",
+      "queuePosition": 5,
+      "specialists": [
+        "Gastroenterology",
+        "Internal Medicine"
+      ],
+      "protocols": [
+        "Chest Pain Protocol",
+        "Respiratory Distress"
+      ],
+      "labs": [
+        "HbA1c",
+        "Troponin",
+        "BNP",
+        "Urinalysis"
+      ],
+      "imaging": [
+        "CT Scan",
+        "Ultrasound"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 2 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "84",
+    "name": "Sachin Chavan",
+    "age": 83,
+    "gender": "M",
+    "abha": "76-4661-1226-2261",
+    "arrivalTime": "14 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Persistent cough with blood",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 78,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "warning",
+        "text": "Active: Prediabetes (finding)"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Prediabetes (finding)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Anemia (disorder)",
+          "status": "active",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Chronic sinusitis (disorder)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Has a criminal record (finding)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Sleep disorder (disorder)",
+          "status": "active",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Obstructive sleep apnea syndrome (disorder)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Essential hypertension (disorder)",
+          "status": "active",
+          "source": "Sir Ganga Ram Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Clopidogrel 75 MG Oral Tablet",
+          "dosage": "500mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Simvastatin 20 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "24 HR metoprolol succinate 100 MG Extended Release",
+          "dosage": "250mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Nitroglycerin 0.4 MG/ACTUAT Mucosal Spray",
+          "dosage": "500mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "120 ACTUAT fluticasone propionate 0.11 MG/ACTUAT M",
+          "dosage": "1g",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "NDA021457 200 ACTUAT albuterol 0.09 MG/ACTUAT Mete",
+          "dosage": "250mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Alendronic acid 10 MG Oral Tablet",
+          "dosage": "50mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "120 ACTUAT fluticasone propionate 0.11 MG/ACTUAT M",
+          "dosage": "25mg",
+          "frequency": "three times daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "81 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "65 years ago",
+          "type": "General examination of patient",
+          "facility": "Safdarjung Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "59 years ago",
+          "type": "General examination of patient",
+          "facility": "AIIMS Delhi",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "56 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "AIIMS Delhi",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "52 years ago",
+          "type": "General examination of patient",
+          "facility": "Apollo Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 1,
+      "acuityLabel": "CRITICAL",
+      "acuityColor": "critical",
+      "confidence": 96,
+      "bay": "Resus Bay 2",
+      "queuePosition": 4,
+      "specialists": [
+        "Pulmonology",
+        "General Surgery"
+      ],
+      "protocols": [
+        "Trauma Protocol",
+        "Sepsis Protocol"
+      ],
+      "labs": [
+        "CMP",
+        "Troponin",
+        "BNP",
+        "Liver Function"
+      ],
+      "imaging": [
+        "Chest X-Ray",
+        "MRI"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 1 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 1.",
+        "background": "8 known conditions. Currently on 1 medications.",
+        "assessment": "CRITICAL acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Resus Bay 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "85",
+    "name": "Amarjeet Brar",
+    "age": 53,
+    "gender": "M",
+    "abha": "40-5947-7988-0700",
+    "arrivalTime": "14 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Chest pain with shortness of breath",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 83,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 14,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "6/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Chronic sinusitis (disorder)",
+          "status": "active",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Social isolation (finding)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Chronic pain (finding)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Chronic low back pain (finding)",
+          "status": "active",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Chronic neck pain (finding)",
+          "status": "active",
+          "source": "Kokilaben Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Acetaminophen 300 MG / Hydrocodone Bitartrate 5 MG",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Acetaminophen 300 MG / Codeine Phosphate 15 MG Ora",
+          "dosage": "1.0mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Ibuprofen 400 MG Oral Tablet [Ibu]",
+          "dosage": "1.0mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "tramadol hydrochloride 50 MG Oral Tablet",
+          "dosage": "100mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Acetaminophen 300 MG / Codeine Phosphate 15 MG Ora",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Ibuprofen 400 MG Oral Tablet [Ibu]",
+          "dosage": "1.0mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "tramadol hydrochloride 50 MG Oral Tablet",
+          "dosage": "5mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "10mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Ibuprofen 200 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Acetaminophen 300 MG / Codeine Phosphate 15 MG Ora",
+          "dosage": "1.0mg",
+          "frequency": "at bedtime"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "51 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Lilavati Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "39 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "Max Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "35 years ago",
+          "type": "General examination of patient",
+          "facility": "Lilavati Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "31 years ago",
+          "type": "General examination of patient",
+          "facility": "Max Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "16 years ago",
+          "type": "General examination of patient",
+          "facility": "Narayana Health",
+          "summary": "Follow-up visit. Condition improving."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 80,
+      "bay": "Treatment Room 2",
+      "queuePosition": 8,
+      "specialists": [
+        "Internal Medicine",
+        "Orthopedics"
+      ],
+      "protocols": [
+        "Trauma Protocol",
+        "Diabetic Emergency"
+      ],
+      "labs": [
+        "CBC",
+        "Kidney Function",
+        "Troponin",
+        "CMP"
+      ],
+      "imaging": [
+        "Echo",
+        "CT Scan"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 5 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "86",
+    "name": "Rajesh Kumar",
+    "age": 64,
+    "gender": "M",
+    "abha": "99-4728-5585-2311",
+    "arrivalTime": "25 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Difficulty breathing",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 66,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 100.4,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 14,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "2/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "Allergy: Allergic disposition (finding)"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Chronic sinusitis (disorder)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Only received primary school education (finding)",
+          "status": "active",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Has a criminal record (finding)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Essential hypertension (disorder)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Chronic kidney disease stage 1 (disorder)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Disorder of kidney due to diabetes mellitus (disorder)",
+          "status": "active",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Chronic kidney disease stage 2 (disorder)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Microalbuminuria due to type 2 diabetes mellitus (disorder)",
+          "status": "active",
+          "source": "Narayana Health"
+        }
+      ],
+      "medications": [
+        {
+          "name": "diphenhydrAMINE Hydrochloride 25 MG Oral Tablet",
+          "dosage": "100mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Hydrochlorothiazide 25 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "250mg",
+          "frequency": "every 8 hours"
+        }
+      ],
+      "allergies": [
+        "Allergic disposition (finding)"
+      ],
+      "encounters": [
+        {
+          "date": "58 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "58 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "46 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Medanta Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "46 years ago",
+          "type": "General examination of patient",
+          "facility": "Manipal Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "42 years ago",
+          "type": "General examination of patient",
+          "facility": "Fortis Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 5,
+      "acuityLabel": "NON-URGENT",
+      "acuityColor": "minor",
+      "confidence": 98,
+      "bay": "Fast Track 3",
+      "queuePosition": 1,
+      "specialists": [
+        "Orthopedics",
+        "General Surgery"
+      ],
+      "protocols": [
+        "Sepsis Protocol",
+        "Respiratory Distress"
+      ],
+      "labs": [
+        "CMP",
+        "Urinalysis",
+        "BNP",
+        "Troponin"
+      ],
+      "imaging": [
+        "ECG",
+        "Ultrasound"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 5 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 5.",
+        "background": "8 known conditions. Currently on 5 medications.",
+        "assessment": "NON-URGENT acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Waiting Area. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "87",
+    "name": "Wangkhem Laishram",
+    "age": 40,
+    "gender": "F",
+    "abha": "87-2330-1323-8772",
+    "arrivalTime": "24 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Joint pain and swelling",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 76,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.3,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "5/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Human immunodeficiency virus infection (disorder)",
+          "status": "active",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Gingivitis (disorder)",
+          "status": "resolved",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Leaking dental filling (finding)",
+          "status": "resolved",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "Fortis Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "efavirenz 600 MG / emtricitabine 200 MG / tenofovi",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "21 DAY ethinyl estradiol 0.000625 MG/HR / etonoges",
+          "dosage": "5mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "cobicistat 150 MG / elvitegravir 150 MG / emtricit",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "cobicistat 150 MG / elvitegravir 150 MG / emtricit",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "cobicistat 150 MG / elvitegravir 150 MG / emtricit",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "cobicistat 150 MG / elvitegravir 150 MG / emtricit",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "cobicistat 150 MG / elvitegravir 150 MG / emtricit",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "500mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "cobicistat 150 MG / elvitegravir 150 MG / emtricit",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "22 years ago",
+          "type": "General examination of patient",
+          "facility": "Max Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "12 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Apollo Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "12 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Apollo Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "12 years ago",
+          "type": "General examination of patient",
+          "facility": "AIIMS Delhi",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "11 years ago",
+          "type": "General examination of patient",
+          "facility": "Medanta Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 97,
+      "bay": "Treatment Room 2",
+      "queuePosition": 10,
+      "specialists": [
+        "Internal Medicine",
+        "Gastroenterology"
+      ],
+      "protocols": [
+        "Chest Pain Protocol",
+        "Sepsis Protocol"
+      ],
+      "labs": [
+        "CBC",
+        "Lipid Panel",
+        "CMP",
+        "Kidney Function"
+      ],
+      "imaging": [
+        "Ultrasound",
+        "Chest X-Ray"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "88",
+    "name": "Sunita Chauhan",
+    "age": 40,
+    "gender": "F",
+    "abha": "30-3335-5794-1361",
+    "arrivalTime": "37 min ago",
+    "arrivalMode": "Referral",
+    "chiefComplaint": "Uncontrolled bleeding",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 65,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 88,
+        "unit": "%",
+        "status": "critical",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 102.7,
+        "unit": "\u00b0F",
+        "status": "warning",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 14,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "7/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "Allergy: Allergic disposition (finding)"
+      },
+      {
+        "type": "critical",
+        "text": "Allergy: Mold (organism) (mild)"
+      },
+      {
+        "type": "critical",
+        "text": "SPO2: 88 - Critical"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Housing unsatisfactory (finding)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Normal pregnancy (finding)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Prediabetes (finding)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Astemizole 10 MG Oral Tablet",
+          "dosage": "100mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "{21",
+          "dosage": "500mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "250mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Vitamin B12 5 MG/ML Injectable Solution",
+          "dosage": "250mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "{5",
+          "dosage": "1g",
+          "frequency": "as needed"
+        },
+        {
+          "name": "{7",
+          "dosage": "100mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "5mg",
+          "frequency": "as needed"
+        }
+      ],
+      "allergies": [
+        "Allergic disposition (finding)",
+        "Mold (organism) (mild)",
+        "House dust mite (organism)",
+        "Animal dander (substance) (mild)",
+        "Grass pollen (substance)"
+      ],
+      "encounters": [
+        {
+          "date": "39 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Max Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "39 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "AIIMS Delhi",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "24 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Manipal Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "22 years ago",
+          "type": "General examination of patient",
+          "facility": "Max Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "17 years ago",
+          "type": "General examination of patient",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 2,
+      "acuityLabel": "URGENT",
+      "acuityColor": "urgent",
+      "confidence": 87,
+      "bay": "Acute Care 1",
+      "queuePosition": 1,
+      "specialists": [
+        "Nephrology",
+        "Pulmonology"
+      ],
+      "protocols": [
+        "Stroke Protocol",
+        "Trauma Protocol"
+      ],
+      "labs": [
+        "Lipid Panel",
+        "HbA1c",
+        "D-Dimer",
+        "BNP"
+      ],
+      "imaging": [
+        "Chest X-Ray",
+        "Ultrasound"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 2 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 2.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "URGENT acuity. Vitals show 1 critical, 2 warning signs.",
+        "recommendation": "Assign to Acute Care 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "89",
+    "name": "Narendra Singh",
+    "age": 34,
+    "gender": "M",
+    "abha": "72-9083-1697-7472",
+    "arrivalTime": "16 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Sudden confusion",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 80,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.8,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 14,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Educated to high school level (finding)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Limited social contact (finding)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Social isolation (finding)",
+          "status": "resolved",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Not in labor force (finding)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Contact dermatitis (disorder)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "250mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Naproxen 500 MG Oral Tablet",
+          "dosage": "5mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Methotrexate 2.5 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Amoxicillin 250 MG Oral Capsule",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Meperidine Hydrochloride 50 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "100mg",
+          "frequency": "every 8 hours"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "17 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Manipal Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "15 years ago",
+          "type": "General examination of patient",
+          "facility": "Cloudnine Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "14 years ago",
+          "type": "General examination of patient",
+          "facility": "CMC Vellore",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "11 years ago",
+          "type": "General examination of patient",
+          "facility": "Safdarjung Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "10 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 79,
+      "bay": "Fast Track 1",
+      "queuePosition": 7,
+      "specialists": [
+        "Orthopedics",
+        "Neurology"
+      ],
+      "protocols": [
+        "Trauma Protocol",
+        "Chest Pain Protocol"
+      ],
+      "labs": [
+        "HbA1c",
+        "Liver Function",
+        "Kidney Function",
+        "Lipid Panel"
+      ],
+      "imaging": [
+        "Echo",
+        "MRI"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 1 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "90",
+    "name": "Anil Ajay Yadav",
+    "age": 59,
+    "gender": "M",
+    "abha": "09-5523-2097-8052",
+    "arrivalTime": "37 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Trauma from fall",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 89,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 12,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "6/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Only received primary school education (finding)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Limited social contact (finding)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Primary fibromyalgia syndrome (disorder)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Not in labor force (finding)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Social isolation (finding)",
+          "status": "resolved",
+          "source": "Fortis Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Naproxen 500 MG Oral Tablet",
+          "dosage": "5mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "",
+          "dosage": "250mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Milnacipran hydrochloride 100 MG Oral Tablet",
+          "dosage": "25mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "",
+          "dosage": "500mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "duloxetine 20 MG Delayed Release Oral Capsule",
+          "dosage": "1g",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Milnacipran hydrochloride 100 MG Oral Tablet",
+          "dosage": "50mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "41 years ago",
+          "type": "General examination of patient",
+          "facility": "Fortis Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "22 years ago",
+          "type": "General examination of patient",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "13 years ago",
+          "type": "General examination of patient",
+          "facility": "Safdarjung Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "12 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Max Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "11 years ago",
+          "type": "General examination of patient",
+          "facility": "Max Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 78,
+      "bay": "Fast Track 1",
+      "queuePosition": 6,
+      "specialists": [
+        "Internal Medicine",
+        "Orthopedics"
+      ],
+      "protocols": [
+        "Sepsis Protocol",
+        "Diabetic Emergency"
+      ],
+      "labs": [
+        "HbA1c",
+        "D-Dimer",
+        "Liver Function",
+        "CMP"
+      ],
+      "imaging": [
+        "Ultrasound",
+        "MRI"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 1 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "91",
+    "name": "Savita Pushpa Murthy",
+    "age": 54,
+    "gender": "F",
+    "abha": "58-6875-1422-7755",
+    "arrivalTime": "11 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Chest pain with shortness of breath",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 79,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "warning",
+        "text": "Active: Essential hypertension (disorder)"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Educated to high school level (finding)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Essential hypertension (disorder)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Has a criminal record (finding)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Prediabetes (finding)",
+          "status": "active",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Anemia (disorder)",
+          "status": "active",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        }
+      ],
+      "medications": [
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "100mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Amoxicillin 250 MG / Clavulanate 125 MG Oral Table",
+          "dosage": "10mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "500mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "",
+          "dosage": "100mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "35 years ago",
+          "type": "General examination of patient",
+          "facility": "Manipal Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "31 years ago",
+          "type": "General examination of patient",
+          "facility": "Cloudnine Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "28 years ago",
+          "type": "General examination of patient",
+          "facility": "Narayana Health",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "22 years ago",
+          "type": "General examination of patient",
+          "facility": "Fortis Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "18 years ago",
+          "type": "General examination of patient",
+          "facility": "Narayana Health",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 82,
+      "bay": "Treatment Room 2",
+      "queuePosition": 6,
+      "specialists": [
+        "Cardiology",
+        "Neurology"
+      ],
+      "protocols": [
+        "Chest Pain Protocol",
+        "Sepsis Protocol"
+      ],
+      "labs": [
+        "Lipid Panel",
+        "Urinalysis",
+        "D-Dimer",
+        "Liver Function"
+      ],
+      "imaging": [
+        "MRI",
+        "Ultrasound"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "92",
+    "name": "Deepak Verma",
+    "age": 6,
+    "gender": "M",
+    "abha": "02-5540-9523-7865",
+    "arrivalTime": "18 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Difficulty breathing",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 98,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.8,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "5/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "Allergy: Allergic disposition (finding)"
+      },
+      {
+        "type": "critical",
+        "text": "Allergy: Latex (substance) (mild)"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Atopic dermatitis (disorder)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Otitis media (disorder)",
+          "status": "resolved",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        }
+      ],
+      "medications": [
+        {
+          "name": "cetirizine hydrochloride 5 MG Oral Tablet",
+          "dosage": "25mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "NDA020800 0.3 ML Epinephrine 1 MG/ML Auto-Injector",
+          "dosage": "500mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Ibuprofen 100 MG Oral Tablet",
+          "dosage": "5mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Hydrocortisone 10 MG/ML Topical Cream",
+          "dosage": "5mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "at bedtime"
+        }
+      ],
+      "allergies": [
+        "Allergic disposition (finding)",
+        "Latex (substance) (mild)",
+        "Bee venom (substance)",
+        "Mold (organism)",
+        "House dust mite (organism)"
+      ],
+      "encounters": [
+        {
+          "date": "6 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Lilavati Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "6 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Manipal Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "6 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Apollo Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "6 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Safdarjung Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "6 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Kokilaben Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 94,
+      "bay": "Treatment Room 3",
+      "queuePosition": 7,
+      "specialists": [
+        "Pulmonology",
+        "Internal Medicine"
+      ],
+      "protocols": [
+        "Stroke Protocol",
+        "Chest Pain Protocol"
+      ],
+      "labs": [
+        "D-Dimer",
+        "HbA1c",
+        "CMP",
+        "Kidney Function"
+      ],
+      "imaging": [
+        "Echo",
+        "MRI"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 2 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "93",
+    "name": "Rohit Vijay Yadav",
+    "age": 31,
+    "gender": "M",
+    "abha": "99-4952-3608-8643",
+    "arrivalTime": "42 min ago",
+    "arrivalMode": "Referral",
+    "chiefComplaint": "Back pain radiating to legs",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 60,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 87,
+        "unit": "%",
+        "status": "critical",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 100.4,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "4/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "SPO2: 87 - Critical"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Chronic sinusitis (disorder)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Part-time employment (finding)",
+          "status": "resolved",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Limited social contact (finding)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "10mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "100mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Colchicine 0.6 MG Oral Tablet",
+          "dosage": "25mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Allopurinol 100 MG Oral Tablet",
+          "dosage": "500mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Naproxen sodium 220 MG Oral Tablet",
+          "dosage": "50mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Acetaminophen 21.7 MG/ML / Dextromethorphan Hydrob",
+          "dosage": "500mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "100mg",
+          "frequency": "three times daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "21 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Fortis Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "14 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Max Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "13 years ago",
+          "type": "General examination of patient",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "12 years ago",
+          "type": "General examination of patient",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "9 years ago",
+          "type": "General examination of patient",
+          "facility": "Cloudnine Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 2,
+      "acuityLabel": "URGENT",
+      "acuityColor": "urgent",
+      "confidence": 77,
+      "bay": "Acute Care 2",
+      "queuePosition": 5,
+      "specialists": [
+        "Internal Medicine",
+        "Neurology"
+      ],
+      "protocols": [
+        "Diabetic Emergency",
+        "Sepsis Protocol"
+      ],
+      "labs": [
+        "Troponin",
+        "BNP",
+        "CMP",
+        "D-Dimer"
+      ],
+      "imaging": [
+        "Ultrasound",
+        "MRI"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 2 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 2.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "URGENT acuity. Vitals show 1 critical, 0 warning signs.",
+        "recommendation": "Assign to Acute Care 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "94",
+    "name": "Suresh Reddy",
+    "age": 12,
+    "gender": "M",
+    "abha": "41-1114-7587-4258",
+    "arrivalTime": "43 min ago",
+    "arrivalMode": "Referral",
+    "chiefComplaint": "Difficulty breathing",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 79,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 100.2,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 16,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "7/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Otitis media (disorder)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Laceration - injury (disorder)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Facial laceration (disorder)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Otitis media (disorder)",
+          "status": "resolved",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Streptococcal sore throat (disorder)",
+          "status": "resolved",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Streptococcal sore throat (disorder)",
+          "status": "resolved",
+          "source": "Max Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Cefuroxime 250 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Acetaminophen 160 MG Chewable Tablet",
+          "dosage": "50mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Acetaminophen 160 MG Chewable Tablet",
+          "dosage": "250mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Cefuroxime 250 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Ibuprofen 100 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Penicillin V Potassium 250 MG Oral Tablet",
+          "dosage": "1g",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Penicillin V Potassium 250 MG Oral Tablet",
+          "dosage": "250mg",
+          "frequency": "three times daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "10 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Kokilaben Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Medanta Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Narayana Health",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Safdarjung Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 77,
+      "bay": "Fast Track 2",
+      "queuePosition": 5,
+      "specialists": [
+        "Neurology",
+        "Cardiology"
+      ],
+      "protocols": [
+        "Chest Pain Protocol",
+        "Sepsis Protocol"
+      ],
+      "labs": [
+        "Troponin",
+        "D-Dimer",
+        "CBC",
+        "Liver Function"
+      ],
+      "imaging": [
+        "MRI",
+        "Echo"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "95",
+    "name": "Nawang Norbu",
+    "age": 4,
+    "gender": "M",
+    "abha": "88-7162-9599-6468",
+    "arrivalTime": "3 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Sudden vision changes",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 68,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "8/10",
+        "unit": "",
+        "status": "critical",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "PAIN: 8/10 - Critical"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Amoxicillin 500 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Acetaminophen 160 MG Chewable Tablet",
+          "dosage": "250mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "",
+          "dosage": "50mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "4 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Apollo Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "4 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Manipal Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "4 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "AIIMS Delhi",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "4 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "AIIMS Delhi",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "4 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Max Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 83,
+      "bay": "Treatment Room 1",
+      "queuePosition": 4,
+      "specialists": [
+        "Internal Medicine",
+        "Pulmonology"
+      ],
+      "protocols": [
+        "Sepsis Protocol",
+        "Respiratory Distress"
+      ],
+      "labs": [
+        "Lipid Panel",
+        "CBC",
+        "CMP",
+        "Kidney Function"
+      ],
+      "imaging": [
+        "Ultrasound",
+        "Chest X-Ray"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 3 medications.",
+        "assessment": "MODERATE acuity. Vitals show 1 critical, 0 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "96",
+    "name": "Anjan Bose",
+    "age": 53,
+    "gender": "M",
+    "abha": "93-0581-4434-8469",
+    "arrivalTime": "30 min ago",
+    "arrivalMode": "Referral",
+    "chiefComplaint": "Abdominal bloating with pain",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 73,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 14,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "warning",
+        "text": "Active: Prediabetes (finding)"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Prediabetes (finding)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Anemia (disorder)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Unemployed (finding)",
+          "status": "resolved",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Social isolation (finding)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "active",
+          "source": "Narayana Health"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "twice daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "35 years ago",
+          "type": "General examination of patient",
+          "facility": "AIIMS Delhi",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "31 years ago",
+          "type": "General examination of patient",
+          "facility": "Narayana Health",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "28 years ago",
+          "type": "General examination of patient",
+          "facility": "Apollo Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "19 years ago",
+          "type": "General examination of patient",
+          "facility": "Apollo Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "18 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 98,
+      "bay": "Treatment Room 1",
+      "queuePosition": 9,
+      "specialists": [
+        "General Surgery",
+        "Gastroenterology"
+      ],
+      "protocols": [
+        "Diabetic Emergency",
+        "Respiratory Distress"
+      ],
+      "labs": [
+        "Lipid Panel",
+        "HbA1c",
+        "CBC",
+        "CMP"
+      ],
+      "imaging": [
+        "CT Scan",
+        "ECG"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 1 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "97",
+    "name": "Geetha Murthy",
+    "age": 30,
+    "gender": "F",
+    "abha": "65-2259-1857-2348",
+    "arrivalTime": "45 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Severe abdominal pain",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 61,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.3,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "5/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Limited social contact (finding)",
+          "status": "active",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Part-time employment (finding)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Social isolation (finding)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "{28",
+          "dosage": "1g",
+          "frequency": "as needed"
+        },
+        {
+          "name": "{28",
+          "dosage": "250mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "10mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "{28",
+          "dosage": "50mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "50mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "",
+          "dosage": "10mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Penicillin V Potassium 500 MG Oral Tablet",
+          "dosage": "50mg",
+          "frequency": "three times daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "13 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Safdarjung Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "12 years ago",
+          "type": "General examination of patient",
+          "facility": "Manipal Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "11 years ago",
+          "type": "General examination of patient",
+          "facility": "Manipal Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "10 years ago",
+          "type": "Consultation for treatment (pr",
+          "facility": "Cloudnine Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Consultation for treatment (pr",
+          "facility": "AIIMS Delhi",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 95,
+      "bay": "Treatment Room 2",
+      "queuePosition": 7,
+      "specialists": [
+        "Cardiology",
+        "Nephrology"
+      ],
+      "protocols": [
+        "Chest Pain Protocol",
+        "Respiratory Distress"
+      ],
+      "labs": [
+        "Lipid Panel",
+        "D-Dimer",
+        "Liver Function",
+        "BNP"
+      ],
+      "imaging": [
+        "Ultrasound",
+        "Chest X-Ray"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 5 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "98",
+    "name": "Manoj Panicker",
+    "age": 60,
+    "gender": "M",
+    "abha": "73-1353-7864-0799",
+    "arrivalTime": "33 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Difficulty breathing",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 63,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 12,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "3/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Adolescent idiopathic scoliosis (disorder)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "active",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Educated to high school level (finding)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Essential hypertension (disorder)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Prediabetes (finding)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Anemia (disorder)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Diabetes mellitus type 2 (disorder)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Chronic kidney disease stage 1 (disorder)",
+          "status": "resolved",
+          "source": "Apollo Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Clopidogrel 75 MG Oral Tablet",
+          "dosage": "50mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Simvastatin 20 MG Oral Tablet",
+          "dosage": "100mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "24 HR metoprolol succinate 100 MG Extended Release",
+          "dosage": "50mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Nitroglycerin 0.4 MG/ACTUAT Mucosal Spray",
+          "dosage": "500mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "insulin isophane, human 70 UNT/ML / insulin, regul",
+          "dosage": "250mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet [Tylenol]",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "10mg",
+          "frequency": "three times daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "49 years ago",
+          "type": "Follow-up encounter (procedure",
+          "facility": "Medanta Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "44 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Apollo Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "41 years ago",
+          "type": "General examination of patient",
+          "facility": "CMC Vellore",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "37 years ago",
+          "type": "General examination of patient",
+          "facility": "Max Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "32 years ago",
+          "type": "General examination of patient",
+          "facility": "Kokilaben Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 81,
+      "bay": "Treatment Room 1",
+      "queuePosition": 6,
+      "specialists": [
+        "Gastroenterology",
+        "Orthopedics"
+      ],
+      "protocols": [
+        "Respiratory Distress",
+        "Sepsis Protocol"
+      ],
+      "labs": [
+        "Lipid Panel",
+        "Urinalysis",
+        "Troponin",
+        "Kidney Function"
+      ],
+      "imaging": [
+        "Echo",
+        "ECG"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 5 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "99",
+    "name": "Padma Rao",
+    "age": 30,
+    "gender": "F",
+    "abha": "69-4280-3818-4938",
+    "arrivalTime": "28 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Severe headache",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 88,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 100.3,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "8/10",
+        "unit": "",
+        "status": "critical",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "PAIN: 8/10 - Critical"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Past pregnancy history of miscarriage (situation)",
+          "status": "active",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Housing unsatisfactory (finding)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Educated to high school level (finding)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Part-time employment (finding)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Viral sinusitis (disorder)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Acute viral pharyngitis (disorder)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Amoxicillin 250 MG / Clavulanate 125 MG Oral Table",
+          "dosage": "1g",
+          "frequency": "once daily"
+        },
+        {
+          "name": "{7",
+          "dosage": "1g",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "",
+          "dosage": "5mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "{7",
+          "dosage": "500mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "{7",
+          "dosage": "1g",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "",
+          "dosage": "5mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Acetaminophen 21.7 MG/ML / Dextromethorphan Hydrob",
+          "dosage": "500mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "100mg",
+          "frequency": "as needed"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "15 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Kokilaben Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "13 years ago",
+          "type": "Prenatal visit (regime/therapy",
+          "facility": "Lilavati Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "12 years ago",
+          "type": "General examination of patient",
+          "facility": "Narayana Health",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "10 years ago",
+          "type": "Consultation for treatment (pr",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Safdarjung Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 2,
+      "acuityLabel": "URGENT",
+      "acuityColor": "urgent",
+      "confidence": 86,
+      "bay": "Acute Care 1",
+      "queuePosition": 3,
+      "specialists": [
+        "Cardiology",
+        "Neurology"
+      ],
+      "protocols": [
+        "Sepsis Protocol",
+        "Stroke Protocol"
+      ],
+      "labs": [
+        "Kidney Function",
+        "D-Dimer",
+        "CMP",
+        "Troponin"
+      ],
+      "imaging": [
+        "ECG",
+        "Ultrasound"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 2 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 2.",
+        "background": "8 known conditions. Currently on 1 medications.",
+        "assessment": "URGENT acuity. Vitals show 1 critical, 0 warning signs.",
+        "recommendation": "Assign to Acute Care 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "100",
+    "name": "Sreelekha Sen",
+    "age": 77,
+    "gender": "F",
+    "abha": "07-2891-2533-1249",
+    "arrivalTime": "9 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Uncontrolled bleeding",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 85,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "5/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Past pregnancy history of miscarriage (situation)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Osteoporosis (disorder)",
+          "status": "active",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Victim of intimate partner abuse (finding)",
+          "status": "resolved",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Not in labor force (finding)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Lilavati Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Alendronic acid 10 MG Oral Tablet",
+          "dosage": "500mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Alendronic acid 10 MG Oral Tablet",
+          "dosage": "500mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Alendronic acid 10 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Ibuprofen 200 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Alendronic acid 10 MG Oral Tablet",
+          "dosage": "250mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Alendronic acid 10 MG Oral Tablet",
+          "dosage": "1g",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Simvastatin 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Alendronic acid 10 MG Oral Tablet",
+          "dosage": "1g",
+          "frequency": "twice daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "60 years ago",
+          "type": "Prenatal visit (regime/therapy",
+          "facility": "Narayana Health",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "59 years ago",
+          "type": "General examination of patient",
+          "facility": "AIIMS Delhi",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "43 years ago",
+          "type": "General examination of patient",
+          "facility": "Fortis Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "17 years ago",
+          "type": "General examination of patient",
+          "facility": "Lilavati Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "15 years ago",
+          "type": "General examination of patient",
+          "facility": "Kokilaben Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 2,
+      "acuityLabel": "URGENT",
+      "acuityColor": "urgent",
+      "confidence": 86,
+      "bay": "Cardiac Bay",
+      "queuePosition": 2,
+      "specialists": [
+        "Internal Medicine",
+        "Gastroenterology"
+      ],
+      "protocols": [
+        "Stroke Protocol",
+        "Chest Pain Protocol"
+      ],
+      "labs": [
+        "CBC",
+        "HbA1c",
+        "Troponin",
+        "D-Dimer"
+      ],
+      "imaging": [
+        "MRI",
+        "ECG"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 2 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 2.",
+        "background": "8 known conditions. Currently on 2 medications.",
+        "assessment": "URGENT acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Acute Care 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "101",
+    "name": "Vishal Neiphiu Konyak",
+    "age": 42,
+    "gender": "M",
+    "abha": "61-1319-4355-9583",
+    "arrivalTime": "8 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Severe abdominal pain",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 82,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 100.3,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "2/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Chronic sinusitis (disorder)",
+          "status": "active",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Part-time employment (finding)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Sinusitis (disorder)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Not in labor force (finding)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "500mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Amoxicillin 250 MG / Clavulanate 125 MG Oral Table",
+          "dosage": "50mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "37 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Medanta Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "36 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Safdarjung Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "24 years ago",
+          "type": "General examination of patient",
+          "facility": "Safdarjung Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "20 years ago",
+          "type": "General examination of patient",
+          "facility": "CMC Vellore",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "11 years ago",
+          "type": "General examination of patient",
+          "facility": "Medanta Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 5,
+      "acuityLabel": "NON-URGENT",
+      "acuityColor": "minor",
+      "confidence": 79,
+      "bay": "Waiting Area",
+      "queuePosition": 4,
+      "specialists": [
+        "Neurology",
+        "Gastroenterology"
+      ],
+      "protocols": [
+        "Trauma Protocol",
+        "Respiratory Distress"
+      ],
+      "labs": [
+        "CMP",
+        "Troponin",
+        "HbA1c",
+        "CBC"
+      ],
+      "imaging": [
+        "CT Scan",
+        "Echo"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 5 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 5.",
+        "background": "8 known conditions. Currently on 5 medications.",
+        "assessment": "NON-URGENT acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Waiting Area. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "102",
+    "name": "Padma Prasad",
+    "age": 61,
+    "gender": "F",
+    "abha": "64-8975-7042-8026",
+    "arrivalTime": "20 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Trauma from fall",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 72,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "History of tubal ligation (situation)",
+          "status": "active",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Sepsis (disorder)",
+          "status": "active",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Sleep disorder (disorder)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Sleep apnea (disorder)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "Max Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "100mg",
+          "frequency": "three times daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "43 years ago",
+          "type": "General examination of patient",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "26 years ago",
+          "type": "Admission to surgical departme",
+          "facility": "CMC Vellore",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "24 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Narayana Health",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "22 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Kokilaben Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "22 years ago",
+          "type": "Follow-up visit (procedure)",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 78,
+      "bay": "Fast Track 1",
+      "queuePosition": 9,
+      "specialists": [
+        "Neurology",
+        "Nephrology"
+      ],
+      "protocols": [
+        "Trauma Protocol",
+        "Respiratory Distress"
+      ],
+      "labs": [
+        "Liver Function",
+        "HbA1c",
+        "CBC",
+        "Kidney Function"
+      ],
+      "imaging": [
+        "CT Scan",
+        "Chest X-Ray"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "103",
+    "name": "Yangchen Lama",
+    "age": 36,
+    "gender": "F",
+    "abha": "10-1035-9564-4282",
+    "arrivalTime": "41 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Uncontrolled bleeding",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 81,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.3,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "8/10",
+        "unit": "",
+        "status": "critical",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "PAIN: 8/10 - Critical"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Seizure disorder (disorder)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "History of seizure (situation)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Epilepsy (disorder)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Recurrent urinary tract infection (disorder)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Housing unsatisfactory (finding)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Social isolation (finding)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "clonazePAM 0.25 MG Oral Tablet",
+          "dosage": "5mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "ferrous sulfate 325 MG Oral Tablet",
+          "dosage": "250mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "tramadol hydrochloride 50 MG Oral Tablet",
+          "dosage": "5mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "12 HR Hydrocodone Bitartrate 10 MG Extended Releas",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Acetaminophen 300 MG / Hydrocodone Bitartrate 5 MG",
+          "dosage": "1.0mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "tramadol hydrochloride 50 MG Oral Tablet",
+          "dosage": "10mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "12 HR Hydrocodone Bitartrate 10 MG Extended Releas",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Acetaminophen 300 MG / Hydrocodone Bitartrate 5 MG",
+          "dosage": "1.0mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "168 HR Ethinyl Estradiol 0.00146 MG/HR / norelgest",
+          "dosage": "10mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "tramadol hydrochloride 50 MG Oral Tablet",
+          "dosage": "100mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "36 years ago",
+          "type": "Emergency room admission (proc",
+          "facility": "CMC Vellore",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "20 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "Apollo Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "19 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Manipal Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "18 years ago",
+          "type": "General examination of patient",
+          "facility": "Manipal Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "17 years ago",
+          "type": "General examination of patient",
+          "facility": "Cloudnine Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 87,
+      "bay": "Treatment Room 3",
+      "queuePosition": 5,
+      "specialists": [
+        "Internal Medicine",
+        "General Surgery"
+      ],
+      "protocols": [
+        "Diabetic Emergency",
+        "Chest Pain Protocol"
+      ],
+      "labs": [
+        "Lipid Panel",
+        "Troponin",
+        "Urinalysis",
+        "Liver Function"
+      ],
+      "imaging": [
+        "Echo",
+        "ECG"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 1 medications.",
+        "assessment": "MODERATE acuity. Vitals show 1 critical, 0 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "104",
+    "name": "Kamala Sharma",
+    "age": 56,
+    "gender": "F",
+    "abha": "25-8109-3651-8826",
+    "arrivalTime": "27 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Chest tightness and palpitations",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 87,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 92,
+        "unit": "%",
+        "status": "warning",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "7/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "History of tubal ligation (situation)",
+          "status": "active",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Chronic pain (finding)",
+          "status": "active",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Chronic low back pain (finding)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Chronic neck pain (finding)",
+          "status": "active",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Ibuprofen 400 MG Oral Tablet [Ibu]",
+          "dosage": "100mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Ibuprofen 400 MG Oral Tablet [Ibu]",
+          "dosage": "250mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Ibuprofen 400 MG Oral Tablet [Ibu]",
+          "dosage": "250mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "5mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Ibuprofen 400 MG Oral Tablet [Ibu]",
+          "dosage": "50mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Ibuprofen 400 MG Oral Tablet [Ibu]",
+          "dosage": "25mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "",
+          "dosage": "500mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Ibuprofen 400 MG Oral Tablet [Ibu]",
+          "dosage": "1g",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "1g",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Naproxen sodium 220 MG Oral Tablet",
+          "dosage": "100mg",
+          "frequency": "as needed"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "38 years ago",
+          "type": "General examination of patient",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "20 years ago",
+          "type": "Admission to surgical departme",
+          "facility": "PGIMER Chandigarh",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "12 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "Fortis Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "11 years ago",
+          "type": "General examination of patient",
+          "facility": "Cloudnine Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "10 years ago",
+          "type": "General examination of patient",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 2,
+      "acuityLabel": "URGENT",
+      "acuityColor": "urgent",
+      "confidence": 93,
+      "bay": "Acute Care 1",
+      "queuePosition": 2,
+      "specialists": [
+        "General Surgery",
+        "Nephrology"
+      ],
+      "protocols": [
+        "Diabetic Emergency",
+        "Sepsis Protocol"
+      ],
+      "labs": [
+        "Lipid Panel",
+        "Liver Function",
+        "Kidney Function",
+        "HbA1c"
+      ],
+      "imaging": [
+        "Ultrasound",
+        "Echo"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 2 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 2.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "URGENT acuity. Vitals show 0 critical, 2 warning signs.",
+        "recommendation": "Assign to Acute Care 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "105",
+    "name": "Asha Warrier",
+    "age": 63,
+    "gender": "F",
+    "abha": "58-3311-1239-7595",
+    "arrivalTime": "16 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Back pain radiating to legs",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 88,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 82,
+        "unit": "%",
+        "status": "critical",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.2,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "3/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "SPO2: 82 - Critical"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Seizure disorder (disorder)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "History of seizure (situation)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Epilepsy (disorder)",
+          "status": "active",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Risk activity involvement (finding)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Only received primary school education (finding)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Victim of intimate partner abuse (finding)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Chronic pain (finding)",
+          "status": "active",
+          "source": "AIIMS Delhi"
+        }
+      ],
+      "medications": [
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "amLODIPine 2.5 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "63 years ago",
+          "type": "Emergency room admission (proc",
+          "facility": "Kokilaben Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "48 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Manipal Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "45 years ago",
+          "type": "General examination of patient",
+          "facility": "CMC Vellore",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "42 years ago",
+          "type": "Urgent care clinic (environmen",
+          "facility": "Fortis Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "12 years ago",
+          "type": "General examination of patient",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 98,
+      "bay": "Treatment Room 1",
+      "queuePosition": 3,
+      "specialists": [
+        "Gastroenterology",
+        "Neurology"
+      ],
+      "protocols": [
+        "Stroke Protocol",
+        "Sepsis Protocol"
+      ],
+      "labs": [
+        "Lipid Panel",
+        "HbA1c",
+        "Urinalysis",
+        "Liver Function"
+      ],
+      "imaging": [
+        "MRI",
+        "Echo"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 2 medications.",
+        "assessment": "MODERATE acuity. Vitals show 1 critical, 0 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "106",
+    "name": "Partha Das",
+    "age": 31,
+    "gender": "M",
+    "abha": "78-2591-5356-1347",
+    "arrivalTime": "9 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Joint pain and swelling",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 96,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 99,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.1,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 12,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "8/10",
+        "unit": "",
+        "status": "critical",
+        "trend": "stable"
+      }
+    },
+    "alerts": [
+      {
+        "type": "critical",
+        "text": "PAIN: 8/10 - Critical"
+      }
+    ],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        },
+        {
+          "name": "History of appendectomy (situation)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Housing unsatisfactory (finding)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Limited social contact (finding)",
+          "status": "active",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Not in labor force (finding)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Social isolation (finding)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Viral sinusitis (disorder)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Ibuprofen 200 MG Oral Tablet",
+          "dosage": "50mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "ciprofloxacin 500 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "15 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Safdarjung Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "14 years ago",
+          "type": "Encounter for problem (procedu",
+          "facility": "AIIMS Delhi",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "13 years ago",
+          "type": "General examination of patient",
+          "facility": "Medanta Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "12 years ago",
+          "type": "General examination of patient",
+          "facility": "Lilavati Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Encounter for symptom (procedu",
+          "facility": "Fortis Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 2,
+      "acuityLabel": "URGENT",
+      "acuityColor": "urgent",
+      "confidence": 75,
+      "bay": "Cardiac Bay",
+      "queuePosition": 6,
+      "specialists": [
+        "Internal Medicine",
+        "General Surgery"
+      ],
+      "protocols": [
+        "Sepsis Protocol",
+        "Respiratory Distress"
+      ],
+      "labs": [
+        "Urinalysis",
+        "HbA1c",
+        "Lipid Panel",
+        "Liver Function"
+      ],
+      "imaging": [
+        "Chest X-Ray",
+        "CT Scan"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 2 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 2.",
+        "background": "8 known conditions. Currently on 3 medications.",
+        "assessment": "URGENT acuity. Vitals show 1 critical, 0 warning signs.",
+        "recommendation": "Assign to Acute Care 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "107",
+    "name": "Kavita Sunita Gupta",
+    "age": 39,
+    "gender": "F",
+    "abha": "66-3271-1540-0220",
+    "arrivalTime": "37 min ago",
+    "arrivalMode": "Referral",
+    "chiefComplaint": "Joint pain and swelling",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 63,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 16,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "5/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Received higher education (finding)",
+          "status": "active",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Lilavati Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Stress (finding)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Chronic obstructive bronchitis (disorder)",
+          "status": "active",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Unemployed (finding)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Part-time employment (finding)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "{7",
+          "dosage": "25mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "60 ACTUAT Fluticasone propionate 0.25 MG/ACTUAT / ",
+          "dosage": "1g",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "albuterol 5 MG/ML Inhalation Solution",
+          "dosage": "100mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "albuterol 5 MG/ML Inhalation Solution",
+          "dosage": "500mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "60 ACTUAT Fluticasone propionate 0.25 MG/ACTUAT / ",
+          "dosage": "250mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "albuterol 5 MG/ML Inhalation Solution",
+          "dosage": "1g",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "60 ACTUAT Fluticasone propionate 0.25 MG/ACTUAT / ",
+          "dosage": "50mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "",
+          "dosage": "25mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "albuterol 5 MG/ML Inhalation Solution",
+          "dosage": "500mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "60 ACTUAT Fluticasone propionate 0.25 MG/ACTUAT / ",
+          "dosage": "1g",
+          "frequency": "every 8 hours"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "21 years ago",
+          "type": "General examination of patient",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "11 years ago",
+          "type": "General examination of patient",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "10 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "Safdarjung Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Consultation for treatment (pr",
+          "facility": "Narayana Health",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "8 years ago",
+          "type": "General examination of patient",
+          "facility": "Manipal Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 79,
+      "bay": "Fast Track 1",
+      "queuePosition": 1,
+      "specialists": [
+        "Internal Medicine",
+        "Gastroenterology"
+      ],
+      "protocols": [
+        "Trauma Protocol",
+        "Respiratory Distress"
+      ],
+      "labs": [
+        "HbA1c",
+        "CMP",
+        "Lipid Panel",
+        "BNP"
+      ],
+      "imaging": [
+        "CT Scan",
+        "Chest X-Ray"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 2 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "108",
+    "name": "Jignesh Paresh Parikh",
+    "age": 18,
+    "gender": "M",
+    "abha": "13-1929-1555-2394",
+    "arrivalTime": "30 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Trauma from fall",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 99,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 14,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Gingivitis (disorder)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Sprain (morphologic abnormality)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Sprain of wrist (disorder)",
+          "status": "resolved",
+          "source": "AIIMS Delhi"
+        },
+        {
+          "name": "Viral sinusitis (disorder)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Gingival disease (disorder)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "5mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Ibuprofen 100 MG Oral Tablet",
+          "dosage": "100mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "50mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Acetaminophen 300 MG / Hydrocodone Bitartrate 5 MG",
+          "dosage": "1.0mg",
+          "frequency": "three times daily"
+        },
+        {
+          "name": "Acetaminophen 300 MG / Hydrocodone Bitartrate 5 MG",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "",
+          "dosage": "50mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "12 HR Hydrocodone Bitartrate 10 MG Extended Releas",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Acetaminophen 300 MG / Codeine Phosphate 15 MG Ora",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "10 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Kokilaben Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Manipal Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "8 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Cloudnine Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "7 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Kokilaben Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "7 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "Narayana Health",
+          "summary": "Follow-up visit. Condition improving."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 91,
+      "bay": "Fast Track 1",
+      "queuePosition": 5,
+      "specialists": [
+        "Cardiology",
+        "Gastroenterology"
+      ],
+      "protocols": [
+        "Trauma Protocol",
+        "Chest Pain Protocol"
+      ],
+      "labs": [
+        "HbA1c",
+        "Liver Function",
+        "CMP",
+        "BNP"
+      ],
+      "imaging": [
+        "MRI",
+        "Echo"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 5 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "109",
+    "name": "Prakash Pawar",
+    "age": 16,
+    "gender": "M",
+    "abha": "44-2398-5021-9083",
+    "arrivalTime": "34 min ago",
+    "arrivalMode": "Referral",
+    "chiefComplaint": "Sudden vision changes",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 85,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 99.5,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "0/10",
+        "unit": "",
+        "status": "normal",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Safdarjung Hospital"
+        },
+        {
+          "name": "Homeless (finding)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Viral sinusitis (disorder)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Viral sinusitis (disorder)",
+          "status": "resolved",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Sir Ganga Ram Hospital"
+        },
+        {
+          "name": "Gingivitis (disorder)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Infection of tooth (disorder)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Amoxicillin 250 MG / Clavulanate 125 MG Oral Table",
+          "dosage": "250mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "",
+          "dosage": "250mg",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "Acetaminophen 160 MG Chewable Tablet",
+          "dosage": "50mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "",
+          "dosage": "100mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Ibuprofen 200 MG Oral Tablet",
+          "dosage": "1g",
+          "frequency": "twice daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Kokilaben Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Domiciliary or rest home patie",
+          "facility": "Max Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Domiciliary or rest home patie",
+          "facility": "CMC Vellore",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Domiciliary or rest home patie",
+          "facility": "Tata Memorial Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Domiciliary or rest home patie",
+          "facility": "Sir Ganga Ram Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 95,
+      "bay": "Fast Track 2",
+      "queuePosition": 1,
+      "specialists": [
+        "Cardiology",
+        "Gastroenterology"
+      ],
+      "protocols": [
+        "Stroke Protocol",
+        "Trauma Protocol"
+      ],
+      "labs": [
+        "Liver Function",
+        "HbA1c",
+        "BNP",
+        "Troponin"
+      ],
+      "imaging": [
+        "ECG",
+        "Chest X-Ray"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 5 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 0 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "110",
+    "name": "Radha Reddy",
+    "age": 67,
+    "gender": "F",
+    "abha": "53-6368-4246-9496",
+    "arrivalTime": "44 min ago",
+    "arrivalMode": "Ambulance",
+    "chiefComplaint": "Difficulty swallowing",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 70,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 15,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "7/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Housing unsatisfactory (finding)",
+          "status": "active",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Educated to high school level (finding)",
+          "status": "active",
+          "source": "Tata Memorial Hospital"
+        },
+        {
+          "name": "Past pregnancy history of miscarriage (situation)",
+          "status": "active",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Prediabetes (finding)",
+          "status": "active",
+          "source": "Fortis Hospital"
+        },
+        {
+          "name": "Body mass index 30+ - obesity (finding)",
+          "status": "active",
+          "source": "PGIMER Chandigarh"
+        },
+        {
+          "name": "Essential hypertension (disorder)",
+          "status": "active",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Full-time employment (finding)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Metabolic syndrome X (disorder)",
+          "status": "active",
+          "source": "Safdarjung Hospital"
+        }
+      ],
+      "medications": [
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Acetaminophen 325 MG Oral Tablet",
+          "dosage": "250mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Ibuprofen 400 MG Oral Tablet [Ibu]",
+          "dosage": "5mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "Ibuprofen 400 MG Oral Tablet [Ibu]",
+          "dosage": "5mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "",
+          "dosage": "100mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "Ibuprofen 400 MG Oral Tablet [Ibu]",
+          "dosage": "1g",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "lisinopril 10 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "once daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "49 years ago",
+          "type": "General examination of patient",
+          "facility": "Safdarjung Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "42 years ago",
+          "type": "Prenatal visit (regime/therapy",
+          "facility": "Lilavati Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "39 years ago",
+          "type": "General examination of patient",
+          "facility": "Fortis Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "36 years ago",
+          "type": "General examination of patient",
+          "facility": "Cloudnine Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        },
+        {
+          "date": "23 years ago",
+          "type": "General examination of patient",
+          "facility": "Kokilaben Hospital",
+          "summary": "Lab tests ordered. Results pending."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 3,
+      "acuityLabel": "MODERATE",
+      "acuityColor": "urgent",
+      "confidence": 78,
+      "bay": "Treatment Room 1",
+      "queuePosition": 6,
+      "specialists": [
+        "Pulmonology",
+        "Neurology"
+      ],
+      "protocols": [
+        "Stroke Protocol",
+        "Respiratory Distress"
+      ],
+      "labs": [
+        "Lipid Panel",
+        "CBC",
+        "BNP",
+        "Troponin"
+      ],
+      "imaging": [
+        "CT Scan",
+        "Ultrasound"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 3 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 3.",
+        "background": "8 known conditions. Currently on 4 medications.",
+        "assessment": "MODERATE acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Treatment Room 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  },
+  {
+    "id": "111",
+    "name": "Venkatesh Venkatesh Sharma",
+    "age": 12,
+    "gender": "M",
+    "abha": "90-5613-7233-9249",
+    "arrivalTime": "41 min ago",
+    "arrivalMode": "Walk-in",
+    "chiefComplaint": "Persistent cough with blood",
+    "vitals": {
+      "bp": {
+        "value": "120/80",
+        "unit": "mmHg",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "hr": {
+        "value": 63,
+        "unit": "bpm",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "spo2": {
+        "value": 98,
+        "unit": "%",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "temp": {
+        "value": 98.6,
+        "unit": "\u00b0F",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "rr": {
+        "value": 13,
+        "unit": "/min",
+        "status": "normal",
+        "trend": "stable"
+      },
+      "pain": {
+        "value": "7/10",
+        "unit": "",
+        "status": "warning",
+        "trend": "stable"
+      }
+    },
+    "alerts": [],
+    "abdmData": {
+      "conditions": [
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Apollo Hospital"
+        },
+        {
+          "name": "Childhood asthma (disorder)",
+          "status": "active",
+          "source": "Max Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Medanta Hospital"
+        },
+        {
+          "name": "Fracture of bone (disorder)",
+          "status": "resolved",
+          "source": "Manipal Hospital"
+        },
+        {
+          "name": "Fracture of ankle (disorder)",
+          "status": "resolved",
+          "source": "Narayana Health"
+        },
+        {
+          "name": "Otitis media (disorder)",
+          "status": "resolved",
+          "source": "Cloudnine Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "Kokilaben Hospital"
+        },
+        {
+          "name": "Medication review due (situation)",
+          "status": "resolved",
+          "source": "CMC Vellore"
+        }
+      ],
+      "medications": [
+        {
+          "name": "",
+          "dosage": "100mg",
+          "frequency": "once daily"
+        },
+        {
+          "name": "budesonide 0.125 MG/ML Inhalation Suspension",
+          "dosage": "25mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "albuterol 0.83 MG/ML Inhalation Solution",
+          "dosage": "1g",
+          "frequency": "every 8 hours"
+        },
+        {
+          "name": "budesonide 0.125 MG/ML Inhalation Suspension",
+          "dosage": "500mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "albuterol 0.83 MG/ML Inhalation Solution",
+          "dosage": "500mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Ibuprofen 100 MG Oral Tablet",
+          "dosage": "1g",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "Cefuroxime 250 MG Oral Tablet",
+          "dosage": "1.0mg",
+          "frequency": "twice daily"
+        },
+        {
+          "name": "Ibuprofen 100 MG Oral Tablet",
+          "dosage": "250mg",
+          "frequency": "at bedtime"
+        },
+        {
+          "name": "budesonide 0.125 MG/ML Inhalation Suspension",
+          "dosage": "25mg",
+          "frequency": "as needed"
+        },
+        {
+          "name": "albuterol 0.83 MG/ML Inhalation Solution",
+          "dosage": "10mg",
+          "frequency": "twice daily"
+        }
+      ],
+      "allergies": [],
+      "encounters": [
+        {
+          "date": "10 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Narayana Health",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Max Hospital",
+          "summary": "Follow-up visit. Condition improving."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Encounter for check up (proced",
+          "facility": "Manipal Hospital",
+          "summary": "Medication adjusted. Follow-up in 2 weeks."
+        },
+        {
+          "date": "9 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Kokilaben Hospital",
+          "summary": "Routine checkup. Vitals stable."
+        },
+        {
+          "date": "8 years ago",
+          "type": "Well child visit (procedure)",
+          "facility": "Max Hospital",
+          "summary": "Symptoms reviewed. Conservative management advised."
+        }
+      ]
+    },
+    "aiDecision": {
+      "esi": 4,
+      "acuityLabel": "MINOR",
+      "acuityColor": "minor",
+      "confidence": 82,
+      "bay": "Fast Track 2",
+      "queuePosition": 5,
+      "specialists": [
+        "Orthopedics",
+        "Cardiology"
+      ],
+      "protocols": [
+        "Stroke Protocol",
+        "Respiratory Distress"
+      ],
+      "labs": [
+        "BNP",
+        "Troponin",
+        "Urinalysis",
+        "Liver Function"
+      ],
+      "imaging": [
+        "ECG",
+        "CT Scan"
+      ],
+      "interventions": [
+        "IV Access",
+        "Vitals monitoring q15 min",
+        "Oxygen therapy PRN"
+      ],
+      "isolation": null,
+      "reasoning": [
+        "ESI Level 4 assigned based on vital signs and presentation",
+        "8 active conditions identified from ABDM records",
+        "AI confidence based on similar case patterns"
+      ],
+      "sbar": {
+        "situation": "Patient presenting with acute symptoms. ESI Level 4.",
+        "background": "8 known conditions. Currently on 1 medications.",
+        "assessment": "MINOR acuity. Vitals show 0 critical, 1 warning signs.",
+        "recommendation": "Assign to Fast Track 1. Order labs and imaging. Specialist consultation as needed."
+      }
+    }
+  }
+] as Patient[];
+
+export function getPatientById(id: string): Patient | undefined {
+  return mockPatients.find((p) => p.id === id);
+}
+
+export function getPatientsByAcuity(acuity: string): Patient[] {
+  return mockPatients.filter((p) => p.aiDecision.acuityColor === acuity);
+}
+
+export function searchPatients(query: string): Patient[] {
+  const lowerQuery = query.toLowerCase();
+  return mockPatients.filter(
+    (p) =>
+      p.name.toLowerCase().includes(lowerQuery) ||
+      p.abha.includes(query) ||
+      p.chiefComplaint.toLowerCase().includes(lowerQuery)
+  );
+}
