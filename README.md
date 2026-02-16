@@ -1,37 +1,12 @@
 # Patient.ly
 
 AI-powered patient triage system built on India's ABDM (Ayushman Bharat Digital Mission) health data infrastructure. Converts heterogeneous medical data from 7 source types into standardized FHIR R4 bundles, then uses AI to make real-time triage decisions (ESI 1-5) with full clinical context.
+<img width="1292" height="474" alt="Screenshot 2026-02-16 at 12 20 26 PM" src="https://github.com/user-attachments/assets/153d5616-d2ce-45c1-a776-b4f24270ab02" />
+
 
 ## Architecture
+<img width="1250" height="535" alt="Screenshot 2026-02-16 at 12 19 56 PM" src="https://github.com/user-attachments/assets/5354e40b-d516-4f83-8c68-a17712f0ff3b" />
 
-```
-                                   Patient.ly System
- ============================================================================================
-
-  DATA SOURCES                    INGESTION PIPELINE                    AI TRIAGE
-  ============                    ==================                    =========
-
-  Apple Health XML  ─┐
-  Google Fit JSON   ─┤
-  NEMSIS XML (EMS)  ─┤            ┌──────────────┐
-  HL7 v2 Messages   ─┼──────────►│  7 Adapters   │
-  Handwritten Notes ─┤            │  (parse any   │     ┌─────────────┐     ┌──────────────┐
-  Bedside Monitors  ─┤            │   format)     ├────►│  Patient     ├────►│ FHIR R4      │
-  DICOM / PDF Labs  ─┤            └──────────────┘     │  Linker      │     │ Bundles      │
-  Synthea Bundles   ─┘                                  │  (4-tier     │     │ (per-patient) │
-                                                        │   matching)  │     └──────┬───────┘
-                                                        └─────────────┘            │
-                                                                                    ▼
-  ┌──────────────┐     ┌──────────────┐     ┌──────────────┐     ┌──────────────────────────┐
-  │  Next.js     │◄───►│  Triage API  │◄───►│  MCP Server  │◄────│  111 ABDM Patient        │
-  │  Frontend    │     │  (Claude AI) │     │  (9 tools)   │     │  Bundles                 │
-  │              │     │              │     │              │     └──────────────────────────┘
-  │  - Intake    │     │  - ESI 1-5   │     │  - Search    │
-  │  - Queue     │     │  - SBAR      │     │  - Snapshot  │     ┌──────────────────────────┐
-  │  - Triage    │     │  - Bay assign │     │  - History   │     │  ML Models (XGBoost)     │
-  │  - Dashboard │     │  - Protocols │     │  - Drug check│     │  87% accuracy ESI pred   │
-  └──────────────┘     └──────────────┘     └──────────────┘     └──────────────────────────┘
-```
 
 ## Components
 
